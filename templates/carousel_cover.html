@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px; height: 1080px;
+    font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+    background: #f8fafc;
+    background-image:
+      radial-gradient(at 0% 0%, rgba(147, 197, 253, 0.5) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(196, 181, 253, 0.5) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(253, 164, 175, 0.3) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(167, 243, 208, 0.3) 0px, transparent 50%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 60px;
+  }
+  .card {
+    width: 960px; padding: 80px 60px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.5));
+    backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 40px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9);
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 32px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 10px 28px; border-radius: 99px;
+    background: rgba(139,92,246,0.08);
+    border: 1px solid rgba(139,92,246,0.2);
+    font-size: 18px; font-weight: 700;
+    color: #7c3aed; letter-spacing: 0.05em;
+  }
+  .date {
+    font-size: 20px; font-weight: 600; color: #9ca3af;
+  }
+  .title {
+    font-size: 42px; font-weight: 900; color: #111827;
+    line-height: 1.2; letter-spacing: -0.03em;
+    max-width: 800px;
+  }
+  .tagline {
+    font-size: 22px; color: #64748b; line-height: 1.6;
+    max-width: 700px;
+  }
+  .word-count {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px; border-radius: 16px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white; font-size: 20px; font-weight: 800;
+  }
+  .logo-area {
+    margin-top: 20px;
+    font-size: 24px; font-weight: 800;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 0.02em;
+  }
+  .swipe-hint {
+    font-size: 16px; color: #9ca3af; font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="badge">{{CATEGORY}}</div>
+  <div class="date">{{DATE}}</div>
+  <div class="title">{{TITLE}}</div>
+  <div class="tagline">খবর পড়ো, শব্দ শেখো, পরীক্ষায় জেতো</div>
+  <div class="word-count">{{WORD_COUNT}}টি নতুন শব্দ শেখো</div>
+  <div class="logo-area">StoryVocabs 📖</div>
+  <div class="swipe-hint">← সোয়াইপ করো গল্প পড়তে →</div>
+</div>
+</body>
+</html>

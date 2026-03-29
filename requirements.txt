@@ -1,0 +1,7 @@
+groq>=0.4.0
+feedparser>=6.0
+requests>=2.31
+playwright>=1.40
+python-dotenv>=1.0
+Pillow>=10.0
+moviepy>=1.0

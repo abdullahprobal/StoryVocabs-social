@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px; height: 1080px;
+    font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+    background: #f8fafc;
+    background-image:
+      radial-gradient(at 0% 100%, rgba(167, 243, 208, 0.3) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(196, 181, 253, 0.4) 0px, transparent 50%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 50px;
+  }
+  .card {
+    width: 980px; padding: 50px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(255,255,255,0.5));
+    backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 36px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9);
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .header {
+    text-align: center; margin-bottom: 10px;
+  }
+  .header h2 {
+    font-size: 32px; font-weight: 900;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .word-item {
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(59,130,246,0.1);
+    border-radius: 20px;
+    padding: 22px 28px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .word-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .word {
+    font-size: 28px; font-weight: 900; color: #111827;
+  }
+  .pronunciation {
+    font-size: 18px; color: #9ca3af; font-weight: 500;
+    font-style: italic;
+  }
+  .meaning {
+    font-size: 20px; color: #3b82f6; font-weight: 700;
+  }
+  .example {
+    font-size: 17px; color: #64748b; font-weight: 500;
+    font-style: italic; line-height: 1.5;
+  }
+  .exam-note {
+    text-align: center; padding: 16px;
+    background: rgba(59,130,246,0.06);
+    border-radius: 14px;
+    font-size: 17px; color: #3b82f6; font-weight: 700;
+  }
+  .cta {
+    text-align: center; padding: 18px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 16px;
+    color: white; font-size: 18px; font-weight: 800;
+  }
+  .footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 10px;
+  }
+  .logo {
+    font-size: 18px; font-weight: 800;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <h2>📝 আজকের শব্দভান্ডার</h2>
+  </div>
+  {{WORDS_HTML}}
+  <div class="exam-note">{{EXAM_NOTE}}</div>
+  <div class="cta">💾 Save করো ｜ 📤 Share করো ｜ 💬 Comment করো</div>
+  <div class="footer">
+    <div class="logo">StoryVocabs 📖</div>
+    <div style="font-size:14px; color:#9ca3af; font-weight:600;">খবর পড়ো, শব্দ শেখো, পরীক্ষায় জেতো</div>
+  </div>
+</div>
+</body>
+</html>
