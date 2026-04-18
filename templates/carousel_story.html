@@ -2,75 +2,181 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+  :root { {{FONT_VARS}} }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     width: 1080px; height: 1080px;
     font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
-    background: #f8fafc;
+    background: #f0f4ff;
     background-image:
-      radial-gradient(at 0% 0%, rgba(147, 197, 253, 0.4) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(196, 181, 253, 0.3) 0px, transparent 50%);
-    display: flex; align-items: center; justify-content: center;
-    padding: 50px;
+      radial-gradient(at 0% 0%, rgba(147,197,253,0.5) 0px, transparent 55%),
+      radial-gradient(at 100% 100%, rgba(196,181,253,0.4) 0px, transparent 55%),
+      radial-gradient(at 50% 50%, rgba(255,255,255,0.3) 0px, transparent 70%);
+    overflow: hidden; position: relative;
   }
-  .card {
-    width: 980px; padding: 60px 50px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(255,255,255,0.5));
-    backdrop-filter: blur(40px) saturate(180%);
-    border: 1px solid rgba(255,255,255,0.7);
-    border-radius: 36px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9);
-    display: flex; flex-direction: column; gap: 28px;
+
+  /* ── Brand bar (top-left) ─────────────────────── */
+  .brand-top {
+    position: absolute; top: 28px; left: 36px;
+    display: flex; align-items: center; gap: 14px; z-index: 30;
+    padding: 10px 22px 10px 10px; border-radius: 50px;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.8);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
   }
-  .header {
-    display: flex; justify-content: space-between; align-items: center;
+  .logo-img {
+    width: 52px; height: 52px; border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(59,130,246,0.35);
   }
-  .slide-num {
-    font-size: 16px; font-weight: 800; color: #3b82f6;
-    background: rgba(59,130,246,0.08); padding: 8px 20px;
-    border-radius: 12px;
-  }
-  .category-tag {
-    font-size: 14px; font-weight: 700; color: #7c3aed;
-    background: rgba(139,92,246,0.08); padding: 8px 20px;
-    border-radius: 12px;
-  }
-  .story-text {
-    font-size: 28px; line-height: 1.8; color: #1f2937;
-    flex: 1; display: flex; align-items: center;
-  }
-  .story-text .highlight {
-    color: #3b82f6; font-weight: 800;
-    text-decoration: underline;
-    text-decoration-color: rgba(59,130,246,0.3);
-    text-underline-offset: 4px;
-  }
-  .footer {
-    display: flex; justify-content: space-between; align-items: center;
-    border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px;
-  }
-  .logo {
-    font-size: 18px; font-weight: 800;
+  .logo-text {
+    font-size: 24px; font-weight: 900;
     background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
   }
-  .page-indicator {
-    font-size: 14px; color: #9ca3af; font-weight: 600;
+
+  /* ── Slide counter (top-right) ───────────────── */
+  .slide-counter {
+    position: absolute; top: 36px; right: 36px; z-index: 30;
+    padding: 10px 20px; border-radius: 14px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0,0,0,0.06);
+    font-size: 16px; font-weight: 700; color: #6b7280;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
   }
+
+  /* ── Main content wrapper ────────────────────── */
+  .content {
+    position: relative; z-index: 10;
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    padding: 120px 52px 104px;
+    gap: 0;
+  }
+
+  /* ── Section badge ───────────────────────────── */
+  .section-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    align-self: flex-start;
+    padding: 8px 20px; border-radius: 99px; margin-bottom: 18px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(139,92,246,0.12));
+    border: 1.5px solid rgba(99,102,241,0.25);
+    font-size: 15px; font-weight: 800; letter-spacing: 0.04em;
+    color: #4f46e5; text-transform: uppercase;
+  }
+  .badge-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    flex-shrink: 0;
+    box-shadow: 0 0 6px rgba(99,102,241,0.5);
+  }
+
+  /* ── Hook box (glassmorphism card) ───────────── */
+  .hook-box {
+    padding: 22px 28px; border-radius: 20px; margin-bottom: 22px;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(99,102,241,0.15);
+    box-shadow: 0 8px 32px rgba(59,130,246,0.1), 0 2px 8px rgba(0,0,0,0.04);
+    border-left: 4px solid transparent;
+    border-image: linear-gradient(180deg, #3b82f6, #8b5cf6) 1;
+    border-left-style: solid;
+    font-size: var(--hook-font-size, 26px); font-weight: 700; color: #1e293b;
+    line-height: var(--story-line-height, 1.65); font-style: italic;
+  }
+
+  /* ── Story body ──────────────────────────────── */
+  .story-body {
+    flex: 1; display: flex; flex-direction: column;
+    gap: 16px; justify-content: center;
+  }
+  .story-para {
+    font-size: var(--story-font-size, 30px); font-weight: 500; color: #334155;
+    line-height: var(--story-line-height, 1.75);
+    font-family: var(--story-font-family, 'Inter', 'Noto Sans Bengali', sans-serif);
+  }
+
+  /* ── Vocabulary word highlights ──────────────── */
+  .vw {
+    font-weight: 800;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    font-size: 1.04em;
+  }
+  .bn {
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 0.88em; font-weight: 700;
+    color: #1d4ed8; font-style: normal;
+  }
+
+  /* ── Fun fact / Debate question box ─────────── */
+  .extra-box {
+    margin-top: 18px; padding: 18px 24px; border-radius: 16px;
+    font-size: 20px; font-weight: 600; line-height: 1.6;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .extra-box.fact {
+    background: rgba(16,185,129,0.07);
+    border: 1px solid rgba(16,185,129,0.2);
+    color: #065f46;
+    border-left: 4px solid #10b981;
+  }
+  .extra-box.debate {
+    background: rgba(245,158,11,0.07);
+    border: 1px solid rgba(245,158,11,0.2);
+    color: #78350f;
+    border-left: 4px solid #f59e0b;
+  }
+
+  /* ── CTA footer ──────────────────────────────── */
+  .app-cta {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, rgba(37,99,235,0.95), rgba(124,58,237,0.95));
+    backdrop-filter: blur(12px); z-index: 30;
+    text-align: center;
+  }
+  .cta-icon { font-size: 18px; display: none; }
+  .cta-text {
+    font-size: 21px; font-weight: 700;
+    color: rgba(255,255,255,0.95);
+    font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+    line-height: 1.3;
+  }
+  .cta-url { font-size: 22px; font-weight: 900; color: white; letter-spacing: 0.01em; }
 </style>
 </head>
 <body>
-<div class="card">
-  <div class="header">
-    <div class="slide-num">{{SLIDE_NUM}}/5</div>
-    <div class="category-tag">{{CATEGORY}}</div>
+  <div class="brand-top">
+    <img class="logo-img" src="{{LOGO_SRC}}" alt="SV" />
+    <span class="logo-text">StoryVocabs</span>
   </div>
-  <div class="story-text">{{STORY_TEXT}}</div>
-  <div class="footer">
-    <div class="logo">StoryVocabs 📖</div>
-    <div class="page-indicator">{{PAGE_HINT}}</div>
+
+  <div class="slide-counter">{{SLIDE_NUM}} / {{TOTAL_SLIDES}}</div>
+
+  <div class="content">
+    <div class="section-badge">
+      <span class="badge-dot"></span>{{SECTION_LABEL}}
+    </div>
+
+    {{HOOK_HTML}}
+
+    <div class="story-body">
+      {{STORY_HTML}}
+    </div>
+
+    {{EXTRA_HTML}}
   </div>
-</div>
+
+  <div class="app-cta">
+    <span class="cta-text">📖 গল্পে গল্পে শব্দ শিখতে এখনই ডাউনলোড করো</span>
+    <span class="cta-url">storyvocabs.vercel.app</span>
+  </div>
 </body>
 </html>
