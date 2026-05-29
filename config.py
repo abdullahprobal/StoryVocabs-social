@@ -194,8 +194,8 @@ NEWS_SOURCES = [
     "https://www.thefinancialexpress-bd.com/rss",
 ]
 
-INSTAGRAM_SIZE = (1080, 1080)
-FACEBOOK_SIZE = (1200, 1080)
+# Canvas size: 1080×1350 (4:5 portrait for Instagram Reels, Stories, etc.)
+CANVAS = (1080, 1350)
 
 # ─── DAILY POST SCHEDULE ──────────────────────────────────
 # 4 posts per day, 2 different stories/topics

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- ════════════════════════════════════════════════════════════════
+     STORYVOCABS · CAROUSEL TEMPLATE 2 of 4 — STORY
+     Canvas: 1080 × 1350 px (4:5 portrait)
+     Placeholders (filled by image_renderer.py):
+       {{LOGO_SRC}}        base64 data-uri of assets/logo-app-icon.png
+       {{SLIDE_NUMBER}}    e.g. 2
+       {{TOTAL_SLIDES}}    e.g. 8
+       {{SECTION_LABEL}}   e.g. The Hook
+       {{STORY_PARAGRAPH}} story HTML. Wrap each vocab word as:
+            <ruby class="vw"><span class="vw-en">WORD</span><rt><b>বাংলা</b></rt></ruby>
+            (keep the Bangla gloss SHORT — 1–3 words)
+       {{CTA_LABEL}}       Bangla CTA, e.g. 📖 গল্পে শব্দ শিখতে ডাউনলোড করো
+       {{APP_URL}}         storyvocabs.vercel.app
+     Self-fitting: paragraph auto-shrinks to fit. Sets window.__fitDone=true.
+     ════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f172a; --blue:#3b82f6; --blue-bright:#60a5fa; --purple:#8b5cf6;
+    --grad:linear-gradient(135deg,#3b82f6 0%,#8b5cf6 100%);
+    --grad-soft:linear-gradient(135deg,#60a5fa 0%,#a78bfa 100%);
+    --white:#f8fafc; --slate-200:#e2e8f0;
+    --surface:rgba(255,255,255,0.05); --surface-2:rgba(255,255,255,0.08);
+    --hair:rgba(255,255,255,0.10); --hair-bright:rgba(255,255,255,0.16);
+    --en:'Inter','Noto Sans Bengali',sans-serif; --bn:'Noto Sans Bengali','Inter',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    width:1080px;height:1350px;position:relative;overflow:hidden;color:var(--white);font-family:var(--en);
+    background:var(--ink);
+    background-image:
+      radial-gradient(at 12% 6%, rgba(59,130,246,0.20) 0px, transparent 40%),
+      radial-gradient(at 90% 97%, rgba(139,92,246,0.22) 0px, transparent 44%),
+      radial-gradient(at 80% 10%, rgba(96,165,250,0.08) 0px, transparent 38%);
+  }
+  body::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(circle at 50% 38%, #000 0%, transparent 80%);
+    mask-image:radial-gradient(circle at 50% 38%, #000 0%, transparent 80%);
+  }
+  .top{position:absolute;top:54px;left:60px;right:60px;z-index:4;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:16px;}
+  .logo{width:54px;height:54px;border-radius:14px;object-fit:cover;box-shadow:0 8px 24px rgba(59,130,246,0.45), 0 0 0 1px rgba(255,255,255,0.12);}
+  .word{font-size:26px;font-weight:800;letter-spacing:-0.02em;}
+  .word .g{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .counter{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:99px;background:var(--surface);border:1px solid var(--hair);font-size:22px;font-weight:700;color:#cbd5e1;}
+  .counter b{color:var(--white);}
+  .counter .dot{width:8px;height:8px;border-radius:50%;background:var(--grad);}
+
+  .body{position:absolute;top:190px;left:60px;right:60px;bottom:168px;z-index:3;display:flex;flex-direction:column;justify-content:center;}
+  .section-tag{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;padding:11px 26px;border-radius:99px;margin-bottom:48px;background:var(--surface-2);border:1px solid var(--hair-bright);font-size:22px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue-bright);}
+  .section-tag .dot{width:10px;height:10px;border-radius:50%;background:var(--grad);box-shadow:0 0 10px rgba(96,165,250,0.7);}
+  .para{font-size:47px;font-weight:500;line-height:2.35;color:var(--slate-200);letter-spacing:-0.005em;}
+  /* native <ruby> places the Bangla gloss pill directly UNDER the English word */
+  ruby.vw{ruby-position:under;ruby-align:center;}
+  ruby.vw .vw-en{font-weight:800;background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  ruby.vw rt{font-size:0.49em;}
+  ruby.vw rt b{display:inline-block;font-family:var(--bn);font-weight:700;color:var(--blue-bright);background:rgba(59,130,246,0.16);border:1px solid rgba(96,165,250,0.34);padding:3px 15px;border-radius:99px;line-height:1.35;white-space:nowrap;}
+
+  .cta{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:32px 56px;background:var(--grad);box-shadow:0 -1px 0 rgba(255,255,255,0.12) inset;}
+  .cta .label{font-family:var(--bn);font-size:29px;font-weight:700;color:rgba(255,255,255,0.96);white-space:nowrap;}
+  .cta .url{font-size:30px;font-weight:800;color:#fff;letter-spacing:0.01em;white-space:nowrap;}
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">
+      <img class="logo" src="{{LOGO_SRC}}" alt="StoryVocabs">
+      <span class="word">Story<span class="g">Vocabs</span></span>
+    </div>
+    <div class="counter"><span class="dot"></span><b>{{SLIDE_NUMBER}}</b> / {{TOTAL_SLIDES}}</div>
+  </div>
+
+  <div class="body" id="fitBox">
+    <div class="section-tag"><span class="dot"></span>{{SECTION_LABEL}}</div>
+    <p class="para" id="para">{{STORY_PARAGRAPH}}</p>
+  </div>
+
+  <div class="cta">
+    <span class="label">{{CTA_LABEL}}</span>
+    <span class="url">{{APP_URL}}</span>
+  </div>
+
+<script>
+  // Auto-fit: shrink paragraph font (and tighten line-height) until it fits the body.
+  (function(){
+    function fit(){
+      var box  = document.getElementById('fitBox');
+      var para = document.getElementById('para');
+      var size = 47, min = 26;
+      while (box.scrollHeight > box.clientHeight && size > min){
+        size -= 1; para.style.fontSize = size + 'px';
+        if (size < 38) para.style.lineHeight = '2.0';
+        if (size < 32) para.style.lineHeight = '1.8';
+      }
+      window.__fitDone = true;
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    else window.addEventListener('load', fit);
+  })();
+</script>
+</body>
+</html>

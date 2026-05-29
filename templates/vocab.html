@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- ════════════════════════════════════════════════════════════════
+     STORYVOCABS · CAROUSEL TEMPLATE 3 of 4 — VOCAB HERO CARD (one word)
+     Canvas: 1080 × 1350 px (4:5 portrait)
+     Placeholders (filled by image_renderer.py):
+       {{LOGO_SRC}}      base64 data-uri of assets/logo-app-icon.png
+       {{WORD_INDEX}}    e.g. 1
+       {{WORD_TOTAL}}    e.g. 5
+       {{POS}}           part of speech, e.g. adjective
+       {{DIFFICULTY}}    Beginner | Intermediate | Advanced
+       {{DIFF_CLASS}}    beginner | intermediate | advanced  (lowercase)
+       {{WORD}}          the English word, e.g. Iridescent
+       {{PHONETIC}}      IPA, e.g. /ˌɪrɪˈdes(ə)nt/   (optional — leave blank)
+       {{MEANING_BN}}    short Bangla meaning (~1–2 lines)
+       {{MEANING_EN}}    short English meaning (~1–2 lines)
+       {{EXAMPLE_HTML}}  example sentence; wrap the word in <b>…</b>. Leave EMPTY to hide.
+       {{CTA_LABEL}}     Bangla CTA, e.g. 📲 আরও শব্দ শিখতে ডাউনলোড করো
+       {{APP_URL}}       storyvocabs.vercel.app
+     Self-fitting: content scales down (var --k) if it would overflow. Sets window.__fitDone=true.
+     ════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --k:1;
+    --ink:#0f172a; --blue:#3b82f6; --blue-bright:#60a5fa; --purple:#8b5cf6; --purple-bright:#a78bfa;
+    --grad:linear-gradient(135deg,#3b82f6 0%,#8b5cf6 100%);
+    --grad-soft:linear-gradient(135deg,#60a5fa 0%,#a78bfa 100%);
+    --white:#f8fafc; --slate-300:#cbd5e1; --slate-400:#94a3b8; --slate-500:#64748b;
+    --surface:rgba(255,255,255,0.05); --hair:rgba(255,255,255,0.10); --hair-bright:rgba(255,255,255,0.16);
+    --en:'Inter','Noto Sans Bengali',sans-serif; --bn:'Noto Sans Bengali','Inter',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    width:1080px;height:1350px;position:relative;overflow:hidden;color:var(--white);font-family:var(--en);
+    background:var(--ink);
+    background-image:
+      radial-gradient(at 12% 6%, rgba(59,130,246,0.20) 0px, transparent 40%),
+      radial-gradient(at 90% 97%, rgba(139,92,246,0.22) 0px, transparent 44%),
+      radial-gradient(at 80% 10%, rgba(96,165,250,0.08) 0px, transparent 38%);
+  }
+  body::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(circle at 50% 38%, #000 0%, transparent 80%);
+    mask-image:radial-gradient(circle at 50% 38%, #000 0%, transparent 80%);
+  }
+  .top{position:absolute;top:56px;left:60px;right:60px;z-index:4;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:16px;}
+  .logo{width:54px;height:54px;border-radius:14px;object-fit:cover;box-shadow:0 8px 24px rgba(59,130,246,0.45), 0 0 0 1px rgba(255,255,255,0.12);}
+  .word-mark{font-size:26px;font-weight:800;letter-spacing:-0.02em;}
+  .word-mark .g{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .index-tag{font-size:22px;font-weight:700;color:var(--slate-400);padding:12px 22px;border-radius:99px;background:var(--surface);border:1px solid var(--hair);}
+  .index-tag b{color:var(--white);}
+
+  .body{position:absolute;top:200px;left:60px;right:60px;bottom:160px;z-index:3;display:flex;flex-direction:column;justify-content:center;}
+  .tags{display:flex;align-items:center;gap:16px;margin-bottom:30px;}
+  .pos{font-size:25px;font-weight:700;letter-spacing:0.04em;color:var(--purple-bright);background:rgba(139,92,246,0.16);border:1px solid rgba(167,139,250,0.34);padding:10px 24px;border-radius:99px;}
+  .diff{display:inline-flex;align-items:center;gap:10px;font-size:25px;font-weight:700;padding:10px 24px;border-radius:99px;}
+  .diff .lvl{width:11px;height:11px;border-radius:50%;}
+  .diff.beginner{color:#6ee7b7;background:rgba(16,185,129,0.13);border:1px solid rgba(110,231,183,0.34);}
+  .diff.beginner .lvl{background:#34d399;box-shadow:0 0 10px rgba(52,211,153,0.7);}
+  .diff.intermediate{color:#fcd34d;background:rgba(245,158,11,0.13);border:1px solid rgba(252,211,77,0.34);}
+  .diff.intermediate .lvl{background:#fbbf24;box-shadow:0 0 10px rgba(251,191,36,0.7);}
+  .diff.advanced{color:#fda4af;background:rgba(244,63,94,0.13);border:1px solid rgba(253,164,175,0.34);}
+  .diff.advanced .lvl{background:#fb7185;box-shadow:0 0 10px rgba(251,113,133,0.7);}
+  .word{font-size:calc(134px * var(--k));font-weight:800;line-height:0.98;letter-spacing:-0.04em;background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .phon{font-size:calc(32px * var(--k));font-weight:500;color:var(--slate-400);font-style:italic;margin-top:18px;}
+  .phon:empty{display:none;}
+  .bn-block{margin-top:calc(44px * var(--k));padding:34px 38px;border-radius:24px;background:linear-gradient(135deg, rgba(59,130,246,0.17), rgba(139,92,246,0.17));border:1px solid rgba(96,165,250,0.30);border-left:7px solid transparent;border-image:var(--grad) 1;border-left-style:solid;}
+  .bn-block .lab{font-size:21px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:14px;}
+  .bn-block .bn{font-family:var(--bn);font-size:calc(42px * var(--k));font-weight:700;line-height:1.55;color:#fff;}
+  .en-def{margin-top:calc(32px * var(--k));padding-left:24px;border-left:3px solid var(--hair-bright);}
+  .en-def .lab{font-size:21px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--slate-500);margin-bottom:12px;}
+  .en-def .def{font-size:calc(34px * var(--k));font-weight:500;line-height:1.5;color:var(--slate-300);}
+  .example{margin-top:calc(30px * var(--k));font-size:calc(30px * var(--k));font-style:italic;font-weight:500;color:var(--slate-400);line-height:1.5;}
+  .example:empty{display:none;}
+  .example b{color:var(--blue-bright);font-style:normal;font-weight:700;}
+
+  .cta{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:32px 56px;background:var(--grad);box-shadow:0 -1px 0 rgba(255,255,255,0.12) inset;}
+  .cta .label{font-family:var(--bn);font-size:29px;font-weight:700;color:rgba(255,255,255,0.96);white-space:nowrap;}
+  .cta .url{font-size:30px;font-weight:800;color:#fff;letter-spacing:0.01em;white-space:nowrap;}
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">
+      <img class="logo" src="{{LOGO_SRC}}" alt="StoryVocabs">
+      <span class="word-mark">Story<span class="g">Vocabs</span></span>
+    </div>
+    <div class="index-tag">Word <b>{{WORD_INDEX}}</b> of {{WORD_TOTAL}}</div>
+  </div>
+
+  <div class="body" id="fitBox">
+    <div class="tags">
+      <span class="pos">{{POS}}</span>
+      <span class="diff {{DIFF_CLASS}}"><span class="lvl"></span>{{DIFFICULTY}}</span>
+    </div>
+    <div class="word">{{WORD}}</div>
+    <div class="phon">{{PHONETIC}}</div>
+    <div class="bn-block">
+      <div class="lab">বাংলা অর্থ</div>
+      <div class="bn">{{MEANING_BN}}</div>
+    </div>
+    <div class="en-def">
+      <div class="lab">Meaning</div>
+      <div class="def">{{MEANING_EN}}</div>
+    </div>
+    <div class="example">{{EXAMPLE_HTML}}</div>
+  </div>
+
+  <div class="cta">
+    <span class="label">{{CTA_LABEL}}</span>
+    <span class="url">{{APP_URL}}</span>
+  </div>
+
+<script>
+  // Auto-fit: scale text down proportionally (var --k) until the card fits.
+  (function(){
+    function fit(){
+      var box = document.getElementById('fitBox');
+      var k = 1;
+      while (box.scrollHeight > box.clientHeight && k > 0.6){
+        k -= 0.04; document.documentElement.style.setProperty('--k', k.toFixed(2));
+      }
+      window.__fitDone = true;
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    else window.addEventListener('load', fit);
+  })();
+</script>
+</body>
+</html>

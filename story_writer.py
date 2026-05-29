@@ -16,6 +16,7 @@ import re
 import json
 import time
 import requests
+import html as html_module
 from groq import Groq
 from config import (
     GROQ_API_KEYS, GROQ_MODEL,
@@ -23,6 +24,11 @@ from config import (
     USE_OPENROUTER_AS_PRIMARY,
 )
 from word_pack_manager import load_tracker, save_tracker, mark_used, build_word_sets_from_alignment
+
+
+def esc(text):
+    """Escape HTML entities."""
+    return html_module.escape(text or "")
 
 QUALITY_PASS_THRESHOLD = 7.0
 
@@ -549,25 +555,89 @@ def generate_long_post(news_title, news_summary, words, category, revision_words
     ], temperature=0.8, max_tokens=2500)
 
 
+def detect_forced_words(story_text, words):
+    """Detect words that feel forced or unnatural in context.
+
+    Heuristic: if a word appears in isolation without natural context clues
+    (e.g., surrounded by generic filler), it's likely forced.
+    """
+    forced = []
+    text_lower = story_text.lower()
+
+    for w in words:
+        word = w.get("word", "").lower()
+        if word not in text_lower:
+            continue
+
+        # Find context window around the word
+        idx = text_lower.find(word)
+        if idx < 0:
+            continue
+
+        # Extract 20 words before and after
+        words_around = story_text[max(0, idx-200):min(len(story_text), idx+200)]
+
+        # Heuristic: if the word is followed by "(Bangla translation)" with minimal context,
+        # it's forced (not woven into narrative)
+        if f"**{word}**" in story_text.lower() and words_around.count(".") == 0:
+            # No sentence boundary around it = likely forced
+            forced.append(word)
+
+    return forced
+
+
 def quality_check(story_data, words, threshold=QUALITY_PASS_THRESHOLD):
-    """Fast quality heuristic to save LLM calls; raises score if basic criteria met."""
+    """Quality check with forced-word detection.
+
+    Flags needs_review=true if:
+    - Any word is semantically forced (even if overall score >= 7)
+    - Missing words
+    - Too short
+    - No debate question
+    """
     text = story_data.get("full_story", "") + " " + story_data.get("hook_line", "")
     text_lower = text.lower()
-    
-    # Check all target words are present in the story
+
+    # Check all target words are present
     missing = [w["word"] for w in words if w["word"].lower() not in text_lower]
-    
+
     # Check length
     word_count = len(text.split())
-    
+
+    # Detect forced words
+    forced = detect_forced_words(text, words)
+
+    # Calculate base score
+    base_score = 8.0
+    issues = []
+
     if missing:
-        return {"overall": 5.0, "pass": False, "issues": [f"Missing words: {missing}"], "forced_words": missing}
+        base_score = 5.0
+        issues.append(f"Missing words: {missing}")
+
     if word_count < 40:
-        return {"overall": 5.0, "pass": False, "issues": ["Story too short"], "forced_words": []}
+        base_score = min(base_score, 5.0)
+        issues.append("Story too short")
+
     if not story_data.get("debate_question") or len(story_data.get("debate_question", "")) < 10:
-        return {"overall": 6.5, "pass": False, "issues": ["No debate question"], "forced_words": []}
-    
-    return {"overall": 8.0, "pass": True, "issues": [], "forced_words": []}
+        base_score = min(base_score, 6.5)
+        issues.append("No debate question")
+
+    # Deduct for forced words (2 points per forced word)
+    if forced:
+        base_score = max(1.0, base_score - 2.0 * len(forced))
+        issues.append(f"Forced words: {', '.join(forced)}")
+
+    # CRITICAL: If any word is forced, flag needs_review=true regardless of overall score
+    needs_review = forced or base_score < threshold
+
+    return {
+        "overall": base_score,
+        "pass": base_score >= threshold and not forced,
+        "issues": issues,
+        "forced_words": forced,
+        "needs_review": needs_review
+    }
 
 
 def classify_category(news):
@@ -593,53 +663,115 @@ def classify_category(news):
     return {"en": best, "bn": bn.get(best, "সাধারণ জ্ঞান")}
 
 
-def build_post_content(story_data, words, news, date_str, post_label, style, session=1):
-    """Build standardized post content dict with quality check."""
-    story_data["full_story"] = " ".join(story_data.get("paragraphs", []))
+def validate_and_clamp(word_dict):
+    """Enforce field caps per Task 0 contract; clamp over-length fields and fill safe defaults."""
+    def clamp_text(text, max_words, suffix="..."):
+        if not text: return ""
+        words = text.split()
+        if len(words) <= max_words:
+            return text
+        return " ".join(words[:max_words]) + suffix
 
+    # Return clamped copy
+    return {
+        "word": esc(word_dict.get("word", "")),
+        "pos": clamp_text(word_dict.get("pos", ""), 2).lower()[:12],  # ≤12 chars, lowercase
+        "difficulty": word_dict.get("difficulty", "Beginner") if word_dict.get("difficulty", "Beginner") in ["Beginner", "Intermediate", "Advanced"] else "Beginner",
+        "phonetic": word_dict.get("phonetic", ""),  # IPA or ""
+        "gloss_bn": clamp_text(word_dict.get("gloss_bn", ""), 3),  # ≤3 words
+        "meaning_bn": clamp_text(word_dict.get("meaning_bn", ""), 14),  # ≤14 words
+        "meaning_en": clamp_text(word_dict.get("meaning_en", ""), 16),  # ≤16 words
+        "example": word_dict.get("example", ""),  # "" allowed; can be empty
+    }
+
+
+def build_post_content(story_data, words, news, date_str, post_label, style, session=1):
+    """Build NEW Task 0 contract with story_slides and per-word fields."""
     qc = quality_check(story_data, words)
     score = qc.get("overall", 6.0) if qc else 6.0
-    passed = qc.get("pass", score >= QUALITY_PASS_THRESHOLD) if qc else (score >= QUALITY_PASS_THRESHOLD)
-    forced = qc.get("forced_words", []) if qc else []
-    needs_review = not passed
+    needs_review = not qc.get("pass", score >= QUALITY_PASS_THRESHOLD) if qc else (score < QUALITY_PASS_THRESHOLD)
 
     if needs_review:
-        print(f"   ⚠ Quality Score: {score}/10 — BELOW THRESHOLD ({QUALITY_PASS_THRESHOLD}) — flagged needs_review")
-        if forced:
-            print(f"   ⚠ Forced words detected: {', '.join(forced)}")
+        print(f"   [WARN] Quality Score: {score}/10 - BELOW THRESHOLD ({QUALITY_PASS_THRESHOLD}) - flagged needs_review")
     else:
-        print(f"   ✓ Quality Score: {score}/10 — PASS")
-
-    used_names = story_data.get("used_words", [])
-    final_words = []
-    for name in used_names:
-        for w in words:
-            if w["word"].lower() == name.lower():
-                final_words.append(dict(w))
-                break
-    if not final_words:
-        final_words = words[:len(used_names)] if used_names else words[:3]
+        print(f"   [OK] Quality Score: {score}/10 - PASS")
 
     category = classify_category(news)
+
+    # Extract headline (first line of hook_line, mark first target word with [[...]])
+    headline_en = story_data.get("hook_line", "")[:150]
+    hero_word = ""
+    hero_gloss_bn = ""
+
+    # Try to find first word from words list in headline to extract hero_word
+    for w in words[:1]:  # Just the first word
+        word_name = w.get("word", "")
+        if word_name.lower() in headline_en.lower():
+            hero_word = word_name
+            hero_gloss_bn = f"{w.get('gloss_bn', '')} · {w.get('pos', 'noun')}"
+            # Mark it with [[ ]] if not already marked
+            if "[[" not in headline_en:
+                headline_en = headline_en.replace(word_name, f"[[{word_name}]]", 1)
+            break
+
+    # Build story_slides from paragraphs
+    paragraphs = story_data.get("paragraphs", [])
+    story_slides = []
+    labels = ["The Hook", "Deep Dive"]  # Standard labels
+
+    for idx, para in enumerate(paragraphs[:2]):  # Up to 2 paragraphs
+        # Mark vocab words with [[en|bn]] markup
+        para_marked = para
+        for w in words:
+            word_name = w.get("word", "")
+            gloss = w.get("gloss_bn", "")
+            # Replace **word** with [[word|gloss]]
+            para_marked = re.sub(
+                rf'\*\*{re.escape(word_name)}\*\*',
+                f'[[{word_name}|{gloss}]]',
+                para_marked,
+                flags=re.IGNORECASE
+            )
+
+        story_slides.append({
+            "section_label": labels[idx] if idx < len(labels) else f"Part {idx+1}",
+            "paragraph": para_marked
+        })
+
+    # Clamp word fields to contract spec
+    clamped_words = []
+    for w in words:
+        clamped = validate_and_clamp(w)
+        clamped_words.append(clamped)
 
     return {
         "post_label": post_label,
         "style": style,
-        "session": session,
-        "hook_line": story_data.get("hook_line", ""),
-        "paragraphs": story_data.get("paragraphs", []),
-        "full_story": story_data.get("full_story", ""),
-        "words": final_words,
-        "word_count": len(final_words),
-        "debate_question": story_data.get("debate_question", ""),
-        "fun_fact": story_data.get("fun_fact", ""),
+        "date": date_str,
+        "category": {
+            "en": category.get("en", ""),
+            "bn": category.get("bn", ""),
+            "icon": category.get("icon", "📖") if "icon" in category else get_category_icon(category.get("en", ""))
+        },
+        "headline_en": headline_en,
+        "hero_word": hero_word,
+        "hero_gloss_bn": hero_gloss_bn,
+        "story_slides": story_slides,
+        "words": clamped_words,
+        "word_count": len(clamped_words),
         "quality_score": score,
         "needs_review": needs_review,
-        "forced_words": forced,
-        "category": category,
-        "source_title": news.get("title", ""),
-        "date": date_str,
     }
+
+
+def get_category_icon(cat_en):
+    """Map category name to emoji icon."""
+    icons = {
+        "Politics & Governance": "🏛️", "Economy & Banking": "💰",
+        "Sports": "🏏", "Science & Technology": "🔬",
+        "Environment": "🌿", "Society": "👥",
+    }
+    return icons.get(cat_en, "📖")
 
 
 def generate_post_with_retry(generate_fn, words, news, date_str, post_label, style, session, max_retries=2):

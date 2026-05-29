@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- ════════════════════════════════════════════════════════════════
+     STORYVOCABS · CAROUSEL TEMPLATE 4 of 4 — CLOSING / RECAP + CTA
+     Canvas: 1080 × 1350 px (4:5 portrait)
+     Placeholders (filled by image_renderer.py):
+       {{LOGO_SRC}}        base64 data-uri of assets/logo-app-icon.png
+       {{SLIDE_NUMBER}}    e.g. 8
+       {{TOTAL_SLIDES}}    e.g. 8
+       {{WORD_TOTAL}}      e.g. 5
+       {{RECAP_ROWS_HTML}} one row per word:
+            <li><span class="n">1</span><span class="en">Punitive</span>
+                <span class="bn">শাস্তিমূলক</span></li>
+       {{CTA_LABEL}}       Bangla CTA, e.g. 📲 প্রতিদিন এভাবে শিখতে অ্যাপ ডাউনলোড করো
+       {{APP_URL}}         storyvocabs.vercel.app
+     Self-fitting: recap list scales (var --k) if many words. Sets window.__fitDone=true.
+     ════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --k:1;
+    --ink:#0f172a; --blue:#3b82f6; --blue-bright:#60a5fa; --purple:#8b5cf6; --purple-bright:#a78bfa;
+    --grad:linear-gradient(135deg,#3b82f6 0%,#8b5cf6 100%);
+    --grad-soft:linear-gradient(135deg,#60a5fa 0%,#a78bfa 100%);
+    --white:#f8fafc; --slate-200:#e2e8f0; --slate-300:#cbd5e1; --slate-400:#94a3b8;
+    --surface:rgba(255,255,255,0.05); --surface-2:rgba(255,255,255,0.08);
+    --hair:rgba(255,255,255,0.10); --hair-bright:rgba(255,255,255,0.16);
+    --en:'Inter','Noto Sans Bengali',sans-serif; --bn:'Noto Sans Bengali','Inter',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    width:1080px;height:1350px;position:relative;overflow:hidden;color:var(--white);font-family:var(--en);
+    background:var(--ink);
+    background-image:
+      radial-gradient(at 12% 6%, rgba(59,130,246,0.20) 0px, transparent 40%),
+      radial-gradient(at 90% 97%, rgba(139,92,246,0.22) 0px, transparent 44%),
+      radial-gradient(at 80% 10%, rgba(96,165,250,0.08) 0px, transparent 38%);
+  }
+  body::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(circle at 50% 38%, #000 0%, transparent 80%);
+    mask-image:radial-gradient(circle at 50% 38%, #000 0%, transparent 80%);
+  }
+  .top{position:absolute;top:56px;left:60px;right:60px;z-index:4;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:16px;}
+  .logo{width:54px;height:54px;border-radius:14px;object-fit:cover;box-shadow:0 8px 24px rgba(59,130,246,0.45), 0 0 0 1px rgba(255,255,255,0.12);}
+  .word-mark{font-size:26px;font-weight:800;letter-spacing:-0.02em;}
+  .word-mark .g{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .counter{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:99px;background:var(--surface);border:1px solid var(--hair);font-size:22px;font-weight:700;color:#cbd5e1;}
+  .counter b{color:var(--white);}
+  .counter .dot{width:8px;height:8px;border-radius:50%;background:var(--grad);}
+
+  .body{position:absolute;top:180px;left:60px;right:60px;bottom:240px;z-index:3;display:flex;flex-direction:column;justify-content:center;}
+  .eyebrow{font-size:24px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--blue-bright);margin-bottom:18px;}
+  h2{font-size:calc(58px * var(--k));font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:40px;}
+  h2 .g{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .recap{list-style:none;display:flex;flex-direction:column;gap:calc(18px * var(--k));}
+  .recap li{display:flex;align-items:center;gap:22px;padding:calc(20px * var(--k)) 28px;border-radius:18px;background:var(--surface);border:1px solid var(--hair);}
+  .recap .n{width:46px;height:46px;flex-shrink:0;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#fff;}
+  .recap .en{font-size:calc(38px * var(--k));font-weight:800;letter-spacing:-0.01em;color:#fff;}
+  .recap .bn{font-family:var(--bn);font-size:calc(30px * var(--k));font-weight:600;color:var(--blue-bright);margin-left:auto;text-align:right;}
+
+  .cta{position:absolute;left:0;right:0;bottom:0;z-index:5;padding:44px 56px 50px;background:var(--grad);box-shadow:0 -1px 0 rgba(255,255,255,0.12) inset;}
+  .cta .label{font-family:var(--bn);font-size:34px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:14px;}
+  .cta .row{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .cta .url{font-size:34px;font-weight:800;color:#fff;letter-spacing:0.01em;}
+  .cta .save{display:inline-flex;align-items:center;gap:10px;font-size:26px;font-weight:700;color:rgba(255,255,255,0.95);padding:12px 22px;border-radius:99px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.34);white-space:nowrap;}
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">
+      <img class="logo" src="{{LOGO_SRC}}" alt="StoryVocabs">
+      <span class="word-mark">Story<span class="g">Vocabs</span></span>
+    </div>
+    <div class="counter"><span class="dot"></span><b>{{SLIDE_NUMBER}}</b> / {{TOTAL_SLIDES}}</div>
+  </div>
+
+  <div class="body" id="fitBox">
+    <div class="eyebrow">Recap · {{WORD_TOTAL}} words</div>
+    <h2>Today's <span class="g">word list</span></h2>
+    <ul class="recap">
+      {{RECAP_ROWS_HTML}}
+    </ul>
+  </div>
+
+  <div class="cta">
+    <div class="label">{{CTA_LABEL}}</div>
+    <div class="row">
+      <span class="url">{{APP_URL}}</span>
+      <span class="save">🔖 Save this post</span>
+    </div>
+  </div>
+
+<script>
+  // Auto-fit: scale recap list down (var --k) until it fits the body box.
+  (function(){
+    function fit(){
+      var box = document.getElementById('fitBox');
+      var k = 1;
+      while (box.scrollHeight > box.clientHeight && k > 0.55){
+        k -= 0.04; document.documentElement.style.setProperty('--k', k.toFixed(2));
+      }
+      window.__fitDone = true;
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    else window.addEventListener('load', fit);
+  })();
+</script>
+</body>
+</html>
