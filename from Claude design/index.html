@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryVocabs — Carousel Renderer & QA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f172a; --blue:#3b82f6; --blue-bright:#60a5fa; --purple:#8b5cf6; --purple-bright:#a78bfa;
+    --grad:linear-gradient(135deg,#3b82f6 0%,#8b5cf6 100%);
+    --grad-soft:linear-gradient(135deg,#60a5fa 0%,#a78bfa 100%);
+    --white:#f8fafc; --slate-200:#e2e8f0; --slate-300:#cbd5e1; --slate-400:#94a3b8; --slate-500:#64748b;
+    --surface:rgba(255,255,255,0.05); --surface-2:rgba(255,255,255,0.08);
+    --hair:rgba(255,255,255,0.10); --hair-bright:rgba(255,255,255,0.16);
+    --en:'Inter','Noto Sans Bengali',sans-serif; --bn:'Noto Sans Bengali','Inter',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:var(--en);background:#070b16;color:var(--white);min-height:100vh;
+    background-image:radial-gradient(at 15% 0%, rgba(59,130,246,0.10) 0, transparent 45%),radial-gradient(at 85% 100%, rgba(139,92,246,0.10) 0, transparent 45%);}
+
+  /* ── App shell ── */
+  .wrap{display:grid;grid-template-columns:380px 1fr;min-height:100vh;}
+  .panel{position:sticky;top:0;height:100vh;overflow:auto;border-right:1px solid var(--hair);padding:28px 24px;background:rgba(7,11,22,0.6);backdrop-filter:blur(8px);}
+  .panel h1{font-size:20px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;}
+  .panel h1 .g{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .kick{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--slate-400);margin-bottom:14px;}
+  .kick::before{content:"";width:24px;height:2px;border-radius:2px;background:var(--grad);}
+  .panel p.sub{margin-top:10px;font-size:13px;line-height:1.6;color:var(--slate-400);}
+  .seg{display:flex;gap:6px;margin:20px 0 12px;background:var(--surface);border:1px solid var(--hair);border-radius:12px;padding:5px;}
+  .seg button{flex:1;font:inherit;font-size:12.5px;font-weight:700;color:var(--slate-300);background:transparent;border:0;border-radius:8px;padding:9px 6px;cursor:pointer;}
+  .seg button.on{background:var(--grad);color:#fff;}
+  label.lbl{display:block;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate-500);margin:16px 0 8px;}
+  textarea{width:100%;height:300px;resize:vertical;font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.55;color:#cbd5e1;background:#0b1120;border:1px solid var(--hair);border-radius:12px;padding:14px;}
+  textarea:focus{outline:none;border-color:var(--blue);}
+  .btn{width:100%;margin-top:12px;font:inherit;font-size:14px;font-weight:800;color:#fff;background:var(--grad);border:0;border-radius:12px;padding:14px;cursor:pointer;box-shadow:0 12px 28px -10px rgba(59,130,246,0.7);}
+  .err{margin-top:10px;font-size:12px;color:#fda4af;background:rgba(244,63,94,0.12);border:1px solid rgba(253,164,175,0.3);border-radius:10px;padding:10px 12px;display:none;white-space:pre-wrap;}
+  .note{margin-top:18px;font-size:11.5px;line-height:1.6;color:var(--slate-500);border-top:1px solid var(--hair);padding-top:14px;}
+  .note b{color:var(--slate-300);}
+
+  /* ── Stage ── */
+  .stage{padding:44px 40px 100px;}
+  .stage-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:8px;}
+  .stage-head h2{font-size:26px;font-weight:800;letter-spacing:-0.02em;}
+  .stage-head .meta{font-size:13px;color:var(--slate-400);}
+  .stage-head .meta b{color:var(--blue-bright);}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 34px;}
+  .legend .chip{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--slate-300);background:var(--surface);border:1px solid var(--hair);border-radius:9px;padding:8px 13px;}
+  .legend .chip .sw{width:10px;height:10px;border-radius:3px;}
+  .gallery{display:flex;flex-wrap:wrap;gap:46px 38px;}
+  .specimen{display:flex;flex-direction:column;gap:14px;}
+  .specimen-label{display:flex;align-items:baseline;gap:11px;}
+  .specimen-label .n{font-size:11px;font-weight:800;letter-spacing:0.08em;color:#070b16;background:var(--grad);padding:4px 9px;border-radius:6px;}
+  .specimen-label .t{font-size:15px;font-weight:700;}
+  .specimen-label .d{font-size:12px;color:var(--slate-500);}
+  .frame{width:340px;height:425px;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06);}
+  .frame .slide{transform:scale(0.31481);transform-origin:top left;}
+
+  /* ════════ SLIDE CANVAS (mirrors templates/*.html) ════════ */
+  .slide{--k:1;width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--ink);color:var(--white);font-family:var(--en);
+    background-image:radial-gradient(at 12% 6%, rgba(59,130,246,0.20) 0, transparent 40%),radial-gradient(at 90% 97%, rgba(139,92,246,0.22) 0, transparent 44%),radial-gradient(at 80% 10%, rgba(96,165,250,0.08) 0, transparent 38%);}
+  .slide::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+    background-size:64px 64px;-webkit-mask-image:radial-gradient(circle at 50% 38%, #000 0%, transparent 80%);mask-image:radial-gradient(circle at 50% 38%, #000 0%, transparent 80%);}
+
+  .sv-brand{display:flex;align-items:center;gap:16px;}
+  .sv-logo{width:66px;height:66px;border-radius:17px;object-fit:cover;box-shadow:0 8px 24px rgba(59,130,246,0.45), 0 0 0 1px rgba(255,255,255,0.12);}
+  .sv-logo.sm{width:54px;height:54px;border-radius:14px;}
+  .sv-word{font-size:32px;font-weight:800;letter-spacing:-0.02em;}
+  .sv-word.sm{font-size:26px;}
+  .sv-word .g{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .sv-counter{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:99px;background:var(--surface);border:1px solid var(--hair);font-size:22px;font-weight:700;color:var(--slate-300);}
+  .sv-counter b{color:var(--white);} .sv-counter .dot{width:8px;height:8px;border-radius:50%;background:var(--grad);}
+  .sv-cta{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:32px 56px;background:var(--grad);box-shadow:0 -1px 0 rgba(255,255,255,0.12) inset;}
+  .sv-cta .label{font-family:var(--bn);font-size:29px;font-weight:700;color:rgba(255,255,255,0.96);white-space:nowrap;}
+  .sv-cta .url{font-size:30px;font-weight:800;color:#fff;letter-spacing:0.01em;white-space:nowrap;}
+
+  /* COVER */
+  .cover .top{position:absolute;top:60px;left:64px;right:64px;z-index:4;display:flex;align-items:center;justify-content:space-between;}
+  .cover .body{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:150px 72px 210px;}
+  .cover .meta{display:flex;align-items:center;gap:20px;margin-bottom:40px;}
+  .cover .pill{display:inline-flex;align-items:center;gap:12px;padding:13px 26px;border-radius:99px;background:var(--surface);border:1px solid var(--hair);font-size:26px;font-weight:700;color:#e2e8f0;}
+  .cover .pill .ic{font-size:28px;line-height:1;}
+  .cover .date{font-size:26px;font-weight:600;color:var(--slate-400);}
+  .cover .eyebrow{font-size:24px;font-weight:800;letter-spacing:0.24em;text-transform:uppercase;color:var(--blue-bright);margin-bottom:28px;}
+  .cover h1{font-size:74px;font-weight:800;line-height:1.08;letter-spacing:-0.035em;max-width:900px;text-wrap:balance;}
+  .cover h1 .g{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .cover .hero-word{margin-top:46px;display:inline-flex;align-items:center;gap:26px;align-self:flex-start;padding:26px 36px 26px 28px;border-radius:24px;background:var(--surface);border:1px solid var(--hair-bright);box-shadow:0 24px 56px -22px rgba(59,130,246,0.55);}
+  .cover .hero-word .badge{width:70px;height:70px;border-radius:17px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:36px;box-shadow:0 8px 22px rgba(139,92,246,0.45);}
+  .cover .hw-en{font-size:46px;font-weight:800;letter-spacing:-0.01em;color:#fff;line-height:1.05;}
+  .cover .hw-bn{font-family:var(--bn);font-size:28px;font-weight:600;color:var(--blue-bright);margin-top:4px;}
+  .cover .swipe{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:center;gap:16px;padding:38px;background:var(--grad);}
+  .cover .swipe .txt{font-size:33px;font-weight:800;color:#fff;white-space:nowrap;} .cover .swipe .arrow{font-size:35px;font-weight:800;color:#fff;}
+
+  /* STORY */
+  .story .top{position:absolute;top:54px;left:60px;right:60px;z-index:4;display:flex;align-items:center;justify-content:space-between;}
+  .story .body{position:absolute;top:190px;left:60px;right:60px;bottom:168px;z-index:3;display:flex;flex-direction:column;justify-content:center;}
+  .story .section-tag{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;padding:11px 26px;border-radius:99px;margin-bottom:48px;background:var(--surface-2);border:1px solid var(--hair-bright);font-size:22px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue-bright);}
+  .story .section-tag .dot{width:10px;height:10px;border-radius:50%;background:var(--grad);box-shadow:0 0 10px rgba(96,165,250,0.7);}
+  .story .para{font-size:47px;font-weight:500;line-height:2.35;color:var(--slate-200);letter-spacing:-0.005em;}
+  ruby.vw{ruby-position:under;ruby-align:center;}
+  ruby.vw .vw-en{font-weight:800;background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  ruby.vw rt{font-size:0.49em;}
+  ruby.vw rt b{display:inline-block;font-family:var(--bn);font-weight:700;color:var(--blue-bright);background:rgba(59,130,246,0.16);border:1px solid rgba(96,165,250,0.34);padding:3px 15px;border-radius:99px;line-height:1.35;white-space:nowrap;}
+
+  /* VOCAB */
+  .vocab .top{position:absolute;top:56px;left:60px;right:60px;z-index:4;display:flex;align-items:center;justify-content:space-between;}
+  .vocab .index-tag{font-size:22px;font-weight:700;color:var(--slate-400);padding:12px 22px;border-radius:99px;background:var(--surface);border:1px solid var(--hair);}
+  .vocab .index-tag b{color:var(--white);}
+  .vocab .body{position:absolute;top:200px;left:60px;right:60px;bottom:160px;z-index:3;display:flex;flex-direction:column;justify-content:center;}
+  .vocab .tags{display:flex;align-items:center;gap:16px;margin-bottom:30px;}
+  .vocab .pos{font-size:25px;font-weight:700;letter-spacing:0.04em;color:var(--purple-bright);background:rgba(139,92,246,0.16);border:1px solid rgba(167,139,250,0.34);padding:10px 24px;border-radius:99px;}
+  .vocab .diff{display:inline-flex;align-items:center;gap:10px;font-size:25px;font-weight:700;padding:10px 24px;border-radius:99px;}
+  .vocab .diff .lvl{width:11px;height:11px;border-radius:50%;}
+  .vocab .diff.beginner{color:#6ee7b7;background:rgba(16,185,129,0.13);border:1px solid rgba(110,231,183,0.34);} .vocab .diff.beginner .lvl{background:#34d399;box-shadow:0 0 10px rgba(52,211,153,0.7);}
+  .vocab .diff.intermediate{color:#fcd34d;background:rgba(245,158,11,0.13);border:1px solid rgba(252,211,77,0.34);} .vocab .diff.intermediate .lvl{background:#fbbf24;box-shadow:0 0 10px rgba(251,191,36,0.7);}
+  .vocab .diff.advanced{color:#fda4af;background:rgba(244,63,94,0.13);border:1px solid rgba(253,164,175,0.34);} .vocab .diff.advanced .lvl{background:#fb7185;box-shadow:0 0 10px rgba(251,113,133,0.7);}
+  .vocab .word{font-size:calc(134px * var(--k));font-weight:800;line-height:0.98;letter-spacing:-0.04em;background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .vocab .phon{font-size:calc(32px * var(--k));font-weight:500;color:var(--slate-400);font-style:italic;margin-top:18px;} .vocab .phon:empty{display:none;}
+  .vocab .bn-block{margin-top:calc(44px * var(--k));padding:34px 38px;border-radius:24px;background:linear-gradient(135deg, rgba(59,130,246,0.17), rgba(139,92,246,0.17));border:1px solid rgba(96,165,250,0.30);border-left:7px solid transparent;border-image:var(--grad) 1;border-left-style:solid;}
+  .vocab .bn-block .lab{font-size:21px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:14px;}
+  .vocab .bn-block .bn{font-family:var(--bn);font-size:calc(42px * var(--k));font-weight:700;line-height:1.55;color:#fff;}
+  .vocab .en-def{margin-top:calc(32px * var(--k));padding-left:24px;border-left:3px solid var(--hair-bright);}
+  .vocab .en-def .lab{font-size:21px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--slate-500);margin-bottom:12px;}
+  .vocab .en-def .def{font-size:calc(34px * var(--k));font-weight:500;line-height:1.5;color:var(--slate-300);}
+  .vocab .example{margin-top:calc(30px * var(--k));font-size:calc(30px * var(--k));font-style:italic;font-weight:500;color:var(--slate-400);line-height:1.5;} .vocab .example:empty{display:none;}
+  .vocab .example b{color:var(--blue-bright);font-style:normal;font-weight:700;}
+
+  /* CLOSING */
+  .closing .top{position:absolute;top:56px;left:60px;right:60px;z-index:4;display:flex;align-items:center;justify-content:space-between;}
+  .closing .body{position:absolute;top:180px;left:60px;right:60px;bottom:240px;z-index:3;display:flex;flex-direction:column;justify-content:center;}
+  .closing .eyebrow{font-size:24px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--blue-bright);margin-bottom:18px;}
+  .closing h2{font-size:calc(58px * var(--k));font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:40px;}
+  .closing h2 .g{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .closing .recap{list-style:none;display:flex;flex-direction:column;gap:calc(18px * var(--k));}
+  .closing .recap li{display:flex;align-items:center;gap:22px;padding:calc(20px * var(--k)) 28px;border-radius:18px;background:var(--surface);border:1px solid var(--hair);}
+  .closing .recap .n{width:46px;height:46px;flex-shrink:0;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#fff;}
+  .closing .recap .en{font-size:calc(38px * var(--k));font-weight:800;letter-spacing:-0.01em;color:#fff;}
+  .closing .recap .bn{font-family:var(--bn);font-size:calc(30px * var(--k));font-weight:600;color:var(--blue-bright);margin-left:auto;text-align:right;}
+  .closing .cta2{position:absolute;left:0;right:0;bottom:0;z-index:5;padding:44px 56px 50px;background:var(--grad);box-shadow:0 -1px 0 rgba(255,255,255,0.12) inset;}
+  .closing .cta2 .label{font-family:var(--bn);font-size:34px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:14px;}
+  .closing .cta2 .row{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .closing .cta2 .url{font-size:34px;font-weight:800;color:#fff;letter-spacing:0.01em;}
+  .closing .cta2 .save{display:inline-flex;align-items:center;gap:10px;font-size:26px;font-weight:700;color:rgba(255,255,255,0.95);padding:12px 22px;border-radius:99px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.34);white-space:nowrap;}
+
+  @media(max-width:880px){.wrap{grid-template-columns:1fr;}.panel{position:relative;height:auto;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!-- ── Control panel ── -->
+  <aside class="panel">
+    <div class="kick">Reference Renderer</div>
+    <h1>StoryVocabs <span class="g">Carousel</span> — live QA</h1>
+    <p class="sub">This page <b>is</b> the renderer. It maps the AI's JSON onto the four templates exactly as <code>image_renderer.py</code> should. Edit the JSON, hit Render, QA the slides. If Python output differs from this, Python is wrong.</p>
+
+    <div class="seg" id="seg">
+      <button data-k="quick" class="on">Quick Bite (3w)</button>
+      <button data-k="deep">Deep Dive (5w)</button>
+    </div>
+
+    <label class="lbl" for="json">Post content JSON</label>
+    <textarea id="json" spellcheck="false"></textarea>
+    <button class="btn" id="render">Render carousel →</button>
+    <div class="err" id="err"></div>
+
+    <div class="note">
+      <b>Contract:</b> headline + paragraphs use <code>[[word]]</code> / <code>[[en|bn]]</code> markup.
+      Each word needs <code>pos · difficulty · gloss_bn · meaning_bn · meaning_en</code>; <code>phonetic</code> & <code>example</code> optional.
+      Auto-fit shrinks any slide that would overflow — no clipping.
+    </div>
+  </aside>
+
+  <!-- ── Stage ── -->
+  <main class="stage">
+    <div class="stage-head">
+      <h2 id="postTitle">—</h2>
+      <span class="meta" id="postMeta"></span>
+    </div>
+    <div class="legend">
+      <span class="chip"><span class="sw" style="background:linear-gradient(135deg,#60a5fa,#a78bfa)"></span>Cover</span>
+      <span class="chip"><span class="sw" style="background:#3b82f6"></span>Story (ruby gloss)</span>
+      <span class="chip"><span class="sw" style="background:#8b5cf6"></span>Vocab hero ×N</span>
+      <span class="chip"><span class="sw" style="background:#34d399"></span>Closing recap</span>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </main>
+</div>
+
+<script>
+const LOGO = "assets/logo-app-icon.png";
+const APP_URL = "storyvocabs.vercel.app";
+const CTA_STORY = "📖 গল্পে শব্দ শিখতে ডাউনলোড করো";
+const CTA_VOCAB = "📲 আরও শব্দ শিখতে ডাউনলোড করো";
+const CTA_CLOSE = "📲 প্রতিদিন এভাবে শিখতে অ্যাপটি ডাউনলোড করো";
+
+// ── Sample posts (follow the data contract) ─────────────────────────
+const SAMPLES = {
+  quick: {
+    post_label: "Post 1 — Quick Bite", style: "short", date: "2026-04-04",
+    category: { en: "Sports", bn: "খেলাধুলা", icon: "🏏" },
+    headline_en: "Will [[punitive]] measures spoil Bangladesh–India cricket?",
+    hero_word: "Punitive", hero_gloss_bn: "শাস্তিমূলক · adjective",
+    story_slides: [
+      { section_label: "The Hook",
+        paragraph: "As Bangladesh seeks closer cricket ties with India, fans are thrilled at more matches. But will it be marred by [[punitive|শাস্তিমূলক]] terms, or will fans [[bemoan|আক্ষেপ]] the gaps even as the [[iridescent|রঙিন]] drama keeps us hooked?" }
+    ],
+    words: [
+      { word: "Punitive", pos: "adjective", difficulty: "Intermediate", phonetic: "/ˈpjuːnɪtɪv/",
+        gloss_bn: "শাস্তিমূলক", meaning_bn: "শাস্তি দেওয়ার উদ্দেশ্যে কৃত।",
+        meaning_en: "Intended as punishment.", example: "The board faces <b>punitive</b> sanctions over the breach." },
+      { word: "Bemoan", pos: "verb", difficulty: "Beginner", phonetic: "/bɪˈməʊn/",
+        gloss_bn: "আক্ষেপ করা", meaning_bn: "দুঃখ বা অসন্তোষ প্রকাশ করা।",
+        meaning_en: "To express grief or dissatisfaction about something.", example: "Fans <b>bemoan</b> the lack of home fixtures." },
+      { word: "Iridescent", pos: "adjective", difficulty: "Advanced", phonetic: "/ˌɪrɪˈdes(ə)nt/",
+        gloss_bn: "রঙিন ঝিলিক", meaning_bn: "কোণভেদে রংধনুর মতো রং বদলায় এমন।",
+        meaning_en: "Showing luminous colours that shift with the viewing angle.", example: "The trophy had an <b>iridescent</b> sheen under the lights." }
+    ],
+    word_count: 3, quality_score: 8.5, needs_review: false
+  },
+  deep: {
+    post_label: "Post 4 — Deep Dive", style: "long", date: "2026-04-13",
+    category: { en: "Politics & Governance", bn: "রাজনীতি", icon: "🏛️" },
+    headline_en: "How one [[misattributed]] clip sparked a political storm",
+    hero_word: "Aftermath", hero_gloss_bn: "পরিণতি · noun",
+    story_slides: [
+      { section_label: "The Hook",
+        paragraph: "After a protest video spread online, many felt [[elation|আনন্দ]] while others voiced [[lament|বিষাদ]]. It showed how fast misinformation travels, leaving a messy [[aftermath|পরিণতি]] behind." },
+      { section_label: "Deep Dive",
+        paragraph: "To respond well, we must [[distinguish|পার্থক্য]] real information from false claims, and ask whether a clip truly belongs to the event it is [[attributed|আরোপিত]] to." }
+    ],
+    words: [
+      { word: "Aftermath", pos: "noun", difficulty: "Beginner", phonetic: "/ˈɑːftəmɑːθ/",
+        gloss_bn: "পরিণতি", meaning_bn: "কোনো বড় ঘটনার পরবর্তী প্রভাব বা ফলাফল।",
+        meaning_en: "The consequences that follow a significant or harmful event.", example: "Cleanup began in the storm's <b>aftermath</b>." },
+      { word: "Elation", pos: "noun", difficulty: "Beginner", phonetic: "/ɪˈleɪʃ(ə)n/",
+        gloss_bn: "আনন্দ", meaning_bn: "তীব্র আনন্দ বা উল্লাসের অনুভূতি।",
+        meaning_en: "A feeling of great happiness and excitement.", example: "There was <b>elation</b> when the result was announced." },
+      { word: "Lament", pos: "verb", difficulty: "Beginner", phonetic: "/ləˈment/",
+        gloss_bn: "বিষাদ", meaning_bn: "শোক বা গভীর দুঃখ প্রকাশ করা।",
+        meaning_en: "To express deep sorrow or regret.", example: "Critics <b>lament</b> the loss of trust online." },
+      { word: "Distinguish", pos: "verb", difficulty: "Intermediate", phonetic: "/dɪˈstɪŋɡwɪʃ/",
+        gloss_bn: "পার্থক্য করা", meaning_bn: "দুই বা ততোধিক বিষয়ের মধ্যে পার্থক্য নির্ণয় করা।",
+        meaning_en: "To recognise a clear difference between things.", example: "Readers must <b>distinguish</b> fact from rumour." },
+      { word: "Misattributed", pos: "adjective", difficulty: "Advanced", phonetic: "/ˌmɪsəˈtrɪbjuːtɪd/",
+        gloss_bn: "ভুলভাবে আরোপিত", meaning_bn: "ভুল উৎস বা ঘটনার সাথে যুক্ত করা হয়েছে এমন।",
+        meaning_en: "Wrongly credited to the wrong source or event.", example: "The footage was <b>misattributed</b> to a different vote." }
+    ],
+    word_count: 5, quality_score: 7.5, needs_review: false
+  }
+};
+
+// ── Helpers (mirror image_renderer.py) ──────────────────────────────
+const esc = s => (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+// headline: [[word]] -> <span class="g">word</span>
+const wrapHero = h => esc(h).replace(/\[\[(.+?)\]\]/g, '<span class="g">$1</span>');
+// paragraph: [[en|bn]] -> ruby ; example/<b> kept as-is from data
+function ruby(p){
+  // protect existing <b> in examples not needed here; paragraphs only use [[ ]]
+  return esc(p).replace(/\[\[(.+?)\|(.+?)\]\]/g,
+    (_,en,bn)=>`<ruby class="vw"><span class="vw-en">${en}</span><rt><b>${bn}</b></rt></ruby>`);
+}
+// example field already contains <b>…</b>; keep tags, escape the rest
+function keepBold(s){
+  if(!s) return "";
+  return esc(s).replace(/&lt;b&gt;/g,"<b>").replace(/&lt;\/b&gt;/g,"</b>");
+}
+const fmtDate = d => { const dt=new Date(d+"T00:00:00"); return isNaN(dt)?d:dt.toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}); };
+
+// ── Slide builders → return {type,label,desc,html} ──────────────────
+function brand(sm){const c=sm?" sm":"";return `<div class="sv-brand"><img class="sv-logo${c}" src="${LOGO}" alt="StoryVocabs"><span class="sv-word${c}">Story<span class="g">Vocabs</span></span></div>`;}
+function counter(n,t){return `<div class="sv-counter"><span class="dot"></span><b>${n}</b> / ${t}</div>`;}
+function cta(label){return `<div class="sv-cta"><span class="label">${label}</span><span class="url">${APP_URL}</span></div>`;}
+
+function buildCover(p,n,t){
+  return {type:"cover",label:"Cover",desc:"the scroll-stopper",html:`<div class="slide cover" data-screen-label="Cover">
+    <div class="top">${brand(false)}${counter(n,t)}</div>
+    <div class="body" data-fit="cover">
+      <div class="meta"><span class="pill"><span class="ic">${p.category.icon||"📖"}</span>${esc(p.category.en)}</span><span class="date">${fmtDate(p.date)}</span></div>
+      <div class="eyebrow">Today's Story</div>
+      <h1 data-headline>${wrapHero(p.headline_en)}</h1>
+      <div class="hero-word"><span class="badge">⚡</span><span><div class="hw-en">${esc(p.hero_word)}</div><div class="hw-bn">${esc(p.hero_gloss_bn)}</div></span></div>
+    </div>
+    <div class="swipe"><span class="txt">Swipe to learn ${p.word_count} new words</span><span class="arrow">→</span></div>
+  </div>`};
+}
+function buildStory(p,s,n,t){
+  return {type:"story",label:"Story",desc:s.section_label,html:`<div class="slide story" data-screen-label="Story">
+    <div class="top">${brand(true)}${counter(n,t)}</div>
+    <div class="body" data-fit="story"><div class="section-tag"><span class="dot"></span>${esc(s.section_label)}</div><p class="para" data-para>${ruby(s.paragraph)}</p></div>
+    ${cta(CTA_STORY)}
+  </div>`};
+}
+function buildVocab(p,w,i,n,t){
+  return {type:"vocab",label:"Vocab Card",desc:w.word,html:`<div class="slide vocab" data-screen-label="Vocab ${i}">
+    <div class="top">${brand(true)}<div class="index-tag">Word <b>${i}</b> of ${p.word_count}</div></div>
+    <div class="body" data-fit="scale">
+      <div class="tags"><span class="pos">${esc(w.pos)}</span><span class="diff ${esc((w.difficulty||"").toLowerCase())}"><span class="lvl"></span>${esc(w.difficulty)}</span></div>
+      <div class="word">${esc(w.word)}</div>
+      <div class="phon">${esc(w.phonetic||"")}</div>
+      <div class="bn-block"><div class="lab">বাংলা অর্থ</div><div class="bn">${esc(w.meaning_bn)}</div></div>
+      <div class="en-def"><div class="lab">Meaning</div><div class="def">${esc(w.meaning_en)}</div></div>
+      <div class="example">${keepBold(w.example)}</div>
+    </div>
+    ${cta(CTA_VOCAB)}
+  </div>`};
+}
+function buildClosing(p,n,t){
+  const rows = p.words.map((w,i)=>`<li><span class="n">${i+1}</span><span class="en">${esc(w.word)}</span><span class="bn">${esc(w.gloss_bn)}</span></li>`).join("");
+  return {type:"closing",label:"Closing",desc:"recap + CTA",html:`<div class="slide closing" data-screen-label="Closing">
+    <div class="top">${brand(true)}${counter(n,t)}</div>
+    <div class="body" data-fit="scale"><div class="eyebrow">Recap · ${p.word_count} words</div><h2>Today's <span class="g">word list</span></h2><ul class="recap">${rows}</ul></div>
+    <div class="cta2"><div class="label">${CTA_CLOSE}</div><div class="row"><span class="url">${APP_URL}</span><span class="save">🔖 Save this post</span></div></div>
+  </div>`};
+}
+
+function buildCarousel(p){
+  const total = 1 + p.story_slides.length + p.words.length + 1;
+  let n = 1; const slides = [];
+  slides.push(buildCover(p, n++, total));
+  p.story_slides.forEach(s => slides.push(buildStory(p, s, n++, total)));
+  p.words.forEach((w,i) => slides.push(buildVocab(p, w, i+1, n++, total)));
+  slides.push(buildClosing(p, n++, total));
+  return {slides, total};
+}
+
+// ── Auto-fit (mirrors the embedded template scripts) ────────────────
+function fitSlide(slide){
+  const box = slide.querySelector('[data-fit]'); if(!box) return;
+  const mode = box.getAttribute('data-fit');
+  if(mode==="cover"){
+    const h=slide.querySelector('[data-headline]'); let s=74;
+    while(box.scrollHeight>box.clientHeight && s>40){s-=2;h.style.fontSize=s+'px';}
+  } else if(mode==="story"){
+    const para=slide.querySelector('[data-para]'); let s=47;
+    while(box.scrollHeight>box.clientHeight && s>26){s-=1;para.style.fontSize=s+'px';
+      if(s<38)para.style.lineHeight='2.0'; if(s<32)para.style.lineHeight='1.8';}
+  } else { // scale: vocab + closing
+    let k=1;
+    while(box.scrollHeight>box.clientHeight && k>0.55){k-=0.04;slide.style.setProperty('--k',k.toFixed(2));}
+  }
+}
+
+// ── Render ──────────────────────────────────────────────────────────
+function render(p){
+  const {slides,total} = buildCarousel(p);
+  document.getElementById('postTitle').textContent = p.post_label || "Post";
+  document.getElementById('postMeta').innerHTML =
+    `<b>${total}</b> slides · ${p.style} · ${esc(p.category.en)} · ${p.word_count} words` +
+    (p.needs_review ? ` · <span style="color:#fda4af">⚠ needs review</span>` : ``);
+  const g = document.getElementById('gallery'); g.innerHTML = "";
+  slides.forEach((sl,i)=>{
+    const sec = document.createElement('section'); sec.className="specimen";
+    sec.innerHTML = `<div class="specimen-label"><span class="n">${String(i+1).padStart(2,'0')}</span><span class="t">${sl.label}</span><span class="d">${esc(sl.desc)}</span></div><div class="frame">${sl.html}</div>`;
+    g.appendChild(sec);
+  });
+  const run = ()=> g.querySelectorAll('.slide').forEach(fitSlide);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(run); else setTimeout(run,300);
+}
+
+// ── Wiring ──────────────────────────────────────────────────────────
+let current = "quick";
+const ta = document.getElementById('json');
+function loadSample(k){ current=k; ta.value = JSON.stringify(SAMPLES[k], null, 2); doRender(); }
+function doRender(){
+  const err = document.getElementById('err'); err.style.display="none";
+  let p; try{ p = JSON.parse(ta.value); }catch(e){ err.textContent="JSON error: "+e.message; err.style.display="block"; return; }
+  try{ render(p); }catch(e){ err.textContent="Render error: "+e.message; err.style.display="block"; }
+}
+document.getElementById('seg').addEventListener('click', e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#seg button').forEach(x=>x.classList.toggle('on', x===b));
+  loadSample(b.dataset.k);
+});
+document.getElementById('render').addEventListener('click', doRender);
+loadSample('quick');
+</script>
+</body>
+</html>

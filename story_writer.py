@@ -663,25 +663,78 @@ def classify_category(news):
     return {"en": best, "bn": bn.get(best, "সাধারণ জ্ঞান")}
 
 
+def enrich_word_from_pack(word_dict):
+    """Enrich word from word pack with all Task 0 contract fields.
+
+    Fills missing fields with safe defaults, extracting from old field names if needed:
+    - bangla → gloss_bn (take first 3 words)
+    - meaning → meaning_en (take first 16 words)
+    - partOfSpeech / part_of_speech → pos
+    - _difficulty → difficulty
+    """
+    word = word_dict.get("word", "")
+
+    # Extract or default each field
+    pos = (word_dict.get("pos") or word_dict.get("partOfSpeech") or
+           word_dict.get("part_of_speech") or "").lower()[:12]
+
+    difficulty = word_dict.get("difficulty") or word_dict.get("_difficulty") or "Beginner"
+    if difficulty not in ["Beginner", "Intermediate", "Advanced"]:
+        difficulty = "Beginner"
+
+    phonetic = word_dict.get("phonetic", "")
+
+    # gloss_bn: prefer gloss_bn, fallback to first 3 words of bangla
+    gloss_bn = word_dict.get("gloss_bn", "")
+    if not gloss_bn and word_dict.get("bangla"):
+        gloss_bn = " ".join(word_dict["bangla"].split()[:3])
+
+    # meaning_bn: prefer meaning_bn, fallback to bangla
+    meaning_bn = word_dict.get("meaning_bn", "")
+    if not meaning_bn and word_dict.get("bangla"):
+        meaning_bn = " ".join(word_dict["bangla"].split()[:14])
+
+    # meaning_en: prefer meaning_en, fallback to meaning
+    meaning_en = word_dict.get("meaning_en", "")
+    if not meaning_en and word_dict.get("meaning"):
+        meaning_en = " ".join(word_dict["meaning"].split()[:16])
+
+    # example: prefer example, fallback to sentence
+    example = word_dict.get("example", "")
+    if not example and word_dict.get("sentence"):
+        example = word_dict["sentence"]
+
+    return {
+        "word": esc(word),
+        "pos": pos,
+        "difficulty": difficulty,
+        "phonetic": phonetic,
+        "gloss_bn": gloss_bn,
+        "meaning_bn": meaning_bn,
+        "meaning_en": meaning_en,
+        "example": example,
+    }
+
+
 def validate_and_clamp(word_dict):
-    """Enforce field caps per Task 0 contract; clamp over-length fields and fill safe defaults."""
+    """Enforce field caps per Task 0 contract; clamp over-length fields."""
     def clamp_text(text, max_words, suffix="..."):
         if not text: return ""
-        words = text.split()
-        if len(words) <= max_words:
+        words_list = text.split()
+        if len(words_list) <= max_words:
             return text
-        return " ".join(words[:max_words]) + suffix
+        return " ".join(words_list[:max_words]) + suffix
 
     # Return clamped copy
     return {
         "word": esc(word_dict.get("word", "")),
-        "pos": clamp_text(word_dict.get("pos", ""), 2).lower()[:12],  # ≤12 chars, lowercase
-        "difficulty": word_dict.get("difficulty", "Beginner") if word_dict.get("difficulty", "Beginner") in ["Beginner", "Intermediate", "Advanced"] else "Beginner",
-        "phonetic": word_dict.get("phonetic", ""),  # IPA or ""
-        "gloss_bn": clamp_text(word_dict.get("gloss_bn", ""), 3),  # ≤3 words
-        "meaning_bn": clamp_text(word_dict.get("meaning_bn", ""), 14),  # ≤14 words
-        "meaning_en": clamp_text(word_dict.get("meaning_en", ""), 16),  # ≤16 words
-        "example": word_dict.get("example", ""),  # "" allowed; can be empty
+        "pos": clamp_text(word_dict.get("pos", ""), 2).lower()[:12],
+        "difficulty": word_dict.get("difficulty", "Beginner"),
+        "phonetic": word_dict.get("phonetic", ""),
+        "gloss_bn": clamp_text(word_dict.get("gloss_bn", ""), 3),
+        "meaning_bn": clamp_text(word_dict.get("meaning_bn", ""), 14),
+        "meaning_en": clamp_text(word_dict.get("meaning_en", ""), 16),
+        "example": word_dict.get("example", ""),
     }
 
 
@@ -738,10 +791,11 @@ def build_post_content(story_data, words, news, date_str, post_label, style, ses
             "paragraph": para_marked
         })
 
-    # Clamp word fields to contract spec
+    # Enrich and clamp word fields to contract spec
     clamped_words = []
     for w in words:
-        clamped = validate_and_clamp(w)
+        enriched = enrich_word_from_pack(w)
+        clamped = validate_and_clamp(enriched)
         clamped_words.append(clamped)
 
     return {

@@ -1,0 +1,147 @@
+{
+  "nodes": [
+    {
+      "id": "audit_system_audit",
+      "label": "StoryVocabs Carousel System Audit",
+      "file_type": "document",
+      "source_file": "from Claude design/AUDIT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-05-29",
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "audit_critical_c1",
+      "label": "Bug C1: Template Filename Mismatch",
+      "file_type": "document",
+      "source_file": "from Claude design/AUDIT.md",
+      "source_location": "line 12",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "audit_critical_c3",
+      "label": "Bug C3: Canvas Hardcoded to 1080x1080",
+      "file_type": "document",
+      "source_file": "from Claude design/AUDIT.md",
+      "source_location": "line 28",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "audit_critical_c5",
+      "label": "Bug C5: Logo Path Wrong",
+      "file_type": "document",
+      "source_file": "from Claude design/AUDIT.md",
+      "source_location": "line 34",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "impl_plan",
+      "label": "Implementation Plan: 8 Ordered Tasks",
+      "file_type": "document",
+      "source_file": "from Claude design/IMPLEMENTATION_PLAN.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "impl_task1",
+      "label": "Task 1: Fix Renderer Wiring",
+      "file_type": "document",
+      "source_file": "from Claude design/IMPLEMENTATION_PLAN.md",
+      "source_location": "line 56",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_html",
+      "label": "index.html QA Harness",
+      "file_type": "code",
+      "source_file": "from Claude design/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "canvas_1080x1350",
+      "label": "Canvas Size: 1080x1350px (4:5 portrait)",
+      "file_type": "rationale",
+      "source_file": "from Claude design/HANDOFF_README.md",
+      "source_location": "line 91",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "audit_system_audit",
+      "target": "audit_critical_c1",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "from Claude design/AUDIT.md",
+      "source_location": "line 12",
+      "weight": 1.0
+    },
+    {
+      "source": "impl_task1",
+      "target": "audit_critical_c1",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "from Claude design/IMPLEMENTATION_PLAN.md",
+      "source_location": "line 56",
+      "weight": 1.0
+    },
+    {
+      "source": "impl_task1",
+      "target": "audit_critical_c3",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "from Claude design/IMPLEMENTATION_PLAN.md",
+      "source_location": "line 56",
+      "weight": 1.0
+    },
+    {
+      "source": "impl_task1",
+      "target": "audit_critical_c5",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "from Claude design/IMPLEMENTATION_PLAN.md",
+      "source_location": "line 56",
+      "weight": 1.0
+    },
+    {
+      "source": "canvas_1080x1350",
+      "target": "audit_critical_c3",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "from Claude design/AUDIT.md",
+      "source_location": "line 28",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 56907,
+  "output_tokens": 0
+}

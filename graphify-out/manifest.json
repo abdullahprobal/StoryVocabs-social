@@ -1,0 +1,167 @@
+{
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\.graphify_detect.json": {
+    "mtime": 1780026846.0063722,
+    "ast_hash": "0241884f246d633df9eed09f35f93d5f",
+    "semantic_hash": "0241884f246d633df9eed09f35f93d5f"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\audit_words.py": {
+    "mtime": 1774827900.1837769,
+    "ast_hash": "dae5d751fda2ed289506f4bbbec6178e",
+    "semantic_hash": "dae5d751fda2ed289506f4bbbec6178e"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\batch_generate.py": {
+    "mtime": 1776337510.7768445,
+    "ast_hash": "967fa33b11f774fe5b17bce174942040",
+    "semantic_hash": "967fa33b11f774fe5b17bce174942040"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\config.py": {
+    "mtime": 1776339199.193393,
+    "ast_hash": "2bae305abef49c06c9ac20d4c5144a28",
+    "semantic_hash": "2bae305abef49c06c9ac20d4c5144a28"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\debug_groq.py": {
+    "mtime": 1774819506.7002654,
+    "ast_hash": "6c7b55fb906355ddb4b8e9ac580e99b2",
+    "semantic_hash": "6c7b55fb906355ddb4b8e9ac580e99b2"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\fix_tracker.py": {
+    "mtime": 1776319176.0682058,
+    "ast_hash": "8fe4baa973d86eea8acdca409a2975a0",
+    "semantic_hash": "8fe4baa973d86eea8acdca409a2975a0"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\generate.ps1": {
+    "mtime": 1775282498.5578954,
+    "ast_hash": "131812d6ee30bcbb9b9b52361d3ec1fd",
+    "semantic_hash": "131812d6ee30bcbb9b9b52361d3ec1fd"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\generate.py": {
+    "mtime": 1776339253.0599306,
+    "ast_hash": "61970493c6bb4ea91189fa5e9312aa36",
+    "semantic_hash": "61970493c6bb4ea91189fa5e9312aa36"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\image_renderer.py": {
+    "mtime": 1780027300.8226879,
+    "ast_hash": "02c1f63dbea673295475e1239fbd8290",
+    "semantic_hash": "02c1f63dbea673295475e1239fbd8290"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\news_scraper.py": {
+    "mtime": 1776317654.9101052,
+    "ast_hash": "715652ca9bc5d620ab1e690a0c93f633",
+    "semantic_hash": "715652ca9bc5d620ab1e690a0c93f633"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\rerender.py": {
+    "mtime": 1776339802.7658815,
+    "ast_hash": "2c2b19e47eb6766d08fc7608a2ab8193",
+    "semantic_hash": "2c2b19e47eb6766d08fc7608a2ab8193"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\story_usage_tracker.json": {
+    "mtime": 1776755713.2860415,
+    "ast_hash": "f7f1cf0e91a812d38dee3cdc2e0a1c79",
+    "semantic_hash": "f7f1cf0e91a812d38dee3cdc2e0a1c79"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\story_writer.py": {
+    "mtime": 1776339467.65085,
+    "ast_hash": "da63ea3ab54e6e7b92c7eb4e6e2a170b",
+    "semantic_hash": "da63ea3ab54e6e7b92c7eb4e6e2a170b"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\test_groq.py": {
+    "mtime": 1776319834.8036647,
+    "ast_hash": "ffee78bf2a00e75603113ca507f96c8e",
+    "semantic_hash": "ffee78bf2a00e75603113ca507f96c8e"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\test_openrouter.py": {
+    "mtime": 1776319778.6046202,
+    "ast_hash": "7c01ac8f317143ca135a5199ddcf4fae",
+    "semantic_hash": "7c01ac8f317143ca135a5199ddcf4fae"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\word_pack_manager.py": {
+    "mtime": 1776317593.4687033,
+    "ast_hash": "1c475bbb01a55d47d0de1902d2acd01c",
+    "semantic_hash": "1c475bbb01a55d47d0de1902d2acd01c"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\word_usage_tracker.json": {
+    "mtime": 1776755960.1563442,
+    "ast_hash": "64faf36aa245fa3f1d1ecfb7e6ae000b",
+    "semantic_hash": "64faf36aa245fa3f1d1ecfb7e6ae000b"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\CONTENT_QUALITY_REPORT.md": {
+    "mtime": 1775287869.441291,
+    "ast_hash": "aff736f9da83a1f7a43f75c9d5332a90",
+    "semantic_hash": "aff736f9da83a1f7a43f75c9d5332a90"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\HANDOVER.md": {
+    "mtime": 1775279759.3246894,
+    "ast_hash": "712e0d84ad1c8146156ba08ac5820891",
+    "semantic_hash": "712e0d84ad1c8146156ba08ac5820891"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\POSTING_SCHEDULE.md": {
+    "mtime": 1775286456.518956,
+    "ast_hash": "4017623a1f4d0aa7c3c81c3bf0460ae1",
+    "semantic_hash": "4017623a1f4d0aa7c3c81c3bf0460ae1"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\README.md": {
+    "mtime": 1775287826.0209897,
+    "ast_hash": "e99b12b563eddef8e5ea36d181166ad0",
+    "semantic_hash": "e99b12b563eddef8e5ea36d181166ad0"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\requirements.txt": {
+    "mtime": 1774809643.7863188,
+    "ast_hash": "b14a3845a0ce666ee8e9b37a4ec516b7",
+    "semantic_hash": "b14a3845a0ce666ee8e9b37a4ec516b7"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\word_pack_audit.txt": {
+    "mtime": 1774827912.2371814,
+    "ast_hash": "cadb3b9ec54fc86f69c8953fd8494c5a",
+    "semantic_hash": "cadb3b9ec54fc86f69c8953fd8494c5a"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\from Claude design\\AUDIT.md": {
+    "mtime": 1780025485.339881,
+    "ast_hash": "a34f7f4462e7a48b3535ab27c9bc5a17",
+    "semantic_hash": "a34f7f4462e7a48b3535ab27c9bc5a17"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\from Claude design\\HANDOFF_README.md": {
+    "mtime": 1780025475.0611987,
+    "ast_hash": "13e40d61a89cb4d8654a973c1333f678",
+    "semantic_hash": "13e40d61a89cb4d8654a973c1333f678"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\from Claude design\\IMPLEMENTATION_PLAN.md": {
+    "mtime": 1780025480.8806536,
+    "ast_hash": "60907a31a1c522a8310f15f8c3293148",
+    "semantic_hash": "60907a31a1c522a8310f15f8c3293148"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\from Claude design\\index.html": {
+    "mtime": 1780025491.2313013,
+    "ast_hash": "edecb71b45acd674595c264a2a9d3ce3",
+    "semantic_hash": "edecb71b45acd674595c264a2a9d3ce3"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\templates\\carousel_cover.html": {
+    "mtime": 1775523302.2904499,
+    "ast_hash": "2fa75f447e08e2833f6a4f12be7719e6",
+    "semantic_hash": "2fa75f447e08e2833f6a4f12be7719e6"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\templates\\carousel_story.html": {
+    "mtime": 1775523301.4640665,
+    "ast_hash": "04ffa38aae720683b1b9813d9b76603a",
+    "semantic_hash": "04ffa38aae720683b1b9813d9b76603a"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\templates\\carousel_vocab.html": {
+    "mtime": 1775523278.7310355,
+    "ast_hash": "cae3680dc60f6e2ce8f426d03c0a829e",
+    "semantic_hash": "cae3680dc60f6e2ce8f426d03c0a829e"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\templates\\reel_overlay.html": {
+    "mtime": 1774809740.4339075,
+    "ast_hash": "3d1442a000f99417ded7894e6901f485",
+    "semantic_hash": "3d1442a000f99417ded7894e6901f485"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\templates\\whatsapp_forward.html": {
+    "mtime": 1774809748.8588927,
+    "ast_hash": "b8f871a2270bf2e6b1535b7f1e127bc5",
+    "semantic_hash": "b8f871a2270bf2e6b1535b7f1e127bc5"
+  },
+  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\static\\logo-app-icon.png": {
+    "mtime": 1774829367.7595103,
+    "ast_hash": "c6c91c4394f4c80abb62d58a679ce65b",
+    "semantic_hash": "c6c91c4394f4c80abb62d58a679ce65b"
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "nodes": [
+    {
+      "id": "image_renderer_render_post_images",
+      "label": "render_post_images",
+      "file_type": "code",
+      "source_file": "image_renderer.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "generate_main",
+      "label": "generate.py main()",
+      "file_type": "code",
+      "source_file": "generate.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "story_writer_generate_all_posts",
+      "label": "generate_all_posts",
+      "file_type": "code",
+      "source_file": "story_writer.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "config_api_keys",
+      "label": "API Key Config (Groq/OpenRouter)",
+      "file_type": "code",
+      "source_file": "config.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "news_scraper_scrape_news",
+      "label": "scrape_news",
+      "file_type": "code",
+      "source_file": "news_scraper.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "word_pack_manager_load_word_packs",
+      "label": "load_word_packs_from_js",
+      "file_type": "code",
+      "source_file": "word_pack_manager.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "generate_main",
+      "target": "image_renderer_render_post_images",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "generate.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "generate_main",
+      "target": "story_writer_generate_all_posts",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "generate.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "generate_main",
+      "target": "news_scraper_scrape_news",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "generate.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "generate_main",
+      "target": "word_pack_manager_load_word_packs",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "generate.py",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 79196,
+  "output_tokens": 0
+}
