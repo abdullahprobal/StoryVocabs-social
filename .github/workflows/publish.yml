@@ -48,7 +48,7 @@ jobs:
       GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
       GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
       GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
-      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://storyvocabs.bandb.academy' }}
+      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://storyvocabs.com' }}
       REVIEW_MODE: ${{ vars.REVIEW_MODE || 'review' }}
       PUBLISH_TO_INSTAGRAM: ${{ vars.PUBLISH_TO_INSTAGRAM || 'true' }}
       PUBLISH_STORIES: ${{ vars.PUBLISH_STORIES || 'true' }}

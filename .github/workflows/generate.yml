@@ -54,7 +54,7 @@ jobs:
       MEDIA_DEPLOY_KEY: ${{ secrets.MEDIA_DEPLOY_KEY }}
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE }}
-      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://storyvocabs.bandb.academy' }}
+      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://storyvocabs.com' }}
       REVIEW_MODE: ${{ vars.REVIEW_MODE || 'review' }}
       DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
       IN_DATE: ${{ inputs.date }}
