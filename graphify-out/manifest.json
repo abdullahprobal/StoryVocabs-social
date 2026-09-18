@@ -1,167 +1,347 @@
 {
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\.graphify_detect.json": {
-    "mtime": 1780026846.0063722,
-    "ast_hash": "0241884f246d633df9eed09f35f93d5f",
-    "semantic_hash": "0241884f246d633df9eed09f35f93d5f"
+  "F:\\.antigravity\\StoryVocabs-social\\strategy.json": {
+    "mtime": 1789757486.7105408,
+    "ast_hash": "a17610ce4521ff87d087497103ebd419",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\audit_words.py": {
-    "mtime": 1774827900.1837769,
-    "ast_hash": "dae5d751fda2ed289506f4bbbec6178e",
-    "semantic_hash": "dae5d751fda2ed289506f4bbbec6178e"
+  "F:\\.antigravity\\StoryVocabs-social\\.claude\\settings.local.json": {
+    "mtime": 1780047888.7592723,
+    "ast_hash": "ae919f6fd9224f0140a9d8a0f714bac5",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\batch_generate.py": {
-    "mtime": 1776337510.7768445,
-    "ast_hash": "967fa33b11f774fe5b17bce174942040",
-    "semantic_hash": "967fa33b11f774fe5b17bce174942040"
+  "F:\\.antigravity\\StoryVocabs-social\\data\\holidays.json": {
+    "mtime": 1789757261.2026339,
+    "ast_hash": "a5903060b5d5d44b2bd064734aebbec6",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\config.py": {
-    "mtime": 1776339199.193393,
-    "ast_hash": "2bae305abef49c06c9ac20d4c5144a28",
-    "semantic_hash": "2bae305abef49c06c9ac20d4c5144a28"
+  "F:\\.antigravity\\StoryVocabs-social\\data\\product_facts.json": {
+    "mtime": 1789757261.1634216,
+    "ast_hash": "d5dd61bff6a5fdbf626e43ea3f0757b3",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\debug_groq.py": {
-    "mtime": 1774819506.7002654,
-    "ast_hash": "6c7b55fb906355ddb4b8e9ac580e99b2",
-    "semantic_hash": "6c7b55fb906355ddb4b8e9ac580e99b2"
+  "F:\\.antigravity\\StoryVocabs-social\\data\\word_packs.json": {
+    "mtime": 1789757236.7124317,
+    "ast_hash": "06269866e88366ed75a5def533fd2d4e",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\fix_tracker.py": {
-    "mtime": 1776319176.0682058,
-    "ast_hash": "8fe4baa973d86eea8acdca409a2975a0",
-    "semantic_hash": "8fe4baa973d86eea8acdca409a2975a0"
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\caption.py": {
+    "mtime": 1789758848.6990275,
+    "ast_hash": "5cd9f29aa959ed26d9a21bec738497ac",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\generate.ps1": {
-    "mtime": 1775282498.5578954,
-    "ast_hash": "131812d6ee30bcbb9b9b52361d3ec1fd",
-    "semantic_hash": "131812d6ee30bcbb9b9b52361d3ec1fd"
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\contracts.py": {
+    "mtime": 1789758701.4015634,
+    "ast_hash": "57d68e90372e487f3eb13013a83e52d0",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\generate.py": {
-    "mtime": 1776339253.0599306,
-    "ast_hash": "61970493c6bb4ea91189fa5e9312aa36",
-    "semantic_hash": "61970493c6bb4ea91189fa5e9312aa36"
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\gates.py": {
+    "mtime": 1789759593.2013671,
+    "ast_hash": "41b410a15871fc2a794626d35a6d38e2",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\image_renderer.py": {
-    "mtime": 1780027300.8226879,
-    "ast_hash": "02c1f63dbea673295475e1239fbd8290",
-    "semantic_hash": "02c1f63dbea673295475e1239fbd8290"
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\generate.py": {
+    "mtime": 1789759697.9509852,
+    "ast_hash": "376d7ed2b3ed21f626195c57e307e2d5",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\news_scraper.py": {
-    "mtime": 1776317654.9101052,
-    "ast_hash": "715652ca9bc5d620ab1e690a0c93f633",
-    "semantic_hash": "715652ca9bc5d620ab1e690a0c93f633"
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\insights.py": {
+    "mtime": 1789759128.7082007,
+    "ast_hash": "a4db9654a6a54261df7b120fbc335a6c",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\rerender.py": {
-    "mtime": 1776339802.7658815,
-    "ast_hash": "2c2b19e47eb6766d08fc7608a2ab8193",
-    "semantic_hash": "2c2b19e47eb6766d08fc7608a2ab8193"
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\llm.py": {
+    "mtime": 1789757462.417088,
+    "ast_hash": "7110b28d77585fe62e389379e10c11bb",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\story_usage_tracker.json": {
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\news.py": {
+    "mtime": 1789759084.6020234,
+    "ast_hash": "6dae7b908870565ec501d614daaea7c8",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\planner.py": {
+    "mtime": 1789759758.0275404,
+    "ast_hash": "bda391bfa8951d816a1eb805dff99c74",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\publish.py": {
+    "mtime": 1789759697.9509852,
+    "ast_hash": "eef8a401628a36f4ec745543d51cba1c",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\settings.py": {
+    "mtime": 1789758514.5739968,
+    "ast_hash": "85c4b7bbd86f81ea0d0b0839618b0e65",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\voice.py": {
+    "mtime": 1789757615.7477224,
+    "ast_hash": "49a98e3efe36261d576f1ab3e8e6b68d",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\words.py": {
+    "mtime": 1789757599.1022813,
+    "ast_hash": "10c3fa49062d0146192383f4d1852331",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\__init__.py": {
+    "mtime": 1789757390.8788972,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\publishers\\media_host.py": {
+    "mtime": 1789759424.367591,
+    "ast_hash": "84943b2417467f014ff6ef9352599ce4",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\publishers\\meta.py": {
+    "mtime": 1789758417.7713325,
+    "ast_hash": "45c810b71e1453df1d6332a7d4b1b1f6",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\publishers\\telegram.py": {
+    "mtime": 1789758390.013605,
+    "ast_hash": "f6c9c8ed20d806aa33a6f0ea7fd864c6",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\publishers\\__init__.py": {
+    "mtime": 1789757390.8799708,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\writers\\pillars.py": {
+    "mtime": 1789758890.7258363,
+    "ast_hash": "ebfc69121ce4f06b76973a922c4e9d63",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\writers\\story.py": {
+    "mtime": 1789758890.7272108,
+    "ast_hash": "f2720cef1067729359f4c86958ae2583",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\engine\\writers\\__init__.py": {
+    "mtime": 1789757390.879521,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\evergreen\\confusables_20290616-mo-3179cf.json": {
+    "mtime": 1789760191.856495,
+    "ast_hash": "17d45b5b23b733cc372dff1c9c27fc0f",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\evergreen\\quiz_20290615-mo-e18796.json": {
+    "mtime": 1789760139.2133412,
+    "ast_hash": "cc6f631c2729b0641dc0718591f584ea",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\evergreen\\quiz_20290617-mo-1e1dc4.json": {
+    "mtime": 1789760226.4178443,
+    "ast_hash": "f3fb201068c917807187cf3b1ded43c7",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\render\\image_renderer.py": {
+    "mtime": 1789758890.7282407,
+    "ast_hash": "4bf1128797ed086a6e763a774264280f",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\render\\__init__.py": {
+    "mtime": 1789757390.880319,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\render\\assets\\fonts\\fonts.json": {
+    "mtime": 1789757810.6237657,
+    "ast_hash": "465c401ce434a5f8c0989ad6fd9a0ed3",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\scripts\\check_meta.py": {
+    "mtime": 1789759804.0032783,
+    "ast_hash": "5e24a0d59c13b915b0fafabd132481fc",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\scripts\\fetch_fonts.py": {
+    "mtime": 1789757788.8032963,
+    "ast_hash": "c5aec43757213a98f7002d117a787a83",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\scripts\\sync_word_packs.py": {
+    "mtime": 1789757236.2214544,
+    "ast_hash": "8fb909bb064956ca6d7d04d2d92a1128",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\scripts\\telegram_chat_id.py": {
+    "mtime": 1789759804.0493834,
+    "ast_hash": "05b1e30cda8ac60d0fdea678bc1cd3fb",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\state\\story_usage_tracker.json": {
     "mtime": 1776755713.2860415,
     "ast_hash": "f7f1cf0e91a812d38dee3cdc2e0a1c79",
-    "semantic_hash": "f7f1cf0e91a812d38dee3cdc2e0a1c79"
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\story_writer.py": {
-    "mtime": 1776339467.65085,
-    "ast_hash": "da63ea3ab54e6e7b92c7eb4e6e2a170b",
-    "semantic_hash": "da63ea3ab54e6e7b92c7eb4e6e2a170b"
-  },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\test_groq.py": {
-    "mtime": 1776319834.8036647,
-    "ast_hash": "ffee78bf2a00e75603113ca507f96c8e",
-    "semantic_hash": "ffee78bf2a00e75603113ca507f96c8e"
-  },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\test_openrouter.py": {
-    "mtime": 1776319778.6046202,
-    "ast_hash": "7c01ac8f317143ca135a5199ddcf4fae",
-    "semantic_hash": "7c01ac8f317143ca135a5199ddcf4fae"
-  },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\word_pack_manager.py": {
-    "mtime": 1776317593.4687033,
-    "ast_hash": "1c475bbb01a55d47d0de1902d2acd01c",
-    "semantic_hash": "1c475bbb01a55d47d0de1902d2acd01c"
-  },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\word_usage_tracker.json": {
+  "F:\\.antigravity\\StoryVocabs-social\\state\\word_usage_tracker.json": {
     "mtime": 1776755960.1563442,
     "ast_hash": "64faf36aa245fa3f1d1ecfb7e6ae000b",
-    "semantic_hash": "64faf36aa245fa3f1d1ecfb7e6ae000b"
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\CONTENT_QUALITY_REPORT.md": {
+  "F:\\.antigravity\\StoryVocabs-social\\tests\\fixtures_story.py": {
+    "mtime": 1789758045.3339539,
+    "ast_hash": "29d4ffaf141e8925bcfd6c7275f3e31b",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\tests\\test_gates_and_contracts.py": {
+    "mtime": 1789758991.66054,
+    "ast_hash": "b770e99037f25f84d2dc7a81e9f6ad3d",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\tests\\test_telegram_and_render.py": {
+    "mtime": 1789759002.8570547,
+    "ast_hash": "65511a9910e662643e3b8337b6f031f2",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\tests\\__init__.py": {
+    "mtime": 1789757390.8806646,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\CONTENT_QUALITY_REPORT.md": {
     "mtime": 1775287869.441291,
     "ast_hash": "aff736f9da83a1f7a43f75c9d5332a90",
-    "semantic_hash": "aff736f9da83a1f7a43f75c9d5332a90"
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\HANDOVER.md": {
+  "F:\\.antigravity\\StoryVocabs-social\\HANDOVER.md": {
     "mtime": 1775279759.3246894,
     "ast_hash": "712e0d84ad1c8146156ba08ac5820891",
-    "semantic_hash": "712e0d84ad1c8146156ba08ac5820891"
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\POSTING_SCHEDULE.md": {
+  "F:\\.antigravity\\StoryVocabs-social\\POSTING_SCHEDULE.md": {
     "mtime": 1775286456.518956,
     "ast_hash": "4017623a1f4d0aa7c3c81c3bf0460ae1",
-    "semantic_hash": "4017623a1f4d0aa7c3c81c3bf0460ae1"
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\README.md": {
-    "mtime": 1775287826.0209897,
-    "ast_hash": "e99b12b563eddef8e5ea36d181166ad0",
-    "semantic_hash": "e99b12b563eddef8e5ea36d181166ad0"
+  "F:\\.antigravity\\StoryVocabs-social\\PRODUCTION_READY.md": {
+    "mtime": 1780048091.442963,
+    "ast_hash": "367b1785bb72dd8d62306a95f30e94ee",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\requirements.txt": {
-    "mtime": 1774809643.7863188,
-    "ast_hash": "b14a3845a0ce666ee8e9b37a4ec516b7",
-    "semantic_hash": "b14a3845a0ce666ee8e9b37a4ec516b7"
+  "F:\\.antigravity\\StoryVocabs-social\\README.md": {
+    "mtime": 1789759434.2019932,
+    "ast_hash": "0de0affc56562daa97ea1ed82c6c70e4",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\word_pack_audit.txt": {
-    "mtime": 1774827912.2371814,
-    "ast_hash": "cadb3b9ec54fc86f69c8953fd8494c5a",
-    "semantic_hash": "cadb3b9ec54fc86f69c8953fd8494c5a"
+  "F:\\.antigravity\\StoryVocabs-social\\requirements.txt": {
+    "mtime": 1789759031.642943,
+    "ast_hash": "cdb9bdea2797ccc098701123fb9cd862",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\from Claude design\\AUDIT.md": {
+  "F:\\.antigravity\\StoryVocabs-social\\.github\\workflows\\ci.yml": {
+    "mtime": 1789759224.7267156,
+    "ast_hash": "7d2d9f6a9db83efee0f35f1e7c746748",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\.github\\workflows\\generate.yml": {
+    "mtime": 1789759433.9296985,
+    "ast_hash": "7d9006eec734b88791e8cc3f0a97da41",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\.github\\workflows\\publish.yml": {
+    "mtime": 1789759434.054417,
+    "ast_hash": "fa35cdf6ed1105127d7a3c38a9501586",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\.github\\workflows\\weekly.yml": {
+    "mtime": 1789759220.0096693,
+    "ast_hash": "f241628d7967cc98628cedf4c813dcaa",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\docs\\SETUP.md": {
+    "mtime": 1789759781.8887346,
+    "ast_hash": "11bb2311d8b8ad476121e8de8339d59a",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\docs\\legacy\\carousel-design-2026-05\\AUDIT.md": {
     "mtime": 1780025485.339881,
     "ast_hash": "a34f7f4462e7a48b3535ab27c9bc5a17",
-    "semantic_hash": "a34f7f4462e7a48b3535ab27c9bc5a17"
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\from Claude design\\HANDOFF_README.md": {
+  "F:\\.antigravity\\StoryVocabs-social\\docs\\legacy\\carousel-design-2026-05\\HANDOFF_README.md": {
     "mtime": 1780025475.0611987,
     "ast_hash": "13e40d61a89cb4d8654a973c1333f678",
-    "semantic_hash": "13e40d61a89cb4d8654a973c1333f678"
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\from Claude design\\IMPLEMENTATION_PLAN.md": {
+  "F:\\.antigravity\\StoryVocabs-social\\docs\\legacy\\carousel-design-2026-05\\IMPLEMENTATION_PLAN.md": {
     "mtime": 1780025480.8806536,
     "ast_hash": "60907a31a1c522a8310f15f8c3293148",
-    "semantic_hash": "60907a31a1c522a8310f15f8c3293148"
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\from Claude design\\index.html": {
+  "F:\\.antigravity\\StoryVocabs-social\\docs\\legacy\\carousel-design-2026-05\\index.html": {
     "mtime": 1780025491.2313013,
     "ast_hash": "edecb71b45acd674595c264a2a9d3ce3",
-    "semantic_hash": "edecb71b45acd674595c264a2a9d3ce3"
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\templates\\carousel_cover.html": {
-    "mtime": 1775523302.2904499,
-    "ast_hash": "2fa75f447e08e2833f6a4f12be7719e6",
-    "semantic_hash": "2fa75f447e08e2833f6a4f12be7719e6"
+  "F:\\.antigravity\\StoryVocabs-social\\render\\templates\\confusables_cover.html": {
+    "mtime": 1789758191.107389,
+    "ast_hash": "2439e090a7a96b4c59a9a030ed4dc669",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\templates\\carousel_story.html": {
-    "mtime": 1775523301.4640665,
-    "ast_hash": "04ffa38aae720683b1b9813d9b76603a",
-    "semantic_hash": "04ffa38aae720683b1b9813d9b76603a"
+  "F:\\.antigravity\\StoryVocabs-social\\render\\templates\\confusables_pair.html": {
+    "mtime": 1789758198.0185115,
+    "ast_hash": "be6ffce2c1de2bdba1452e25a7fb2b73",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\templates\\carousel_vocab.html": {
-    "mtime": 1775523278.7310355,
-    "ast_hash": "cae3680dc60f6e2ce8f426d03c0a829e",
-    "semantic_hash": "cae3680dc60f6e2ce8f426d03c0a829e"
+  "F:\\.antigravity\\StoryVocabs-social\\render\\templates\\confusables_rule.html": {
+    "mtime": 1789758890.7302325,
+    "ast_hash": "fa32ce469e4e80e3e6509475a49aa824",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\templates\\reel_overlay.html": {
-    "mtime": 1774809740.4339075,
-    "ast_hash": "3d1442a000f99417ded7894e6901f485",
-    "semantic_hash": "3d1442a000f99417ded7894e6901f485"
+  "F:\\.antigravity\\StoryVocabs-social\\render\\templates\\cover.html": {
+    "mtime": 1789758027.0504577,
+    "ast_hash": "63751f43fdc0d75e72a5faa755df264b",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\templates\\whatsapp_forward.html": {
-    "mtime": 1774809748.8588927,
-    "ast_hash": "b8f871a2270bf2e6b1535b7f1e127bc5",
-    "semantic_hash": "b8f871a2270bf2e6b1535b7f1e127bc5"
+  "F:\\.antigravity\\StoryVocabs-social\\render\\templates\\in_app.html": {
+    "mtime": 1789758221.661518,
+    "ast_hash": "f1fa8593feafe4d6e1f850bc2db02284",
+    "semantic_hash": ""
   },
-  "C:\\Users\\DELL\\.antigravity\\StoryVocabs-social\\static\\logo-app-icon.png": {
-    "mtime": 1774829367.7595103,
-    "ast_hash": "c6c91c4394f4c80abb62d58a679ce65b",
-    "semantic_hash": "c6c91c4394f4c80abb62d58a679ce65b"
+  "F:\\.antigravity\\StoryVocabs-social\\render\\templates\\offer.html": {
+    "mtime": 1789758230.6691208,
+    "ast_hash": "656f0ce051a86f9bf3ca79d15455b912",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\render\\templates\\quiz.html": {
+    "mtime": 1789758890.7292325,
+    "ast_hash": "bed89666230b91e5a49257798f1a9494",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\render\\templates\\recap.html": {
+    "mtime": 1789757942.5826447,
+    "ast_hash": "1720097d969d6c56d42ea03142161b50",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\render\\templates\\story.html": {
+    "mtime": 1789757942.4729152,
+    "ast_hash": "9f62a57b9132a0fef0d356a23d8af613",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\render\\templates\\story_card.html": {
+    "mtime": 1789759578.7007267,
+    "ast_hash": "ca9f036de541136a07ce59eaaa000e6b",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\render\\templates\\vocab.html": {
+    "mtime": 1789758890.7292325,
+    "ast_hash": "158af765b502a646b924dd9e37756167",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\render\\assets\\logo-icon-512.png": {
+    "mtime": 1789757172.5491679,
+    "ast_hash": "7be90d25b8b8c6f201a63b60b532743f",
+    "semantic_hash": ""
+  },
+  "F:\\.antigravity\\StoryVocabs-social\\render\\assets\\logo-wordmark.png": {
+    "mtime": 1789757172.638358,
+    "ast_hash": "56dbae806909924ea9e5af4475b78d7e",
+    "semantic_hash": ""
   }
 }
