@@ -125,6 +125,25 @@ def render_content(content, out_dir: Path, date_str: str) -> tuple[list[str], st
     return paths, story
 
 
+CONTENT_TYPES = {"news_word": StoryPost, "story60": StoryPost, "quiz": QuizPost,
+                 "confusables": ConfusablesPost, "in_app": InAppPost, "offer": OfferPost}
+
+
+def content_model(item: QueueItem):
+    """Rebuild the pydantic content object stored in a queue item."""
+    return CONTENT_TYPES[item.pillar].model_validate(item.content)
+
+
+def rerender(item: QueueItem) -> QueueItem:
+    """Re-render slides for an item whose PNGs are not on this machine (other runner / evergreen)."""
+    out_dir = settings.OUTPUT_DIR / item.date / item.slot
+    paths, story_card = render_content(content_model(item), out_dir, item.date)
+    gates.render_check(paths)
+    item.media = [str(Path(p).as_posix()) for p in paths]
+    item.story_media = str(Path(story_card).as_posix())
+    return item
+
+
 def words_used(content) -> list[str]:
     if isinstance(content, StoryPost):
         return [w.word for w in content.words]

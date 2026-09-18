@@ -22,7 +22,7 @@ from pathlib import Path
 
 from engine import settings
 from engine.contracts import QueueItem
-from engine.generate import build_item, load_item, queue_path, save_item
+from engine.generate import build_item, load_item, queue_path, rerender, save_item
 from engine.planner import PlanItem, load_strategy
 from engine.publishers import media_host, meta, telegram
 
@@ -47,9 +47,10 @@ def ensure_urls(item: QueueItem) -> None:
         return
     if not media_host.configured():
         raise RuntimeError("media host not configured and item has no media_urls")
-    missing = [p for p in item.media if Path(p).exists()]
-    if len(missing) != len(item.media):
-        raise RuntimeError("rendered slides are missing on disk and no media_urls were stored")
+    present = [p for p in item.media if Path(p).exists()]
+    if not item.media or len(present) != len(item.media) or (item.story_media and not Path(item.story_media).exists()):
+        log("    slides not on disk — re-rendering from stored content")
+        rerender(item)
     item.media_urls = media_host.upload_many(item.media, f"{item.date}/{item.slot}")
     if item.story_media and Path(item.story_media).exists():
         item.story_media_url = media_host.upload_many([item.story_media], f"{item.date}/{item.slot}")[0]

@@ -99,6 +99,8 @@ def plan_for_date(date_str: str, strategy: dict | None = None, holidays: dict | 
     items: list[PlanItem] = []
     for e in entries:
         pillar = e["pillar"]
+        if pillar == "in_app" and not strategy.get("in_app_screens"):
+            pillar = "confusables"   # no screenshots yet — keep the day useful
         slot = e.get("slot", "morning")
         items.append(PlanItem(
             date=date_str, slot=slot, pillar=pillar,
