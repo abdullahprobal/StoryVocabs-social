@@ -151,7 +151,7 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             when = "8 am" if plan.slot == "morning" else "8 pm"
             cap = write_caption(plan.pillar, summary, hook_instr, when)
             fb, ig, url = assemble(cap, plan.pillar, item_id, strategy, seed=attempt)
-            gates.banned_claims(fb, ig, summary)
+            gates.banned_claims(fb, ig, summary, allow_percent=(plan.pillar == "offer"))
             gates.caption_shape(fb, ig)
 
             score = 0.0
@@ -168,7 +168,7 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
                     new_hook = verdict.improved_hook.strip()[:settings.HOOK_MAX_CHARS + 10]
                     fb = new_hook + fb[fb.index("\n"):]
                     ig = new_hook + ig[ig.index("\n"):]
-                    gates.banned_claims(fb, ig)
+                    gates.banned_claims(fb, ig, allow_percent=(plan.pillar == "offer"))
                     gates.caption_shape(fb, ig)
 
             paths, story_card = render_content(content, out_dir, plan.date)

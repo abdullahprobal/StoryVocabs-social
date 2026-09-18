@@ -40,10 +40,14 @@ _STAT_CLAIMS = [
 ]
 
 
-def banned_claims(*texts: str) -> None:
+def banned_claims(*texts: str, allow_percent: bool = False) -> None:
+    """Raise on any never_say phrase, any research/statistic pattern and — unless allow_percent
+    (the student-discount offer post) — any percentage at all."""
     never = [s.lower() for s in product_facts().get("never_say", [])]
     blob = "\n".join(t or "" for t in texts)
     low = blob.lower()
+    if not allow_percent and re.search(r"[\d০-৯]\s?%", blob):
+        raise GateError("percentage claim in copy")
     for phrase in never:
         if phrase and phrase in low:
             raise GateError(f"banned phrase: '{phrase}'")
