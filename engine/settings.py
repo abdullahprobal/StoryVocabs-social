@@ -34,7 +34,7 @@ for d in (QUEUE_DIR, EVERGREEN_DIR, STATE_DIR, ANALYTICS_DIR, OUTPUT_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 # ── Brand / site ──────────────────────────────────────────────────────────
-PUBLIC_SITE_URL = os.getenv("PUBLIC_SITE_URL", "https://storyvocabs.bandb.academy").rstrip("/")
+PUBLIC_SITE_URL = os.getenv("PUBLIC_SITE_URL", "https://storyvocabs.com").rstrip("/")
 SITE_DISPLAY = PUBLIC_SITE_URL.replace("https://", "").replace("http://", "")
 BRAND_NAME = "StoryVocabs"
 FACEBOOK_PAGE_URL = os.getenv("FACEBOOK_PAGE_URL", "")
