@@ -59,7 +59,7 @@ No reply = it publishes at the slot time (`REVIEW_MODE=review`). Set `REVIEW_MOD
 | `CEREBRAS_API_KEY`, `OPENROUTER_API_KEY` | optional further fallbacks |
 | `META_PAGE_ID`, `META_PAGE_TOKEN`, `META_IG_USER_ID` | Facebook Page + linked Instagram Business account |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | review channel |
-| `MEDIA_REPO_TOKEN` | fine-grained PAT with *contents: write* on the public media repo |
+| `MEDIA_DEPLOY_KEY` | SSH private key registered as a write deploy key on the public media repo (set up automatically); `MEDIA_REPO_TOKEN` (PAT) is the alternative |
 | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE` | only if `MEDIA_HOST=supabase` |
 
 | Variable | Default |

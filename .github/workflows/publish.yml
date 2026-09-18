@@ -41,6 +41,7 @@ jobs:
       MEDIA_HOST: ${{ vars.MEDIA_HOST || 'github' }}
       MEDIA_REPO: ${{ vars.MEDIA_REPO }}
       MEDIA_REPO_TOKEN: ${{ secrets.MEDIA_REPO_TOKEN }}
+      MEDIA_DEPLOY_KEY: ${{ secrets.MEDIA_DEPLOY_KEY }}
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
