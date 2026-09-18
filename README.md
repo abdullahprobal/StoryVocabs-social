@@ -66,7 +66,7 @@ No reply = it publishes at the slot time (`REVIEW_MODE=review`). Set `REVIEW_MOD
 |---|---|
 | `MEDIA_HOST` | `github` (public repo raw URLs) or `supabase` |
 | `MEDIA_REPO` | e.g. `abdullahprobal/storyvocabs-media` |
-| `PUBLIC_SITE_URL` | `https://storyvocabs.bandb.academy` → flip to `https://storyvocabs.com` on the domain move |
+| `PUBLIC_SITE_URL` | `https://storyvocabs.com` (canonical production URL) |
 | `REVIEW_MODE` | `review` / `autopilot` / `manual` |
 | `PUBLISH_TO_INSTAGRAM`, `PUBLISH_STORIES` | `true` |
 
