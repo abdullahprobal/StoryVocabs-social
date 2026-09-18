@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><style>{{FONT_CSS}}{{BASE_CSS}}
+.t{font-family:var(--bn);font-weight:700;font-size:64px;line-height:1.2;color:var(--ink)}
+.t b{color:var(--accent)}
+.sub{font-family:var(--bn);font-size:28px;color:var(--muted);margin-top:8px}
+.rows{margin-top:36px;display:flex;flex-direction:column;gap:16px}
+.row{display:flex;align-items:center;gap:22px;padding:22px 30px;background:var(--surface);border:2px solid var(--line);border-radius:22px}
+.row .num{width:54px;height:54px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;font-size:26px;flex:none}
+.row .w{font-family:var(--en-display);font-size:50px;color:var(--ink);flex:1;display:flex;align-items:baseline;gap:14px}
+.row .w .pos{font-family:var(--en);font-size:20px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.row .g{font-family:var(--bn);font-weight:600;font-size:34px;color:var(--accent-deep);text-align:right}
+.ctabox{position:absolute;left:0;right:0;bottom:0;height:300px;padding:38px 42px;background:var(--ink);border-color:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.ctabox .h{font-family:var(--bn);font-weight:700;font-size:44px;line-height:1.3}
+.ctabox .h b{color:#93c5fd}
+.ctabox .p{font-family:var(--bn);font-size:28px;color:#cbd5e1;line-height:1.5}
+.ctabox .u{font-family:var(--en);font-weight:700;font-size:34px;color:#fff;margin-top:8px;display:flex;align-items:center;gap:16px}
+.ctabox .u span{background:var(--accent);border-radius:999px;padding:8px 22px;font-size:26px}
+.src{position:absolute;left:0;right:0;bottom:318px;font-family:var(--en);font-size:20px;color:var(--muted)}
+</style></head><body><div class="canvas">{{HEADER}}
+<div class="body">
+  <div class="t">আজকের <b>{{N}}টি শব্দ</b></div>
+  <div class="sub">সেভ করে রাখো — পরীক্ষার আগে এক নজরে রিভিশন</div>
+  <div class="rows">{{ROWS}}</div>
+  <div class="src">Source: {{SOURCE}}</div>
+  <div class="ctabox card">
+    <div class="h">প্রতিটি শব্দে <b>৫টি গল্প</b>, বাংলা অর্থসহ — অ্যাপে</div>
+    <div class="p">৩টি প্যাক সম্পূর্ণ ফ্রি। অ্যাকাউন্ট খুলতে এক মিনিট।</div>
+    <div class="u">{{URL}}<span>ফ্রি-তে শুরু →</span></div>
+  </div>
+</div>
+{{FOOTER}}</div>{{FIT_JS}}</body></html>

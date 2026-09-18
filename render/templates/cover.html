@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><style>{{FONT_CSS}}{{BASE_CSS}}
+.kicker{display:flex;align-items:center;gap:18px;margin-top:6px}
+.kicker .k{font-family:var(--bn);font-weight:600;font-size:28px;color:var(--ink-2)}
+.kicker .d{font-family:var(--en);font-weight:500;font-size:24px;color:var(--muted)}
+.stack{position:absolute;left:0;right:0;top:96px;bottom:236px;display:flex;flex-direction:column;justify-content:center;gap:34px}
+.hbox{max-height:560px;overflow:hidden}
+.headline{font-family:var(--en-display);font-size:108px;line-height:1.02;letter-spacing:-.018em;color:var(--ink)}
+.headline .mark{font-style:italic}
+.hbn{max-height:150px;overflow:hidden;padding-left:4px;border-left:6px solid var(--accent)}
+.hbn div{font-family:var(--bn);font-weight:500;font-size:42px;line-height:1.4;color:var(--ink-2);padding-left:22px}
+.hero{position:absolute;left:0;right:0;bottom:0;height:200px;display:flex;align-items:center;justify-content:space-between;padding:0 40px}
+.hero .w{font-family:var(--en-display);font-size:74px;line-height:1;color:var(--ink)}
+.hero .g{font-family:var(--bn);font-weight:600;font-size:34px;color:var(--accent-deep);margin-top:6px}
+.hero .p{font-family:var(--en);font-size:22px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+</style></head><body><div class="canvas">{{HEADER}}
+<div class="body">
+  <div class="kicker">{{CAT_CHIP}}<span class="k">{{KICKER}}</span><span class="d">· {{DATE}}</span></div>
+  <div class="stack">
+    <div class="hbox"><div class="headline fit" data-min="64">{{HEADLINE_HTML}}</div></div>
+    <div class="hbn"><div class="fit" data-min="30">{{HEADLINE_BN}}</div></div>
+  </div>
+  <div class="hero card">
+    <div><div class="w">{{HERO_WORD}}</div><div class="g">{{HERO_GLOSS}}</div><div class="p">{{HERO_POS}}</div></div>
+    <div class="swipe">{{SWIPE_N}}টি শব্দ শেখো <span class="arrow">→</span></div>
+  </div>
+</div>
+{{FOOTER}}</div>{{FIT_JS}}</body></html>

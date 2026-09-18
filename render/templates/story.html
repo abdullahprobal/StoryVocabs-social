@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><style>{{FONT_CSS}}{{BASE_CSS}}
+.top{display:flex;align-items:center;justify-content:space-between;height:52px}
+.top .part{font-family:var(--en);font-weight:700;font-size:22px;color:var(--muted)}
+.sbox{position:absolute;left:0;right:0;top:84px;bottom:96px;padding:44px 48px}
+.story{font-family:var(--en);font-weight:400;font-size:41px;line-height:1.62;color:var(--ink);letter-spacing:-.005em}
+.story .ruby{margin:0 2px}
+.story .ruby .g{font-size:.46em}
+.legend{position:absolute;left:0;right:0;bottom:0;height:70px;display:flex;align-items:center;gap:14px;font-family:var(--bn);font-size:24px;color:var(--muted)}
+.legend .sw{display:inline-block;width:46px;height:20px;border-radius:4px;background:linear-gradient(180deg, transparent 55%, var(--marker) 55%);border-bottom:2px solid var(--marker)}
+</style></head><body><div class="canvas">{{HEADER}}
+<div class="body">
+  <div class="top"><span class="label">{{SECTION}}</span><span class="part">{{PART}}</span></div>
+  <div class="sbox card"><div class="story fit" data-min="26">{{STORY_HTML}}</div></div>
+  <div class="legend"><span class="sw"></span>{{LEGEND}}</div>
+</div>
+{{FOOTER}}</div>{{FIT_JS}}</body></html>

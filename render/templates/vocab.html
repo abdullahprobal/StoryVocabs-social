@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8"><style>{{FONT_CSS}}{{BASE_CSS}}
+.col{position:absolute;inset:0;display:flex;flex-direction:column}
+.chips{display:flex;gap:14px;align-items:center}
+.wbox{margin-top:22px;height:150px}
+.word{font-family:var(--en-display);font-size:140px;line-height:1;letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
+.ph{font-family:var(--en);font-size:30px;color:var(--muted);margin-top:6px;letter-spacing:.01em}
+.gloss{margin-top:30px;font-family:var(--bn);font-weight:700;font-size:66px;line-height:1.2;color:var(--accent-deep)}
+.mbn{margin-top:12px;font-family:var(--bn);font-weight:500;font-size:37px;line-height:1.5;color:var(--ink-2)}
+.men{margin-top:10px;font-family:var(--en);font-size:30px;line-height:1.45;color:var(--muted)}
+.inst{margin-top:26px;padding:26px 34px;background:var(--tint);border:2px solid var(--tint-2);border-radius:22px}
+.inst .l{color:var(--accent-deep);margin-bottom:8px}
+.inst .s{font-family:var(--en);font-size:30px;line-height:1.5;color:var(--ink-2)}
+.inst .s b{color:var(--ink);font-weight:700}
+.exbox{margin-top:auto;padding:32px 40px}
+.exbox .l{margin-bottom:10px}
+.ex{font-family:var(--en);font-size:35px;line-height:1.5;color:var(--ink)}
+.ex b{background:linear-gradient(180deg, transparent 58%, var(--marker) 58%);padding:0 6px;border-radius:4px;font-weight:700}
+.sa{margin-top:22px;display:flex;gap:16px;flex-wrap:wrap}
+.sa .t{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 22px;border-radius:16px;background:var(--surface-2);font-family:var(--en);font-size:26px;color:var(--ink-2)}
+.sa .t span{font-family:var(--bn);font-weight:600;color:var(--muted);font-size:23px}
+.exam{margin-top:22px;display:flex;align-items:center;gap:14px;font-family:var(--bn);font-size:25px;color:var(--muted)}
+.exam b{font-family:var(--en);color:var(--ink-2);font-weight:700;letter-spacing:.04em}
+</style></head><body><div class="canvas">{{HEADER}}
+<div class="body"><div class="col">
+  <div class="chips"><span class="chip pos">{{POS}}</span><span class="chip {{DIFF_CLASS}}">{{DIFF}}</span></div>
+  <div class="wbox"><div class="word fit" data-min="64">{{WORD}}</div></div>
+  <div class="ph">{{PHONETIC}}</div>
+  <div class="gloss">{{GLOSS_BN}}</div>
+  <div class="mbn">{{MEANING_BN}}</div>
+  <div class="men">{{MEANING_EN}}</div>
+  <div class="sa">{{SA_HTML}}</div>
+  <div class="inst" style="display:{{INST_DISPLAY}}"><div class="label l">গল্পে যেভাবে এসেছে</div><div class="s fit" data-min="22">{{STORY_LINE}}</div></div>
+  <div class="exbox card"><div class="label l">{{EXAMPLE_LABEL}}</div><div class="ex fit" data-min="24">{{EXAMPLE_HTML}}</div></div>
+  <div class="exam">পরীক্ষায় আসে: <b>BCS · BANK · ADMISSION · IELTS</b></div>
+</div></div>
+{{FOOTER}}</div>{{FIT_JS}}</body></html>

@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><style>{{FONT_CSS}}{{BASE_CSS}}
+.cards{position:absolute;inset:0;display:flex;flex-direction:column;gap:24px}
+.wcard{flex:1;padding:34px 40px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.wcard .w{font-family:var(--en-display);font-size:92px;line-height:1;color:var(--ink)}
+.wcard .ph{font-size:26px}
+.wcard .gl{font-family:var(--bn);font-weight:700;font-size:48px;color:var(--accent-deep);margin-top:6px}
+.wcard .mb{font-family:var(--bn);font-size:31px;line-height:1.45;color:var(--ink-2)}
+.wcard .ex{margin-top:auto;font-size:29px;line-height:1.45;color:var(--ink);padding:18px 22px;background:var(--surface-2);border-radius:16px}
+.wcard .ex b{background:linear-gradient(180deg, transparent 58%, var(--marker) 58%);padding:0 5px;border-radius:4px}
+</style></head><body><div class="canvas">{{HEADER}}
+<div class="body"><div class="cards">{{CARDS}}</div></div>
+{{FOOTER}}</div>{{FIT_JS}}</body></html>

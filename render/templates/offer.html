@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><style>{{FONT_CSS}}{{BASE_CSS}}
+.k{font-family:var(--bn);font-weight:600;font-size:28px;color:var(--ink-2)}
+.box{position:absolute;left:0;right:0;top:70px;bottom:0;display:flex;flex-direction:column;justify-content:center;gap:30px}
+.hb{max-height:430px;overflow:hidden}
+.h{font-family:var(--bn);font-weight:700;font-size:84px;line-height:1.2;color:var(--ink)}
+.d{display:{{DETAIL_BLOCK}};align-items:center;gap:20px;padding:26px 36px;background:var(--ink);color:#fff;border-radius:24px;font-family:var(--en);font-weight:700;font-size:48px;letter-spacing:-.01em;align-self:flex-start}
+.bb{max-height:300px;overflow:hidden}
+.b{font-family:var(--bn);font-size:36px;line-height:1.55;color:var(--ink-2)}
+</style></head><body><div class="canvas">{{HEADER}}
+<div class="body">
+  <div class="k">{{KIND}}</div>
+  <div class="box">
+    <div class="hb"><div class="h fit" data-min="48">{{HEADLINE_BN}}</div></div>
+    <div class="d">{{DETAIL}}</div>
+    <div class="bb"><div class="b fit" data-min="26">{{BODY_BN}}</div></div>
+  </div>
+</div>
+{{FOOTER}}</div>{{FIT_JS}}</body></html>

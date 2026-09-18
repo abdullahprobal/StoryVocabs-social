@@ -1,90 +1,87 @@
-# StoryVocabs Social Media Automation
+# StoryVocabs Social Engine (v2)
 
-Automatically generates daily vocabulary content for StoryVocabs Facebook & Instagram.
+Daily Facebook + Instagram content for StoryVocabs, generated, reviewed on Telegram and
+published by GitHub Actions — at zero running cost (free LLM tiers, Meta Graph API, Telegram Bot API).
 
-## Quick Start
-
-```bash
-# 1. Install dependencies (one-time)
-pip install -r requirements.txt
-playwright install chromium
-
-# 2. Add your Groq API key
-#    Copy from main app's .env → paste into .env here
-
-# 3. Generate today's content
-python generate.py
+```
+strategy.json ──► planner ──► writer (free LLM chain, JSON contract) ──► gates ──► render (Playwright)
+                                   │                                                     │
+                                   └──► caption (Bangla-first, one UTM link) ◄──── critic ┘
+                                                     │
+              queue/<date>/<slot>.json  ◄────────────┘   (Telegram preview: ❌ skip · ✏️ note · ✅)
+                                                     │
+              publish.py at the slot ──► FB carousel + IG carousel + Stories + first comment
+                                                     │
+              insights.py weekly ──► analytics/ ──► re-weights pillars & hook styles ──► Telegram report
 ```
 
-## Commands
+## Pillars (weekly calendar, `strategy.json`)
 
-| Command | What it does |
-|---------|-------------|
-| `python generate.py` | Full pipeline: news → AI story → images → caption |
-| `python generate.py --story-only` | Generate story text only (no images) |
-| `python generate.py --manual "Your headline"` | Use your own headline instead of news |
+| Day | Pillar | Format |
+|---|---|---|
+| Sat | `news_word` — 3 exam words in today's Bangladesh news | 6-slide carousel |
+| Sun | `quiz` — one word, 4 options; answer posted as a comment 6 h later | 1 image |
+| Mon | `confusables` — two words students mix | 3-slide carousel |
+| Tue | `news_word` (business/tech) | 6-slide carousel |
+| Wed | `in_app` — real app screenshot + one honest number | 1 image (needs `render/assets/screens/`) |
+| Thu | `story60` — 5 words in a 60-second Bangladeshi story | 8–9-slide carousel |
+| Fri 20:00 | `offer` — free path / referral / student / community / founder | 1 image |
 
-## Output
+Every post also gets a 1080×1920 card for FB/IG Stories.
 
-All files land in `output/YYYY-MM-DD/`:
-- `slide_1_cover.png` — Carousel cover (1080×1080)
-- `slide_2_story.png` — Story page 1
-- `slide_3_story.png` — Story page 2
-- `slide_4_story.png` — Story page 3
-- `slide_5_vocab.png` — Vocabulary summary
-- `reel_overlay.png` — Reel text card (1080×1920)
-- `whatsapp.png` — WhatsApp forwardable (800×800)
-- `caption.txt` — Ready-to-paste caption with hashtags
-- `content.json` — Raw AI output
+## Run locally
 
-## Posting Flow (30 seconds)
+```bash
+pip install -r requirements.txt && python -m playwright install chromium
+cp .env.example .env            # fill keys
+python scripts/sync_word_packs.py           # refresh data/word_packs.json from the app
+python -m engine.generate --date 2026-09-20 --pillar quiz --dry-run   # renders to output/
+python -m engine.publish --date 2026-09-20 --slot morning --dry-run    # prints the Graph API calls
+python -m pytest -q tests
+```
 
-1. Script auto-opens Meta Business Suite
-2. Caption auto-copied to clipboard
-3. Click "Create Post" → Paste caption
-4. Upload the carousel slides
-5. Schedule or publish
+## Telegram review
 
-## Design Language
+Each generated post is sent to your Telegram chat (slides + caption). Reply **to that message**:
 
-Uses StoryVocabs brand system:
-- **Colors:** Blue `#3b82f6` → Purple `#8b5cf6` gradient
-- **Font:** Inter + Noto Sans Bengali
-- **Style:** Glass morphism, clean, premium
+* `❌` / `skip` — slot is skipped, an evergreen post is used instead
+* `✏️ <note>` / `edit: <note>` — regenerated once with your note, then published
+* `✅` / `ok` — explicit approval (only required when `REVIEW_MODE=manual`)
 
-## Daily Posting Schedule (BST)
+No reply = it publishes at the slot time (`REVIEW_MODE=review`). Set `REVIEW_MODE=autopilot` to skip previews.
 
-Research-backed schedule for maximum reach among BCS/Bank/Admission aspirants in Bangladesh. See `POSTING_SCHEDULE.md` for full research details.
+## Secrets & variables (GitHub → Settings → Secrets and variables → Actions)
 
-| Post | Time | Content | Platform |
-|------|------|---------|----------|
-| **Post 1** | 8:00 AM | 3 words (3 new), short story (Topic A) | Facebook + Instagram |
-| **Post 2** | 1:00 PM | 5 words (3 revise + 2 new), expanded story (Topic A) | Facebook + Instagram |
-| **Post 3** | 8:00 PM | 3 words (3 new), short story (Topic B) | Facebook + Instagram + TikTok |
-| **Post 4** | 10:30 PM | 5 words (3 revise + 2 new), expanded story (Topic B) | Facebook + Instagram |
+| Secret | Purpose |
+|---|---|
+| `GEMINI_API_KEY` | free tier, best Bangla — primary writer (aistudio.google.com) |
+| `GROQ_API_KEY_1..5` | free tier fallback (console.groq.com) |
+| `CEREBRAS_API_KEY`, `OPENROUTER_API_KEY` | optional further fallbacks |
+| `META_PAGE_ID`, `META_PAGE_TOKEN`, `META_IG_USER_ID` | Facebook Page + linked Instagram Business account |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | review channel |
+| `MEDIA_REPO_TOKEN` | fine-grained PAT with *contents: write* on the public media repo |
+| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE` | only if `MEDIA_HOST=supabase` |
 
-### Ramadan Schedule
+| Variable | Default |
+|---|---|
+| `MEDIA_HOST` | `github` (public repo raw URLs) or `supabase` |
+| `MEDIA_REPO` | e.g. `abdullahprobal/storyvocabs-media` |
+| `PUBLIC_SITE_URL` | `https://storyvocabs.bandb.academy` → flip to `https://storyvocabs.com` on the domain move |
+| `REVIEW_MODE` | `review` / `autopilot` / `manual` |
+| `PUBLISH_TO_INSTAGRAM`, `PUBLISH_STORIES` | `true` |
 
-| Post | Time | Rationale |
-|------|------|-----------|
-| Post 1 | 4:00 PM | Pre-iftar peak scroll |
-| Post 2 | 8:30 PM | Post-iftar relaxation |
-| Post 3 | 11:00 PM | Late night study session |
-| Post 4 | 1:00 AM | Peak late-night activity |
+## Workflows
 
-### Dead Zones (Avoid Posting)
+* `generate.yml` — 05:30 BST daily, fills today + tomorrow (`QUEUE_DAYS_AHEAD`), previews to Telegram
+* `publish.yml` — 08:00 and 20:00 BST (slots), 14:00 BST (due quiz-answer comments)
+* `weekly.yml` — Sunday 22:00 BST, Insights → weights → report
+* `ci.yml` — tests on push
 
-- 10:00 AM - 12:00 PM (deep study hours)
-- 2:30 PM - 4:00 PM (practice test time)
-- 5:30 PM - 7:00 PM (evening study session)
+All state (`queue/`, `state/`, `analytics/`, `strategy.json`, `evergreen/`) is committed back by the bot.
 
-### Holiday Rules
+## Guard rails
 
-- **Eid Day 1:** No posts (everyone offline celebrating)
-- **Eid Day 2:** Resume with 1 post at 8:00 PM
-- **Pohela Boishakh:** No posts on April 14
-- **Friday:** Skip 8 AM post, strongest engagement at 8 PM
-
-## This project is independent
-
-This folder has its own `.git/` — it never touches the main Story-Vocabulary app repo.
+* `data/product_facts.json` is the only source of product claims; `never_say` + regex claim patterns are enforced in `engine/gates.py`
+* every story word must appear once with a Bangla gloss; captions carry exactly one tracked link
+* critic pass (LLM) scores hook, Bangla and forced words; < 7 regenerates
+* news scorer drops crime/tragedy stories; story tracker (6-month gap) and word tracker (≤ 3 uses/yr) prevent repeats

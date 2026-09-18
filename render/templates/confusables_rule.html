@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><style>{{FONT_CSS}}{{BASE_CSS}}
+.rule{padding:40px 44px}
+.rule .h{font-family:var(--bn);font-weight:700;font-size:40px;color:var(--ink);line-height:1.35}
+.rule .h b{color:var(--accent)}
+.rule .rb{margin-top:18px;max-height:230px;overflow:hidden}
+.rule .r{font-family:var(--bn);font-size:36px;line-height:1.55;color:var(--ink-2)}
+.tip{margin-top:24px;padding:30px 40px;background:var(--marker);border-radius:24px;display:{{TIP_BLOCK}}}
+.tip .l{color:var(--marker-ink);margin-bottom:8px}
+.tip .t{font-family:var(--bn);font-weight:600;font-size:33px;line-height:1.45;color:var(--marker-ink)}
+.recap{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.recap .c{padding:26px 30px;background:var(--surface);border:2px solid var(--line);border-radius:22px;overflow:hidden}
+.recap .w{font-family:var(--en-display);font-size:56px;line-height:1;color:var(--ink);white-space:nowrap}
+.recap .g{font-family:var(--bn);font-weight:600;font-size:30px;color:var(--accent-deep);margin-top:10px}
+.recap .e{font-family:var(--en);font-size:24px;line-height:1.45;color:var(--ink-2);margin-top:14px}
+.recap .e b{background:linear-gradient(180deg, transparent 58%, var(--marker) 58%);padding:0 4px;border-radius:4px;color:var(--ink)}
+.save{position:absolute;left:0;right:0;bottom:0;height:110px;display:flex;align-items:center;gap:16px;font-family:var(--bn);font-weight:600;font-size:30px;color:var(--ink-2)}
+.save .b{background:var(--ink);color:#fff;border-radius:999px;padding:12px 26px;font-size:28px;font-family:var(--en)}
+</style></head><body><div class="canvas">{{HEADER}}
+<div class="body">
+  <div class="rule card"><div class="h">মনে রাখার নিয়ম: <b>{{A}}</b> বনাম <b>{{B}}</b></div><div class="rb"><div class="r fit" data-min="26">{{RULE}}</div></div></div>
+  <div class="tip"><div class="label l">মনে রাখার কৌশল</div><div class="t">{{TIP}}</div></div>
+  <div class="recap"><div class="c"><div class="w fit" data-min="34">{{A}}</div><div class="g">{{A_G}}</div><div class="e">{{A_EX}}</div></div><div class="c"><div class="w fit" data-min="34">{{B}}</div><div class="g">{{B_G}}</div><div class="e">{{B_EX}}</div></div></div>
+  <div class="save"><span class="b">Save</span> করে রাখো — পরীক্ষার আগে এক নজরে</div>
+</div>
+{{FOOTER}}</div>{{FIT_JS}}</body></html>

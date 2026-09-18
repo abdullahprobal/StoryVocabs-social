@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><style>{{FONT_CSS}}{{BASE_CSS}}
+.k{font-family:var(--bn);font-weight:600;font-size:28px;color:var(--ink-2)}
+.tbox{margin-top:16px;max-height:150px;overflow:hidden}
+.t{font-family:var(--bn);font-weight:700;font-size:54px;line-height:1.3;color:var(--ink)}
+.vs{position:absolute;left:0;right:0;top:300px;bottom:150px;display:flex;flex-direction:column;justify-content:center;gap:26px}
+.big{padding:40px 44px;display:flex;align-items:baseline;justify-content:space-between;gap:20px}
+.big .wb{flex:1;max-height:130px;overflow:hidden}
+.big .w{font-family:var(--en-display);font-size:118px;line-height:1;color:var(--ink);white-space:nowrap}
+.big .p{flex:none;font-family:var(--en);font-size:24px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.mid{align-self:center;width:96px;height:96px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--en-display);font-style:italic;font-size:44px}
+.sw{position:absolute;left:0;right:0;bottom:0;height:120px;display:flex;align-items:center;justify-content:flex-end}
+</style></head><body><div class="canvas">{{HEADER}}
+<div class="body">
+  <div class="k">গুলিয়ে ফেলা শব্দ</div>
+  <div class="tbox"><div class="t fit" data-min="34">{{TITLE_BN}}</div></div>
+  <div class="vs">
+    <div class="big card"><div class="wb"><div class="w fit" data-min="60">{{A}}</div></div><div class="p">{{A_POS}}</div></div>
+    <div class="mid">vs</div>
+    <div class="big card"><div class="wb"><div class="w fit" data-min="60">{{B}}</div></div><div class="p">{{B_POS}}</div></div>
+  </div>
+  <div class="sw"><div class="swipe">পার্থক্যটা দেখো <span class="arrow">→</span></div></div>
+</div>
+{{FOOTER}}</div>{{FIT_JS}}</body></html>

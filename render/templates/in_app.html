@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><style>{{FONT_CSS}}{{BASE_CSS}}
+.grid{position:absolute;inset:0;display:flex;gap:40px;align-items:center}
+.phone{flex:none;width:430px;height:900px;border-radius:52px;background:#0f172a;padding:14px;box-shadow:0 30px 60px rgba(15,23,42,.25)}
+.phone .scr{width:100%;height:100%;border-radius:40px;overflow:hidden;background:#fff}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top}
+.txt{flex:1;display:flex;flex-direction:column;gap:22px;min-width:0}
+.txt .hb{max-height:220px;overflow:hidden}
+.txt .h{font-family:var(--bn);font-weight:700;font-size:56px;line-height:1.25;color:var(--ink)}
+.txt .fb{max-height:150px;overflow:hidden}
+.txt .f{font-family:var(--en);font-weight:700;font-size:64px;line-height:1.05;color:var(--accent);letter-spacing:-.02em}
+.txt .n{font-family:var(--bn);font-size:31px;line-height:1.5;color:var(--ink-2)}
+.txt .free{margin-top:10px;display:inline-flex;align-items:center;gap:14px;font-family:var(--bn);font-weight:600;font-size:28px;color:var(--ok);background:var(--ok-tint);border-radius:999px;padding:12px 24px;align-self:flex-start}
+</style></head><body><div class="canvas">{{HEADER}}
+<div class="body"><div class="grid">
+  <div class="phone"><div class="scr"><img src="{{SHOT}}" alt=""/></div></div>
+  <div class="txt"><div class="hb"><div class="h fit" data-min="36">{{HEADLINE_BN}}</div></div><div class="fb"><div class="f fit" data-min="40">{{FACT}}</div></div><div class="n">{{NOTE}}</div><div class="free">৩টি প্যাক ফ্রি — কার্ড লাগবে না</div></div>
+</div></div>
+{{FOOTER}}</div>{{FIT_JS}}</body></html>

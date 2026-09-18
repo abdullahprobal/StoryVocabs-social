@@ -1,0 +1,20 @@
+{
+  "_comment": "Posting exceptions. Dates are Asia/Dhaka. skip = no posts; rules apply from POSTING_SCHEDULE.md research. Ramadan window switches slots to 16:00/20:30 BST.",
+  "skip_dates": {
+    "2026-03-20": "Eid-ul-Fitr day 1",
+    "2026-05-27": "Eid-ul-Adha day 1",
+    "2027-03-10": "Eid-ul-Fitr day 1 (approx, verify)",
+    "2027-05-17": "Eid-ul-Adha day 1 (approx, verify)",
+    "2026-04-14": "Pohela Boishakh",
+    "2027-04-14": "Pohela Boishakh"
+  },
+  "single_evening_post_dates": {
+    "2026-03-21": "Eid day 2 — one post at 20:00",
+    "2026-05-28": "Eid day 2 — one post at 20:00",
+    "2027-03-11": "Eid day 2 — one post at 20:00",
+    "2027-05-18": "Eid day 2 — one post at 20:00"
+  },
+  "ramadan_windows": [
+    {"start": "2027-02-08", "end": "2027-03-09", "note": "approx, verify"}
+  ]
+}

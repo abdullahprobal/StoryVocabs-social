@@ -1,0 +1,100 @@
+name: generate
+
+on:
+  schedule:
+    - cron: "30 23 * * *"     # 05:30 BST daily — fills today + tomorrow
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "YYYY-MM-DD (default: today BST)"
+        required: false
+      days:
+        description: "days to fill"
+        required: false
+        default: "2"
+      pillar:
+        description: "force a pillar (news_word/quiz/confusables/in_app/story60/offer)"
+        required: false
+      dry_run:
+        description: "no upload / no Telegram / no trackers"
+        type: boolean
+        default: false
+      force:
+        description: "regenerate existing queue items"
+        type: boolean
+        default: false
+
+concurrency:
+  group: social-state
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PYTHONUTF8: "1"
+      TZ: "Asia/Dhaka"
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+      GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
+      GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
+      GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
+      GROQ_API_KEY_5: ${{ secrets.GROQ_API_KEY_5 }}
+      CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      MEDIA_HOST: ${{ vars.MEDIA_HOST || 'github' }}
+      MEDIA_REPO: ${{ vars.MEDIA_REPO }}
+      MEDIA_REPO_TOKEN: ${{ secrets.MEDIA_REPO_TOKEN }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE }}
+      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://storyvocabs.bandb.academy' }}
+      REVIEW_MODE: ${{ vars.REVIEW_MODE || 'review' }}
+      DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
+      IN_DATE: ${{ inputs.date }}
+      IN_DAYS: ${{ inputs.days }}
+      IN_PILLAR: ${{ inputs.pillar }}
+      IN_FORCE: ${{ inputs.force }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+          sudo apt-get install -y -q fonts-noto-color-emoji >/dev/null
+      - name: Generate
+        run: |
+          ARGS=""
+          [ -n "$IN_DATE" ] && ARGS="$ARGS --date $IN_DATE"
+          [ -n "$IN_DAYS" ] && ARGS="$ARGS --days $IN_DAYS"
+          [ -n "$IN_PILLAR" ] && ARGS="$ARGS --pillar $IN_PILLAR"
+          [ "$IN_FORCE" = "true" ] && ARGS="$ARGS --force"
+          python -m engine.generate $ARGS
+      - name: Upload rendered slides (debug)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: slides-${{ github.run_id }}
+          path: output/**/*.png
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Commit state
+        if: always() && env.DRY_RUN != 'true'
+        run: |
+          git config user.name "storyvocabs-bot"
+          git config user.email "bot@storyvocabs.local"
+          git add queue state analytics strategy.json evergreen
+          git diff --cached --quiet || git commit -m "chore(generate): queue $(date -u +%F) [skip ci]"
+          git pull --rebase origin ${{ github.ref_name }} || true
+          git push
