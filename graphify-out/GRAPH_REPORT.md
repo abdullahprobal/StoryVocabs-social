@@ -1,16 +1,16 @@
-# Graph Report - StoryVocabs-social-domain-cutover  (2026-09-19)
+# Graph Report - StoryVocabs-social-domain-followup  (2026-09-19)
 
 ## Corpus Check
 - 54 files · ~171,578 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1838 nodes · 2504 edges · 257 communities (253 shown, 4 thin omitted)
-- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 241 edges (avg confidence: 0.52)
+- 2066 nodes · 2732 edges · 293 communities (289 shown, 4 thin omitted)
+- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 241 edges (avg confidence: 0.52)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `76189a00`
+- Built from commit: `6f7ceb5c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -265,6 +265,42 @@
 - [[_COMMUNITY_Community 254|Community 254]]
 - [[_COMMUNITY_Community 255|Community 255]]
 - [[_COMMUNITY_Community 256|Community 256]]
+- [[_COMMUNITY_Community 257|Community 257]]
+- [[_COMMUNITY_Community 258|Community 258]]
+- [[_COMMUNITY_Community 259|Community 259]]
+- [[_COMMUNITY_Community 260|Community 260]]
+- [[_COMMUNITY_Community 261|Community 261]]
+- [[_COMMUNITY_Community 262|Community 262]]
+- [[_COMMUNITY_Community 263|Community 263]]
+- [[_COMMUNITY_Community 264|Community 264]]
+- [[_COMMUNITY_Community 265|Community 265]]
+- [[_COMMUNITY_Community 266|Community 266]]
+- [[_COMMUNITY_Community 267|Community 267]]
+- [[_COMMUNITY_Community 268|Community 268]]
+- [[_COMMUNITY_Community 269|Community 269]]
+- [[_COMMUNITY_Community 270|Community 270]]
+- [[_COMMUNITY_Community 271|Community 271]]
+- [[_COMMUNITY_Community 272|Community 272]]
+- [[_COMMUNITY_Community 273|Community 273]]
+- [[_COMMUNITY_Community 274|Community 274]]
+- [[_COMMUNITY_Community 275|Community 275]]
+- [[_COMMUNITY_Community 276|Community 276]]
+- [[_COMMUNITY_Community 277|Community 277]]
+- [[_COMMUNITY_Community 278|Community 278]]
+- [[_COMMUNITY_Community 279|Community 279]]
+- [[_COMMUNITY_Community 280|Community 280]]
+- [[_COMMUNITY_Community 281|Community 281]]
+- [[_COMMUNITY_Community 282|Community 282]]
+- [[_COMMUNITY_Community 283|Community 283]]
+- [[_COMMUNITY_Community 284|Community 284]]
+- [[_COMMUNITY_Community 285|Community 285]]
+- [[_COMMUNITY_Community 286|Community 286]]
+- [[_COMMUNITY_Community 287|Community 287]]
+- [[_COMMUNITY_Community 288|Community 288]]
+- [[_COMMUNITY_Community 289|Community 289]]
+- [[_COMMUNITY_Community 290|Community 290]]
+- [[_COMMUNITY_Community 291|Community 291]]
+- [[_COMMUNITY_Community 292|Community 292]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Word` - 51 edges
@@ -279,22 +315,22 @@
 10. `QueueItem` - 20 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Path` --uses--> `Word`  [INFERRED]
-  render/image_renderer.py → engine/contracts.py
-- `str` --uses--> `Word`  [INFERRED]
-  render/image_renderer.py → engine/contracts.py
-- `Path` --uses--> `StoryPost`  [INFERRED]
-  render/image_renderer.py → engine/contracts.py
-- `str` --uses--> `StoryPost`  [INFERRED]
-  render/image_renderer.py → engine/contracts.py
-- `Path` --uses--> `QuizPost`  [INFERRED]
+- `test_hero_must_be_in_words()` --calls--> `StoryPost`  [EXTRACTED]
+  tests/test_gates_and_contracts.py → engine/contracts.py
+- `bool` --uses--> `Word`  [INFERRED]
+  engine/words.py → engine/contracts.py
+- `int` --uses--> `Word`  [INFERRED]
+  engine/words.py → engine/contracts.py
+- `Word` --uses--> `Word`  [INFERRED]
+  engine/words.py → engine/contracts.py
+- `ConfusablesPost` --uses--> `Word`  [INFERRED]
   render/image_renderer.py → engine/contracts.py
 
-## Communities (257 total, 4 thin omitted)
+## Communities (293 total, 4 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.06
-Nodes (70): Category, _cap_words(), Category, _clean(), ConfusablesPost, InAppPost, OfferPost, int (+62 more)
+Nodes (90): Category, _cap_words(), Category, _clean(), ConfusablesPost, InAppPost, OfferPost, int (+82 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.08
@@ -313,8 +349,8 @@ Cohesion: 0.04
 Nodes (45): attempts, caption_fb, caption_ig, comment_delay_minutes, content, answer_index, exam_tag, explanation_bn (+37 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.06
-Nodes (54): Caption, CriticVerdict, assemble(), build_utm(), int, Random, str, Caption engine: brief → LLM caption → FB / IG variants with one UTM link.  The (+46 more)
+Cohesion: 0.09
+Nodes (38): Caption, assemble(), build_utm(), int, Random, str, Caption engine: brief → LLM caption → FB / IG variants with one UTM link.  The, Return (facebook_caption, instagram_caption, utm_url). (+30 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.33
@@ -325,8 +361,8 @@ Cohesion: 0.06
 Nodes (33): attempts, caption_fb, caption_ig, comment_delay_minutes, content, difference_bn, memory_tip_bn, pair (+25 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.27
-Nodes (27): _b64(), bold_html(), esc(), fmt_date(), font_css(), footer_html(), header_html(), logo_src() (+19 more)
+Cohesion: 0.18
+Nodes (18): CriticVerdict, CriticVerdict, banned_claims(), caption_shape(), critic(), GateError, html_tokens(), bool (+10 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.07
@@ -345,8 +381,8 @@ Cohesion: 0.23
 Nodes (21): bool, int, str, _call(), configured(), fb_comment(), fb_post_insights(), fb_publish() (+13 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.05
-Nodes (40): 1. Generate Posts, 2. Render Carousel, code:block1 (News Articles), code:python (from story_writer import generate_all_posts, select_words_fo), code:python (from image_renderer import render_post_images), code:json ({), Core Implementation (Tasks 1-8), End-to-End Testing (+32 more)
+Cohesion: 0.18
+Nodes (10): code:block1 (News Articles), code:json ({), 🔧 Files Modified/Created, 📌 Important Notes, ⚡ Key Features, 📊 New JSON Contract (Task 0), 📝 Next Steps, StoryVocabs Carousel — Production Ready (+2 more)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.04
@@ -362,11 +398,11 @@ Nodes (17): all_words(), _bold(), by_name(), candidate_lines(), candidates(), is
 
 ### Community 17 - "Community 17"
 Cohesion: 0.10
-Nodes (20): coterie, 2026, dates, impoverish, 2026, dates, juxtapose, 2026 (+12 more)
+Nodes (20): accord, 2026, dates, bonafide, 2026, dates, brusque, 2026 (+12 more)
 
 ### Community 18 - "Community 18"
-Cohesion: 0.06
-Nodes (32): 1. **Word Count Configuration Error**, 2. **Word Integration Failure in Stories**, 3. **Story Topic Inconsistency**, 4. **Wrong News Stories Assigned**, 5. **Category Classification Bug**, 6. **Slide Numbering Confusion**, code:bash (python generate.py), Critical Issues Found (+24 more)
+Cohesion: 0.04
+Nodes (48): 1. **Word Count Configuration Error**, 2. **Word Integration Failure in Stories**, 3. **Story Topic Inconsistency**, 4. **Wrong News Stories Assigned**, 5. **Category Classification Bug**, 6. **Slide Numbering Confusion**, code:bash (python generate.py), Critical Issues Found (+40 more)
 
 ### Community 19 - "Community 19"
 Cohesion: 0.13
@@ -393,16 +429,16 @@ Cohesion: 0.18
 Nodes (11): 13. Key Contacts, 15. Future Improvements, 6. File Structure, 7. Weekly Genre Schedule, 8.1 Groq API, 8.2 RSS Feeds, 8. API Documentation, 9.1 Secrets Management (+3 more)
 
 ### Community 25 - "Community 25"
-Cohesion: 0.12
-Nodes (16): _comment, in_app_screens, max_word_uses_per_year, min_days_between_same_word, offer_rotation, quiz_distractor_mode, story60_topics, version (+8 more)
+Cohesion: 0.08
+Nodes (24): _comment, in_app_screens, max_word_uses_per_year, min_days_between_same_word, offer_rotation, quiz_distractor_mode, story60_topics, version (+16 more)
 
 ### Community 26 - "Community 26"
 Cohesion: 0.20
 Nodes (10): code:block15 (┌─────────────────────────────────────────────────────┐), Content-Type Timing Matrix, Day-by-Day Strategy, Engagement Rate Targets, Expected Engagement by Time Slot, Genre Schedule + Post Timing, Quick Reference Card, Sources (+2 more)
 
 ### Community 27 - "Community 27"
-Cohesion: 0.11
-Nodes (18): code:block1 (strategy.json ──► planner ──► writer (free LLM chain, JSON c), code:bash (pip install -r requirements.txt && python -m playwright inst), Guard rails, Pillars (weekly calendar, `strategy.json`), Run locally, Secrets & variables (GitHub → Settings → Secrets and variables → Actions), StoryVocabs Social Engine (v2), Telegram review (+10 more)
+Cohesion: 0.07
+Nodes (27): code:block1 (strategy.json ──► planner ──► writer (free LLM chain, JSON c), code:bash (pip install -r requirements.txt && python -m playwright inst), Guard rails, Pillars (weekly calendar, `strategy.json`), Run locally, Secrets & variables (GitHub → Settings → Secrets and variables → Actions), StoryVocabs Social Engine (v2), Telegram review (+19 more)
 
 ### Community 28 - "Community 28"
 Cohesion: 0.22
@@ -509,8 +545,8 @@ Cohesion: 0.67
 Nodes (3): abjure, 2026, dates
 
 ### Community 55 - "Community 55"
-Cohesion: 0.67
-Nodes (3): accord, 2026, dates
+Cohesion: 0.11
+Nodes (19): instruction, weight, instruction, weight, hook_styles, bold_true, exam_angle, mistake (+11 more)
 
 ### Community 56 - "Community 56"
 Cohesion: 0.67
@@ -581,8 +617,8 @@ Cohesion: 0.67
 Nodes (3): benefactor, 2026, dates
 
 ### Community 73 - "Community 73"
-Cohesion: 0.67
-Nodes (3): bonafide, 2026, dates
+Cohesion: 0.17
+Nodes (11): 13. Key Contacts, 15. Future Improvements, 6. File Structure, 7. Weekly Genre Schedule, 8.1 Groq API, 8.2 RSS Feeds, 8. API Documentation, 9.1 Secrets Management (+3 more)
 
 ### Community 74 - "Community 74"
 Cohesion: 0.67
@@ -597,8 +633,8 @@ Cohesion: 0.67
 Nodes (3): breach, 2026, dates
 
 ### Community 77 - "Community 77"
-Cohesion: 0.67
-Nodes (3): brusque, 2026, dates
+Cohesion: 0.20
+Nodes (10): code:block15 (┌─────────────────────────────────────────────────────┐), Content-Type Timing Matrix, Day-by-Day Strategy, Engagement Rate Targets, Expected Engagement by Time Slot, Genre Schedule + Post Timing, Quick Reference Card, Sources (+2 more)
 
 ### Community 78 - "Community 78"
 Cohesion: 0.67
@@ -849,8 +885,8 @@ Cohesion: 0.67
 Nodes (3): grandiose, 2026, dates
 
 ### Community 140 - "Community 140"
-Cohesion: 0.67
-Nodes (3): grimace, 2026, dates
+Cohesion: 0.20
+Nodes (10): code:block1 (News Articles), code:json ({), 🔧 Files Modified/Created, 📌 Important Notes, ⚡ Key Features, 📊 New JSON Contract (Task 0), 📝 Next Steps, StoryVocabs Carousel — Production Ready (+2 more)
 
 ### Community 141 - "Community 141"
 Cohesion: 0.67
@@ -961,7 +997,7 @@ Cohesion: 0.67
 Nodes (3): muse, 2026, dates
 
 ### Community 168 - "Community 168"
-Cohesion: 0.17
+Cohesion: 0.18
 Nodes (11): 13. Key Contacts, 15. Future Improvements, 6. File Structure, 7. Weekly Genre Schedule, 8.1 Groq API, 8.2 RSS Feeds, 8. API Documentation, 9.1 Secrets Management (+3 more)
 
 ### Community 169 - "Community 169"
@@ -1053,8 +1089,8 @@ Cohesion: 0.67
 Nodes (3): repercussion, 2026, dates
 
 ### Community 193 - "Community 193"
-Cohesion: 0.67
-Nodes (3): replete, 2026, dates
+Cohesion: 0.20
+Nodes (10): code:block1 (News Articles), code:json ({), 🔧 Files Modified/Created, 📌 Important Notes, ⚡ Key Features, 📊 New JSON Contract (Task 0), 📝 Next Steps, StoryVocabs Carousel — Production Ready (+2 more)
 
 ### Community 194 - "Community 194"
 Cohesion: 0.67
@@ -1085,8 +1121,8 @@ Cohesion: 0.67
 Nodes (3): secular, 2026, dates
 
 ### Community 201 - "Community 201"
-Cohesion: 0.67
-Nodes (3): serene, 2026, dates
+Cohesion: 0.22
+Nodes (9): 10.1 Daily Content Generation (30 seconds), 10.2 Posting Workflow, 10.3 Manual Override, 10.4 Troubleshooting, 10. Operational Procedures, code:block11 (Double-click: C:\Users\DELL\.antigravity\StoryVocabs-social\), code:powershell (Right-click: generate.ps1 → "Run with PowerShell"), code:powershell (cd C:\Users\DELL\.antigravity\StoryVocabs-social) (+1 more)
 
 ### Community 202 - "Community 202"
 Cohesion: 0.67
@@ -1276,8 +1312,152 @@ Nodes (3): hashtags, core, pool
 Cohesion: 0.67
 Nodes (3): hashtags, core, pool
 
+### Community 257 - "Community 257"
+Cohesion: 0.22
+Nodes (9): code:block5 (Eid Day 1: NO POSTS (everyone offline celebrating)), code:block6 (April 13: Post at 8:00 PM (pre-celebration excitement)), code:block7 (Morning: Post patriotic vocabulary content at 8:00 AM), code:block8 (Morning (8 AM): Skip or post light content (people sleeping ), Eid & Holiday Schedule, Eid-ul-Fitr / Eid-ul-Adha, Friday (Weekly Holiday), Independence Day (March 26) / Victory Day (December 16) (+1 more)
+
+### Community 258 - "Community 258"
+Cohesion: 0.25
+Nodes (8): 4.1 `.env`, 4.2 `config.py`, 4.3 `story_usage_tracker.json`, 4.4 `word_usage_tracker.json`, 4. Configuration Files, code:block4 (GROQ_API_KEY=gsk_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX), code:json ({), code:json ({)
+
+### Community 259 - "Community 259"
+Cohesion: 0.25
+Nodes (8): calendar, fri, mon, sat, sun, thu, tue, wed
+
+### Community 260 - "Community 260"
+Cohesion: 0.29
+Nodes (7): 16. Quick Reference, code:powershell (# Generate content), code:block17 (C:\Users\DELL\.antigravity\StoryVocabs-social\output\YYYY-MM), Daily Commands, Emergency Contacts, Key Files to Know, Output Location
+
+### Community 261 - "Community 261"
+Cohesion: 0.29
+Nodes (7): 5.1 Python Packages (`requirements.txt`), 5.2 System Dependencies, 5.3 Install Commands, 5. Dependency List, code:block7 (groq>=0.4.0          # Groq API client), code:block8 (Chromium browser (installed via: python -m playwright instal), code:powershell (cd C:\Users\DELL\.antigravity\StoryVocabs-social)
+
+### Community 262 - "Community 262"
+Cohesion: 0.29
+Nodes (7): Bank Job Exam Period (Various), BCS Exam Period (Usually February-April), code:block12 (Increase posting frequency: 5-6 posts/day), code:block13 (Focus on: Banking vocabulary, financial terms), code:block14 (Focus on: Academic vocabulary, general knowledge), Exam Season Special Strategy, University Admission Season (June-August)
+
+### Community 263 - "Community 263"
+Cohesion: 0.29
+Nodes (7): code:block10 (Best posting times: 8:00 AM, 1:00 PM, 8:00 PM, 10:30 PM), code:block11 (Best posting times: 4:00 PM, 8:00 PM, 10:30 PM), code:block9 (Best posting times: 8:00 AM, 1:00 PM, 8:00 PM), Facebook (Primary Platform — 50M+ BD users), Instagram (Growing — Urban Gen Z/Millennials), Platform-Specific Strategies, TikTok (Exploding — Younger audience)
+
+### Community 264 - "Community 264"
+Cohesion: 0.29
+Nodes (7): label_bn, weekdays, label_bn, weekdays, topic_groups, business, politics
+
+### Community 265 - "Community 265"
+Cohesion: 0.29
+Nodes (7): pillar_weights, confusables, in_app, news_word, offer, quiz, story60
+
+### Community 266 - "Community 266"
+Cohesion: 0.40
+Nodes (5): extract_array(), main(), str, Vendor the app's word packs into data/word_packs.json.  The social engine must, Return the first top-level array literal (`export const x = [ ... ];`).
+
+### Community 267 - "Community 267"
+Cohesion: 0.33
+Nodes (6): evening, morning, slots, evening, morning, ramadan
+
+### Community 268 - "Community 268"
+Cohesion: 0.40
+Nodes (5): 1. Generate Posts, 2. Render Carousel, code:python (from story_writer import generate_all_posts, select_words_fo), code:python (from image_renderer import render_post_images), 🚀 How to Use
+
+### Community 269 - "Community 269"
+Cohesion: 0.40
+Nodes (5): Core Implementation (Tasks 1-8), End-to-End Testing, Quality Checks, ✅ What's Complete, Word Enrichment
+
+### Community 270 - "Community 270"
+Cohesion: 0.40
+Nodes (5): 12.1 What to Back Up, 12.2 Recovery Steps, 12.3 Git Repository, 12. Backup & Disaster Recovery, code:block15 (Location: C:\Users\DELL\.antigravity\StoryVocabs-social\.git)
+
+### Community 271 - "Community 271"
+Cohesion: 0.40
+Nodes (5): 2.1 Component Diagram, 2.2 Data Flow, 2. System Architecture, code:block1 (┌───────────────────────────────────────────────────────────), code:block2 (Word Packs (JS) → candidates (10 words))
+
+### Community 272 - "Community 272"
+Cohesion: 0.40
+Nodes (5): 3.1 Local Machine (Current), 3.2 Prerequisites, 3.3 External Services, 3. Deployment Environment, code:block3 (Python 3.10+ (tested on 3.14))
+
+### Community 273 - "Community 273"
+Cohesion: 0.40
+Nodes (5): Ongoing: Monthly Optimization, Testing & Iteration Plan, Week 1-2: Baseline, Week 3-4: A/B Testing, Week 5-6: Content Testing
+
+### Community 274 - "Community 274"
+Cohesion: 0.40
+Nodes (5): 1. Generate Posts, 2. Render Carousel, code:python (from story_writer import generate_all_posts, select_words_fo), code:python (from image_renderer import render_post_images), 🚀 How to Use
+
+### Community 275 - "Community 275"
+Cohesion: 0.40
+Nodes (5): Core Implementation (Tasks 1-8), End-to-End Testing, Quality Checks, ✅ What's Complete, Word Enrichment
+
+### Community 276 - "Community 276"
+Cohesion: 0.40
+Nodes (5): 1. Generate Posts, 2. Render Carousel, code:python (from story_writer import generate_all_posts, select_words_fo), code:python (from image_renderer import render_post_images), 🚀 How to Use
+
+### Community 277 - "Community 277"
+Cohesion: 0.40
+Nodes (5): Core Implementation (Tasks 1-8), End-to-End Testing, Quality Checks, ✅ What's Complete, Word Enrichment
+
+### Community 278 - "Community 278"
+Cohesion: 0.50
+Nodes (4): 11.1 Quality Metrics, 11.2 Content Quality Checklist, 11.3 Tracking Files, 11. Monitoring & Quality
+
+### Community 279 - "Community 279"
+Cohesion: 0.50
+Nodes (4): 14. Transition Plan, Phase 1: Knowledge Transfer (Week 1), Phase 2: Independent Operation (Week 2-3), Phase 3: Full Handoff (Week 4)
+
+### Community 280 - "Community 280"
+Cohesion: 0.50
+Nodes (4): After Posting (First 2 Hours), Before Posting, Engagement Optimization Checklist, Weekly Review
+
+### Community 281 - "Community 281"
+Cohesion: 0.50
+Nodes (4): Bangladesh Social Media Landscape (2025-2026), code:block1 (5:30 AM  ── Wake up, Fajr prayer, check phone (morning scrol), Key Behavioral Insights for Our Audience, Research Summary
+
+### Community 282 - "Community 282"
+Cohesion: 0.50
+Nodes (4): code:block2 (🟢 GOLDEN HOURS (Highest engagement)), Peak Engagement Windows (BST), Platform-by-Platform Best Times, Universal Peak Hours for Our Audience
+
+### Community 283 - "Community 283"
+Cohesion: 0.50
+Nodes (4): code:block3 (Post 1 (8:00 AM)), Daily Posting Schedule (4 Posts/Day), Standard Schedule (Non-Ramadan), Why This Schedule Works
+
+### Community 284 - "Community 284"
+Cohesion: 0.67
+Nodes (3): coterie, 2026, dates
+
+### Community 285 - "Community 285"
+Cohesion: 0.67
+Nodes (3): impoverish, 2026, dates
+
+### Community 286 - "Community 286"
+Cohesion: 0.67
+Nodes (3): juxtapose, 2026, dates
+
+### Community 287 - "Community 287"
+Cohesion: 0.67
+Nodes (3): matriculate, 2026, dates
+
+### Community 288 - "Community 288"
+Cohesion: 0.67
+Nodes (3): neophyte, 2026, dates
+
+### Community 289 - "Community 289"
+Cohesion: 0.67
+Nodes (3): vigilant, 2026, dates
+
+### Community 290 - "Community 290"
+Cohesion: 0.67
+Nodes (3): 1.1 Purpose, 1.2 Key Design Decisions, 1. System Overview
+
+### Community 291 - "Community 291"
+Cohesion: 0.67
+Nodes (3): code:block4 (🌙 RAMADAN SCHEDULE (All times BST)), Ramadan 4-Post Schedule, Ramadan Special Schedule
+
+### Community 292 - "Community 292"
+Cohesion: 0.67
+Nodes (3): hashtags, core, pool
+
 ## Knowledge Gaps
-- **1087 isolated node(s):** `_comment`, `version`, `morning`, `evening`, `morning` (+1082 more)
+- **1233 isolated node(s):** `_comment`, `version`, `morning`, `evening`, `morning` (+1228 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -1285,10 +1465,10 @@ Nodes (3): hashtags, core, pool
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `StoryPost` connect `Community 0` to `Community 8`, `Community 1`, `Community 5`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `LLMError` connect `Community 1` to `Community 12`, `Community 5`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `StoryVocabs Social Media Automation — System Handover Document` connect `Community 168` to `Community 229`, `Community 231`, `Community 232`, `Community 238`, `Community 239`, `Community 240`, `Community 242`, `Community 243`, `Community 219`, `Community 253`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `StoryVocabs Social Media Automation — System Handover Document` connect `Community 168` to `Community 229`, `Community 231`, `Community 232`, `Community 73`, `Community 238`, `Community 239`, `Community 240`, `Community 242`, `Community 243`, `Community 219`, `Community 253`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `ludicrous` connect `Community 162` to `Community 17`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Are the 34 inferred relationships involving `Word` (e.g. with `Category` and `bool`) actually correct?**
   _`Word` has 34 INFERRED edges - model-reasoned connections that need verification._
