@@ -1,5 +1,5 @@
 {
- "id": "20260919-mo-b9061c",
+ "id": "20260919-mo-9b0a15",
  "date": "2026-09-19",
  "slot": "morning",
  "pillar": "news_word",
@@ -7,66 +7,66 @@
  "hook_style": "story_open",
  "content": {
   "pillar": "news_word",
-  "headline_en": "Bangladesh faces [[Incipient]] energy crisis amid rising demand",
-  "headline_bn": "বাংলাদেশের সামনে Incipient জ্বালানি সংকট",
-  "hero_word": "Incipient",
-  "hero_gloss_bn": "সূচনকালীন",
+  "headline_en": "Bangladesh celebrates historic win with [[Elation]]",
+  "headline_bn": "ইতিহাসিক জয় নিয়ে গর্বের Elation",
+  "hero_word": "Elation",
+  "hero_gloss_bn": "উচ্চ আনন্দ",
   "story_slides": [
    {
-    "section_label": "What happened",
-    "paragraph": "The nation’s power grid is straining as demand outpaces supply, and analysts warn the problem is still [[Incipient|সূচনকালীন]]. Government officials struggle to cut through a tangled [[Bureaucracy|প্রশাসনিক ব্যবস্থা]] that slows project approvals, while some policymakers argue for a more [[Provident|দূরদর্শী]] approach to invest in renewable sources before the situation worsens. The current shortfalls affect factories, farms, schools, and everyday households, highlighting the urgency for systemic change."
+    "section_label": "The story",
+    "paragraph": "The Bangladesh cricket team returned to Dhaka after their historic Test victory in Australia, and the city’s cricket lovers gathered at the CWAB hall. Officials greeted the players with applause, and the atmosphere was charged with [[Elation|উচ্চ আনন্দ]]. Team captain Shakib praised the squad’s [[Prudent|বিচক্ষণ]] decisions on the field, especially the disciplined bowling changes. The celebration also included a moment for the team to [[Atone|প্রায়শ্চিত্ত]] for earlier losses, turning past setbacks into motivation."
    }
   ],
   "words": [
    {
-    "word": "Incipient",
+    "word": "Prudent",
     "pos": "adjective",
     "difficulty": "Intermediate",
-    "phonetic": "/ɪnˈsɪpɪənt/",
-    "gloss_bn": "সূচনকালীন",
-    "meaning_bn": "শুরু হওয়ার পর্যায়ে থাকা।",
-    "meaning_en": "Just beginning to exist or develop.",
-    "example": "<b>Incipient</b> solar projects are popping up on university campuses.",
-    "synonym": "beginning, initial, nascent",
-    "antonym": "advanced, mature, developed"
+    "phonetic": "/ˈpruːdənt/",
+    "gloss_bn": "বিচক্ষণ",
+    "meaning_bn": "বিচক্ষণভাবে কাজ করা",
+    "meaning_en": "Showing wise and sensible judgment",
+    "example": "<b>Prudent</b> students always plan their study schedule ahead.",
+    "synonym": "wise, cautious, sensible",
+    "antonym": "reckless, imprudent"
    },
    {
-    "word": "Bureaucracy",
+    "word": "Atone",
+    "pos": "verb",
+    "difficulty": "Intermediate",
+    "phonetic": "/əˈtoʊn/",
+    "gloss_bn": "প্রায়শ্চিত্ত",
+    "meaning_bn": "প্রায়শ্চিত্ত করা",
+    "meaning_en": "To make amends for a wrongdoing",
+    "example": "<b>Atone</b> for missing a class by attending extra tutoring.",
+    "synonym": "repent, redeem, expiate",
+    "antonym": "guilt, offend"
+   },
+   {
+    "word": "Elation",
     "pos": "noun",
     "difficulty": "Beginner",
-    "phonetic": "/bjʊˈrɒkrəsi/",
-    "gloss_bn": "প্রশাসনিক ব্যবস্থা",
-    "meaning_bn": "অনেক স্তরের কাজ ভাগ করা ব্যবস্থা।",
-    "meaning_en": "A system with many administrative layers.",
-    "example": "Students navigate the <b>Bureaucracy</b> to get internship approvals.",
-    "synonym": "red tape, administration, officialdom",
-    "antonym": "simplicity, efficiency, ease"
-   },
-   {
-    "word": "Provident",
-    "pos": "adjective",
-    "difficulty": "Beginner",
-    "phonetic": "/ˈprɒvɪdənt/",
-    "gloss_bn": "দূরদর্শী",
-    "meaning_bn": "ভবিষ্যৎকে সতর্কভাবে পরিকল্পনা করা।",
-    "meaning_en": "Showing foresight and responsibility for the future.",
-    "example": "A <b>Provident</b> student saves part of his stipend for emergencies.",
-    "synonym": "frugal, prudent, thrifty",
-    "antonym": "profligate, extravagant"
+    "phonetic": "/ɪˈleɪʃən/",
+    "gloss_bn": "উচ্চ আনন্দ",
+    "meaning_bn": "অত্যন্ত আনন্দের অবস্থা",
+    "meaning_en": "Intense feeling of happiness or pride",
+    "example": "Students felt <b>Elation</b> after hearing their exam results.",
+    "synonym": "joy, euphoria, triumph",
+    "antonym": "despair"
    }
   ],
   "category": {
-   "en": "Geopolitics",
-   "bn": "ভূ-রাজনীতি",
-   "icon": "🌏"
+   "en": "Bangladesh",
+   "bn": "বাংলাদেশ",
+   "icon": "🇧🇩"
   },
-  "source_title": "Why Bangladesh must pivot to renewable energy now",
-  "source_url": "https://www.thedailystar.net/slow-reads/big-picture/news/why-bangladesh-must-pivot-renewable-energy-now-4184106",
-  "topic": "Why Bangladesh must pivot to renewable energy now"
+  "source_title": "CWAB hosts reception for Bangladesh team after historic Australia Test win",
+  "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOMmVUekdfSk9uLW5wbm9OZ2s0OWxfaF8yMkMtR21CNGN0bERRd1otY005N1dXLTBWalNsallSUHh5OTQ0UWVhM3JySWVNUlp0MVd5VU42eXBldWdZLXhzcUZWOTJtdHpYR1c5NVNDOGRlM0Z4QmJJMVUwOWZLdzJfV0otVW9aY0VvVmtxYldKZFNNTE9Rd1Z4Sll4NkjSAaIBQVVfeXFMT25LWHZyUXFuSmNLS3M1ZElSUlRpYUl3d29pcGdVUll1ZmVXQ3cxRGNKa0MwUjlkdGw2aVA2YU14WDlSOFhtRUJnSXJLYXJGVW4wYTF2UUk5dER5bGd0Q2pKODhhN3hCLVFhSUkyQTdYd0lLM1N4cGR4Q1pRSlBDeUtITDJ3RmVUdXREeWU3MVV3NkNrOWliam1CYTZOVEhDY3l3?oc=5",
+  "topic": "CWAB hosts reception for Bangladesh team after historic Australia Test win"
  },
- "caption_fb": "বাংলাদেশে জ্বালানি সংকটের আগামি ঢেউ\n\nপ্রতিদিনের ঘরবাড়ি থেকে ফ্যাক্টরি পর্যন্ত প্রভাব পড়ছে\nসরকারি প্রকল্প অনুমোদন ধীর, নতুন জ্বালানি দরকার\nঅর্থনীতি ও পরীক্ষার শব্দভান্ডারেও \"Incipient\" গুরুত্বপূর্ণ\n\nএই শব্দটা দিয়ে একটা বাক্য লিখো তো\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\n👉 https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=news_word&utm_content=20260919-mo-b9061c\n\n#StoryVocabs #EnglishVocabulary #BCS",
- "caption_ig": "বাংলাদেশে জ্বালানি সংকটের আগামি ঢেউ\n\nপ্রতিদিনের ঘরবাড়ি থেকে ফ্যাক্টরি পর্যন্ত প্রভাব পড়ছে\nসরকারি প্রকল্প অনুমোদন ধীর, নতুন জ্বালানি দরকার\nঅর্থনীতি ও পরীক্ষার শব্দভান্ডারেও \"Incipient\" গুরুত্বপূর্ণ\n\nএই শব্দটা দিয়ে একটা বাক্য লিখো তো\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #IELTS #RenewableEnergy #Incipient #Bangladesh",
- "first_comment": "📰 Source: Why Bangladesh must pivot to renewable energy now\nhttps://www.thedailystar.net/slow-reads/big-picture/news/why-bangladesh-must-pivot-renewable-energy-now-4184106",
+ "caption_fb": "ইতিহাসিক জয়! ঢাকায় উল্লাসের স্রোত, Elation এর রঙে ভরা\n\nElation শব্দটি ‘উচ্চ আনন্দ’ বোঝায়, প্রায়শই বিজয় বা উদযাপনে দেখা যায়।\n\nPrudent = বিচক্ষণ; বাক্যে: ‘He made a prudent decision before the exam.’\n\nAtone = প্রায়শ্চিত্ত; ব্যবহার: ‘She tried to atone for her mistake.’\n\nElation শব্দ দিয়ে তুমি কীভাবে আনন্দ বর্ণনা করবে?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\n👉 https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=news_word&utm_content=20260919-mo-9b0a15\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "ইতিহাসিক জয়! ঢাকায় উল্লাসের স্রোত, Elation এর রঙে ভরা\n\nElation শব্দটি ‘উচ্চ আনন্দ’ বোঝায়, প্রায়শই বিজয় বা উদযাপনে দেখা যায়।\n\nPrudent = বিচক্ষণ; বাক্যে: ‘He made a prudent decision before the exam.’\n\nAtone = প্রায়শ্চিত্ত; ব্যবহার: ‘She tried to atone for her mistake.’\n\nElation শব্দ দিয়ে তুমি কীভাবে আনন্দ বর্ণনা করবে?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUAdmission #IELTS #Elation #Prudent",
+ "first_comment": "📰 Source: CWAB hosts reception for Bangladesh team after historic Australia Test win\nhttps://news.google.com/rss/articles/CBMinAFBVV95cUxOMmVUekdfSk9uLW5wbm9OZ2s0OWxfaF8yMkMtR21CNGN0bERRd1otY005N1dXLTBWalNsallSUHh5OTQ0UWVhM3JySWVNUlp0MVd5VU42eXBldWdZLXhzcUZWOTJtdHpYR1c5NVNDOGRlM0Z4QmJJMVUwOWZLdzJfV0otVW9aY0VvVmtxYldKZFNNTE9Rd1Z4Sll4NkjSAaIBQVVfeXFMT25LWHZyUXFuSmNLS3M1ZElSUlRpYUl3d29pcGdVUll1ZmVXQ3cxRGNKa0MwUjlkdGw2aVA2YU14WDlSOFhtRUJnSXJLYXJGVW4wYTF2UUk5dER5bGd0Q2pKODhhN3hCLVFhSUkyQTdYd0lLM1N4cGR4Q1pRSlBDeUtITDJ3RmVUdXREeWU3MVV3NkNrOWliam1CYTZOVEhDY3l3?oc=5",
  "comment_delay_minutes": 0,
  "media": [
   "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-19/morning/slide_01_cover.png",
@@ -89,14 +89,14 @@
  "quality_score": 7.0,
  "attempts": 3,
  "evergreen": false,
- "telegram_message_id": 11,
+ "telegram_message_id": 21,
  "fb_post_id": "",
  "ig_media_id": "",
  "fb_story_id": "",
  "ig_story_id": "",
  "review_note": "",
  "error": "",
- "created_at": "2026-09-18T21:04:07+00:00",
+ "created_at": "2026-09-18T23:40:25+00:00",
  "published_at": "",
- "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=news_word&utm_content=20260919-mo-b9061c"
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=news_word&utm_content=20260919-mo-9b0a15"
 }
