@@ -161,10 +161,15 @@ def send_preview(item, number: int | None = None) -> int:
     """Send slides as an album, then the caption + instructions. Returns the caption message id."""
     media = []
     files = {}
-    for i, p in enumerate(item.media[:10]):
-        key = f"f{i}"
-        files[key] = (Path(p).name, Path(p).read_bytes(), "image/png")
-        media.append({"type": "photo", "media": f"attach://{key}"})
+    local = [p for p in item.media[:10] if Path(p).exists()]
+    if len(local) == len(item.media[:10]):
+        for i, p in enumerate(local):
+            key = f"f{i}"
+            files[key] = (Path(p).name, Path(p).read_bytes(), "image/png")
+            media.append({"type": "photo", "media": f"attach://{key}"})
+    elif item.media_urls:
+        # rendered in an earlier run (output/ is not in git): let Telegram fetch the public copies
+        media = [{"type": "photo", "media": u} for u in item.media_urls[:10]]
     if media:
         r = requests.post(f"{API}/sendMediaGroup", data={"chat_id": settings.TELEGRAM_CHAT_ID, "media": json.dumps(media)},
                           files=files, timeout=180)
