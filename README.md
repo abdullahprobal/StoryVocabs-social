@@ -6,7 +6,7 @@ published by GitHub Actions — at zero running cost (free LLM tiers, Meta Graph
 ```
 strategy.json ──► planner ──► writer (free LLM chain, JSON contract) ──► gates ──► render (Playwright)
                                    │                                                     │
-                                   └──► caption (Bangla-first, one UTM link) ◄──── critic ┘
+                                   └──► caption (Bangla-first, clean tracked link) ◄──── critic ┘
                                                      │
               queue/<date>/<slot>.json  ◄────────────┘   (Telegram preview: ❌ skip · ✏️ note · ✅)
                                                      │
@@ -78,6 +78,11 @@ No reply = it publishes at the slot time (`REVIEW_MODE=review`). Set `REVIEW_MOD
 * `ci.yml` — tests on push
 
 All state (`queue/`, `state/`, `analytics/`, `strategy.json`, `evergreen/`) is committed back by the bot.
+
+Public captions show a clean first-party `/go/<pillar>/<post-id>` link. The
+StoryVocabs app expands it to the full UTM URL, so attribution stays intact
+without exposing a long query string. If the format changes, refresh existing
+Telegram previews with `python scripts/refresh_telegram_previews.py`.
 
 ## Guard rails
 
