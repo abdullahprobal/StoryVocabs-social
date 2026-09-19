@@ -54,7 +54,9 @@
     "recap_title_generic": "এক নজরে",
     "recap_sub_generic": "সেভ করে রাখো",
     "swipe_generic": "পরের পাতায়",
-    "quiz_tag": "BCS · BANK · ADMISSION"
+    "quiz_tag": "BCS · BANK · ADMISSION",
+    "quiz_kicker_line": "এই শব্দটা কি জানো?",
+    "quiz_note": "উত্তরটা কমেন্টে লিখো — সঠিক উত্তর আসছে ৬ ঘণ্টা পর"
   },
   "cta_options": [
     "৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো",

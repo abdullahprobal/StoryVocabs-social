@@ -327,6 +327,7 @@ def render_quiz(post: QuizPost, out_dir: Path) -> list[str]:
         "WORD": esc(post.word.word), "PHONETIC": esc(post.word.phonetic), "POS": esc(post.word.pos),
         "QUESTION": esc(post.question_bn), "OPTIONS": opts, "EXAM": esc(post.exam_tag),
         "HINT": bold_html(post.word.example), "HINT_DISPLAY": "block" if post.word.example else "none",
+        "QUIZ_KICKER": S("quiz_kicker_line", "Do you know this one?"), "QUIZ_NOTE": S("quiz_note", "Answer in the comments — the correct one is posted 6 hours later"),
     })
     return render_pages([("slide_01_quiz.png", page, settings.CANVAS)], out_dir)
 
@@ -363,7 +364,7 @@ def render_in_app(post: InAppPost, out_dir: Path) -> list[str]:
     shot = ASSETS / "screens" / post.screenshot
     src = _b64(shot, "image/png") if shot.exists() else ""
     page = _page("in_app.html", {
-        "HEADER": header_html('<span class="pill blue">অ্যাপের ভেতরে</span>'),
+        "HEADER": header_html(f'<span class="pill blue">{S("in_app_kicker", "In the app")}</span>'),
         "FOOTER": footer_html("৩টি প্যাক ফ্রি"),
         "SHOT": src, "HEADLINE_BN": esc(post.headline_bn), "FACT": esc(post.fact_line),
         "NOTE": esc(post.feature_note_bn),
@@ -385,6 +386,6 @@ def render_offer(post: OfferPost, out_dir: Path) -> list[str]:
 def render_story_card(title_html: str, sub_bn: str, kicker: str, out_dir: Path, filename="story_1080x1920.png") -> str:
     page = _page("story_card.html", {
         "HEADER": header_html(""), "FOOTER": footer_html("৩টি প্যাক ফ্রি"),
-        "KICKER": esc(kicker), "TITLE_HTML": title_html, "SUB_BN": esc(sub_bn),
+        "KICKER": esc(kicker), "TITLE_HTML": title_html, "SUB_BN": esc(sub_bn), "PROFILE_UP": S("profile_up", "Full post on the profile ↑"),
     }, height=settings.STORY_CANVAS[1])
     return render_pages([(filename, page, settings.STORY_CANVAS)], out_dir)[0]

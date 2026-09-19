@@ -25,13 +25,13 @@ AUDIENCE: {audience} at {when}.
 
 RULES
 - hook_line: the first line, <= 90 characters, {caption_rule}.
-  It must earn the "See more" tap on its own. No emoji at the start. No "আজকের শব্দ" style labels.
+  It must earn the "See more" tap on its own. No emoji at the start. No "Today's post" style labels.
   The hook must be about what is on the image. Never invent history, etymology, people, places or anecdotes
-  about a word ("এই শব্দটা এসেছে..." is banned unless the origin is on the image).
+  about the subject (origin stories are banned unless they are on the image).
 - body: 2-5 short lines separated by blank lines. Say something true and useful that is NOT already on the image
   (context, the exam angle, a usage warning, a one-line memory trick). No hashtags here. No URL here.
 - comment_prompt: one specific question that makes it easy to reply with one word or a sentence
-  (e.g. "এই শব্দটা দিয়ে একটা বাক্য লিখো তো — সবচেয়ে ভালোটা পিন করব")
+  (in the audience's language; e.g. "write one sentence with this — I'll pin the best one")
 - cta_line: pick ONE of these exactly, or a close variant with the same meaning:
   {cta_options}
   Never "download" (it is a website), never "unlimited", never a price unless the post is about pricing.

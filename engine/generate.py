@@ -185,12 +185,11 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
                                 layout=getattr(content, "layout", ""))
             if isinstance(content, QuizPost) or (isinstance(content, GenericPost) and content.layout == "quiz"):
                 # The body is fixed copy: the LLM may only write the hook, so the answer cannot leak.
-                cap.body = "\n\n".join([
-                    "ছবিতে চারটা অপশন। একটা ঠিক, তিনটা খুব কাছাকাছি।",
-                    "সঠিক উত্তর আর ব্যাখ্যা আসছে কমেন্টে, ৬ ঘণ্টা পর।",
-                    "BCS, Bank, IELTS — যে পরীক্ষাই দাও, এই শব্দটা তালিকায় রাখো।",
+                cap.body = "\n\n".join(settings.STRINGS.get("quiz_body") or [
+                    "Four options on the image. One is right, three are close.",
+                    "The answer and explanation come as a comment in 6 hours.",
                 ])
-                cap.comment_prompt = "তোমার উত্তর: A, B, C না D? কমেন্টে লিখো।"
+                cap.comment_prompt = settings.STRINGS.get("quiz_comment_prompt") or "Your answer: A, B, C or D?"
             fb, ig, url = assemble(cap, plan.pillar, item_id, strategy, seed=attempt)
             gates.banned_claims(fb, ig, summary, allow_percent=(plan.pillar == "offer"))
             gates.caption_shape(fb, ig)
