@@ -1,0 +1,11 @@
+{
+  "label": "Exam Tip",
+  "layout": "carousel",
+  "source": "dataset",
+  "dataset": "project/data/exam_tips.json",
+  "hook_styles": ["question", "mistake", "exam_angle"],
+  "prompt": "Turn this study tip into a short, concrete social post for exam candidates.\n\nTIP:\n{item}\n\nHOOK STYLE: {hook_instruction}\n\nWrite the slides in natural Bangla (English terms may stay English). Give one recap row per actionable step. Do not invent statistics.",
+  "slides": {"min": 1, "max": 2, "words": "50-70"},
+  "items": {"min": 2, "max": 4},
+  "vanity_path": "tips"
+}

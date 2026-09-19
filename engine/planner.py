@@ -71,6 +71,12 @@ def pick_hook_style(strategy: dict, rng: random.Random | None = None, pillar: st
     if not styles:
         return "question"
     allowed = PILLAR_HOOKS.get(pillar)
+    if pillar not in PILLAR_HOOKS:
+        try:
+            from engine.writers.generic import spec_for
+            allowed = (spec_for(pillar) or {}).get("hook_styles") or ["question", "bold_true", "exam_angle", "number"]
+        except Exception:  # noqa: BLE001
+            allowed = None
     names = [n for n in styles if not allowed or n in allowed] or list(styles)
     weights = [max(0.05, float(styles[n].get("weight", 1.0))) for n in names]
     return rng.choices(names, weights=weights, k=1)[0]

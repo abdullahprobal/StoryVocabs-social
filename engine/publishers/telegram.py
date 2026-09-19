@@ -48,8 +48,24 @@ def notify(text: str) -> int | None:
     return r.json()["result"]["message_id"]
 
 
-PILLAR_LABELS = {"news_word": "News Word", "quiz": "Quiz", "confusables": "Confusables",
-                 "in_app": "In the App", "story60": "Story in 60s", "offer": "Community / Offer"}
+class _Labels(dict):
+    """Built-in pillar labels plus project/pillars/*.json labels, resolved lazily."""
+
+    def get(self, key, default=None):
+        if key in self:
+            return dict.get(self, key)
+        try:
+            from engine.writers.generic import spec_for
+            spec = spec_for(key)
+            if spec and spec.get("label"):
+                return spec["label"]
+        except Exception:  # noqa: BLE001
+            pass
+        return default if default is not None else key
+
+
+PILLAR_LABELS = _Labels({"news_word": "News Word", "quiz": "Quiz", "confusables": "Confusables",
+                         "in_app": "In the App", "story60": "Story in 60s", "offer": "Community / Offer"})
 
 
 def _preview_text(item, number: int | None = None) -> str:

@@ -159,7 +159,7 @@ def _openrouter(model, system, user, temperature, max_tokens):
     return _openai_compatible("https://openrouter.ai/api/v1", settings.OPENROUTER_API_KEY, model,
                               system, user, temperature, max_tokens,
                               extra_headers={"HTTP-Referer": settings.PUBLIC_SITE_URL,
-                                             "X-Title": "StoryVocabs Social"})
+                                             "X-Title": f"{settings.BRAND_NAME} Social"})
 
 
 _PROVIDERS = {"gemini": _gemini, "groq": _groq, "cerebras": _cerebras, "openrouter": _openrouter}

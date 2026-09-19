@@ -57,10 +57,11 @@ def test_classify_accepts_plain_words():
 
 
 def test_plain_decision_targets_newest_pending_card(monkeypatch, tmp_path):
-    from engine import review, settings
+    from engine import lineup, review, settings
     from engine.contracts import QueueItem
     from engine.generate import save_item
     monkeypatch.setattr(settings, "QUEUE_DIR", tmp_path)
+    monkeypatch.setattr(lineup, "STATE", tmp_path / "lineup.json")   # no real lineup in play
     for i, (d, mid) in enumerate([("2026-09-19", 40), ("2026-09-20", 44)]):
         save_item(QueueItem(id=f"x{i}", date=d, slot="morning", pillar="quiz", content={}, telegram_message_id=mid),
                   tmp_path / d / "morning.json")
