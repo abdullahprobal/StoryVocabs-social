@@ -5,5 +5,11 @@
    "path": "queue/2026-09-19/evening.json"
   }
  },
- "latest": "2026-09-19"
+ "latest": "2026-09-20",
+ "2026-09-20": {
+  "1": {
+   "id": "20260920-mo-9038db",
+   "path": "queue/2026-09-20/morning.json"
+  }
+ }
 }
