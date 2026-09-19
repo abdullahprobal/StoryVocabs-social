@@ -142,8 +142,9 @@ CONTENT_TYPES = {"news_word": StoryPost, "story60": StoryPost, "quiz": QuizPost,
 
 def content_model(item: QueueItem):
     """Rebuild the pydantic content object stored in a queue item."""
-    cls = CONTENT_TYPES.get(item.pillar, GenericPost)
-    return cls.model_validate(item.content)
+    if G.spec_for(item.pillar) or item.content.get("layout"):
+        return GenericPost.model_validate(item.content)
+    return CONTENT_TYPES.get(item.pillar, GenericPost).model_validate(item.content)
 
 
 def rerender(item: QueueItem) -> QueueItem:
@@ -329,7 +330,7 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--date", help="YYYY-MM-DD (default: today BST)")
     ap.add_argument("--days", type=int, default=None, help="how many days from --date (default QUEUE_DAYS_AHEAD)")
-    ap.add_argument("--pillar", choices=["news_word", "quiz", "confusables", "in_app", "story60", "offer"])
+    ap.add_argument("--pillar", help="built-in name or any project/pillars/<name>.json")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--force", action="store_true", help="regenerate even if a queue item exists")
     ap.add_argument("--no-critic", action="store_true")
