@@ -119,24 +119,16 @@ def run_slot(date_str: str, slot: str) -> int:
         log(f"{date_str} {slot}: skipped by owner")
         return 0
 
-    decisions = telegram.decisions() if telegram.configured() else {}
-    if item and item.telegram_message_id in decisions:
-        kind, text = decisions[item.telegram_message_id]
-        log(f"  owner decision: {kind} {text[:60]}")
-        if kind == "skip":
-            item.status = "skipped"
-            item.review_note = text
-            save_item(item, path)
-            item = None
-        elif kind == "note":
-            item = regenerate_with_note(item, text)
-            save_item(item, path)
-            if item.status == "failed":
-                telegram.notify(f"⚠ regenerate failed for {date_str} {slot}: {item.error}")
-                item = None
-        elif kind == "approve":
-            item.status = "approved"
-            save_item(item, path)
+    # Apply anything the owner said since the last check (same logic as the 30-minute review job).
+    if telegram.configured():
+        from engine.review import apply_decisions, regenerate
+        to_regen = apply_decisions()
+        if to_regen:
+            regenerate(to_regen)
+        item = load_item(path)
+    if item and item.status == "skipped":
+        log(f"{date_str} {slot}: skipped by owner")
+        item = None
 
     if item is None or item.status == "failed":
         if item is not None:
@@ -151,6 +143,9 @@ def run_slot(date_str: str, slot: str) -> int:
 
     if settings.REVIEW_MODE == "manual" and item.status != "approved":
         log(f"{date_str} {slot}: REVIEW_MODE=manual and not approved — waiting")
+        from engine.review import _label
+        telegram.notify(f"⏸ Not posted — {_label(item)} is still waiting for your ✅. "
+                        f"Reply “approve” to the card and it goes out at the next run.")
         return 0
 
     try:
