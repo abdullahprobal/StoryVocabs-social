@@ -18,7 +18,16 @@ def test_assemble_has_one_fb_url_and_no_ig_url():
     gates.caption_shape(fb, ig)
     assert url.startswith(settings.PUBLIC_SITE_URL)
     assert "utm_campaign=news_word" in url
-    assert f"{settings.PUBLIC_SITE_URL}/go/news_word/abc" in fb and "http" not in ig
+    assert f"{settings.SITE_DISPLAY}/words" in fb and "http" not in fb and settings.SITE_DISPLAY not in ig
+
+
+def test_display_link_is_vanity_with_day_tag():
+    from engine.caption import build_display_url, build_utm
+    assert build_display_url("quiz", "20260920-mo-6ed355") == f"{settings.SITE_DISPLAY}/quiz/0920"
+    assert build_display_url("offer", "x") == f"{settings.SITE_DISPLAY}/free"
+    assert "utm_content=0920" in build_utm("quiz", "20260920-mo-6ed355")
+    fb, ig, _ = assemble(_caption(), "quiz", "20260920-mo-6ed355", load_strategy())
+    assert "/go/" not in fb and "6ed355" not in fb
 
 
 def test_banned_claims_blocks_harvard_and_stats():

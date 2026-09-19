@@ -31,6 +31,8 @@ class GateError(ValueError):
 
 _EMOJI = re.compile("[\U0001F300-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF]")
 _URL = re.compile(r"https?://\S+")
+# Public captions use the bare vanity link (storyvocabs.com/quiz) — count those too.
+_SITE_LINK = re.compile(r"(?<![\w/])" + re.escape(settings.SITE_DISPLAY) + r"(?:/[\w-]+){0,2}(?![\w/])")
 _STAT_CLAIMS = [
     r"\b\d{1,3}\s?%\s*(?:students|মানুষ|শিক্ষার্থী|people)",   # "90% students"
     r"\b\d+\s?(?:x|গুণ)\s*(?:বেশি|more|better|faster)",
@@ -61,10 +63,12 @@ def caption_shape(fb: str, ig: str) -> None:
     hook = fb.split("\n", 1)[0]
     if len(hook) > settings.HOOK_MAX_CHARS + 10:
         raise GateError(f"hook too long ({len(hook)} chars): {hook[:60]}")
-    if len(_URL.findall(fb)) != 1:
-        raise GateError("facebook caption must contain exactly one URL")
-    if _URL.search(ig):
-        raise GateError("instagram caption must not contain a URL")
+    if len(_URL.findall(fb)) + len(_SITE_LINK.findall(fb)) != 1:
+        raise GateError("facebook caption must contain exactly one link")
+    if _URL.search(fb):
+        raise GateError("facebook caption must show the bare vanity link, not a full URL")
+    if _URL.search(ig) or _SITE_LINK.search(ig):
+        raise GateError("instagram caption must not contain a link")
     if len(_EMOJI.findall(fb)) > settings.MAX_EMOJI + 2:
         raise GateError("too many emoji")
     if len(fb) > settings.CAPTION_MAX_CHARS_FB:
@@ -135,6 +139,6 @@ Return score (overall), hook_score, bangla_ok, forced_words, issues, improved_ho
 
 
 def critic(caption_fb: str, summary: str) -> CriticVerdict:
-    caption_fb = _URL.sub("<link>", caption_fb)
+    caption_fb = _SITE_LINK.sub("<link>", _URL.sub("<link>", caption_fb))
     return call_json(SYSTEM, CRITIC_PROMPT.format(caption=caption_fb, summary=summary), CriticVerdict,
                      temperature=0.2, max_tokens=800)

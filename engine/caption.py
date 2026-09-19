@@ -41,17 +41,18 @@ RULES
 
 
 def build_utm(pillar: str, post_id: str, source: str = "facebook") -> str:
-    q = urlencode({"utm_source": source, "utm_medium": "social", "utm_campaign": pillar, "utm_content": post_id})
+    tag = post_id[4:8] if len(post_id) >= 8 and post_id[:8].isdigit() else post_id
+    q = urlencode({"utm_source": source, "utm_medium": "social", "utm_campaign": pillar, "utm_content": tag})
     return f"{settings.PUBLIC_SITE_URL}/?{q}"
 
 
 def build_display_url(pillar: str, post_id: str) -> str:
-    """Return the clean first-party URL shown in public captions.
-
-    The app expands this short path back to the tracked UTM landing URL, so
-    readers see a professional StoryVocabs link without losing attribution.
-    """
-    return f"{settings.PUBLIC_SITE_URL}/go/{pillar}/{post_id}"
+    """The link readers see: `storyvocabs.com/quiz/0920` — bare domain, human path,
+    a 4-digit day tag for per-post attribution. The app 302s it to the UTM landing
+    URL, so tracking survives without a machine id in public."""
+    tag = post_id[4:8] if len(post_id) >= 8 and post_id[:8].isdigit() else ""
+    path = settings.PILLAR_PATHS.get(pillar, "free")
+    return f"{settings.SITE_DISPLAY}/{path}" + (f"/{tag}" if tag else "")
 
 
 def write_caption(pillar: str, summary: str, hook_instruction: str, when: str = "8 am") -> Caption:
@@ -80,6 +81,6 @@ def assemble(cap: Caption, pillar: str, post_id: str, strategy: dict, seed: int 
     fb_tags = " ".join("#" + t for t in _tags(cap, strategy, *settings.HASHTAGS_FB, rng))
     ig_tags = " ".join("#" + t for t in _tags(cap, strategy, *settings.HASHTAGS_IG, rng))
 
-    fb = f"{cap.hook_line.strip()}\n\n{body}\n\n{cap.comment_prompt.strip()}\n\n{cap.cta_line.strip()}\n👉 {display_url}\n\n{fb_tags}"
+    fb = f"{cap.hook_line.strip()}\n\n{body}\n\n{cap.comment_prompt.strip()}\n\n{cap.cta_line.strip()}\n{display_url}\n\n{fb_tags}"
     ig = f"{cap.hook_line.strip()}\n\n{body}\n\n{cap.comment_prompt.strip()}\n\n{cap.cta_line.strip()} — link in bio\n.\n.\n{ig_tags}"
     return fb.strip(), ig.strip(), url_fb

@@ -48,12 +48,28 @@ def notify(text: str) -> int | None:
     return r.json()["result"]["message_id"]
 
 
+PILLAR_LABELS = {"news_word": "News Word", "quiz": "Quiz", "confusables": "Confusables",
+                 "in_app": "In the App", "story60": "Story in 60s", "offer": "Community / Offer"}
+
+
 def _preview_text(item) -> str:
-    """Build the review message body consistently for new and edited previews."""
-    head = (f"🗓 {item.date} · {item.slot} · {item.pillar} · hook={item.hook_style} · score={item.quality_score}\n"
-            f"id: {item.id}\n\n")
-    tail = ("\n\n— reply to THIS message —\n❌ skip   ✏️ <note> regenerate   ✅ approve\n"
-            f"No reply = publishes at {item.slot} slot (REVIEW_MODE={settings.REVIEW_MODE}).")
+    """Review card: what a reader will see, then how to decide. No internal ids or scores."""
+    from datetime import datetime
+    try:
+        day = datetime.strptime(item.date, "%Y-%m-%d").strftime("%a %d %b")
+    except ValueError:
+        day = item.date
+    when = {"morning": "8:00 AM", "evening": "8:00 PM"}.get(item.slot, item.slot)
+    slides = f"{len(item.media)} slide{'s' if len(item.media) != 1 else ''}"
+    head = f"📋 Review · {day} · {when} · {PILLAR_LABELS.get(item.pillar, item.pillar)} · {slides}\n\n"
+    if settings.REVIEW_MODE == "manual":
+        rule = "Nothing is posted until you reply ✅ to this message."
+    elif settings.REVIEW_MODE == "review":
+        rule = f"Posts automatically at {when} unless you reply ❌."
+    else:
+        rule = "Autopilot is on; this is a copy of what will post."
+    tail = ("\n\n————————————\n"
+            "Reply to this message:  ✅ approve  ·  ❌ skip  ·  ✏️ your note (regenerates)\n" + rule)
     return (head + item.caption_fb + tail)[:4000]
 
 
