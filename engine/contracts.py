@@ -264,6 +264,7 @@ class CriticVerdict(BaseModel):
     hook_score: float = Field(5, ge=0, le=10)
     bangla_ok: bool = True
     forced_words: list[str] = Field(default_factory=list)
+    factual_error: bool = Field(False, description="true if any statement is untrue or misleading")
     issues: list[str] = Field(default_factory=list)
     improved_hook: str = ""
 

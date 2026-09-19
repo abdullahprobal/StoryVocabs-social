@@ -94,3 +94,12 @@ def test_llm_extract_json_handles_fences():
     from engine.llm import extract_json
     assert extract_json('```json\n{"a": 1}\n```') == '{"a": 1}'
     assert extract_json('text before {"a": {"b": 2}} after') == '{"a": {"b": 2}}'
+
+
+def test_quiz_caption_may_not_leak_the_answer():
+    fb = "Vitriolic শুনলেই কী মনে হয়?\n\nছবিতে চারটা অপশন।\n\nstoryvocabs.com/quiz/0920"
+    gates.quiz_caption_keeps_answer(fb, "তীব্র বিদ্বেষপূর্ণ", "বিদ্বেষপূর্ণ")
+    with pytest.raises(gates.GateError):
+        gates.quiz_caption_keeps_answer(fb.replace("কী মনে হয়?", "মানে হলো বিদ্বেষপূর্ণ"), "তীব্র বিদ্বেষপূর্ণ", "বিদ্বেষপূর্ণ")
+    with pytest.raises(gates.GateError):
+        gates.quiz_caption_keeps_answer("Vitriolic means bitter\n\nx", "bitter", "তিক্ত")

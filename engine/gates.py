@@ -82,6 +82,21 @@ def caption_shape(fb: str, ig: str) -> None:
         raise GateError("stale vercel link")
 
 
+_DEFINES = re.compile(r"(মানে হলো|মানে হচ্ছে|অর্থ হলো|অর্থ হচ্ছে|\bmeans\b|meaning is|refers to|বোঝায়)", re.I)
+
+
+def quiz_caption_keeps_answer(fb: str, correct_option: str, gloss: str) -> None:
+    """A quiz caption must not contain the correct option, the gloss, or a definition-shaped hook."""
+    low = fb.lower()
+    for leak in (correct_option, gloss):
+        leak = (leak or "").strip().lower()
+        if len(leak) >= 3 and leak in low:
+            raise GateError(f"quiz caption leaks the answer: '{leak}'")
+    hook = fb.split("\n", 1)[0]
+    if _DEFINES.search(hook):
+        raise GateError("quiz hook defines the word")
+
+
 def story_words(post: StoryPost) -> None:
     text = " ".join(s.paragraph for s in post.story_slides)
     for w in post.words:
@@ -121,7 +136,8 @@ def html_tokens(html: str, name: str = "") -> None:
 CRITIC_PROMPT = """You are the harshest editor at a Dhaka student media page. Rate this post 1-10.
 
 Design notes (do NOT penalise these): the story text on the image is English on purpose (reading practice);
-captions are Bangla-first on purpose; the link is a tracked website link and is required.
+captions are Bangla-first on purpose; the final CTA line ('৩টি প্যাক ফ্রি...' / 'Save করে রাখো' etc.) and the
+link are a fixed brand requirement — never call them promotional or ad-like, judge everything above them.
 
 CAPTION (Facebook):
 {caption}
@@ -133,9 +149,10 @@ Score criteria (be strict; 8+ only if you would genuinely stop scrolling):
 - hook_score: does line 1 make a tired student tap "See more"?
 - Bangla: natural, current, no Sanskritised or machine-translated phrasing? (bangla_ok)
 - Are any vocabulary words forced or wrongly used? (forced_words)
-- Anything untrue, cringe, generic, or that sounds like an ad? (issues)
+- factual_error: true if ANY statement about the news, the exam, or the word is untrue or misleading (e.g. wrong meaning, invented detail, wrong exam format). Be literal.
+- Anything cringe, generic, or that sounds like an ad? (issues)
 - improved_hook: rewrite line 1 to be better (<= 90 chars, Bangla-first), or "" if already strong.
-Return score (overall), hook_score, bangla_ok, forced_words, issues, improved_hook."""
+Return score (overall), hook_score, bangla_ok, forced_words, factual_error, issues, improved_hook."""
 
 
 def critic(caption_fb: str, summary: str) -> CriticVerdict:
