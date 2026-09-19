@@ -116,7 +116,10 @@ def write_generic(pillar: str, date_str: str, strategy: dict, hook_style: str, s
     sl, it = spec.get("slides", {}), spec.get("items", {})
     rules = LAYOUT_RULES[layout].format(slides_min=sl.get("min", 1), slides_max=sl.get("max", 2), words=sl.get("words", "60-90"),
                                         items_min=it.get("min", 0), items_max=it.get("max", 4))
-    user = spec["prompt"].format(**ctx) + "\n\nOUTPUT RULES\n" + rules + f'\nSet pillar="{pillar}" and layout="{layout}".'
+    lang = settings.LANGUAGE.get("caption_rule") or f"in {settings.LANGUAGE.get('primary', 'the audience language')}"
+    user = (spec["prompt"].format(**ctx) + "\n\nOUTPUT RULES\n" + rules
+            + f"\nLANGUAGE: write every text field {lang}, for this audience: {settings.AUDIENCE}."
+            + f'\nSet pillar="{pillar}" and layout="{layout}".')
     post = call_json(SYSTEM, user, GenericPost, temperature=float(spec.get("temperature", 0.75)), max_tokens=2500)
     post.pillar, post.layout = pillar, layout
     post.item_id = ctx["item_id"]
