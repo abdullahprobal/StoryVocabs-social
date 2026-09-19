@@ -48,6 +48,15 @@ def notify(text: str) -> int | None:
     return r.json()["result"]["message_id"]
 
 
+def _preview_text(item) -> str:
+    """Build the review message body consistently for new and edited previews."""
+    head = (f"🗓 {item.date} · {item.slot} · {item.pillar} · hook={item.hook_style} · score={item.quality_score}\n"
+            f"id: {item.id}\n\n")
+    tail = ("\n\n— reply to THIS message —\n❌ skip   ✏️ <note> regenerate   ✅ approve\n"
+            f"No reply = publishes at {item.slot} slot (REVIEW_MODE={settings.REVIEW_MODE}).")
+    return (head + item.caption_fb + tail)[:4000]
+
+
 def send_preview(item) -> int:
     """Send slides as an album, then the caption + instructions. Returns the caption message id."""
     media = []
@@ -60,16 +69,35 @@ def send_preview(item) -> int:
         r = requests.post(f"{API}/sendMediaGroup", data={"chat_id": settings.TELEGRAM_CHAT_ID, "media": json.dumps(media)},
                           files=files, timeout=180)
         r.raise_for_status()
-    head = (f"🗓 {item.date} · {item.slot} · {item.pillar} · hook={item.hook_style} · score={item.quality_score}\n"
-            f"id: {item.id}\n\n")
-    body = item.caption_fb
-    tail = ("\n\n— reply to THIS message —\n❌ skip   ✏️ <note> regenerate   ✅ approve\n"
-            f"No reply = publishes at {item.slot} slot (REVIEW_MODE={settings.REVIEW_MODE}).")
     r = requests.post(f"{API}/sendMessage", data={"chat_id": settings.TELEGRAM_CHAT_ID,
-                                                  "text": (head + body + tail)[:4000],
+                                                  "text": _preview_text(item),
                                                   "disable_web_page_preview": True}, timeout=60)
     r.raise_for_status()
     return r.json()["result"]["message_id"]
+
+
+def edit_preview(item) -> int | None:
+    """Refresh an existing preview without sending a duplicate message.
+
+    Telegram returns a harmless 400 when the text is already identical; treat
+    that response as success so this command is safe to run repeatedly.
+    """
+    if not configured() or not item.telegram_message_id:
+        return None
+    r = requests.post(f"{API}/editMessageText", data={
+        "chat_id": settings.TELEGRAM_CHAT_ID,
+        "message_id": item.telegram_message_id,
+        "text": _preview_text(item),
+        "disable_web_page_preview": True,
+    }, timeout=60)
+    if not r.ok:
+        try:
+            detail = r.json().get("description", "")
+        except ValueError:
+            detail = ""
+        if "message is not modified" not in detail.lower():
+            r.raise_for_status()
+    return item.telegram_message_id
 
 
 def decisions() -> dict[int, tuple[str, str]]:
