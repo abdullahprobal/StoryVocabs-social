@@ -56,21 +56,32 @@ def _call(method: str, path: str, **params) -> dict:
 
 
 # ── Facebook ───────────────────────────────────────────────────────────────
-def fb_upload_photo(url: str, published: bool = False, message: str = "") -> str:
+def _backdate(params: dict, backdated_time: int | None) -> dict:
+    """Page posts may carry a past timestamp: they appear at that point in the timeline and
+    followers are not notified — what a launch backfill wants."""
+    if backdated_time:
+        params["backdated_time"] = str(int(backdated_time))
+        params["backdated_time_granularity"] = "hour"
+    return params
+
+
+def fb_upload_photo(url: str, published: bool = False, message: str = "", backdated_time: int | None = None) -> str:
     p = {"url": url, "published": "true" if published else "false"}
     if message:
         p["message"] = message
+    if published:
+        _backdate(p, backdated_time)
     return _call("POST", f"/{settings.META_PAGE_ID}/photos", **p)["id"]
 
 
-def fb_publish(media_urls: list[str], message: str) -> str:
+def fb_publish(media_urls: list[str], message: str, backdated_time: int | None = None) -> str:
     """Single photo → photos endpoint; several → feed with attached_media."""
     if not media_urls:
         raise MetaError("no media")
     if len(media_urls) == 1:
-        return fb_upload_photo(media_urls[0], published=True, message=message)
+        return fb_upload_photo(media_urls[0], published=True, message=message, backdated_time=backdated_time)
     ids = [fb_upload_photo(u) for u in media_urls]
-    params = {"message": message}
+    params = _backdate({"message": message}, backdated_time)
     for i, pid in enumerate(ids):
         params[f"attached_media[{i}]"] = f'{{"media_fbid":"{pid}"}}'
     return _call("POST", f"/{settings.META_PAGE_ID}/feed", **params)["id"]

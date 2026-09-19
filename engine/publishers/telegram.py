@@ -101,6 +101,17 @@ def _preview_text(item, number: int | None = None) -> str:
 _NUM = r"(?:#?\d+(?:\s*[,&]?\s*(?:and\s+)?#?\d+)*)"
 
 
+def _numbers(seg: str) -> list[int]:
+    """'1 2 3', '#4', '1-10', '5 to 8' → [ints]; ranges expand so 'approve 1-10' works for long lineups."""
+    import re
+    out: list[int] = []
+    for a, b in re.findall(r"#?(\d+)\s*(?:-|–|to)\s*#?(\d+)", seg):
+        out += list(range(int(a), int(b) + 1))
+    seg2 = re.sub(r"#?\d+\s*(?:-|–|to)\s*#?\d+", " ", seg)
+    out += [int(x) for x in re.findall(r"#?(\d+)", seg2)]
+    return sorted(set(out))
+
+
 def parse_batch(text: str) -> list[dict]:
     """Parse one owner reply that may address several numbered lineup items.
 
@@ -134,8 +145,11 @@ def parse_batch(text: str) -> list[dict]:
         elif re.search(r"\b(approve|approved|ok|okay|yes|go|post|publish|confirm|good|fine)\b|✅|👍", seg):
             kind = "approve"
         if not kind:
+            # "skip 4, 9" — a numbers-only segment continues the previous decision
+            if out and re.fullmatch(r"[\s#\d,&-]+(?:and\s*)?[\s#\d,&-]*", seg) and isinstance(out[-1]["numbers"], list):
+                out[-1]["numbers"] = sorted(set(out[-1]["numbers"] + _numbers(seg)))
             continue
-        nums = [int(x) for x in re.findall(r"#?(\d+)", seg)]
+        nums = _numbers(seg)
         if re.search(r"\b(all|everything|both)\b", seg):
             out.append({"kind": kind, "numbers": "all", "note": ""})
         else:

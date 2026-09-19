@@ -1,0 +1,104 @@
+name: backfill
+
+# Launch backfill: build 30 back-dated posts (mode=build) → owner approves in Telegram →
+# publish them in batches (mode=publish). Manual only; never scheduled.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "build | publish"
+        required: true
+        default: build
+      count:
+        description: "build: how many posts"
+        default: "30"
+      ig:
+        description: "build: how many of the newest also go to Instagram"
+        default: "12"
+      batch:
+        description: "publish: posts per run"
+        default: "10"
+      dry_run:
+        type: boolean
+        default: false
+
+concurrency:
+  group: social-state
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PYTHONUTF8: "1"
+      TZ: "Asia/Dhaka"
+      META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+      META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+      META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      MEDIA_HOST: ${{ vars.MEDIA_HOST || 'github' }}
+      MEDIA_REPO: ${{ vars.MEDIA_REPO }}
+      MEDIA_REPO_TOKEN: ${{ secrets.MEDIA_REPO_TOKEN }}
+      MEDIA_DEPLOY_KEY: ${{ secrets.MEDIA_DEPLOY_KEY }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+      GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+      GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
+      GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
+      GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
+      GROQ_API_KEY_5: ${{ secrets.GROQ_API_KEY_5 }}
+      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://storyvocabs.com' }}
+      REVIEW_MODE: ${{ vars.REVIEW_MODE || 'review' }}
+      PUBLISH_TO_INSTAGRAM: ${{ vars.PUBLISH_TO_INSTAGRAM || 'true' }}
+      PUBLISH_STORIES: ${{ vars.PUBLISH_STORIES || 'true' }}
+      DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
+      MODE: ${{ inputs.mode }}
+      COUNT: ${{ inputs.count }}
+      IG: ${{ inputs.ig }}
+      BATCH: ${{ inputs.batch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+          sudo apt-get install -y -q fonts-noto-color-emoji >/dev/null
+      - name: Backfill
+        run: |
+          if [ "$MODE" = "publish" ]; then
+            python -m engine.publish --backfill --batch "${BATCH:-10}"
+          else
+            ARGS="--count ${COUNT:-30} --ig ${IG:-12}"
+            [ "$DRY_RUN" = "true" ] && ARGS="$ARGS --dry-run"
+            python -m engine.backfill $ARGS
+          fi
+      - name: Upload renders
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backfill-renders
+          path: output/
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Commit state
+        if: always() && env.DRY_RUN != 'true'
+        run: |
+          git config user.name "storyvocabs-bot"
+          git config user.email "bot@storyvocabs.local"
+          git add queue state analytics evergreen
+          git diff --cached --quiet || git commit -m "chore(publish): $(date -u +%FT%H:%M) [skip ci]"
+          git pull --rebase origin ${{ github.ref_name }} || true
+          git push
