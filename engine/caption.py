@@ -50,7 +50,9 @@ def build_display_url(pillar: str, post_id: str) -> str:
     a 4-digit day tag for per-post attribution. The app 302s it to the UTM landing
     URL, so tracking survives without a machine id in public."""
     tag = post_id[4:8] if len(post_id) >= 8 and post_id[:8].isdigit() else ""
-    path = settings.PILLAR_PATHS.get(pillar, "free")
+    path = settings.PILLAR_PATHS.get(pillar, pillar)
+    if not path:
+        return settings.SITE_DISPLAY
     return f"{settings.SITE_DISPLAY}/{path}" + (f"/{tag}" if tag else "")
 
 

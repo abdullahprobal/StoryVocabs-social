@@ -3,7 +3,7 @@
  "date": "2026-09-19",
  "slot": "evening",
  "pillar": "news_word",
- "status": "pending",
+ "status": "approved",
  "hook_style": "number",
  "content": {
   "pillar": "news_word",
