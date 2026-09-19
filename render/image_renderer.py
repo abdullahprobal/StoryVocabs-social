@@ -324,7 +324,7 @@ def render_quiz(post: QuizPost, out_dir: Path) -> list[str]:
     page = _page("quiz.html", {
         "HEADER": header_html('<span class="pill blue">Quiz</span>'),
         "FOOTER": footer_html("উত্তর কমেন্টে"),
-        "WORD": esc(post.word.word), "PHONETIC": esc(post.word.phonetic), "POS": esc(post.word.pos),
+        "WORD": esc(post.word.word), "PHONETIC": esc(post.word.phonetic), "POS": esc(post.word.pos), "PH_DISPLAY": "block",
         "QUESTION": esc(post.question_bn), "OPTIONS": opts, "EXAM": esc(post.exam_tag),
         "HINT": bold_html(post.word.example), "HINT_DISPLAY": "block" if post.word.example else "none",
         "QUIZ_KICKER": S("quiz_kicker_line", "Do you know this one?"), "QUIZ_NOTE": S("quiz_note", "Answer in the comments — the correct one is posted 6 hours later"),
