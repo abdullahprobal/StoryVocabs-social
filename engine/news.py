@@ -180,8 +180,8 @@ def news_pool(date_str: str, topic_group: str = "general", count: int = 12, refr
         except json.JSONDecodeError:
             pass
 
-    queries = TOPIC_QUERIES.get(topic_group, TOPIC_QUERIES["general"])
-    keywords = TOPIC_KEYWORDS.get(topic_group, TOPIC_KEYWORDS["general"])
+    queries = TOPIC_QUERIES.get(topic_group) or TOPIC_QUERIES.get("general") or [f"{settings.BRAND_NAME} news", topic_group]
+    keywords = TOPIC_KEYWORDS.get(topic_group) or TOPIC_KEYWORDS.get("general") or [w.lower() for q in queries for w in q.split()]
 
     articles = dedupe(fetch_rss() + fetch_google_news(queries))
     tracker = load_tracker()
