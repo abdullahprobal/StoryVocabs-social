@@ -19,7 +19,7 @@ import uuid
 from datetime import datetime, timedelta
 from pathlib import Path
 
-from engine import gates, settings
+from engine import gates, llm, settings
 from engine import words as W
 from engine.caption import assemble, write_caption
 from engine.contracts import ConfusablesPost, GenericPost, InAppPost, OfferPost, QueueItem, QuizPost, StoryPost
@@ -182,7 +182,8 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             hook_instr = strategy["hook_styles"].get(plan.hook_style, {}).get("instruction", "")
             when = "8 am" if plan.slot == "morning" else "8 pm"
             cap = write_caption(plan.pillar, summary, hook_instr, when,
-                                layout=getattr(content, "layout", ""))
+                                layout=getattr(content, "layout", ""), hook_style=plan.hook_style)
+            writer_model = llm.last_provider
             if isinstance(content, QuizPost) or (isinstance(content, GenericPost) and content.layout == "quiz"):
                 # The body is fixed copy: the LLM may only write the hook, so the answer cannot leak.
                 cap.body = "\n\n".join(settings.STRINGS.get("quiz_body") or [
@@ -193,14 +194,16 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             fb, ig, url = assemble(cap, plan.pillar, item_id, strategy, seed=attempt)
             gates.banned_claims(fb, ig, summary, allow_percent=(plan.pillar == "offer"))
             gates.caption_shape(fb, ig)
+            gates.register(fb)
             if isinstance(content, QuizPost):
                 gates.quiz_caption_keeps_answer(fb, content.options[content.answer_index], content.word.gloss_bn)
             if isinstance(content, GenericPost) and content.quiz:
                 gates.quiz_caption_keeps_answer(fb, content.quiz.options[content.quiz.answer_index], "")
 
-            score = 0.0
+            score, critic_model = 0.0, ""
             if use_critic:
-                verdict = gates.critic(fb, summary)
+                verdict = gates.critic(fb, summary, avoid=writer_model)
+                critic_model = llm.last_provider
                 score = verdict.score
                 log(f"    critic: {verdict.score}/10 hook {verdict.hook_score} bangla_ok={verdict.bangla_ok} "
                     f"forced={verdict.forced_words} issues={verdict.issues[:2]}")
@@ -208,14 +211,19 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
                     raise gates.GateError(f"critic found a factual error: {verdict.issues[:1]}")
                 if verdict.forced_words and isinstance(content, StoryPost):
                     raise gates.GateError(f"critic flagged forced words {verdict.forced_words}")
+                if not verdict.bangla_ok:
+                    raise gates.GateError(f"critic: not spoken Banglish — {verdict.issues[:1]}")
                 if verdict.score < settings.QUALITY_PASS:  # a weak post is never queued; evergreen covers the slot
                     raise gates.GateError(f"critic score {verdict.score} < {settings.QUALITY_PASS}")
-                if verdict.improved_hook and verdict.hook_score < 7:
+                if verdict.hook_score < settings.HOOK_PASS and not verdict.improved_hook:
+                    raise gates.GateError(f"critic hook score {verdict.hook_score} < {settings.HOOK_PASS}")
+                if verdict.improved_hook and verdict.hook_score < settings.HOOK_PASS:
                     new_hook = verdict.improved_hook.strip()[:settings.HOOK_MAX_CHARS + 10]
                     fb = new_hook + fb[fb.index("\n"):]
                     ig = new_hook + ig[ig.index("\n"):]
                     gates.banned_claims(fb, ig, allow_percent=(plan.pillar == "offer"))
                     gates.caption_shape(fb, ig)
+                    gates.register(fb)
 
             paths, story_card = render_content(content, out_dir, plan.date)
             gates.render_check(paths)
@@ -234,6 +242,7 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
                 content=content.model_dump(), caption_fb=fb, caption_ig=ig, first_comment=first_comment,
                 comment_delay_minutes=delay, media=[str(Path(p).as_posix()) for p in paths],
                 story_media=str(Path(story_card).as_posix()), quality_score=score, attempts=attempt, utm_url=url,
+                writer_model=writer_model, critic_model=critic_model,
             )
             if not dry_run:
                 W.mark_used(words_used(content), plan.date)

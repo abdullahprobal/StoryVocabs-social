@@ -87,6 +87,10 @@ def _preview_text(item, number: int | None = None) -> str:
     else:
         rule = "Autopilot is on; this is a copy of what will post."
     tail = "\n\n————————————\n" + rule
+    if getattr(item, "writer_model", ""):
+        wm = item.writer_model.split(":", 1)[-1]
+        cm = (item.critic_model or "").split(":", 1)[-1]
+        tail += f"\nwritten by {wm}" + (f" · checked by {cm}" if cm else "") + (f" · {item.quality_score:g}/10" if item.quality_score else "")
     if number:
         tail += f"\nIn one reply: approve all · skip {number} · edit {number}: your note"
     else:
@@ -109,6 +113,10 @@ def parse_batch(text: str) -> list[dict]:
     if not t:
         return []
     out: list[dict] = []
+    # "voice: never say কৃত্রিম" → a standing rule appended to project/voice.md (applies to every future post)
+    m = re.match(r"^\s*(?:voice|rule|style)\s*[:\-–]\s*(.+)$", t, re.I | re.S)
+    if m:
+        return [{"kind": "voice", "numbers": None, "note": m.group(1).strip()}]
     # "edit N: note" / "✏️ N note" / "edit: note" (no number)
     m = re.match(r"^\s*(?:✏️?|edit|note|change|fix|redo|regenerate)\s*#?(\d+)?\s*[:\-–]?\s*(.*)$", t, re.I | re.S)
     if m and not re.match(r"^\s*(approve|ok|skip)", t, re.I):
@@ -218,8 +226,11 @@ def read_decisions() -> list[dict]:
         if not c and not batch:
             continue
         reply = m.get("reply_to_message") or {}
+        if batch and batch[0]["kind"] == "voice":  # a standing rule, not a decision about a post
+            c = ("voice", batch[0]["note"])
         out.append({"reply_to": reply.get("message_id"), "kind": (c or (batch[0]["kind"], ""))[0], "text": raw,
-                    "payload": (c[1] if c else raw), "batch": batch, "message_id": m.get("message_id")})
+                    "payload": (c[1] if c else raw), "batch": batch, "note": (c[1] if c and c[0] == "voice" else ""),
+                    "message_id": m.get("message_id")})
     st["offset"] = last
     _save_state(st)
     return out

@@ -86,8 +86,11 @@ ARTICLES (choose the one a Dhaka student would actually stop scrolling for; skip
 CANDIDATE WORDS:
 {words}
 
-Rules: the three words must fit that article so naturally that a fluent journalist might use them.
-Prefer words from different parts of speech. Return article_index (1-based), words (exact spellings), why."""
+Rules: the three words must fit that article so naturally that a fluent journalist might use them — in the
+sense the dictionary line gives, in a sentence that already exists in the story. Rejects: an adjective slapped on
+an abstract noun to make it fit ("contrived solution", "credulous economy"), or a word whose sense has to be bent.
+If fewer than three words fit an article honestly, choose another article. Prefer different parts of speech.
+Return article_index (1-based), words (exact spellings), why (one clause per word: the sentence it lives in)."""
 
 STORY_PROMPT = """Write the News Word post.
 
@@ -112,8 +115,10 @@ OUTPUT RULES
   a first-person scene, quote, or anecdote; every fact must come from the source.
 - words: for each target word give phonetic (IPA between slashes, e.g. /ˈkændər/), gloss_bn (1-3 words), meaning_bn (one short natural
   Bangla sentence, <= 14 words), meaning_en (<= 16 words, plain), example (one NEW ENGLISH sentence about Bangladesh student life,
-  the word wrapped in <b></b>). meaning_bn / meaning_en / gloss_bn MUST be faithful to the dictionary meaning given
-  above — shorten it, never change it.
+  the word wrapped in <b></b>). meaning_bn / meaning_en / gloss_bn MUST be faithful to the ENGLISH dictionary meaning
+  given above — shorten it, never change it. The Bangla line above is a machine translation: reference only, never
+  copy it. Write gloss_bn / meaning_bn the way a Dhaka student would SAY the meaning to a friend (spoken words such as
+  বানানো, জোর করে মেলানো, ধাক্কা খেয়ে ফিরে আসা — not dictionary words such as কৃত্রিম, অপ্রাকৃতিক, পুনরুদ্ধার).
 - The hero word (in headline_en) must be one of the target words, and its exact spelling must be used.
 """
 

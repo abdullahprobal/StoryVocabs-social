@@ -59,6 +59,36 @@ def banned_claims(*texts: str, allow_percent: bool = False) -> None:
             raise GateError(f"unsupported claim: '{m.group(0)}'")
 
 
+_EQUATION = re.compile(r"[\'‘’\"“”]?\b[A-Za-z][A-Za-z-]+\b[\'‘’\"“”]?\s*=\s*[\'‘’\"“”]?[A-Za-z][A-Za-z-]+")
+_TRICK_LABEL = re.compile(r"(মনে রাখার ট্রিক|ট্রিক\s*:|memory trick|mnemonic)", re.I)
+
+
+def bookish_words() -> list[str]:
+    """Tokens a Dhaka student would never type, curated by the owner in project/voice.md
+    under '## Never write' (one per line, '- ' prefix). Empty list if the section is absent."""
+    try:
+        text = settings.VOICE_FILE.read_text(encoding="utf-8")
+    except OSError:
+        return []
+    if "## Never write" not in text:
+        return []
+    block = text.split("## Never write", 1)[1].split("\n## ", 1)[0]
+    return [ln[2:].strip() for ln in block.splitlines() if ln.startswith("- ") and ln[2:].strip()]
+
+
+def register(fb: str) -> None:
+    """Spoken-Banglish gate: reject bookish tokens and invented 'X = Y' mnemonics.
+    Both were what made the 2026-09-19 'contrived' caption feel machine-written."""
+    body = _SITE_LINK.sub("", _URL.sub("", fb))
+    for w in bookish_words():
+        if w and w in body:
+            raise GateError(f"bookish word '{w}' — rewrite in spoken Banglish")
+    if _TRICK_LABEL.search(body):
+        raise GateError("labelled memory trick — say it plainly or drop it")
+    if _EQUATION.search(body):
+        raise GateError("'X = Y' style mnemonic/equation — banned unless a real contrast on the image")
+
+
 def caption_shape(fb: str, ig: str) -> None:
     hook = fb.split("\n", 1)[0]
     if len(hook) > settings.HOOK_MAX_CHARS + 10:
@@ -136,8 +166,8 @@ def html_tokens(html: str, name: str = "") -> None:
 CRITIC_PROMPT = """You are the harshest editor at a Dhaka student media page. Rate this post 1-10.
 
 Design notes (do NOT penalise these): the story text on the image is English on purpose (reading practice);
-captions are Bangla-first on purpose; the final CTA line ('৩টি প্যাক ফ্রি...' / 'Save করে রাখো' etc.) and the
-link are a fixed brand requirement — never call them promotional or ad-like, judge everything above them.
+captions are Banglish on purpose (English loanwords stay English); the final CTA line and the link are a fixed
+brand requirement — never call them promotional or ad-like, judge everything above them.
 
 CAPTION (Facebook):
 {caption}
@@ -145,17 +175,22 @@ CAPTION (Facebook):
 ON-IMAGE TEXT:
 {summary}
 
-Score criteria (be strict; 8+ only if you would genuinely stop scrolling):
-- hook_score: does line 1 make a tired student tap "See more"?
-- Bangla: natural, current, no Sanskritised or machine-translated phrasing? (bangla_ok)
-- Are any vocabulary words forced or wrongly used? (forced_words)
-- factual_error: true if ANY statement about the news, the exam, or the word is untrue or misleading (e.g. wrong meaning, invented detail, wrong exam format). Be literal.
-- Anything cringe, generic, or that sounds like an ad? (issues)
-- improved_hook: rewrite line 1 to be better (<= 90 chars, Bangla-first), or "" if already strong.
+Score criteria (be strict; 8+ only if you would genuinely stop scrolling and believe a person typed it):
+- hook_score: does line 1 make a tired student tap "See more"? A news headline, a year or a statistic as line 1 scores <= 4.
+- bangla_ok: would every line look normal in a WhatsApp/Messenger group of Dhaka students? Set false for
+  translationese (English sentence shapes: "X শুধুই Y নয়, Z-ও", "যেন কোনো", "প্রভাব ফেলে"), Sanskrit-flavoured
+  nouns (শক্তি ঘাটতি, অপ্রাকৃতিক, কৃত্রিম where a student says বানানো), or a translated loanword (load shedding → শক্তি ঘাটতি).
+- forced_words: vocabulary words jammed onto abstract nouns ("Contrived সমাধান") or used in the wrong sense.
+- factual_error: true if ANY statement about the news, the exam, or the word is untrue or misleading — a wrong
+  or flattened meaning counts, and so does an INVENTED memory trick, analogy or etymology ("Contrived = Created").
+- issues: anything cringe, generic, label-like ("Exam-এ:", "ট্রিক:"), or that reads as a template.
+- improved_hook: rewrite line 1 to be better (<= 90 chars, about the word, spoken), or "" if already strong.
 Return score (overall), hook_score, bangla_ok, forced_words, factual_error, issues, improved_hook."""
 
 
-def critic(caption_fb: str, summary: str) -> CriticVerdict:
+def critic(caption_fb: str, summary: str, avoid: str | None = None) -> CriticVerdict:
+    """Second opinion. `avoid` is the writer's "provider:model" so the critic prefers a
+    different model — a model grading its own dialect passes translationese."""
     caption_fb = _SITE_LINK.sub("<link>", _URL.sub("<link>", caption_fb))
     return call_json(SYSTEM, CRITIC_PROMPT.format(caption=caption_fb, summary=summary), CriticVerdict,
-                     temperature=0.2, max_tokens=800)
+                     temperature=0.2, max_tokens=800, avoid=avoid, strong=True)

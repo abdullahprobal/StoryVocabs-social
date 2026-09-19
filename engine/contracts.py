@@ -345,6 +345,8 @@ class QueueItem(BaseModel):
     media: list[str] = Field(default_factory=list)       # local PNG paths (relative to repo)
     media_urls: list[str] = Field(default_factory=list)  # public URLs once uploaded
     story_media: str = ""              # 1080x1920 PNG for FB/IG story
+    writer_model: str = ""             # "provider:model" that wrote the caption
+    critic_model: str = ""             # "provider:model" that scored it
     story_media_url: str = ""
     quality_score: float = 0
     attempts: int = 0
