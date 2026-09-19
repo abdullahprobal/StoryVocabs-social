@@ -187,6 +187,11 @@ def news_pool(date_str: str, topic_group: str = "general", count: int = 12, refr
     # results, otherwise the brand's general RSS feeds outrank them with unrelated headlines.
     project_topic = topic_group in (settings.NEWS.get("queries") or {}) and topic_group != "general"
     articles = dedupe(fetch_google_news(queries) if project_topic else fetch_rss() + fetch_google_news(queries))
+    if project_topic:
+        # keep only articles that mention a distinctive query word (not the country/generic words)
+        generic = {"bangladesh", "bangladeshi", "bangla", "dhaka", "news", "today", "latest", "new", "the", "and", "of", "in"}
+        strong = {w.lower() for q in queries for w in q.split() if w.lower() not in generic and len(w) > 3}
+        articles = [a for a in articles if any(k in (a["title"] + " " + a["summary"]).lower() for k in strong)]
     tracker = load_tracker()
     usable = [a for a in articles if is_story_usable(tracker, a["title"])] or articles
     scored = sorted(usable, key=lambda a: score_article(a, keywords), reverse=True)
