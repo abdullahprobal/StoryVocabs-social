@@ -42,12 +42,14 @@ python -m pytest -q tests
 
 ## Telegram review
 
-Each generated post is sent to your Telegram chat (slides + a review card). Answer in plain words —
-a reply to the card targets that card; a plain message targets the newest card still waiting:
+Every night at 21:00 BST the engine generates the whole next day and sends one numbered
+**lineup** to Telegram (cards `#1`, `#2`… then a summary). You look once and answer once, or not at all:
 
-* `approve` / `ok` / `✅` — approved; the bot confirms with the post day and time
-* `skip` / `❌` — skipped; a ready-made backup post takes the slot
-* `edit: <note>` / `✏️ <note>` — regenerated with your note; a new card arrives
+* nothing — everything posts at its time (`REVIEW_MODE=review`)
+* `skip 2` · `skip 1 and 3` · `skip all` — those don't post; a backup post takes the slot
+* `approve all` · `1 ok, 2 skip` — explicit decisions per number
+* `edit 2: shorter hook` — that post is regenerated with your note and a new card arrives
+* replying directly to a card still targets that card
 
 `review.yml` reads your messages every 30 minutes and answers immediately; `publish.yml` re-checks at post
 time and tells you if a slot was held because nothing was approved (`REVIEW_MODE=manual`). In
@@ -75,7 +77,7 @@ time and tells you if a slot was held because nothing was approved (`REVIEW_MODE
 
 ## Workflows
 
-* `generate.yml` — 05:30 BST daily, fills today + tomorrow (`QUEUE_DAYS_AHEAD`), previews to Telegram
+* `generate.yml` — 21:00 BST nightly, tomorrow's posts + one Telegram lineup
 * `review.yml` — every 30 min: applies your Telegram decisions and replies
 * `publish.yml` — 08:00 and 20:00 BST (slots), 14:00 BST (due quiz-answer comments)
 * `weekly.yml` — Sunday 22:00 BST, Insights → weights → report

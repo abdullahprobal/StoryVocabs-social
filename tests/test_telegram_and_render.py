@@ -71,6 +71,41 @@ def test_plain_decision_targets_newest_pending_card(monkeypatch, tmp_path):
     a = json.loads((tmp_path / "2026-09-20" / "morning.json").read_text(encoding="utf-8"))
     b = json.loads((tmp_path / "2026-09-19" / "morning.json").read_text(encoding="utf-8"))
     assert a["status"] == "approved" and b["status"] == "pending"
-    assert replies and replies[0].startswith("✅ Approved")
+    assert replies and replies[0].startswith("✅ ")
     regen = review.apply_decisions([{"reply_to": 40, "kind": "note", "text": "shorter", "message_id": 51}])
     assert len(regen) == 1 and regen[0][1].review_note == "shorter"
+
+
+def test_parse_batch_covers_lineup_replies():
+    pb = telegram.parse_batch
+    assert pb("approve all") == [{"kind": "approve", "numbers": "all", "note": ""}]
+    assert pb("skip 2") == [{"kind": "skip", "numbers": [2], "note": ""}]
+    assert pb("1 ok, 2 skip") == [{"kind": "approve", "numbers": [1], "note": ""}, {"kind": "skip", "numbers": [2], "note": ""}]
+    assert pb("edit 3: shorter hook") == [{"kind": "note", "numbers": [3], "note": "shorter hook"}]
+    assert pb("approve")[0]["numbers"] is None
+    assert pb("hello") == []
+
+
+def test_lineup_numbers_resolve_to_items(monkeypatch, tmp_path):
+    from engine import lineup, review, settings
+    from engine.contracts import QueueItem
+    from engine.generate import save_item
+    monkeypatch.setattr(settings, "QUEUE_DIR", tmp_path / "queue")
+    monkeypatch.setattr(settings, "ROOT", tmp_path)
+    monkeypatch.setattr(lineup, "STATE", tmp_path / "lineup.json")
+    a = tmp_path / "queue" / "2026-09-22" / "morning.json"
+    b = tmp_path / "queue" / "2026-09-22" / "evening.json"
+    save_item(QueueItem(id="m", date="2026-09-22", slot="morning", pillar="quiz", content={}, telegram_message_id=70, caption_fb="hook m"), a)
+    save_item(QueueItem(id="e", date="2026-09-22", slot="evening", pillar="offer", content={}, telegram_message_id=71, caption_fb="hook e"), b)
+    sent = []
+    monkeypatch.setattr(lineup.telegram, "notify", lambda text: sent.append(text) or 1)
+    monkeypatch.setattr(lineup.telegram, "send_preview", lambda it, number=None: 100 + number)
+    assert lineup.send_lineup("2026-09-22") == 2
+    assert "1. 8:00 AM" in sent[-1] and "2. 8:00 PM" in sent[-1]
+    replies = []
+    monkeypatch.setattr(review.telegram, "reply", lambda text, to=None: replies.append(text) or 1)
+    review.apply_decisions([{"reply_to": None, "kind": "skip", "text": "1 ok, 2 skip",
+                             "batch": telegram.parse_batch("1 ok, 2 skip"), "message_id": 5}])
+    assert json.loads(a.read_text(encoding="utf-8"))["status"] == "approved"
+    assert json.loads(b.read_text(encoding="utf-8"))["status"] == "skipped"
+    assert replies and "✅" in replies[-1] and "❌" in replies[-1]

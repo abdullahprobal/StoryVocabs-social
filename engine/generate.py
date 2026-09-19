@@ -235,7 +235,7 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
                      status="failed", content={}, attempts=settings.MAX_GENERATION_ATTEMPTS, error=last_err)
 
 
-def after_build(item: QueueItem, dry_run: bool) -> None:
+def after_build(item: QueueItem, dry_run: bool, preview: bool = True) -> None:
     """Upload media + Telegram preview (skipped on dry-run or when not configured)."""
     if dry_run or item.status == "failed":
         return
@@ -248,7 +248,7 @@ def after_build(item: QueueItem, dry_run: bool) -> None:
             log(f"    uploaded {len(item.media_urls)} slides")
         except Exception as e:  # noqa: BLE001
             log(f"    ⚠ media upload failed: {e}")
-    if telegram.configured() and settings.REVIEW_MODE != "autopilot":
+    if preview and telegram.configured() and settings.REVIEW_MODE != "autopilot":
         try:
             item.telegram_message_id = telegram.send_preview(item)
             log("    telegram preview sent")
@@ -257,7 +257,8 @@ def after_build(item: QueueItem, dry_run: bool) -> None:
 
 
 # ── CLI ────────────────────────────────────────────────────────────────────
-def run_dates(dates: list[str], pillar: str | None, dry_run: bool, force: bool, critic: bool) -> int:
+def run_dates(dates: list[str], pillar: str | None, dry_run: bool, force: bool, critic: bool,
+              lineup: bool = False) -> int:
     strategy = load_strategy()
     failures = 0
     for date_str in dates:
@@ -277,7 +278,7 @@ def run_dates(dates: list[str], pillar: str | None, dry_run: bool, force: bool, 
                 continue
             log(f"{date_str} {plan.slot}: generating {plan.pillar}")
             item = build_item(plan, strategy, dry_run, use_critic=critic)
-            after_build(item, dry_run)
+            after_build(item, dry_run, preview=not lineup)
             save_item(item, path)
             if item.status == "failed":
                 failures += 1
@@ -315,6 +316,8 @@ def main(argv=None) -> int:
     ap.add_argument("--force", action="store_true", help="regenerate even if a queue item exists")
     ap.add_argument("--no-critic", action="store_true")
     ap.add_argument("--evergreen", type=int, default=0)
+    ap.add_argument("--tomorrow", action="store_true", help="generate tomorrow (BST) only")
+    ap.add_argument("--lineup", action="store_true", help="send one numbered Telegram lineup per date instead of per-post cards")
     a = ap.parse_args(argv)
     dry = a.dry_run or settings.DRY_RUN
 
@@ -322,9 +325,17 @@ def main(argv=None) -> int:
         return 1 if run_evergreen(a.evergreen, dry, not a.no_critic) else 0
 
     start = datetime.strptime(a.date, "%Y-%m-%d") if a.date else datetime.now(settings.BST).replace(tzinfo=None)
+    if a.tomorrow:
+        start = datetime.now(settings.BST).replace(tzinfo=None) + timedelta(days=1)
+        a.days = 1
     days = a.days if a.days is not None else settings.QUEUE_DAYS_AHEAD
     dates = [(start + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(max(1, days))]
-    return 1 if run_dates(dates, a.pillar, dry, a.force, not a.no_critic) else 0
+    failures = run_dates(dates, a.pillar, dry, a.force, not a.no_critic, lineup=a.lineup)
+    if a.lineup and not dry:
+        from engine.lineup import send_lineup
+        for d in dates:
+            send_lineup(d)
+    return 1 if failures else 0
 
 
 if __name__ == "__main__":

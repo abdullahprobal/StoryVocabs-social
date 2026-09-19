@@ -2,16 +2,16 @@ name: generate
 
 on:
   schedule:
-    - cron: "30 23 * * *"     # 05:30 BST daily — fills today + tomorrow
+    - cron: "0 15 * * *"      # 21:00 BST nightly — tomorrow's posts, one Telegram lineup
   workflow_dispatch:
     inputs:
       date:
         description: "YYYY-MM-DD (default: today BST)"
         required: false
       days:
-        description: "days to fill"
+        description: "days to fill (default 1 = tomorrow)"
         required: false
-        default: "2"
+        default: "1"
       pillar:
         description: "force a pillar (news_word/quiz/confusables/in_app/story60/offer)"
         required: false
@@ -81,7 +81,8 @@ jobs:
           [ -n "$IN_DAYS" ] && ARGS="$ARGS --days $IN_DAYS"
           [ -n "$IN_PILLAR" ] && ARGS="$ARGS --pillar $IN_PILLAR"
           [ "$IN_FORCE" = "true" ] && ARGS="$ARGS --force"
-          python -m engine.generate $ARGS
+          [ -z "$IN_DATE" ] && ARGS="$ARGS --tomorrow"
+          python -m engine.generate $ARGS --lineup
       - name: Upload rendered slides (debug)
         if: always()
         uses: actions/upload-artifact@v4
