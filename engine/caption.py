@@ -35,8 +35,16 @@ RULES
 - cta_line: pick ONE of these exactly, or a close variant with the same meaning:
   {cta_options}
   Never "download" (it is a website), never "unlimited", never a price unless the post is about pricing.
-- hashtags: 6-8 tags without '#', mixing English and Bangla, relevant to the words and exams.
+- hashtags: 6-8 tags without '#', relevant to the post and the audience (mix languages if the audience does).
+{pillar_rules}
 """
+
+PILLAR_RULES = {
+    "quiz": ("QUIZ RULE: the answer is revealed in a comment later. The caption must NOT state, hint at, or narrow "
+             "down the answer — no definition, no synonym, no example that reveals it. Build curiosity only."),
+    "confusables": "Do not restate the rule that is already on the last slide; add the exam angle or a usage warning instead.",
+    "news_word": "Reference the news event in line 1 or 2 so the post reads as today's news, not a word list.",
+}
 
 
 def build_utm(pillar: str, post_id: str, source: str = "facebook") -> str:
@@ -56,9 +64,15 @@ def build_display_url(pillar: str, post_id: str) -> str:
     return f"{settings.SITE_DISPLAY}/{path}" + (f"/{tag}" if tag else "")
 
 
-def write_caption(pillar: str, summary: str, hook_instruction: str, when: str = "8 am") -> Caption:
-    return call_json(SYSTEM, CAPTION_PROMPT.format(pillar=pillar, hook_instruction=hook_instruction,
-                                                   summary=summary, when=when), Caption, temperature=0.8, max_tokens=1200)
+def write_caption(pillar: str, summary: str, hook_instruction: str, when: str = "8 am", layout: str = "") -> Caption:
+    rules = PILLAR_RULES.get(pillar, PILLAR_RULES.get(layout, ""))
+    prompt = CAPTION_PROMPT.format(
+        pillar=pillar, hook_instruction=hook_instruction, summary=summary, when=when, pillar_rules=rules,
+        audience=settings.AUDIENCE or "the brand's followers",
+        caption_rule=settings.LANGUAGE.get("caption_rule") or "in the brand voice",
+        cta_options=" / ".join(f'"{o}"' for o in settings.CTA_OPTIONS) or "a one-line invitation to visit the site",
+    )
+    return call_json(SYSTEM, prompt, Caption, temperature=0.8, max_tokens=1200)
 
 
 def _tags(cap: Caption, strategy: dict, lo: int, hi: int, rng: random.Random) -> list[str]:

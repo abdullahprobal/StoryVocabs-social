@@ -181,7 +181,8 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             summary = summarize(content)
             hook_instr = strategy["hook_styles"].get(plan.hook_style, {}).get("instruction", "")
             when = "8 am" if plan.slot == "morning" else "8 pm"
-            cap = write_caption(plan.pillar, summary, hook_instr, when)
+            cap = write_caption(plan.pillar, summary, hook_instr, when,
+                                layout=getattr(content, "layout", ""))
             if isinstance(content, QuizPost) or (isinstance(content, GenericPost) and content.layout == "quiz"):
                 # The body is fixed copy: the LLM may only write the hook, so the answer cannot leak.
                 cap.body = "\n\n".join([
