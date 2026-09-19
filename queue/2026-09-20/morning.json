@@ -1,58 +1,58 @@
 {
- "id": "20260920-mo-6ed355",
- "date": "2026-09-20",
- "slot": "morning",
- "pillar": "quiz",
- "status": "pending",
- "hook_style": "mistake",
- "content": {
+  "id": "20260920-mo-6ed355",
+  "date": "2026-09-20",
+  "slot": "morning",
   "pillar": "quiz",
-  "word": {
-   "word": "Culpable",
-   "pos": "adjective",
-   "difficulty": "Advanced",
-   "phonetic": "/ˈkʌlpəbəl/",
-   "gloss_bn": "দোষী",
-   "meaning_bn": "দোষ আর সমালোচনার যোগ্য",
-   "meaning_en": "Deserving condemnation or blame",
-   "example": "",
-   "synonym": "Guilty, Responsible, Blameworthy",
-   "antonym": "Innocent, Blameless"
+  "status": "pending",
+  "hook_style": "mistake",
+  "content": {
+    "pillar": "quiz",
+    "word": {
+      "word": "Culpable",
+      "pos": "adjective",
+      "difficulty": "Advanced",
+      "phonetic": "/ˈkʌlpəbəl/",
+      "gloss_bn": "দোষী",
+      "meaning_bn": "দোষ আর সমালোচনার যোগ্য",
+      "meaning_en": "Deserving condemnation or blame",
+      "example": "",
+      "synonym": "Guilty, Responsible, Blameworthy",
+      "antonym": "Innocent, Blameless"
+    },
+    "question_bn": "এই শব্দের মানে কী?",
+    "options": [
+      "দোষারোপযোগ্য",
+      "অপরাধী",
+      "দোষী",
+      "দায়ী"
+    ],
+    "answer_index": 2,
+    "explanation_bn": "দোষী মানে এমন কেউ বা কাজ যা সমালোচনার যোগ্য, মনে রাখো \"culpable\" শব্দটা ‘কুল’ + ‘পেবল’—দোষের ‘কুল’ অংশ।",
+    "exam_tag": "BCS · Bank · Admission"
   },
-  "question_bn": "এই শব্দের মানে কী?",
-  "options": [
-   "দোষারোপযোগ্য",
-   "অপরাধী",
-   "দোষী",
-   "দায়ী"
+  "caption_fb": "কোনটা ভুল? 'Culpable' শব্দটা কি দোষারোপযোগ্য?\n\nদোষী নয়, কিন্তু দায়ী হতে পারে।\nব্যক্তিকে দায়িত্ব দেওয়ার সময় ব্যবহার হয়।\nBCS, Bank exam-এ প্রায়ই দেখা যায়।\n\nএই শব্দটা দিয়ে একটা বাক্য লিখো তো — সবচেয়ে ভালোটা পিন করব\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\n👉 https://storyvocabs.com/go/quiz/20260920-mo-6ed355\n\n#StoryVocabs #EnglishVocabulary #BCS",
+  "caption_ig": "কোনটা ভুল? 'Culpable' শব্দটা কি দোষারোপযোগ্য?\n\nদোষী নয়, কিন্তু দায়ী হতে পারে।\nব্যক্তিকে দায়িত্ব দেওয়ার সময় ব্যবহার হয়।\nBCS, Bank exam-এ প্রায়ই দেখা যায়।\n\nএই শব্দটা দিয়ে একটা বাক্য লিখো তো — সবচেয়ে ভালোটা পিন করব\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #BankExam #IELTS #DUIBA #Vocabulary",
+  "first_comment": "✅ সঠিক উত্তর: C) দোষী\n\nCulpable = দোষী\nদোষী মানে এমন কেউ বা কাজ যা সমালোচনার যোগ্য, মনে রাখো \"culpable\" শব্দটা ‘কুল’ + ‘পেবল’—দোষের ‘কুল’ অংশ।\n\nযারা ঠিক বলেছ — 🔥। কালকের শব্দটাও মিস কোরো না।",
+  "comment_delay_minutes": 360,
+  "media": [
+    "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-20/morning/slide_01_quiz.png"
   ],
-  "answer_index": 2,
-  "explanation_bn": "দোষী মানে এমন কেউ বা কাজ যা সমালোচনার যোগ্য, মনে রাখো \"culpable\" শব্দটা ‘কুল’ + ‘পেবল’—দোষের ‘কুল’ অংশ।",
-  "exam_tag": "BCS · Bank · Admission"
- },
- "caption_fb": "কোনটা ভুল? 'Culpable' শব্দটা কি দোষারোপযোগ্য?\n\nদোষী নয়, কিন্তু দায়ী হতে পারে।\nব্যক্তিকে দায়িত্ব দেওয়ার সময় ব্যবহার হয়।\nBCS, Bank exam-এ প্রায়ই দেখা যায়।\n\nএই শব্দটা দিয়ে একটা বাক্য লিখো তো — সবচেয়ে ভালোটা পিন করব\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\n👉 https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=quiz&utm_content=20260920-mo-6ed355\n\n#StoryVocabs #EnglishVocabulary #BCS",
- "caption_ig": "কোনটা ভুল? 'Culpable' শব্দটা কি দোষারোপযোগ্য?\n\nদোষী নয়, কিন্তু দায়ী হতে পারে।\nব্যক্তিকে দায়িত্ব দেওয়ার সময় ব্যবহার হয়।\nBCS, Bank exam-এ প্রায়ই দেখা যায়।\n\nএই শব্দটা দিয়ে একটা বাক্য লিখো তো — সবচেয়ে ভালোটা পিন করব\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #BankExam #IELTS #DUIBA #Vocabulary",
- "first_comment": "✅ সঠিক উত্তর: C) দোষী\n\nCulpable = দোষী\nদোষী মানে এমন কেউ বা কাজ যা সমালোচনার যোগ্য, মনে রাখো \"culpable\" শব্দটা ‘কুল’ + ‘পেবল’—দোষের ‘কুল’ অংশ।\n\nযারা ঠিক বলেছ — 🔥। কালকের শব্দটাও মিস কোরো না।",
- "comment_delay_minutes": 360,
- "media": [
-  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-20/morning/slide_01_quiz.png"
- ],
- "media_urls": [
-  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-20/morning/slide_01_quiz.png"
- ],
- "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-20/morning/story_1080x1920.png",
- "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-20/morning/story_1080x1920.png",
- "quality_score": 8.0,
- "attempts": 1,
- "evergreen": false,
- "telegram_message_id": 23,
- "fb_post_id": "",
- "ig_media_id": "",
- "fb_story_id": "",
- "ig_story_id": "",
- "review_note": "",
- "error": "",
- "created_at": "2026-09-18T23:40:38+00:00",
- "published_at": "",
- "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=quiz&utm_content=20260920-mo-6ed355"
+  "media_urls": [
+    "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-20/morning/slide_01_quiz.png"
+  ],
+  "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-20/morning/story_1080x1920.png",
+  "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-20/morning/story_1080x1920.png",
+  "quality_score": 8,
+  "attempts": 1,
+  "evergreen": false,
+  "telegram_message_id": 23,
+  "fb_post_id": "",
+  "ig_media_id": "",
+  "fb_story_id": "",
+  "ig_story_id": "",
+  "review_note": "",
+  "error": "",
+  "created_at": "2026-09-18T23:40:38+00:00",
+  "published_at": "",
+  "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=quiz&utm_content=20260920-mo-6ed355"
 }

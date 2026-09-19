@@ -17,7 +17,8 @@ def test_assemble_has_one_fb_url_and_no_ig_url():
     fb, ig, url = assemble(_caption(), "news_word", "abc", load_strategy())
     gates.caption_shape(fb, ig)
     assert url.startswith(settings.PUBLIC_SITE_URL)
-    assert "utm_campaign=news_word" in fb and "http" not in ig
+    assert "utm_campaign=news_word" in url
+    assert f"{settings.PUBLIC_SITE_URL}/go/news_word/abc" in fb and "http" not in ig
 
 
 def test_banned_claims_blocks_harvard_and_stats():

@@ -1,65 +1,65 @@
 {
- "id": "20290618-mo-9fde79",
- "date": "2029-06-18",
- "slot": "morning",
- "pillar": "confusables",
- "status": "pending",
- "hook_style": "question",
- "content": {
+  "id": "20290618-mo-9fde79",
+  "date": "2029-06-18",
+  "slot": "morning",
   "pillar": "confusables",
-  "title_bn": "একই শব্দ, একই অর্থ",
-  "pair": [
-   {
-    "word": "Enmity",
-    "pos": "noun",
-    "difficulty": "Beginner",
-    "phonetic": "/ɛnˈmɪti/",
-    "gloss_bn": "বিদ্বেষ",
-    "meaning_bn": "শত্রুত্ববোধ, বিদ্বেষপূর্ণ মনোভাব",
-    "meaning_en": "deep hostility or ill will",
-    "example": "The <b>enmity</b> between the two clubs grew during the semester.",
-    "synonym": "hostility, animosity, hatred",
-    "antonym": "friendship, affection"
-   },
-   {
-    "word": "Enmity",
-    "pos": "noun",
-    "difficulty": "Beginner",
-    "phonetic": "/ɛnˈmɪti/",
-    "gloss_bn": "বিদ্বেষ",
-    "meaning_bn": "শত্রুত্ববোধ, বিদ্বেষপূর্ণ মনোভাব",
-    "meaning_en": "deep hostility or ill will",
-    "example": "After the exam, the <b>enmity</b> faded.",
-    "synonym": "hostility, animosity, hatred",
-    "antonym": "friendship, affection"
-   }
+  "status": "pending",
+  "hook_style": "question",
+  "content": {
+    "pillar": "confusables",
+    "title_bn": "একই শব্দ, একই অর্থ",
+    "pair": [
+      {
+        "word": "Enmity",
+        "pos": "noun",
+        "difficulty": "Beginner",
+        "phonetic": "/ɛnˈmɪti/",
+        "gloss_bn": "বিদ্বেষ",
+        "meaning_bn": "শত্রুত্ববোধ, বিদ্বেষপূর্ণ মনোভাব",
+        "meaning_en": "deep hostility or ill will",
+        "example": "The <b>enmity</b> between the two clubs grew during the semester.",
+        "synonym": "hostility, animosity, hatred",
+        "antonym": "friendship, affection"
+      },
+      {
+        "word": "Enmity",
+        "pos": "noun",
+        "difficulty": "Beginner",
+        "phonetic": "/ɛnˈmɪti/",
+        "gloss_bn": "বিদ্বেষ",
+        "meaning_bn": "শত্রুত্ববোধ, বিদ্বেষপূর্ণ মনোভাব",
+        "meaning_en": "deep hostility or ill will",
+        "example": "After the exam, the <b>enmity</b> faded.",
+        "synonym": "hostility, animosity, hatred",
+        "antonym": "friendship, affection"
+      }
+    ],
+    "difference_bn": "দুইটা বানান একই, অর্থও একই।",
+    "memory_tip_bn": "শব্দের শেষে -ity, শত্রুত্বের মতোই শেষ।"
+  },
+  "caption_fb": "একই বানান, একই অর্থ—তুমি কীভাবে ধরবে?\n\nশব্দের শেষে -ity, শত্রুত্বের মতোই শেষ।\nএটা BCS, Bank, DU‑IBA, IELTS‑এ বারবার আসে।\nভুল করলে পয়েন্ট কমে, সঠিক লিখলে পয়েন্ট বাড়ে।\n\nএনিমিটি দিয়ে একটি বাক্য লিখে দেখাও!\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\n👉 https://storyvocabs.com/go/confusables/20290618-mo-9fde79\n\n#StoryVocabs #EnglishVocabulary #BCS",
+  "caption_ig": "একই বানান, একই অর্থ—তুমি কীভাবে ধরবে?\n\nশব্দের শেষে -ity, শত্রুত্বের মতোই শেষ।\nএটা BCS, Bank, DU‑IBA, IELTS‑এ বারবার আসে।\nভুল করলে পয়েন্ট কমে, সঠিক লিখলে পয়েন্ট বাড়ে।\n\nএনিমিটি দিয়ে একটি বাক্য লিখে দেখাও!\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #Enmity #DUIBA #IELTS #Admission",
+  "first_comment": "",
+  "comment_delay_minutes": 0,
+  "media": [
+    "F:/.antigravity/StoryVocabs-social/output/2029-06-18/morning/slide_01_cover.png",
+    "F:/.antigravity/StoryVocabs-social/output/2029-06-18/morning/slide_02_pair.png",
+    "F:/.antigravity/StoryVocabs-social/output/2029-06-18/morning/slide_03_rule.png"
   ],
-  "difference_bn": "দুইটা বানান একই, অর্থও একই।",
-  "memory_tip_bn": "শব্দের শেষে -ity, শত্রুত্বের মতোই শেষ।"
- },
- "caption_fb": "একই বানান, একই অর্থ—তুমি কীভাবে ধরবে?\n\nশব্দের শেষে -ity, শত্রুত্বের মতোই শেষ।\nএটা BCS, Bank, DU‑IBA, IELTS‑এ বারবার আসে।\nভুল করলে পয়েন্ট কমে, সঠিক লিখলে পয়েন্ট বাড়ে।\n\nএনিমিটি দিয়ে একটি বাক্য লিখে দেখাও!\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\n👉 https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=20290618-mo-9fde79\n\n#StoryVocabs #EnglishVocabulary #BCS",
- "caption_ig": "একই বানান, একই অর্থ—তুমি কীভাবে ধরবে?\n\nশব্দের শেষে -ity, শত্রুত্বের মতোই শেষ।\nএটা BCS, Bank, DU‑IBA, IELTS‑এ বারবার আসে।\nভুল করলে পয়েন্ট কমে, সঠিক লিখলে পয়েন্ট বাড়ে।\n\nএনিমিটি দিয়ে একটি বাক্য লিখে দেখাও!\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #Enmity #DUIBA #IELTS #Admission",
- "first_comment": "",
- "comment_delay_minutes": 0,
- "media": [
-  "F:/.antigravity/StoryVocabs-social/output/2029-06-18/morning/slide_01_cover.png",
-  "F:/.antigravity/StoryVocabs-social/output/2029-06-18/morning/slide_02_pair.png",
-  "F:/.antigravity/StoryVocabs-social/output/2029-06-18/morning/slide_03_rule.png"
- ],
- "media_urls": [],
- "story_media": "F:/.antigravity/StoryVocabs-social/output/2029-06-18/morning/story_1080x1920.png",
- "story_media_url": "",
- "quality_score": 7.0,
- "attempts": 3,
- "evergreen": true,
- "telegram_message_id": null,
- "fb_post_id": "",
- "ig_media_id": "",
- "fb_story_id": "",
- "ig_story_id": "",
- "review_note": "",
- "error": "",
- "created_at": "2026-09-18T19:38:15+00:00",
- "published_at": "",
- "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=20290618-mo-9fde79"
+  "media_urls": [],
+  "story_media": "F:/.antigravity/StoryVocabs-social/output/2029-06-18/morning/story_1080x1920.png",
+  "story_media_url": "",
+  "quality_score": 7,
+  "attempts": 3,
+  "evergreen": true,
+  "telegram_message_id": null,
+  "fb_post_id": "",
+  "ig_media_id": "",
+  "fb_story_id": "",
+  "ig_story_id": "",
+  "review_note": "",
+  "error": "",
+  "created_at": "2026-09-18T19:38:15+00:00",
+  "published_at": "",
+  "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=20290618-mo-9fde79"
 }

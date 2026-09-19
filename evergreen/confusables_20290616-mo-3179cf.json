@@ -1,65 +1,65 @@
 {
- "id": "20290616-mo-3179cf",
- "date": "2029-06-16",
- "slot": "morning",
- "pillar": "confusables",
- "status": "pending",
- "hook_style": "question",
- "content": {
+  "id": "20290616-mo-3179cf",
+  "date": "2029-06-16",
+  "slot": "morning",
   "pillar": "confusables",
-  "title_bn": "খারাপ নাকি ভাল, শব্দে পার্থক্য?",
-  "pair": [
-   {
-    "word": "Infamous",
-    "pos": "adjective",
-    "difficulty": "Intermediate",
-    "phonetic": "/ɪnˈfeɪməs/",
-    "gloss_bn": "খ্যাতিমান (নেতিবাচক)",
-    "meaning_bn": "খারাপ খ্যাতি থাকা, অপবাদে পরিচিত",
-    "meaning_en": "having a bad reputation; widely known for something negative",
-    "example": "My roommate was <b>infamous</b> for always missing the bus to campus.",
-    "synonym": "notorious, infamous, scandalous",
-    "antonym": "famous, reputable"
-   },
-   {
-    "word": "Famous",
-    "pos": "",
-    "difficulty": "Intermediate",
-    "phonetic": "/ˈfeɪməs/",
-    "gloss_bn": "প্রসিদ্ধ",
-    "meaning_bn": "ভালো খ্যাতি থাকা, অধিক পরিচিত",
-    "meaning_en": "well known and admired; widely recognized",
-    "example": "The student who won the national debate was <b>famous</b> across all colleges.",
-    "synonym": "",
-    "antonym": ""
-   }
+  "status": "pending",
+  "hook_style": "question",
+  "content": {
+    "pillar": "confusables",
+    "title_bn": "খারাপ নাকি ভাল, শব্দে পার্থক্য?",
+    "pair": [
+      {
+        "word": "Infamous",
+        "pos": "adjective",
+        "difficulty": "Intermediate",
+        "phonetic": "/ɪnˈfeɪməs/",
+        "gloss_bn": "খ্যাতিমান (নেতিবাচক)",
+        "meaning_bn": "খারাপ খ্যাতি থাকা, অপবাদে পরিচিত",
+        "meaning_en": "having a bad reputation; widely known for something negative",
+        "example": "My roommate was <b>infamous</b> for always missing the bus to campus.",
+        "synonym": "notorious, infamous, scandalous",
+        "antonym": "famous, reputable"
+      },
+      {
+        "word": "Famous",
+        "pos": "",
+        "difficulty": "Intermediate",
+        "phonetic": "/ˈfeɪməs/",
+        "gloss_bn": "প্রসিদ্ধ",
+        "meaning_bn": "ভালো খ্যাতি থাকা, অধিক পরিচিত",
+        "meaning_en": "well known and admired; widely recognized",
+        "example": "The student who won the national debate was <b>famous</b> across all colleges.",
+        "synonym": "",
+        "antonym": ""
+      }
+    ],
+    "difference_bn": "Infamous মানে খারাপ দিকের খ্যাতি, Famous মানে ভাল দিকের খ্যাতি—একই শব্দ, ভিন্ন প্রিফিক্সে অর্থ বদলে যায়।",
+    "memory_tip_bn": "‘In-’ মানে ‘ভেতরে‑নেতিবাচক’, ‘Famous’ স্বাভাবিক ভালো।"
+  },
+  "caption_fb": "Infamous না Famous? কোনটা বেশি ব্যবহার করো?\n\nExam‑এ প্রিফিক্সের দিকটা ভুল হলে অর্থ বদলে যায়, তাই প্রশ্নে ‘infamous’ ব্যবহার করলে নেতিবাচক ইম্প্যাক্ট দিতে পারে।\n\nমেমরি ট্রিক: ‘in‑’ মানে ‘inside‑negative’, তাই ‘infamous’ = inside‑bad fame.\n\nদু’টি শব্দই উচ্চারণে কাছাকাছি, কিন্তু বাক্যে ব্যবহার ভিন্ন—বিবেচনা করে লিখতে হবে।\n\nআপনার মতে কোন শব্দটি বেশি ব্যবহার করেন, infamous না famous?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\n👉 https://storyvocabs.com/go/confusables/20290616-mo-3179cf\n\n#StoryVocabs #EnglishVocabulary #BCS",
+  "caption_ig": "Infamous না Famous? কোনটা বেশি ব্যবহার করো?\n\nExam‑এ প্রিফিক্সের দিকটা ভুল হলে অর্থ বদলে যায়, তাই প্রশ্নে ‘infamous’ ব্যবহার করলে নেতিবাচক ইম্প্যাক্ট দিতে পারে।\n\nমেমরি ট্রিক: ‘in‑’ মানে ‘inside‑negative’, তাই ‘infamous’ = inside‑bad fame.\n\nদু’টি শব্দই উচ্চারণে কাছাকাছি, কিন্তু বাক্যে ব্যবহার ভিন্ন—বিবেচনা করে লিখতে হবে।\n\nআপনার মতে কোন শব্দটি বেশি ব্যবহার করেন, infamous না famous?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #vocab #examprep #DUIBA #IELTS",
+  "first_comment": "",
+  "comment_delay_minutes": 0,
+  "media": [
+    "F:/.antigravity/StoryVocabs-social/output/2029-06-16/morning/slide_01_cover.png",
+    "F:/.antigravity/StoryVocabs-social/output/2029-06-16/morning/slide_02_pair.png",
+    "F:/.antigravity/StoryVocabs-social/output/2029-06-16/morning/slide_03_rule.png"
   ],
-  "difference_bn": "Infamous মানে খারাপ দিকের খ্যাতি, Famous মানে ভাল দিকের খ্যাতি—একই শব্দ, ভিন্ন প্রিফিক্সে অর্থ বদলে যায়।",
-  "memory_tip_bn": "‘In-’ মানে ‘ভেতরে‑নেতিবাচক’, ‘Famous’ স্বাভাবিক ভালো।"
- },
- "caption_fb": "Infamous না Famous? কোনটা বেশি ব্যবহার করো?\n\nExam‑এ প্রিফিক্সের দিকটা ভুল হলে অর্থ বদলে যায়, তাই প্রশ্নে ‘infamous’ ব্যবহার করলে নেতিবাচক ইম্প্যাক্ট দিতে পারে।\n\nমেমরি ট্রিক: ‘in‑’ মানে ‘inside‑negative’, তাই ‘infamous’ = inside‑bad fame.\n\nদু’টি শব্দই উচ্চারণে কাছাকাছি, কিন্তু বাক্যে ব্যবহার ভিন্ন—বিবেচনা করে লিখতে হবে।\n\nআপনার মতে কোন শব্দটি বেশি ব্যবহার করেন, infamous না famous?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\n👉 https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=20290616-mo-3179cf\n\n#StoryVocabs #EnglishVocabulary #BCS",
- "caption_ig": "Infamous না Famous? কোনটা বেশি ব্যবহার করো?\n\nExam‑এ প্রিফিক্সের দিকটা ভুল হলে অর্থ বদলে যায়, তাই প্রশ্নে ‘infamous’ ব্যবহার করলে নেতিবাচক ইম্প্যাক্ট দিতে পারে।\n\nমেমরি ট্রিক: ‘in‑’ মানে ‘inside‑negative’, তাই ‘infamous’ = inside‑bad fame.\n\nদু’টি শব্দই উচ্চারণে কাছাকাছি, কিন্তু বাক্যে ব্যবহার ভিন্ন—বিবেচনা করে লিখতে হবে।\n\nআপনার মতে কোন শব্দটি বেশি ব্যবহার করেন, infamous না famous?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #vocab #examprep #DUIBA #IELTS",
- "first_comment": "",
- "comment_delay_minutes": 0,
- "media": [
-  "F:/.antigravity/StoryVocabs-social/output/2029-06-16/morning/slide_01_cover.png",
-  "F:/.antigravity/StoryVocabs-social/output/2029-06-16/morning/slide_02_pair.png",
-  "F:/.antigravity/StoryVocabs-social/output/2029-06-16/morning/slide_03_rule.png"
- ],
- "media_urls": [],
- "story_media": "F:/.antigravity/StoryVocabs-social/output/2029-06-16/morning/story_1080x1920.png",
- "story_media_url": "",
- "quality_score": 6.0,
- "attempts": 4,
- "evergreen": true,
- "telegram_message_id": null,
- "fb_post_id": "",
- "ig_media_id": "",
- "fb_story_id": "",
- "ig_story_id": "",
- "review_note": "",
- "error": "",
- "created_at": "2026-09-18T19:36:31+00:00",
- "published_at": "",
- "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=20290616-mo-3179cf"
+  "media_urls": [],
+  "story_media": "F:/.antigravity/StoryVocabs-social/output/2029-06-16/morning/story_1080x1920.png",
+  "story_media_url": "",
+  "quality_score": 6,
+  "attempts": 4,
+  "evergreen": true,
+  "telegram_message_id": null,
+  "fb_post_id": "",
+  "ig_media_id": "",
+  "fb_story_id": "",
+  "ig_story_id": "",
+  "review_note": "",
+  "error": "",
+  "created_at": "2026-09-18T19:36:31+00:00",
+  "published_at": "",
+  "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=20290616-mo-3179cf"
 }

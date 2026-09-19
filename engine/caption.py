@@ -45,6 +45,15 @@ def build_utm(pillar: str, post_id: str, source: str = "facebook") -> str:
     return f"{settings.PUBLIC_SITE_URL}/?{q}"
 
 
+def build_display_url(pillar: str, post_id: str) -> str:
+    """Return the clean first-party URL shown in public captions.
+
+    The app expands this short path back to the tracked UTM landing URL, so
+    readers see a professional StoryVocabs link without losing attribution.
+    """
+    return f"{settings.PUBLIC_SITE_URL}/go/{pillar}/{post_id}"
+
+
 def write_caption(pillar: str, summary: str, hook_instruction: str, when: str = "8 am") -> Caption:
     return call_json(SYSTEM, CAPTION_PROMPT.format(pillar=pillar, hook_instruction=hook_instruction,
                                                    summary=summary, when=when), Caption, temperature=0.8, max_tokens=1200)
@@ -66,10 +75,11 @@ def assemble(cap: Caption, pillar: str, post_id: str, strategy: dict, seed: int 
     """Return (facebook_caption, instagram_caption, utm_url)."""
     rng = random.Random(seed)
     url_fb = build_utm(pillar, post_id, "facebook")
+    display_url = build_display_url(pillar, post_id)
     body = cap.body.strip()
     fb_tags = " ".join("#" + t for t in _tags(cap, strategy, *settings.HASHTAGS_FB, rng))
     ig_tags = " ".join("#" + t for t in _tags(cap, strategy, *settings.HASHTAGS_IG, rng))
 
-    fb = f"{cap.hook_line.strip()}\n\n{body}\n\n{cap.comment_prompt.strip()}\n\n{cap.cta_line.strip()}\n👉 {url_fb}\n\n{fb_tags}"
+    fb = f"{cap.hook_line.strip()}\n\n{body}\n\n{cap.comment_prompt.strip()}\n\n{cap.cta_line.strip()}\n👉 {display_url}\n\n{fb_tags}"
     ig = f"{cap.hook_line.strip()}\n\n{body}\n\n{cap.comment_prompt.strip()}\n\n{cap.cta_line.strip()} — link in bio\n.\n.\n{ig_tags}"
     return fb.strip(), ig.strip(), url_fb
