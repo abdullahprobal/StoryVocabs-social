@@ -183,7 +183,10 @@ def news_pool(date_str: str, topic_group: str = "general", count: int = 12, refr
     queries = TOPIC_QUERIES.get(topic_group) or TOPIC_QUERIES.get("general") or [f"{settings.BRAND_NAME} news", topic_group]
     keywords = TOPIC_KEYWORDS.get(topic_group) or TOPIC_KEYWORDS.get("general") or [w.lower() for q in queries for w in q.split()]
 
-    articles = dedupe(fetch_rss() + fetch_google_news(queries))
+    # A topic with its own queries (project.json → news.queries) is a niche feed: use only those
+    # results, otherwise the brand's general RSS feeds outrank them with unrelated headlines.
+    project_topic = topic_group in (settings.NEWS.get("queries") or {}) and topic_group != "general"
+    articles = dedupe(fetch_google_news(queries) if project_topic else fetch_rss() + fetch_google_news(queries))
     tracker = load_tracker()
     usable = [a for a in articles if is_story_usable(tracker, a["title"])] or articles
     scored = sorted(usable, key=lambda a: score_article(a, keywords), reverse=True)
