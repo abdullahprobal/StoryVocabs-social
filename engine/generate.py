@@ -169,9 +169,19 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             hook_instr = strategy["hook_styles"].get(plan.hook_style, {}).get("instruction", "")
             when = "8 am" if plan.slot == "morning" else "8 pm"
             cap = write_caption(plan.pillar, summary, hook_instr, when)
+            if isinstance(content, QuizPost):
+                # The body is fixed copy: the LLM may only write the hook, so the answer cannot leak.
+                cap.body = "\n\n".join([
+                    "ছবিতে চারটা অপশন। একটা ঠিক, তিনটা খুব কাছাকাছি।",
+                    "সঠিক উত্তর আর ব্যাখ্যা আসছে কমেন্টে, ৬ ঘণ্টা পর।",
+                    "BCS, Bank, IELTS — যে পরীক্ষাই দাও, এই শব্দটা তালিকায় রাখো।",
+                ])
+                cap.comment_prompt = "তোমার উত্তর: A, B, C না D? কমেন্টে লিখো।"
             fb, ig, url = assemble(cap, plan.pillar, item_id, strategy, seed=attempt)
             gates.banned_claims(fb, ig, summary, allow_percent=(plan.pillar == "offer"))
             gates.caption_shape(fb, ig)
+            if isinstance(content, QuizPost):
+                gates.quiz_caption_keeps_answer(fb, content.options[content.answer_index], content.word.gloss_bn)
 
             score = 0.0
             if use_critic:
@@ -179,9 +189,11 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
                 score = verdict.score
                 log(f"    critic: {verdict.score}/10 hook {verdict.hook_score} bangla_ok={verdict.bangla_ok} "
                     f"forced={verdict.forced_words} issues={verdict.issues[:2]}")
-                if verdict.forced_words and isinstance(content, StoryPost) and attempt < settings.MAX_GENERATION_ATTEMPTS:
+                if verdict.factual_error:
+                    raise gates.GateError(f"critic found a factual error: {verdict.issues[:1]}")
+                if verdict.forced_words and isinstance(content, StoryPost):
                     raise gates.GateError(f"critic flagged forced words {verdict.forced_words}")
-                if verdict.score < settings.QUALITY_PASS and attempt < settings.MAX_GENERATION_ATTEMPTS:
+                if verdict.score < settings.QUALITY_PASS:  # a weak post is never queued; evergreen covers the slot
                     raise gates.GateError(f"critic score {verdict.score} < {settings.QUALITY_PASS}")
                 if verdict.improved_hook and verdict.hook_score < 7:
                     new_hook = verdict.improved_hook.strip()[:settings.HOOK_MAX_CHARS + 10]

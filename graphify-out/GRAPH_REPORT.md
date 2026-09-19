@@ -1,16 +1,16 @@
 # Graph Report - StoryVocabs-social  (2026-09-19)
 
 ## Corpus Check
-- 57 files · ~172,421 words
+- 57 files · ~173,064 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2116 nodes · 2789 edges · 294 communities (289 shown, 5 thin omitted)
+- 2129 nodes · 2811 edges · 301 communities (296 shown, 5 thin omitted)
 - Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 242 edges (avg confidence: 0.52)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f0c6c1cb`
+- Built from commit: `5b3a62dc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -302,6 +302,13 @@
 - [[_COMMUNITY_Community 291|Community 291]]
 - [[_COMMUNITY_Community 292|Community 292]]
 - [[_COMMUNITY_Community 293|Community 293]]
+- [[_COMMUNITY_Community 294|Community 294]]
+- [[_COMMUNITY_Community 295|Community 295]]
+- [[_COMMUNITY_Community 296|Community 296]]
+- [[_COMMUNITY_Community 297|Community 297]]
+- [[_COMMUNITY_Community 298|Community 298]]
+- [[_COMMUNITY_Community 299|Community 299]]
+- [[_COMMUNITY_Community 300|Community 300]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Word` - 51 edges
@@ -316,30 +323,30 @@
 10. `BaseModel` - 21 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `test_hero_must_be_in_words()` --calls--> `StoryPost`  [EXTRACTED]
-  tests/test_gates_and_contracts.py → engine/contracts.py
-- `int` --uses--> `QueueItem`  [INFERRED]
-  scripts/refresh_telegram_previews.py → engine/contracts.py
-- `ConfusablesPost` --uses--> `Word`  [INFERRED]
+- `Path` --uses--> `Word`  [INFERRED]
   render/image_renderer.py → engine/contracts.py
-- `InAppPost` --uses--> `Word`  [INFERRED]
+- `str` --uses--> `Word`  [INFERRED]
   render/image_renderer.py → engine/contracts.py
-- `int` --uses--> `Word`  [INFERRED]
+- `ConfusablesPost` --uses--> `StoryPost`  [INFERRED]
+  render/image_renderer.py → engine/contracts.py
+- `InAppPost` --uses--> `StoryPost`  [INFERRED]
+  render/image_renderer.py → engine/contracts.py
+- `int` --uses--> `StoryPost`  [INFERRED]
   render/image_renderer.py → engine/contracts.py
 
-## Communities (294 total, 5 thin omitted)
+## Communities (301 total, 5 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.05
-Nodes (107): Category, _cap_words(), Category, _clean(), ConfusablesPost, InAppPost, OfferPost, int (+99 more)
+Cohesion: 0.25
+Nodes (33): ConfusablesPost, InAppPost, OfferPost, QuizPost, Pydantic contracts — the single source of truth for what the LLM must emit and, Word, BaseModel, ConfusablesPost (+25 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.10
-Nodes (58): QueueItem, after_build(), build_item(), content_model(), load_item(), log(), main(), make_content() (+50 more)
+Cohesion: 0.16
+Nodes (33): QueueItem, after_build(), build_item(), content_model(), log(), main(), make_content(), bool (+25 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.04
-Nodes (52): aiautomationeventhighlightsdigitalpushinapparelsectorthebusi, bangladeshcricketboardseeksnewpartnershipswithbccitheeconomi, bangladeshcricketersonpslexitwatchoversecurityconcernsawaitb, bangladeshcricketinturmoilfourdirectorsresigninadaybcbchiefs, bangladeshgovernmentfindsvoteriggingin2025bcbelectionsthenew, bangladeshnewzealandtradetiestostrengthenftatalksproposedbus, bangladeshpmtariquerahmantovisitindiasoonforeignministergive, bangladeshprotestclipfalselylinkedtoindiastatevoteyahoo (+44 more)
+Nodes (53): aiautomationeventhighlightsdigitalpushinapparelsectorthebusi, bangladeshcricketboardseeksnewpartnershipswithbccitheeconomi, bangladeshcricketersonpslexitwatchoversecurityconcernsawaitb, bangladeshcricketinturmoilfourdirectorsresigninadaybcbchiefs, bangladeshgovernmentfindsvoteriggingin2025bcbelectionsthenew, bangladeshnewzealandtradetiestostrengthenftatalksproposedbus, bangladeshpmtariquerahmantovisitindiasoonforeignministergive, bangladeshprotestclipfalselylinkedtoindiastatevoteyahoo (+45 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.04
@@ -350,8 +357,8 @@ Cohesion: 0.04
 Nodes (45): attempts, caption_fb, caption_ig, comment_delay_minutes, content, answer_index, exam_tag, explanation_bn (+37 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.06
-Nodes (56): Caption, date, assemble(), build_display_url(), build_utm(), int, Random, str (+48 more)
+Cohesion: 0.07
+Nodes (47): Caption, date, assemble(), build_display_url(), build_utm(), int, Random, str (+39 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.33
@@ -394,8 +401,8 @@ Cohesion: 0.27
 Nodes (17): clean(), dedupe(), fetch_google_news(), fetch_rss(), is_story_usable(), load_tracker(), mark_story_used(), news_pool() (+9 more)
 
 ### Community 16 - "Community 16"
-Cohesion: 0.18
-Nodes (18): CriticVerdict, CriticVerdict, banned_claims(), caption_shape(), critic(), GateError, html_tokens(), bool (+10 more)
+Cohesion: 0.22
+Nodes (17): CriticVerdict, CriticVerdict, banned_claims(), caption_shape(), critic(), GateError, html_tokens(), bool (+9 more)
 
 ### Community 17 - "Community 17"
 Cohesion: 0.10
@@ -418,8 +425,8 @@ Cohesion: 0.29
 Nodes (12): bytes, bool, Path, str, configured(), _git_push_files(), _github_put(), Public URLs for rendered PNGs (Instagram's API only accepts URLs).  github   : p (+4 more)
 
 ### Community 22 - "Community 22"
-Cohesion: 0.20
-Nodes (17): bool, int, str, configured(), decisions(), edit_preview(), notify(), _preview_text() (+9 more)
+Cohesion: 0.15
+Nodes (21): bool, int, str, configured(), decisions(), edit_preview(), notify(), _preview_text() (+13 more)
 
 ### Community 23 - "Community 23"
 Cohesion: 0.11
@@ -618,7 +625,7 @@ Cohesion: 0.67
 Nodes (3): benefactor, 2026, dates
 
 ### Community 73 - "Community 73"
-Cohesion: 0.17
+Cohesion: 0.18
 Nodes (11): 13. Key Contacts, 15. Future Improvements, 6. File Structure, 7. Weekly Genre Schedule, 8.1 Groq API, 8.2 RSS Feeds, 8. API Documentation, 9.1 Secrets Management (+3 more)
 
 ### Community 74 - "Community 74"
@@ -998,7 +1005,7 @@ Cohesion: 0.67
 Nodes (3): muse, 2026, dates
 
 ### Community 168 - "Community 168"
-Cohesion: 0.18
+Cohesion: 0.17
 Nodes (11): 13. Key Contacts, 15. Future Improvements, 6. File Structure, 7. Weekly Genre Schedule, 8.1 Groq API, 8.2 RSS Feeds, 8. API Documentation, 9.1 Secrets Management (+3 more)
 
 ### Community 169 - "Community 169"
@@ -1457,19 +1464,47 @@ Nodes (3): code:block4 (🌙 RAMADAN SCHEDULE (All times BST)), Ramadan 4-Post S
 Cohesion: 0.67
 Nodes (3): hashtags, core, pool
 
+### Community 294 - "Community 294"
+Cohesion: 0.08
+Nodes (6): _cap_words(), _clean(), int, str, _gemini(), ValueError
+
+### Community 295 - "Community 295"
+Cohesion: 0.27
+Nodes (27): _b64(), bold_html(), esc(), fmt_date(), font_css(), footer_html(), header_html(), logo_src() (+19 more)
+
+### Community 296 - "Community 296"
+Cohesion: 0.22
+Nodes (25): Category, Category, news_word (3 words, live news) and story60 (5 words, evergreen topic)., StoryPost, StorySlide, int, StoryPost, str (+17 more)
+
+### Community 297 - "Community 297"
+Cohesion: 0.16
+Nodes (22): available_chain(), call_json(), call_text(), _cerebras(), extract_json(), _groq(), _has_key(), _log() (+14 more)
+
+### Community 298 - "Community 298"
+Cohesion: 0.20
+Nodes (17): all_words(), _bold(), by_name(), candidate_lines(), candidates(), is_available(), load_tracker(), mark_used() (+9 more)
+
+### Community 299 - "Community 299"
+Cohesion: 0.33
+Nodes (15): load_item(), ensure_urls(), log(), main(), pick_evergreen(), post_first_comment(), publish_item(), int (+7 more)
+
+### Community 300 - "Community 300"
+Cohesion: 0.50
+Nodes (4): facts_block(), product_facts(), str, Brand voice: the system prompt shared by every writer and the caption engine. Pr
+
 ## Knowledge Gaps
-- **1267 isolated node(s):** `_comment`, `version`, `morning`, `evening`, `morning` (+1262 more)
+- **1268 isolated node(s):** `_comment`, `version`, `morning`, `evening`, `morning` (+1263 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `StoryVocabs Social Media Automation — System Handover Document` connect `Community 73` to `Community 290`, `Community 258`, `Community 260`, `Community 261`, `Community 201`, `Community 270`, `Community 271`, `Community 272`, `Community 278`, `Community 279`?**
+- **Why does `voluminous` connect `Community 252` to `Community 17`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `StoryVocabs Social Media Automation — System Handover Document` connect `Community 24` to `Community 35`, `Community 36`, `Community 73`, `Community 42`, `Community 43`, `Community 44`, `Community 46`, `Community 47`, `Community 217`, `Community 28`, `Community 31`?**
+- **Why does `fester` connect `Community 134` to `Community 17`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `karma` connect `Community 158` to `Community 17`?**
+- **Why does `increment` connect `Community 147` to `Community 17`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Are the 34 inferred relationships involving `Word` (e.g. with `Category` and `bool`) actually correct?**
   _`Word` has 34 INFERRED edges - model-reasoned connections that need verification._

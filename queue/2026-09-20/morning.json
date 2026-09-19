@@ -1,58 +1,56 @@
 {
-  "id": "20260920-mo-6ed355",
-  "date": "2026-09-20",
-  "slot": "morning",
+ "id": "20260920-mo-9038db",
+ "date": "2026-09-20",
+ "slot": "morning",
+ "pillar": "quiz",
+ "status": "pending",
+ "hook_style": "mistake",
+ "content": {
   "pillar": "quiz",
-  "status": "pending",
-  "hook_style": "mistake",
-  "content": {
-    "pillar": "quiz",
-    "word": {
-      "word": "Culpable",
-      "pos": "adjective",
-      "difficulty": "Advanced",
-      "phonetic": "/ˈkʌlpəbəl/",
-      "gloss_bn": "দোষী",
-      "meaning_bn": "দোষ আর সমালোচনার যোগ্য",
-      "meaning_en": "Deserving condemnation or blame",
-      "example": "",
-      "synonym": "Guilty, Responsible, Blameworthy",
-      "antonym": "Innocent, Blameless"
-    },
-    "question_bn": "এই শব্দের মানে কী?",
-    "options": [
-      "দোষারোপযোগ্য",
-      "অপরাধী",
-      "দোষী",
-      "দায়ী"
-    ],
-    "answer_index": 2,
-    "explanation_bn": "দোষী মানে এমন কেউ বা কাজ যা সমালোচনার যোগ্য, মনে রাখো \"culpable\" শব্দটা ‘কুল’ + ‘পেবল’—দোষের ‘কুল’ অংশ।",
-    "exam_tag": "BCS · Bank · Admission"
+  "word": {
+   "word": "Vitriolic",
+   "pos": "adjective",
+   "difficulty": "Intermediate",
+   "phonetic": "/ˈvɪtrɪlɪk/",
+   "gloss_bn": "গন্ধকজ",
+   "meaning_bn": "চরম কড়া, বিষাক্ত বা খুবই তীক্ষ্ণ পরিস্থিতি বা ভাষা।",
+   "meaning_en": "Having a sharp, caustic, and often bitter quality, typically in criticism or language.",
+   "example": "His <b>vitriolic</b> comments about the group assignment broke the team's morale during the exam week.",
+   "synonym": "Bitter, Caustic, Scathing",
+   "antonym": "Kind, Gentle, Mild"
   },
-  "caption_fb": "কোনটা ভুল? 'Culpable' শব্দটা কি দোষারোপযোগ্য?\n\nদোষী নয়, কিন্তু দায়ী হতে পারে।\nব্যক্তিকে দায়িত্ব দেওয়ার সময় ব্যবহার হয়।\nBCS, Bank exam-এ প্রায়ই দেখা যায়।\n\nএই শব্দটা দিয়ে একটা বাক্য লিখো তো — সবচেয়ে ভালোটা পিন করব\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\n👉 https://storyvocabs.com/go/quiz/20260920-mo-6ed355\n\n#StoryVocabs #EnglishVocabulary #BCS",
-  "caption_ig": "কোনটা ভুল? 'Culpable' শব্দটা কি দোষারোপযোগ্য?\n\nদোষী নয়, কিন্তু দায়ী হতে পারে।\nব্যক্তিকে দায়িত্ব দেওয়ার সময় ব্যবহার হয়।\nBCS, Bank exam-এ প্রায়ই দেখা যায়।\n\nএই শব্দটা দিয়ে একটা বাক্য লিখো তো — সবচেয়ে ভালোটা পিন করব\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #BankExam #IELTS #DUIBA #Vocabulary",
-  "first_comment": "✅ সঠিক উত্তর: C) দোষী\n\nCulpable = দোষী\nদোষী মানে এমন কেউ বা কাজ যা সমালোচনার যোগ্য, মনে রাখো \"culpable\" শব্দটা ‘কুল’ + ‘পেবল’—দোষের ‘কুল’ অংশ।\n\nযারা ঠিক বলেছ — 🔥। কালকের শব্দটাও মিস কোরো না।",
-  "comment_delay_minutes": 360,
-  "media": [
-    "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-20/morning/slide_01_quiz.png"
+  "question_bn": "Vitriolic শব্দের আসল মানে কী?",
+  "options": [
+   "স্বচ্ছ",
+   "নিষ্ক্রিয়",
+   "গন্ধকজ",
+   "মিষ্টি"
   ],
-  "media_urls": [
-    "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-20/morning/slide_01_quiz.png"
-  ],
-  "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-20/morning/story_1080x1920.png",
-  "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-20/morning/story_1080x1920.png",
-  "quality_score": 8,
-  "attempts": 1,
-  "evergreen": false,
-  "telegram_message_id": 23,
-  "fb_post_id": "",
-  "ig_media_id": "",
-  "fb_story_id": "",
-  "ig_story_id": "",
-  "review_note": "",
-  "error": "",
-  "created_at": "2026-09-18T23:40:38+00:00",
-  "published_at": "",
-  "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=quiz&utm_content=20260920-mo-6ed355"
+  "answer_index": 2,
+  "explanation_bn": "Vitriolic মানে গন্ধকজ বা খুব কড়া। মনে রাখবে, এটা এমন কথায় বা লেখায় থাকে যেটা শুনলে/পড়লে মনে হয় গন্ধকের গন্ধ উঠছে।",
+  "exam_tag": "BCS · Bank · Admission"
+ },
+ "caption_fb": "Vitriolic বললেই মাথায় চলে আসে 'গন্ধক' বা 'toxic' — কিন্তু আসল মানেটা একদম আলাদা।\n\nছবিতে চারটা অপশন। একটা ঠিক, তিনটা খুব কাছাকাছি।\n\nসঠিক উত্তর আর ব্যাখ্যা আসছে কমেন্টে, ৬ ঘণ্টা পর।\n\nBCS, Bank, IELTS — যে পরীক্ষাই দাও, এই শব্দটা তালিকায় রাখো।\n\nতোমার উত্তর: A, B, C না D? কমেন্টে লিখো।\n\nবন্ধুকে ট্যাগ করো যার এই শব্দটা দরকার\nstoryvocabs.com/quiz/0920\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "Vitriolic বললেই মাথায় চলে আসে 'গন্ধক' বা 'toxic' — কিন্তু আসল মানেটা একদম আলাদা।\n\nছবিতে চারটা অপশন। একটা ঠিক, তিনটা খুব কাছাকাছি।\n\nসঠিক উত্তর আর ব্যাখ্যা আসছে কমেন্টে, ৬ ঘণ্টা পর।\n\nBCS, Bank, IELTS — যে পরীক্ষাই দাও, এই শব্দটা তালিকায় রাখো।\n\nতোমার উত্তর: A, B, C না D? কমেন্টে লিখো।\n\nবন্ধুকে ট্যাগ করো যার এই শব্দটা দরকার — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #IELTS #Vocabulary #পরীক্ষাপ্রস্তুতি #বাংলাভোকাবুলারি",
+ "first_comment": "✅ সঠিক উত্তর: C) গন্ধকজ\n\nVitriolic = গন্ধকজ\nVitriolic মানে গন্ধকজ বা খুব কড়া। মনে রাখবে, এটা এমন কথায় বা লেখায় থাকে যেটা শুনলে/পড়লে মনে হয় গন্ধকের গন্ধ উঠছে।\n\nযারা ঠিক বলেছ — 🔥। কালকের শব্দটাও মিস কোরো না।",
+ "comment_delay_minutes": 360,
+ "media": [
+  "F:/.antigravity/StoryVocabs-social/output/2026-09-20/morning/slide_01_quiz.png"
+ ],
+ "media_urls": [],
+ "story_media": "F:/.antigravity/StoryVocabs-social/output/2026-09-20/morning/story_1080x1920.png",
+ "story_media_url": "",
+ "quality_score": 7.0,
+ "attempts": 1,
+ "evergreen": false,
+ "telegram_message_id": 58,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-09-19T01:01:08+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=quiz&utm_content=0920"
 }

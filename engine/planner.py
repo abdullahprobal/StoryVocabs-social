@@ -57,7 +57,7 @@ def _in_ramadan(d: date, holidays: dict) -> bool:
 
 PILLAR_HOOKS = {
     # story pillars may open mid-scene; the others must stay literal about the word
-    "news_word": None, "story60": None,
+    "news_word": ["question", "bold_true", "number", "exam_angle", "mistake"], "story60": None,
     "quiz": ["question", "mistake", "exam_angle"],
     "confusables": ["mistake", "question", "exam_angle", "bold_true"],
     "in_app": ["question", "bold_true", "exam_angle"],

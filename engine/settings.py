@@ -37,6 +37,10 @@ for d in (QUEUE_DIR, EVERGREEN_DIR, STATE_DIR, ANALYTICS_DIR, OUTPUT_DIR):
 PUBLIC_SITE_URL = os.getenv("PUBLIC_SITE_URL", "https://storyvocabs.com").rstrip("/")
 SITE_DISPLAY = PUBLIC_SITE_URL.replace("https://", "").replace("http://", "")
 BRAND_NAME = "StoryVocabs"
+# Public vanity paths shown in captions (storyvocabs.com/quiz). Must match
+# VANITY_PATHS in the app's frontend/server/short-links.js.
+PILLAR_PATHS = {"news_word": "words", "quiz": "quiz", "confusables": "mixup", "in_app": "app",
+                "story60": "story", "offer": "free"}
 FACEBOOK_PAGE_URL = os.getenv("FACEBOOK_PAGE_URL", "")
 
 # ── Time ──────────────────────────────────────────────────────────────────

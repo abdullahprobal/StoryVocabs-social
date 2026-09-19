@@ -31,6 +31,8 @@ class GateError(ValueError):
 
 _EMOJI = re.compile("[\U0001F300-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF]")
 _URL = re.compile(r"https?://\S+")
+# Public captions use the bare vanity link (storyvocabs.com/quiz) — count those too.
+_SITE_LINK = re.compile(r"(?<![\w/])" + re.escape(settings.SITE_DISPLAY) + r"(?:/[\w-]+){0,2}(?![\w/])")
 _STAT_CLAIMS = [
     r"\b\d{1,3}\s?%\s*(?:students|মানুষ|শিক্ষার্থী|people)",   # "90% students"
     r"\b\d+\s?(?:x|গুণ)\s*(?:বেশি|more|better|faster)",
@@ -61,10 +63,12 @@ def caption_shape(fb: str, ig: str) -> None:
     hook = fb.split("\n", 1)[0]
     if len(hook) > settings.HOOK_MAX_CHARS + 10:
         raise GateError(f"hook too long ({len(hook)} chars): {hook[:60]}")
-    if len(_URL.findall(fb)) != 1:
-        raise GateError("facebook caption must contain exactly one URL")
-    if _URL.search(ig):
-        raise GateError("instagram caption must not contain a URL")
+    if len(_URL.findall(fb)) + len(_SITE_LINK.findall(fb)) != 1:
+        raise GateError("facebook caption must contain exactly one link")
+    if _URL.search(fb):
+        raise GateError("facebook caption must show the bare vanity link, not a full URL")
+    if _URL.search(ig) or _SITE_LINK.search(ig):
+        raise GateError("instagram caption must not contain a link")
     if len(_EMOJI.findall(fb)) > settings.MAX_EMOJI + 2:
         raise GateError("too many emoji")
     if len(fb) > settings.CAPTION_MAX_CHARS_FB:
@@ -76,6 +80,21 @@ def caption_shape(fb: str, ig: str) -> None:
         raise GateError(f"instagram hashtag count {len(ig_tags)} out of range")
     if "vercel.app" in fb + ig:
         raise GateError("stale vercel link")
+
+
+_DEFINES = re.compile(r"(মানে হলো|মানে হচ্ছে|অর্থ হলো|অর্থ হচ্ছে|\bmeans\b|meaning is|refers to|বোঝায়)", re.I)
+
+
+def quiz_caption_keeps_answer(fb: str, correct_option: str, gloss: str) -> None:
+    """A quiz caption must not contain the correct option, the gloss, or a definition-shaped hook."""
+    low = fb.lower()
+    for leak in (correct_option, gloss):
+        leak = (leak or "").strip().lower()
+        if len(leak) >= 3 and leak in low:
+            raise GateError(f"quiz caption leaks the answer: '{leak}'")
+    hook = fb.split("\n", 1)[0]
+    if _DEFINES.search(hook):
+        raise GateError("quiz hook defines the word")
 
 
 def story_words(post: StoryPost) -> None:
@@ -117,7 +136,8 @@ def html_tokens(html: str, name: str = "") -> None:
 CRITIC_PROMPT = """You are the harshest editor at a Dhaka student media page. Rate this post 1-10.
 
 Design notes (do NOT penalise these): the story text on the image is English on purpose (reading practice);
-captions are Bangla-first on purpose; the link is a tracked website link and is required.
+captions are Bangla-first on purpose; the final CTA line ('৩টি প্যাক ফ্রি...' / 'Save করে রাখো' etc.) and the
+link are a fixed brand requirement — never call them promotional or ad-like, judge everything above them.
 
 CAPTION (Facebook):
 {caption}
@@ -129,12 +149,13 @@ Score criteria (be strict; 8+ only if you would genuinely stop scrolling):
 - hook_score: does line 1 make a tired student tap "See more"?
 - Bangla: natural, current, no Sanskritised or machine-translated phrasing? (bangla_ok)
 - Are any vocabulary words forced or wrongly used? (forced_words)
-- Anything untrue, cringe, generic, or that sounds like an ad? (issues)
+- factual_error: true if ANY statement about the news, the exam, or the word is untrue or misleading (e.g. wrong meaning, invented detail, wrong exam format). Be literal.
+- Anything cringe, generic, or that sounds like an ad? (issues)
 - improved_hook: rewrite line 1 to be better (<= 90 chars, Bangla-first), or "" if already strong.
-Return score (overall), hook_score, bangla_ok, forced_words, issues, improved_hook."""
+Return score (overall), hook_score, bangla_ok, forced_words, factual_error, issues, improved_hook."""
 
 
 def critic(caption_fb: str, summary: str) -> CriticVerdict:
-    caption_fb = _URL.sub("<link>", caption_fb)
+    caption_fb = _SITE_LINK.sub("<link>", _URL.sub("<link>", caption_fb))
     return call_json(SYSTEM, CRITIC_PROMPT.format(caption=caption_fb, summary=summary), CriticVerdict,
                      temperature=0.2, max_tokens=800)

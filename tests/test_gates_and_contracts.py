@@ -18,7 +18,16 @@ def test_assemble_has_one_fb_url_and_no_ig_url():
     gates.caption_shape(fb, ig)
     assert url.startswith(settings.PUBLIC_SITE_URL)
     assert "utm_campaign=news_word" in url
-    assert f"{settings.PUBLIC_SITE_URL}/go/news_word/abc" in fb and "http" not in ig
+    assert f"{settings.SITE_DISPLAY}/words" in fb and "http" not in fb and settings.SITE_DISPLAY not in ig
+
+
+def test_display_link_is_vanity_with_day_tag():
+    from engine.caption import build_display_url, build_utm
+    assert build_display_url("quiz", "20260920-mo-6ed355") == f"{settings.SITE_DISPLAY}/quiz/0920"
+    assert build_display_url("offer", "x") == f"{settings.SITE_DISPLAY}/free"
+    assert "utm_content=0920" in build_utm("quiz", "20260920-mo-6ed355")
+    fb, ig, _ = assemble(_caption(), "quiz", "20260920-mo-6ed355", load_strategy())
+    assert "/go/" not in fb and "6ed355" not in fb
 
 
 def test_banned_claims_blocks_harvard_and_stats():
@@ -85,3 +94,12 @@ def test_llm_extract_json_handles_fences():
     from engine.llm import extract_json
     assert extract_json('```json\n{"a": 1}\n```') == '{"a": 1}'
     assert extract_json('text before {"a": {"b": 2}} after') == '{"a": {"b": 2}}'
+
+
+def test_quiz_caption_may_not_leak_the_answer():
+    fb = "Vitriolic শুনলেই কী মনে হয়?\n\nছবিতে চারটা অপশন।\n\nstoryvocabs.com/quiz/0920"
+    gates.quiz_caption_keeps_answer(fb, "তীব্র বিদ্বেষপূর্ণ", "বিদ্বেষপূর্ণ")
+    with pytest.raises(gates.GateError):
+        gates.quiz_caption_keeps_answer(fb.replace("কী মনে হয়?", "মানে হলো বিদ্বেষপূর্ণ"), "তীব্র বিদ্বেষপূর্ণ", "বিদ্বেষপূর্ণ")
+    with pytest.raises(gates.GateError):
+        gates.quiz_caption_keeps_answer("Vitriolic means bitter\n\nx", "bitter", "তিক্ত")

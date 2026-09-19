@@ -1,69 +1,65 @@
 {
-  "id": "20260921-mo-aed3fb",
-  "date": "2026-09-21",
-  "slot": "morning",
+ "id": "20260921-mo-d56336",
+ "date": "2026-09-21",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "exam_angle",
+ "content": {
   "pillar": "confusables",
-  "status": "pending",
-  "hook_style": "exam_angle",
-  "content": {
-    "pillar": "confusables",
-    "title_bn": "Accede আর Access – এই দুইটা শব্দে প্রায়ই প্যাঁচ লাগে, তাই না?",
-    "pair": [
-      {
-        "word": "Accede",
-        "pos": "verb",
-        "difficulty": "Advanced",
-        "phonetic": "/əkˈsiːd/",
-        "gloss_bn": "সম্মতি দেওয়া",
-        "meaning_bn": "কোনো প্রস্তাবে রাজি হওয়া বা কোনো পদ গ্রহণ করা।",
-        "meaning_en": "To agree to a demand, request, or treaty; to assume an office or position.",
-        "example": "The university administration decided to <b>accede</b> to the students' demand for extended library hours during exam season.",
-        "synonym": "yield, concede, submit",
-        "antonym": "resist, refuse"
-      },
-      {
-        "word": "Access",
-        "pos": "verb",
-        "difficulty": "Intermediate",
-        "phonetic": "/ˈæksɛs/",
-        "gloss_bn": "প্রবেশাধিকার",
-        "meaning_bn": "কোনো স্থানে প্রবেশ করার বা কোনো কিছু ব্যবহারের সুযোগ।",
-        "meaning_en": "The right or opportunity to approach or enter a place, or to use something.",
-        "example": "Many students struggle to gain <b>access</b> to quality study materials without proper internet facilities.",
-        "synonym": "entry, entrance, admittance",
-        "antonym": "barrier, obstruction, exclusion"
-      }
-    ],
-    "difference_bn": "Accede মানে হচ্ছে কোনো কিছুতে রাজি হওয়া বা কোনো পদ গ্রহণ করা। আর Access মানে হলো কোথাও ঢোকার সুযোগ বা অধিকার পাওয়া।",
-    "memory_tip_bn": "Accede এর প্রথম 'c' টা 'consent' এর 'c' এর মতো।"
-  },
-  "caption_fb": "BCS mocks-এ Accede আর Access দুটোই ঠিক ছিল না? এই ভুলটাই মার্ক কমে দিচ্ছে।\n\nAccede মানে রাজি হওয়া বা পদ গ্রহণ করা।\nAccess মানে ঢোকার সুযোগ বা অধিকার।\n\nAccede-এর 'c' মনে রাখো Consent-এর মতো।\n\nইন্টারভিউতে 'access the data' বললে বোঝা যায় তুমি ডেটাবেসে ঢুকেছো, কিন্তু 'accede to the request' বললে বোঝা যায় তুমি রিকোয়েস্টে রাজি হয়েছো।\n\nAccede দিয়ে একটা বাক্য লিখে দাও\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\n👉 https://storyvocabs.com/go/confusables/20260921-mo-aed3fb\n\n#StoryVocabs #EnglishVocabulary #BCS",
-  "caption_ig": "BCS mocks-এ Accede আর Access দুটোই ঠিক ছিল না? এই ভুলটাই মার্ক কমে দিচ্ছে।\n\nAccede মানে রাজি হওয়া বা পদ গ্রহণ করা।\nAccess মানে ঢোকার সুযোগ বা অধিকার।\n\nAccede-এর 'c' মনে রাখো Consent-এর মতো।\n\nইন্টারভিউতে 'access the data' বললে বোঝা যায় তুমি ডেটাবেসে ঢুকেছো, কিন্তু 'accede to the request' বললে বোঝা যায় তুমি রিকোয়েস্টে রাজি হয়েছো।\n\nAccede দিয়ে একটা বাক্য লিখে দাও\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #IELTS #Vocabulary #Confusables #ExamPrep",
-  "first_comment": "",
-  "comment_delay_minutes": 0,
-  "media": [
-    "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-21/morning/slide_01_cover.png",
-    "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-21/morning/slide_02_pair.png",
-    "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-21/morning/slide_03_rule.png"
+  "title_bn": "ইমিগ্রেট নাকি এমিগ্রেট? এক লেটারের ভুলে ভিসা রিজেট",
+  "pair": [
+   {
+    "word": "Immigrate",
+    "pos": "verb",
+    "difficulty": "Beginner",
+    "phonetic": "/ˈɪmɪɡreɪt/",
+    "gloss_bn": "দেশে ঢোকা",
+    "meaning_bn": "অন্য দেশে ঢুকতে এবং সেখানে স্থায়ীভাবে বসবাস করতে।",
+    "meaning_en": "To enter and settle in a foreign country.",
+    "example": "He plans to **immigrate** to Canada after finishing his IELTS preparation.",
+    "synonym": "migrate, relocate, settle",
+    "antonym": "emigrate, depart"
+   },
+   {
+    "word": "Emigrate",
+    "pos": "verb",
+    "difficulty": "Advanced",
+    "phonetic": "/ˈemɪɡreɪt/",
+    "gloss_bn": "দেশছাড়া হওয়া",
+    "meaning_bn": "নিজের দেশ থেকে বেরিয়ে অন্য দেশে চলে যাওয়া।",
+    "meaning_en": "To leave one's own country to settle elsewhere.",
+    "example": "My cousin will **emigrate** from Bangladesh next month for a job in Dubai.",
+    "synonym": "migrate, relocate, move",
+    "antonym": "immigrate, settle, stay"
+   }
   ],
-  "media_urls": [
-    "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-21/morning/slide_01_cover.png",
-    "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-21/morning/slide_02_pair.png",
-    "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-21/morning/slide_03_rule.png"
-  ],
-  "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-21/morning/story_1080x1920.png",
-  "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-21/morning/story_1080x1920.png",
-  "quality_score": 8,
-  "attempts": 1,
-  "evergreen": false,
-  "telegram_message_id": 27,
-  "fb_post_id": "",
-  "ig_media_id": "",
-  "fb_story_id": "",
-  "ig_story_id": "",
-  "review_note": "",
-  "error": "",
-  "created_at": "2026-09-18T23:51:08+00:00",
-  "published_at": "",
-  "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=20260921-mo-aed3fb"
+  "difference_bn": "মনে রাখো: ইমিগ্রেট মানে 'ঢোকা' (Into), এমিগ্রেট মানে 'ছাড়া হওয়া' (Out of)। ডিস্টিনেশন ভেদে ব্যবহার করো।",
+  "memory_tip_bn": "I = In (ভিতরে ঢোকা), E = Exit (বাইরে বের হওয়া)।"
+ },
+ "caption_fb": "IELTS রিডিংয়ে immigrate আর emigrate গুলিয়ে দিলে স্কোর কমে যাবে।\n\nI মানে Into (ভিতরে), E মানে Exit (বাইরে)।\n\nএই এক লেটারের ডিফারেন্স মনে রাখলে ভিসা টার্মিনোলজি ক্লিয়ার হয়ে যাবে।\n\nএই দুটো শব্দ দিয়ে একটা বাক্য লিখো তো।\n\nপোস্টটা Save করে রাখো, কালকে আবার দেখো\nstoryvocabs.com/mixup/0921\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "IELTS রিডিংয়ে immigrate আর emigrate গুলিয়ে দিলে স্কোর কমে যাবে।\n\nI মানে Into (ভিতরে), E মানে Exit (বাইরে)।\n\nএই এক লেটারের ডিফারেন্স মনে রাখলে ভিসা টার্মিনোলজি ক্লিয়ার হয়ে যাবে।\n\nএই দুটো শব্দ দিয়ে একটা বাক্য লিখো তো।\n\nপোস্টটা Save করে রাখো, কালকে আবার দেখো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #immigrate #emigrate #IELTS #vocabulary",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "F:/.antigravity/StoryVocabs-social/output/2026-09-21/morning/slide_01_cover.png",
+  "F:/.antigravity/StoryVocabs-social/output/2026-09-21/morning/slide_02_pair.png",
+  "F:/.antigravity/StoryVocabs-social/output/2026-09-21/morning/slide_03_rule.png"
+ ],
+ "media_urls": [],
+ "story_media": "F:/.antigravity/StoryVocabs-social/output/2026-09-21/morning/story_1080x1920.png",
+ "story_media_url": "",
+ "quality_score": 8.0,
+ "attempts": 1,
+ "evergreen": false,
+ "telegram_message_id": 40,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-09-19T00:53:07+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=0921"
 }

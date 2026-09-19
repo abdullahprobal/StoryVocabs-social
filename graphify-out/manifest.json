@@ -25,23 +25,23 @@
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\caption.py": {
-    "mtime": 1789775833.511956,
-    "ast_hash": "2bdd0724303bff061facc1b1095d62be",
+    "mtime": 1789778745.4645123,
+    "ast_hash": "665c5939d4b1776fbe9f3789ca3a7ecb",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\contracts.py": {
-    "mtime": 1789758701.4015634,
-    "ast_hash": "57d68e90372e487f3eb13013a83e52d0",
+    "mtime": 1789779319.8821378,
+    "ast_hash": "ea38cdc4fe8eecb72078b6a445509c12",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\gates.py": {
-    "mtime": 1789759593.2013671,
-    "ast_hash": "41b410a15871fc2a794626d35a6d38e2",
+    "mtime": 1789779690.8862593,
+    "ast_hash": "64174d549e668a223da605ef8c88cbaf",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\generate.py": {
-    "mtime": 1789759697.9509852,
-    "ast_hash": "376d7ed2b3ed21f626195c57e307e2d5",
+    "mtime": 1789779700.5226126,
+    "ast_hash": "09607b0abaeb53218fbc530b20bd3192",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\insights.py": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\planner.py": {
-    "mtime": 1789759758.0275404,
-    "ast_hash": "bda391bfa8951d816a1eb805dff99c74",
+    "mtime": 1789779393.3209887,
+    "ast_hash": "a3ea2cc405036ae6220d943df43fe4da",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\publish.py": {
@@ -70,8 +70,8 @@
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\settings.py": {
-    "mtime": 1789774596.9791598,
-    "ast_hash": "ab3f904b2ee1fb3cd8c328ef0b26b8cd",
+    "mtime": 1789778738.1792622,
+    "ast_hash": "27ede3ec3a2f228b2af4493076c01931",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\voice.py": {
@@ -100,8 +100,8 @@
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\publishers\\telegram.py": {
-    "mtime": 1789776736.8422377,
-    "ast_hash": "0659992fbe66a6903d1fc08c0c16030a",
+    "mtime": 1789778758.0371082,
+    "ast_hash": "de9fc85c5180a9451b32dc5f81149fa4",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\publishers\\__init__.py": {
@@ -125,18 +125,18 @@
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\evergreen\\confusables_20290616-mo-3179cf.json": {
-    "mtime": 1789775855.6404297,
-    "ast_hash": "efd094293e41ce166d5b6e910631c41c",
+    "mtime": 1789779777.2361436,
+    "ast_hash": "1adc30c9764c5651aabb7797aa598468",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\evergreen\\quiz_20290615-mo-e18796.json": {
-    "mtime": 1789775855.6470072,
-    "ast_hash": "b39e7615c82a5a5c61255af7bb9e7d9f",
+    "mtime": 1789779777.2531476,
+    "ast_hash": "0ff9c60a12b3ae0f36c06857580a359a",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\evergreen\\quiz_20290617-mo-1e1dc4.json": {
-    "mtime": 1789775855.6470072,
-    "ast_hash": "e4d842b2fd2096a3056ba21bbfa6323f",
+    "mtime": 1789779777.2561607,
+    "ast_hash": "0049c5fe275365484ef7f909dd429ceb",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\render\\image_renderer.py": {
@@ -175,13 +175,13 @@
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\state\\story_usage_tracker.json": {
-    "mtime": 1789774883.5750842,
-    "ast_hash": "8d05f832ec3c69ea533515b2bece730e",
+    "mtime": 1789779445.651029,
+    "ast_hash": "02bfd046ef7ffdf2c9e58e47e314ad07",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\state\\word_usage_tracker.json": {
-    "mtime": 1789775514.9917314,
-    "ast_hash": "46c80eef8fb3717049f13ab4a5d723a3",
+    "mtime": 1789779668.9617858,
+    "ast_hash": "ecb3ceadef7e6ddd93e0e8a8ccef14d2",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\tests\\fixtures_story.py": {
@@ -190,8 +190,8 @@
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\tests\\test_gates_and_contracts.py": {
-    "mtime": 1789775833.514205,
-    "ast_hash": "ad931ad295c8f6f4fd83ad32616a0fd6",
+    "mtime": 1789779717.6678023,
+    "ast_hash": "22d589a9aeb98eb86dc7b5f9cd9b285c",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\tests\\test_telegram_and_render.py": {
@@ -225,8 +225,8 @@
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\README.md": {
-    "mtime": 1789776736.8452513,
-    "ast_hash": "92f361874a0c85673f8d830aa8d1f09b",
+    "mtime": 1789778374.9281523,
+    "ast_hash": "e49a9aa15d68ebac7585b2df1dc4a65b",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\requirements.txt": {
@@ -1075,38 +1075,38 @@
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\evergreen\\confusables_20290618-mo-9fde79.json": {
-    "mtime": 1789775855.64476,
-    "ast_hash": "604453720f8874ae5386745fe44f66e4",
+    "mtime": 1789779777.240589,
+    "ast_hash": "bafc4817843c9985c41fbc140ae3b5dc",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\evergreen\\confusables_20290620-mo-840d68.json": {
-    "mtime": 1789775855.6457658,
-    "ast_hash": "7e7aae2162a33a560a17f571fd8128fe",
+    "mtime": 1789779777.2472122,
+    "ast_hash": "b8368b493248e41fa5e969c4526ada30",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\evergreen\\quiz_20290619-mo-574cd6.json": {
-    "mtime": 1789775855.64817,
-    "ast_hash": "123ce1a3c0eec76fa4c008357049fff2",
+    "mtime": 1789779777.260463,
+    "ast_hash": "03901bd0ae61b9903625389bfc545c92",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\queue\\2026-09-19\\morning.json": {
-    "mtime": 1789775855.64817,
-    "ast_hash": "acac6ee92e8ff065ac493c629b853e02",
+    "mtime": 1789779473.2391026,
+    "ast_hash": "b621d455322a45617ba185cd112c3277",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\queue\\2026-09-20\\morning.json": {
-    "mtime": 1789775855.6491756,
-    "ast_hash": "474b0c91006b2f0bc00c8c91cef40ce2",
+    "mtime": 1789779675.3917847,
+    "ast_hash": "82ebadfca27ccaef517db0bc9cd521e1",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\queue\\2026-09-21\\morning.json": {
-    "mtime": 1789775855.6498985,
-    "ast_hash": "59f908eb1d881f352e5f28668cca4011",
+    "mtime": 1789779196.8806753,
+    "ast_hash": "96e04c53e8ad088b7dc9890e4cb4fb1a",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\scripts\\refresh_telegram_previews.py": {
-    "mtime": 1789776824.2019317,
-    "ast_hash": "8916ad395db6a9fcdbc5e4f3bb43bd61",
+    "mtime": 1789778374.9531002,
+    "ast_hash": "0684bcc38898318d35c35be13720bafb",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\.github\\workflows\\check-meta.yml": {
