@@ -15,4 +15,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      - run: python scripts/check_meta.py
+      - run: PYTHONPATH=. python scripts/check_meta.py
