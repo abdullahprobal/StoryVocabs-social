@@ -44,10 +44,10 @@ def render_generic(post, out_dir: Path, date_str: str, label: str = "") -> list[
     pages = [("slide_01_cover.png", _page("cover.html", {
         "HEADER": header_html(f'<span class="pill">1 / {total}</span>'), "FOOTER": footer_html(),
         "CAT_CHIP": f'<span class="chip cat">{esc(label or post.pillar)}</span>', "DATE": fmt_date(date_str),
-        "KICKER": esc(kicker), "HEADLINE_HTML": mark_hero(post.headline), "HEADLINE_BN": esc(post.subtitle),
+        "KICKER": esc(post.kicker or ""), "HEADLINE_HTML": mark_hero(post.headline), "HEADLINE_BN": esc(post.subtitle),
         "HERO_WORD": esc(lead.title if lead else ""), "HERO_GLOSS": esc(lead.sub if lead else ""),
         "HERO_POS": esc(lead.note if lead else ""),
-        "SWIPE_N": str(n_story), "SWIPE_TEXT": S("swipe_generic", "Swipe"),
+        "SWIPE_N": str(n_story), "SWIPE_TEXT": S("swipe_generic", "Swipe"), "HERO_DISPLAY": "flex" if lead else "none",
     }), settings.CANVAS)]
     for i, s in enumerate(post.slides, 1):
         pages.append((f"slide_{1+i:02d}_story.png", _page("story.html", {

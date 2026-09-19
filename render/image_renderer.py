@@ -284,7 +284,7 @@ def render_story_post(post: StoryPost, out_dir: Path, date_str: str) -> list[str
         "KICKER": S("story_kicker", "Today") if post.pillar == "news_word" else S("story60_kicker", "৬০ সেকেন্ডের গল্প"),
         "HEADLINE_HTML": mark_hero(post.headline_en), "HEADLINE_BN": esc(post.headline_bn),
         "HERO_WORD": esc(hero.word), "HERO_GLOSS": esc(hero.gloss_bn), "HERO_POS": esc(hero.pos),
-        "SWIPE_N": str(len(words)), "SWIPE_TEXT": S("swipe", "{n} words", n=len(words)),
+        "SWIPE_N": str(len(words)), "SWIPE_TEXT": S("swipe", "{n} words", n=len(words)), "HERO_DISPLAY": "flex",
     }), settings.CANVAS))
     for i, s in enumerate(post.story_slides, 1):
         pages.append((f"slide_{1+i:02d}_story.png", _page("story.html", {
