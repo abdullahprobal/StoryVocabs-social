@@ -21,7 +21,8 @@ def render_generic(post, out_dir: Path, date_str: str, label: str = "") -> list[
         page = _page("quiz.html", {
             "HEADER": header_html(f'<span class="pill blue">{esc(label or "Quiz")}</span>'),
             "FOOTER": footer_html(S("quiz_footer", settings.STRINGS.get("footer_cta", ""))),
-            "WORD": esc(post.headline), "PHONETIC": esc(post.subtitle), "POS": esc(kicker),
+            "WORD": esc(post.headline), "PHONETIC": esc(post.subtitle), "POS": esc(post.kicker or ""),
+            "PH_DISPLAY": "block" if (post.subtitle or post.kicker) else "none",
             "QUESTION": esc(post.quiz.question), "OPTIONS": opts, "EXAM": esc(S("quiz_tag", "")),
             "HINT": "", "HINT_DISPLAY": "none",
             "QUIZ_KICKER": S("quiz_kicker_line", "Do you know this one?"),
