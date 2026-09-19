@@ -78,6 +78,33 @@ def _targets(d: dict, waiting: list[tuple[Path, QueueItem]]) -> list[tuple[str, 
     return out
 
 
+def add_voice_rule(note: str) -> None:
+    """Append an owner's standing instruction to project/voice.md (the writer + critic system prompt).
+    'never say X' / 'don't write X' also lands in '## Never write' so the register gate enforces it."""
+    import re
+    note = note.strip()
+    if not note:
+        return
+    path = settings.VOICE_FILE
+    text = path.read_text(encoding="utf-8") if path.exists() else ""
+    if "## Owner notes" not in text:
+        text = text.rstrip() + "\n\n## Owner notes\n"
+    head, rest = text.split("## Owner notes", 1)
+    block, sep, tail = rest.partition("\n## ")
+    block = block.rstrip() + f"\n- {note}\n"
+    text = head + "## Owner notes" + block + (sep + tail if sep else "")
+    m = re.search(r"(?:never (?:say|write|use)|don'?t (?:say|write|use)|avoid)\s+[\"“']?([^\"”',;.\n]+)", note, re.I)
+    if m and "## Never write" in text:
+        word = m.group(1).strip()
+        h, nw = text.split("## Never write", 1)
+        block, sep, tail = nw.partition("\n## ")
+        if f"- {word}" not in block:
+            block = block.rstrip() + f"\n- {word}\n"
+        text = h + "## Never write" + block + (sep + tail if sep else "")
+    path.write_text(text, encoding="utf-8")
+    log(f"voice rule added: {note[:80]}")
+
+
 def apply_decisions(decisions: list[dict] | None = None) -> list[tuple[Path, QueueItem]]:
     """Apply decisions; return the items that need regeneration."""
     decisions = telegram.read_decisions() if decisions is None else decisions
@@ -88,6 +115,11 @@ def apply_decisions(decisions: list[dict] | None = None) -> list[tuple[Path, Que
     to_regen: list[tuple[Path, QueueItem]] = []
 
     for d in decisions:
+        if d.get("kind") == "voice":
+            note = d.get("note") or d.get("text") or ""
+            add_voice_rule(note)
+            telegram.reply("📝 Added to the voice rules — every post from now on follows it:\n" + note, d["message_id"])
+            continue
         groups = _targets(d, waiting)
         if not groups or all(not items for _, items, _ in groups):
             telegram.reply("I couldn't match that to a post. Use the number from the lineup, e.g. “skip 2” or “approve all”.",

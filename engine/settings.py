@@ -100,7 +100,6 @@ PUBLISH_STORIES = os.getenv("PUBLISH_STORIES", "true").lower() in ("1", "true", 
 # Each entry: (provider, model). Override with LLM_CHAIN="gemini:gemini-2.5-flash,groq:llama-3.3-70b-versatile"
 _DEFAULT_CHAIN = [
     ("gemini", "gemini-2.5-flash"),
-    ("gemini", "gemini-2.5-flash-lite"),
     ("groq", "qwen/qwen3.8-27b"),
     ("groq", "openai/gpt-oss-120b"),
     ("cerebras", "qwen-3-235b-a22b-instruct-2507"),
@@ -124,6 +123,10 @@ def llm_chain() -> list[tuple[str, str]]:
 
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+# GEMINI_API_KEY, GEMINI_API_KEY_2, ... — each free-tier key is a separate daily quota (one per Google Cloud project)
+GEMINI_API_KEYS = [v for k, v in sorted(os.environ.items()) if k.startswith("GEMINI_API_KEY") and v]
+# Small models write acceptable English but weak Bangla; never let them be the critic (they pass their own dialect).
+WEAK_MODELS = {"openai/gpt-oss-20b", "google/gemma-3-27b-it:free"}
 GROQ_API_KEYS = [v for k, v in sorted(os.environ.items()) if k.startswith("GROQ_API_KEY") and v]
 CEREBRAS_API_KEY = os.getenv("CEREBRAS_API_KEY", "")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
@@ -153,6 +156,7 @@ CAPTION_MAX_CHARS_IG = 1500
 MAX_EMOJI = 4
 HASHTAGS_FB = (2, 3)
 HASHTAGS_IG = (5, 8)
-QUALITY_PASS = 7.0
+QUALITY_PASS = 8.0
+HOOK_PASS = 7.0
 MAX_GENERATION_ATTEMPTS = 4
 QUEUE_DAYS_AHEAD = int(os.getenv("QUEUE_DAYS_AHEAD", "2"))
