@@ -45,3 +45,32 @@ def test_story_post_renders_all_slides(tmp_path):
     gates.render_check(paths)
     story = R.render_story_card(R.mark_hero(NEWS_POST.headline_en), NEWS_POST.headline_bn, "আজকের খবরে", tmp_path)
     gates.render_check([story], size=settings.STORY_CANVAS)
+
+
+def test_classify_accepts_plain_words():
+    c = telegram.classify
+    assert c("approve")[0] == "approve" and c("✅")[0] == "approve" and c("ok go")[0] == "approve"
+    assert c("skip")[0] == "skip" and c("❌ too dry")[0] == "skip"
+    assert c("edit: make it a question") == ("note", "make it a question")
+    assert c("✏️ shorter hook") == ("note", "shorter hook")
+    assert c("hello?") is None
+
+
+def test_plain_decision_targets_newest_pending_card(monkeypatch, tmp_path):
+    from engine import review, settings
+    from engine.contracts import QueueItem
+    from engine.generate import save_item
+    monkeypatch.setattr(settings, "QUEUE_DIR", tmp_path)
+    for i, (d, mid) in enumerate([("2026-09-19", 40), ("2026-09-20", 44)]):
+        save_item(QueueItem(id=f"x{i}", date=d, slot="morning", pillar="quiz", content={}, telegram_message_id=mid),
+                  tmp_path / d / "morning.json")
+    replies = []
+    monkeypatch.setattr(review.telegram, "reply", lambda text, to=None: replies.append(text) or 1)
+    regen = review.apply_decisions([{"reply_to": None, "kind": "approve", "text": "approve", "message_id": 50}])
+    assert regen == []
+    a = json.loads((tmp_path / "2026-09-20" / "morning.json").read_text(encoding="utf-8"))
+    b = json.loads((tmp_path / "2026-09-19" / "morning.json").read_text(encoding="utf-8"))
+    assert a["status"] == "approved" and b["status"] == "pending"
+    assert replies and replies[0].startswith("✅ Approved")
+    regen = review.apply_decisions([{"reply_to": 40, "kind": "note", "text": "shorter", "message_id": 51}])
+    assert len(regen) == 1 and regen[0][1].review_note == "shorter"

@@ -1,0 +1,72 @@
+name: review
+
+# Reads the owner's Telegram replies every 30 minutes, records approve/skip on the
+# queue item and answers immediately. Notes trigger a regeneration in the same run.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: social-state
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONUTF8: "1"
+      TZ: "Asia/Dhaka"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+      GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
+      GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
+      GROQ_API_KEY_5: ${{ secrets.GROQ_API_KEY_5 }}
+      MEDIA_HOST: ${{ vars.MEDIA_HOST || 'github' }}
+      MEDIA_REPO: ${{ vars.MEDIA_REPO }}
+      MEDIA_DEPLOY_KEY: ${{ secrets.MEDIA_DEPLOY_KEY }}
+      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://storyvocabs.com' }}
+      REVIEW_MODE: ${{ vars.REVIEW_MODE || 'manual' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Apply decisions (fast path)
+        id: decide
+        run: |
+          set +e
+          python -m engine.review --no-regenerate
+          code=$?
+          set -e
+          echo "regen=$([ "$code" = "3" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          [ "$code" = "0" ] || [ "$code" = "3" ]
+      - name: Regenerate with the owner's note
+        if: steps.decide.outputs.regen == 'true'
+        run: |
+          python -m playwright install --with-deps chromium
+          sudo apt-get install -y -q fonts-noto-color-emoji >/dev/null
+          python - <<'PY'
+          from engine.review import regenerate, waiting_items
+          items = [(p, it) for p, it in waiting_items() if it.review_note and it.status == "pending"]
+          regenerate(items)
+          PY
+      - name: Commit state
+        if: always()
+        run: |
+          git config user.name "storyvocabs-bot"
+          git config user.email "bot@storyvocabs.local"
+          git add queue state evergreen
+          git diff --cached --quiet || git commit -m "chore(review): decisions $(date -u +%FT%H:%M) [skip ci]"
+          git pull --rebase origin ${{ github.ref_name }} || true
+          git push

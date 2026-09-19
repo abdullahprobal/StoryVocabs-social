@@ -116,33 +116,63 @@ def edit_preview(item) -> int | None:
     return item.telegram_message_id
 
 
-def decisions() -> dict[int, tuple[str, str]]:
-    """Read new updates; map replied-to message_id → decision. Advances the stored offset."""
+def classify(text: str) -> tuple[str, str] | None:
+    """Map an owner message to (kind, payload). Plain words work; no emoji needed."""
+    t = (text or "").strip()
+    low = t.lower().lstrip("✅❌✏️ ").strip()
+    if not t:
+        return None
+    if low.startswith(("skip", "no", "reject", "cancel")) or t.startswith("❌") or low in ("x", "n"):
+        return ("skip", t)
+    if low.startswith(("edit", "note", "change", "fix", "redo", "regenerate")) or t.startswith("✏"):
+        note = t.split(" ", 1)[1].strip() if " " in t else ""
+        note = note.lstrip(":").strip()
+        return ("note", note)
+    if low.startswith(("ok", "okay", "yes", "approve", "approved", "go", "publish", "post", "confirm")) or t.startswith("✅") or low in ("y", "k"):
+        return ("approve", t)
+    return None
+
+
+def read_decisions() -> list[dict]:
+    """Read new owner messages since the stored offset. Returns
+    [{"reply_to": <card message_id or None>, "kind": approve|skip|note, "text": ..., "message_id": ...}].
+    Messages that are not decisions are ignored. Advances the offset."""
     if not configured():
-        return {}
+        return []
     st = _state()
-    r = requests.get(f"{API}/getUpdates", params={"offset": st.get("offset", 0), "timeout": 0, "allowed_updates": json.dumps(["message"])},
-                     timeout=60)
+    r = requests.get(f"{API}/getUpdates", params={"offset": st.get("offset", 0), "timeout": 0,
+                                                  "allowed_updates": json.dumps(["message"])}, timeout=60)
     r.raise_for_status()
-    out: dict[int, tuple[str, str]] = {}
+    out: list[dict] = []
     last = st.get("offset", 0)
     for u in r.json().get("result", []):
         last = max(last, u["update_id"] + 1)
         m = u.get("message") or {}
         if str(m.get("chat", {}).get("id")) != str(settings.TELEGRAM_CHAT_ID):
             continue
-        reply = m.get("reply_to_message")
-        text = (m.get("text") or "").strip()
-        if not reply or not text:
+        c = classify(m.get("text") or "")
+        if not c:
             continue
-        low = text.lower()
-        if low.startswith(("❌", "skip", "no", "x")):
-            out[reply["message_id"]] = ("skip", text)
-        elif low.startswith(("✏", "edit", "note", "change", "fix")):
-            note = text.split(" ", 1)[1] if " " in text else ""
-            out[reply["message_id"]] = ("note", note)
-        elif low.startswith(("✅", "ok", "yes", "approve", "go")):
-            out[reply["message_id"]] = ("approve", text)
+        reply = m.get("reply_to_message") or {}
+        out.append({"reply_to": reply.get("message_id"), "kind": c[0], "text": c[1], "message_id": m.get("message_id")})
     st["offset"] = last
     _save_state(st)
     return out
+
+
+def decisions() -> dict[int, tuple[str, str]]:
+    """Backward-compatible view: only decisions that were replies to a card."""
+    return {d["reply_to"]: (d["kind"], d["text"]) for d in read_decisions() if d["reply_to"]}
+
+
+def reply(text: str, to_message_id: int | None = None) -> int | None:
+    """Send a message, threaded under the owner's message when possible."""
+    if not configured():
+        return None
+    data = {"chat_id": settings.TELEGRAM_CHAT_ID, "text": text[:4000], "disable_web_page_preview": True}
+    if to_message_id:
+        data["reply_to_message_id"] = to_message_id
+        data["allow_sending_without_reply"] = True
+    r = requests.post(f"{API}/sendMessage", data=data, timeout=60)
+    r.raise_for_status()
+    return r.json()["result"]["message_id"]
