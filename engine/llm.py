@@ -160,21 +160,26 @@ def _groq(model, system, user, temperature, max_tokens):
     if not keys:
         raise LLMError("no working groq key")
     last = None
-    for _ in range(len(keys)):
-        key = keys[_GROQ_KEY_IDX % len(keys)]
-        _GROQ_KEY_IDX += 1
-        try:
-            return _openai_compatible("https://api.groq.com/openai/v1", key, model, system, user, temperature, max_tokens)
-        except requests.HTTPError as e:
-            status = getattr(e.response, "status_code", None)
-            if status == 401:
-                _BAD_GROQ_KEYS.add(key)
-                last = e
+    for round_ in range(2):  # a per-minute limit clears in seconds: one short wait, then a second pass
+        for _ in range(len(keys)):
+            key = keys[_GROQ_KEY_IDX % len(keys)]
+            _GROQ_KEY_IDX += 1
+            if key in _BAD_GROQ_KEYS:
                 continue
-            if status == 429:
-                last = e
-                continue  # this key is rate-limited, try the next one
-            raise
+            try:
+                return _openai_compatible("https://api.groq.com/openai/v1", key, model, system, user, temperature, max_tokens)
+            except requests.HTTPError as e:
+                status = getattr(e.response, "status_code", None)
+                if status == 401:
+                    _BAD_GROQ_KEYS.add(key)
+                    last = e
+                    continue
+                if status == 429:
+                    last = e
+                    continue  # this key is rate-limited, try the next one
+                raise
+        if round_ == 0 and last is not None and "per minute" in str(last):
+            time.sleep(25)
     raise LLMError(f"groq: all keys failed: {last}")
 
 

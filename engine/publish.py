@@ -73,16 +73,20 @@ def publish_item(item: QueueItem) -> QueueItem:
     if not meta.configured():
         raise RuntimeError("META_PAGE_ID / META_PAGE_TOKEN not set")
     if not item.fb_post_id:
-        item.fb_post_id = meta.fb_publish(item.media_urls, item.caption_fb)
-        log(f"    facebook post {item.fb_post_id}")
-    if settings.PUBLISH_TO_INSTAGRAM and settings.META_IG_USER_ID and not item.ig_media_id:
+        backdate = None
+        if item.backdated:
+            from engine.planner import slot_datetime_bst
+            backdate = int(slot_datetime_bst(item.date, settings.SLOT_TIMES.get(item.slot, "08:00")).timestamp())
+        item.fb_post_id = meta.fb_publish(item.media_urls, item.caption_fb, backdated_time=backdate)
+        log(f"    facebook post {item.fb_post_id}" + (f" (backdated to {item.date} {item.slot})" if backdate else ""))
+    if settings.PUBLISH_TO_INSTAGRAM and settings.META_IG_USER_ID and not item.ig_media_id and item.publish_ig:
         try:
             item.ig_media_id = meta.ig_publish(item.media_urls, item.caption_ig)
             log(f"    instagram media {item.ig_media_id}")
         except meta.MetaError as e:
             log(f"    ⚠ instagram failed: {e}")
             item.error = f"ig: {e}"
-    if settings.PUBLISH_STORIES and item.story_media_url:
+    if settings.PUBLISH_STORIES and item.story_media_url and not (item.backdated and not item.publish_ig):
         try:
             if not item.fb_story_id:
                 item.fb_story_id = meta.fb_story(item.story_media_url)
@@ -90,8 +94,8 @@ def publish_item(item: QueueItem) -> QueueItem:
                 item.ig_story_id = meta.ig_story(item.story_media_url)
         except meta.MetaError as e:
             log(f"    ⚠ story failed: {e}")
-    if item.first_comment and item.comment_delay_minutes == 0:
-        post_first_comment(item)
+    if item.first_comment and (item.comment_delay_minutes == 0 or item.backdated):
+        post_first_comment(item)  # a back-dated quiz gets its answer right away; the date is already past
     item.status = "published"
     item.published_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     return item
@@ -164,6 +168,41 @@ def run_slot(date_str: str, slot: str) -> int:
         return 1
 
 
+def run_backfill(batch: int) -> int:
+    """Publish approved launch-backfill items, oldest first, `batch` per run.
+    Nothing is auto-approved here: 30 posts is a one-shot the owner signs off in Telegram."""
+    import time
+    from engine.backfill import BACKFILL_DIR
+    if telegram.configured():
+        from engine.review import apply_decisions
+        apply_decisions()
+    paths = sorted(BACKFILL_DIR.glob("*.json"))
+    items = [(p, it) for p in paths if (it := load_item(p)) and it.status == "approved"]
+    pending = sum(1 for p in paths if (it := load_item(p)) and it.status == "pending")
+    if not items:
+        log(f"backfill: nothing approved ({pending} still pending)")
+        if pending:
+            telegram.notify(f"⏸ Backfill: {pending} posts are waiting for your reply (approve all / approve 1 2 3).")
+        return 0
+    done, failed = 0, 0
+    for path, item in items[:batch]:
+        try:
+            item = publish_item(item)
+            save_item(item, path)
+            done += 1
+            log(f"backfill {path.name}: published as {item.fb_post_id} ({item.date})")
+            time.sleep(8)  # be gentle with the Graph API
+        except Exception as e:  # noqa: BLE001
+            item.error = f"publish: {e}"
+            save_item(item, path)
+            failed += 1
+            log(f"  ✗ backfill {path.name} failed: {e}")
+    left = len(items) - done - failed
+    telegram.notify(f"📦 Backfill batch: {done} posted" + (f", {failed} failed" if failed else "")
+                    + (f", {left} approved still to go — next run continues." if left > 0 else ". All approved posts are live."))
+    return 1 if failed and not done else 0
+
+
 def run_comments() -> int:
     """Post first-comments whose delay has elapsed (quiz answers)."""
     now = datetime.now(timezone.utc)
@@ -187,12 +226,16 @@ def main(argv=None) -> int:
     ap.add_argument("--date")
     ap.add_argument("--slot", choices=["morning", "evening"])
     ap.add_argument("--comments", action="store_true")
+    ap.add_argument("--backfill", action="store_true", help="publish approved queue/backfill items")
+    ap.add_argument("--batch", type=int, default=10)
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args(argv)
     if a.dry_run:
         settings.DRY_RUN = True
     if a.comments:
         return run_comments()
+    if a.backfill:
+        return run_backfill(a.batch)
     date_str = a.date or settings.today_bst()
     slot = a.slot
     if not slot:
