@@ -22,11 +22,12 @@ from pathlib import Path
 from engine import gates, settings
 from engine import words as W
 from engine.caption import assemble, write_caption
-from engine.contracts import ConfusablesPost, InAppPost, OfferPost, QueueItem, QuizPost, StoryPost
+from engine.contracts import ConfusablesPost, GenericPost, InAppPost, OfferPost, QueueItem, QuizPost, StoryPost
 from engine.llm import LLMError
 from engine.planner import PlanItem, load_strategy, plan_for_date
 from engine.writers import pillars as P
 from engine.writers import story as S
+from engine.writers import generic as G
 from render import image_renderer as R
 
 
@@ -73,11 +74,15 @@ def summarize(content) -> str:
         return f"App screenshot post. Headline: {content.headline_bn}. Fact: {content.fact_line}. Note: {content.feature_note_bn}"
     if isinstance(content, OfferPost):
         return f"Offer/community image ({content.kind}). Headline: {content.headline_bn}. Body: {content.body_bn}. Detail: {content.detail_line}"
+    if isinstance(content, GenericPost):
+        return G.summarize(content)
     return str(content)
 
 
 def make_content(plan: PlanItem, strategy: dict, attempt: int):
     seed = int(plan.date.replace("-", "")) * 10 + attempt
+    if G.spec_for(plan.pillar):
+        return G.write_generic(plan.pillar, plan.date, strategy, plan.hook_style, seed=seed)
     if plan.pillar == "news_word":
         from engine.news import news_pool
         arts = news_pool(plan.date, plan.topic_group or "general")
@@ -105,21 +110,27 @@ def render_content(content, out_dir: Path, date_str: str) -> tuple[list[str], st
     if isinstance(content, StoryPost):
         paths = R.render_story_post(content, out_dir, date_str)
         story = R.render_story_card(R.mark_hero(content.headline_en), content.headline_bn,
-                                    "আজকের খবরে" if content.pillar == "news_word" else "৬০ সেকেন্ডের গল্প", out_dir)
+                                    settings.STRINGS.get("story_kicker", "") if content.pillar == "news_word" else settings.STRINGS.get("story60_kicker", ""), out_dir)
     elif isinstance(content, QuizPost):
         paths = R.render_quiz(content, out_dir)
         story = R.render_story_card(f'<span class="mark">{R.esc(content.word.word)}</span> মানে কী?',
-                                    content.question_bn, "আজকের কুইজ", out_dir)
+                                    content.question_bn, settings.STRINGS.get("quiz_kicker", "Quiz"), out_dir)
     elif isinstance(content, ConfusablesPost):
         paths = R.render_confusables(content, out_dir)
         a, b = content.pair
-        story = R.render_story_card(f'{R.esc(a.word)} <i>vs</i> {R.esc(b.word)}', content.title_bn, "গুলিয়ে ফেলা শব্দ", out_dir)
+        story = R.render_story_card(f'{R.esc(a.word)} <i>vs</i> {R.esc(b.word)}', content.title_bn, settings.STRINGS.get("confusables_kicker", ""), out_dir)
     elif isinstance(content, InAppPost):
         paths = R.render_in_app(content, out_dir)
-        story = R.render_story_card(R.esc(content.fact_line), content.headline_bn, "অ্যাপের ভেতরে", out_dir)
+        story = R.render_story_card(R.esc(content.fact_line), content.headline_bn, settings.STRINGS.get("in_app_kicker", ""), out_dir)
+    elif isinstance(content, GenericPost):
+        from render.generic import render_generic
+        spec = G.spec_for(content.pillar) or {}
+        paths = render_generic(content, out_dir, date_str, spec.get("label", content.pillar))
+        story = R.render_story_card(R.mark_hero(content.headline) if content.headline else R.esc(spec.get("label", "")),
+                                    content.subtitle or content.body[:120], content.kicker or spec.get("label", ""), out_dir)
     elif isinstance(content, OfferPost):
         paths = R.render_offer(content, out_dir)
-        story = R.render_story_card(R.esc(content.detail_line or content.headline_bn), content.body_bn[:120], "StoryVocabs", out_dir)
+        story = R.render_story_card(R.esc(content.detail_line or content.headline_bn), content.body_bn[:120], settings.BRAND_NAME, out_dir)
     else:
         raise ValueError("unknown content type")
     return paths, story
@@ -131,7 +142,8 @@ CONTENT_TYPES = {"news_word": StoryPost, "story60": StoryPost, "quiz": QuizPost,
 
 def content_model(item: QueueItem):
     """Rebuild the pydantic content object stored in a queue item."""
-    return CONTENT_TYPES[item.pillar].model_validate(item.content)
+    cls = CONTENT_TYPES.get(item.pillar, GenericPost)
+    return cls.model_validate(item.content)
 
 
 def rerender(item: QueueItem) -> QueueItem:
@@ -169,7 +181,7 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             hook_instr = strategy["hook_styles"].get(plan.hook_style, {}).get("instruction", "")
             when = "8 am" if plan.slot == "morning" else "8 pm"
             cap = write_caption(plan.pillar, summary, hook_instr, when)
-            if isinstance(content, QuizPost):
+            if isinstance(content, QuizPost) or (isinstance(content, GenericPost) and content.layout == "quiz"):
                 # The body is fixed copy: the LLM may only write the hook, so the answer cannot leak.
                 cap.body = "\n\n".join([
                     "ছবিতে চারটা অপশন। একটা ঠিক, তিনটা খুব কাছাকাছি।",
@@ -182,6 +194,8 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             gates.caption_shape(fb, ig)
             if isinstance(content, QuizPost):
                 gates.quiz_caption_keeps_answer(fb, content.options[content.answer_index], content.word.gloss_bn)
+            if isinstance(content, GenericPost) and content.quiz:
+                gates.quiz_caption_keeps_answer(fb, content.quiz.options[content.quiz.answer_index], "")
 
             score = 0.0
             if use_critic:
@@ -207,7 +221,9 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             gates.render_check([story_card], size=settings.STORY_CANVAS)
 
             first_comment, delay = "", 0
-            if isinstance(content, QuizPost):
+            if isinstance(content, GenericPost):
+                first_comment, delay = G.first_comment(G.spec_for(content.pillar) or {}, content)
+            elif isinstance(content, QuizPost):
                 first_comment, delay = P.quiz_answer_comment(content), 360
             elif isinstance(content, StoryPost) and content.source_url and content.pillar == "news_word":
                 first_comment = f"📰 Source: {content.source_title}\n{content.source_url}"
@@ -220,6 +236,8 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             )
             if not dry_run:
                 W.mark_used(words_used(content), plan.date)
+                if isinstance(content, GenericPost) and content.item_id:
+                    G.mark_item_used(G.spec_for(content.pillar) or {}, content.item_id)
                 if isinstance(content, StoryPost) and content.source_title:
                     from engine.news import mark_story_used
                     mark_story_used(content.source_title, plan.date)

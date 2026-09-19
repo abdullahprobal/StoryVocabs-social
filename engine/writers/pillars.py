@@ -58,7 +58,7 @@ def quiz_answer_comment(post: QuizPost) -> str:
     letter = "ABCD"[post.answer_index]
     return (f"✅ সঠিক উত্তর: {letter}) {post.options[post.answer_index]}\n\n"
             f"{post.word.word} = {post.word.gloss_bn}\n{post.explanation_bn}\n\n"
-            f"যারা ঠিক বলেছ — 🔥। কালকের শব্দটাও মিস কোরো না।")
+            f"{settings.STRINGS.get('quiz_answer_outro', '')}")
 
 
 # ── confusables ────────────────────────────────────────────────────────────

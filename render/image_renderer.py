@@ -61,7 +61,8 @@ _LOGO: str | None = None
 def logo_src() -> str:
     global _LOGO
     if _LOGO is None:
-        _LOGO = _b64(ASSETS / "logo-icon-512.png", "image/png")
+        logo = settings.LOGO_FILE if settings.LOGO_FILE.exists() else ASSETS / "logo-icon-512.png"
+        _LOGO = _b64(logo, "image/png")
     return _LOGO
 
 
@@ -76,10 +77,10 @@ def fmt_date(date_str: str) -> str:
 # ── design system ──────────────────────────────────────────────────────────
 BASE_CSS = """
 :root{
-  --paper:#f8fafc;--surface:#ffffff;--surface-2:#f1f5f9;--line:#e2e8f0;
-  --ink:#0f172a;--ink-2:#334155;--muted:#64748b;
-  --accent:#2563eb;--accent-deep:#1d4ed8;--tint:#eff6ff;--tint-2:#dbeafe;
-  --marker:#FFE58A;--marker-ink:#4A3A00;--ok:#15803d;--ok-tint:#dcfce7;--warn:#b45309;--warn-tint:#fef3c7;
+  --paper:{{C_PAPER}};--surface:#ffffff;--surface-2:#f1f5f9;--line:#e2e8f0;
+  --ink:{{C_INK}};--ink-2:#334155;--muted:#64748b;
+  --accent:{{C_ACCENT}};--accent-deep:{{C_ACCENT_DEEP}};--accent-2:{{C_ACCENT_2}};--tint:#eff6ff;--tint-2:#dbeafe;
+  --marker:{{C_MARKER}};--marker-ink:#4A3A00;--ok:#15803d;--ok-tint:#dcfce7;--warn:#b45309;--warn-tint:#fef3c7;
   --bn:'Hind Siliguri','Noto Sans Bengali',sans-serif;
   --bn-display:'Tiro Bangla','Hind Siliguri',serif;
   --en:'DM Sans','Hind Siliguri',system-ui,sans-serif;
@@ -103,7 +104,7 @@ html,body{width:1080px;height:{{H}}px;overflow:hidden;background:var(--paper);co
 .pill{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 22px;border-radius:999px;background:var(--surface);border:2px solid var(--line);font-family:var(--en);font-weight:700;font-size:24px;color:var(--ink-2);letter-spacing:.02em}
 .pill.blue{background:var(--tint);border-color:var(--tint-2);color:var(--accent-deep)}
 /* footer */
-.ftr{position:absolute;left:0;right:0;bottom:0;height:112px;background:linear-gradient(90deg,var(--accent) 0%,#4f46e5 100%);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 56px}
+.ftr{position:absolute;left:0;right:0;bottom:0;height:112px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 100%);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 56px}
 .ftr .url{font-family:var(--en);font-weight:700;font-size:31px;letter-spacing:-.01em}
 .ftr .cta{font-family:var(--bn);font-weight:600;font-size:29px;display:flex;align-items:center;gap:12px;opacity:.96}
 .ftr .cta .chip{background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 18px;font-size:26px}
@@ -154,17 +155,30 @@ FIT_JS = """
 
 def header_html(right: str = "") -> str:
     return (f'<div class="hdr"><div class="lockup"><img src="{logo_src()}" alt=""/>'
-            f'<div class="wm">Story<b>Vocabs</b></div></div><div>{right}</div></div>')
+            f'<div class="wm">{esc(settings.WORDMARK[0])}<b>{esc(settings.WORDMARK[1] if len(settings.WORDMARK) > 1 else "")}</b></div></div><div>{right}</div></div>')
 
 
-def footer_html(cta_bn: str = "৩টি প্যাক ফ্রি", chip: str = "→") -> str:
+def footer_html(cta_bn: str | None = None, chip: str = "→") -> str:
+    cta = cta_bn if cta_bn is not None else settings.STRINGS.get("footer_cta", "")
     return (f'<div class="ftr"><div class="url">{esc(settings.SITE_DISPLAY)}</div>'
-            f'<div class="cta">{esc(cta_bn)}<span class="chip">{esc(chip)}</span></div></div>')
+            f'<div class="cta">{esc(cta)}<span class="chip">{esc(chip)}</span></div></div>')
+
+
+def S(key: str, default: str = "", **fmt) -> str:
+    """Project string (project.json → strings) with {placeholders}."""
+    v = settings.STRINGS.get(key, default)
+    try:
+        return v.format(**fmt) if fmt else v
+    except (KeyError, IndexError):
+        return v
 
 
 def _page(template: str, ctx: dict, height: int = settings.CANVAS[1]) -> str:
     html = (TPL / template).read_text(encoding="utf-8")
-    base = BASE_CSS.replace("{{H}}", str(height))
+    c = settings.COLORS
+    base = (BASE_CSS.replace("{{H}}", str(height)).replace("{{C_ACCENT}}", c["accent"]).replace("{{C_ACCENT_DEEP}}", c["accent_deep"])
+            .replace("{{C_ACCENT_2}}", c["accent_2"]).replace("{{C_MARKER}}", c["marker"]).replace("{{C_PAPER}}", c["paper"])
+            .replace("{{C_INK}}", c["ink"]))
     ctx = {"BASE_CSS": base, "FONT_CSS": font_css(), "FIT_JS": FIT_JS, **ctx}
     for k, v in ctx.items():
         html = html.replace("{{" + k + "}}", str(v))
@@ -267,24 +281,24 @@ def render_story_post(post: StoryPost, out_dir: Path, date_str: str) -> list[str
         "HEADER": header_html(f'<span class="pill">1 / {total}</span>'),
         "FOOTER": footer_html(),
         "CAT_CHIP": cat_chip, "DATE": fmt_date(date_str),
-        "KICKER": "আজকের খবরে" if post.pillar == "news_word" else "৬০ সেকেন্ডের গল্প",
+        "KICKER": S("story_kicker", "Today") if post.pillar == "news_word" else S("story60_kicker", "৬০ সেকেন্ডের গল্প"),
         "HEADLINE_HTML": mark_hero(post.headline_en), "HEADLINE_BN": esc(post.headline_bn),
         "HERO_WORD": esc(hero.word), "HERO_GLOSS": esc(hero.gloss_bn), "HERO_POS": esc(hero.pos),
-        "SWIPE_N": str(len(words)),
+        "SWIPE_N": str(len(words)), "SWIPE_TEXT": S("swipe", "{n} words", n=len(words)),
     }), settings.CANVAS))
     for i, s in enumerate(post.story_slides, 1):
         pages.append((f"slide_{1+i:02d}_story.png", _page("story.html", {
             "HEADER": header_html(f'<span class="pill">{1+i} / {total}</span>'),
-            "FOOTER": footer_html("গল্পে গল্পে শব্দ"),
+            "FOOTER": footer_html(S("story_footer", settings.STRINGS.get("footer_cta", ""))),
             "SECTION": esc(s.section_label.upper()), "PART": f"{i} / {n_story}" if n_story > 1 else "",
             "STORY_HTML": ruby(s.paragraph),
-            "LEGEND": "হলুদ দাগ = আজকের শব্দ · ওপরে বাংলা অর্থ",
+            "LEGEND": S("story_legend", ""),
         }), settings.CANVAS))
     base = 1 + n_story
     for i, w in enumerate(words, 1):
         ctx = _word_card_ctx(w, i, len(words))
         ctx.update({"HEADER": header_html(f'<span class="pill blue">Word {i} / {len(words)}</span>'),
-                    "FOOTER": footer_html("প্রতিটি শব্দে ৫টি গল্প"),
+                    "FOOTER": footer_html(S("word_footer", settings.STRINGS.get("footer_cta", ""))),
                     "STORY_LINE": _story_sentence(post, w.word)})
         ctx["INST_DISPLAY"] = "block" if ctx["STORY_LINE"] else "none"
         pages.append((f"slide_{base+i:02d}_word_{i}.png", _page("vocab.html", ctx), settings.CANVAS))
@@ -294,8 +308,10 @@ def render_story_post(post: StoryPost, out_dir: Path, date_str: str) -> list[str
         for i, w in enumerate(words, 1))
     pages.append((f"slide_{total:02d}_recap.png", _page("recap.html", {
         "HEADER": header_html(f'<span class="pill">{total} / {total}</span>'),
-        "FOOTER": footer_html("৩টি প্যাক ফ্রি"),
+        "FOOTER": footer_html(),
         "N": str(len(words)), "ROWS": rows, "URL": esc(settings.SITE_DISPLAY),
+        "RECAP_TITLE": S("recap_title", "Today's {n} words", n=len(words)), "RECAP_SUB": S("recap_sub", ""),
+        "RECAP_CTA_HEAD": S("recap_cta_head", ""), "RECAP_CTA_SUB": S("recap_cta_sub", ""), "RECAP_CTA_BTN": S("recap_cta_button", "→"),
         "SOURCE": esc((post.source_title or post.topic)[:70]),
     }), settings.CANVAS))
     return render_pages(pages, out_dir)

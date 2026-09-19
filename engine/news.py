@@ -21,14 +21,8 @@ CACHE_DIR = settings.OUTPUT_DIR / "news"
 MAX_STORY_USAGE = 2
 MIN_GAP_DAYS = 180
 
-NEWS_SOURCES = [
-    "https://www.thedailystar.net/rss.xml",
-    "https://www.dhakatribune.com/rss",
-    "https://bdnews24.com/rss",
-    "https://en.prothomalo.com/rss",
-    "https://www.tbsnews.net/rss",
-    "https://www.thefinancialexpress-bd.com/rss",
-]
+NEWS_SOURCES = settings.NEWS.get("feeds", [])
+_LOCALE = settings.NEWS.get("google_news_locale", {"hl": "en", "gl": "US", "ceid": "US:en"})
 
 TOPIC_KEYWORDS = {
     "politics": ["politic", "parliament", "government", "minister", "election", "vote", "democracy", "law", "court",
@@ -45,7 +39,7 @@ SENSITIVE = ("rape", "murder", "killed", "dead body", "death toll", "suicide", "
              "gang", "blast", "bomb", "stabbed", "lynch", "genocide", "massacre", "corpse", "hanged",
              "ধর্ষণ", "হত্যা", "খুন", "লাশ", "আত্মহত্যা")
 
-TOPIC_QUERIES = {
+TOPIC_QUERIES = settings.NEWS.get("queries") or {
     "politics": ["Bangladesh politics", "Bangladesh government reform", "Bangladesh geopolitics India China",
                  "Bangladesh cricket", "Bangladesh election"],
     "business": ["Bangladesh economy", "Bangladesh business trade", "Bangladesh startup technology",
@@ -125,7 +119,8 @@ def fetch_rss(limit_per_feed: int = 10) -> list[dict]:
 def fetch_google_news(queries: list[str], per_query: int = 4) -> list[dict]:
     out = []
     for q in queries:
-        url = f"https://news.google.com/rss/search?q={q.replace(' ', '+')}+when:2d&hl=en-BD&gl=BD&ceid=BD:en"
+        url = (f"https://news.google.com/rss/search?q={q.replace(' ', '+')}+when:2d"
+               f"&hl={_LOCALE['hl']}&gl={_LOCALE['gl']}&ceid={_LOCALE['ceid']}")
         try:
             feed = feedparser.parse(url)
         except Exception:  # noqa: BLE001

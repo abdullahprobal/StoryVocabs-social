@@ -21,10 +21,10 @@ HOOK STYLE: {hook_instruction}
 WHAT THE IMAGE(S) SHOW:
 {summary}
 
-AUDIENCE: BCS / Bank / DU-IBA / IELTS candidates in Bangladesh, scrolling Facebook on a phone at {when}.
+AUDIENCE: {audience} at {when}.
 
 RULES
-- hook_line: the first line, <= 90 characters, Bangla-first (English vocabulary words stay English).
+- hook_line: the first line, <= 90 characters, {caption_rule}.
   It must earn the "See more" tap on its own. No emoji at the start. No "আজকের শব্দ" style labels.
   The hook must be about what is on the image. Never invent history, etymology, people, places or anecdotes
   about a word ("এই শব্দটা এসেছে..." is banned unless the origin is on the image).
@@ -33,9 +33,8 @@ RULES
 - comment_prompt: one specific question that makes it easy to reply with one word or a sentence
   (e.g. "এই শব্দটা দিয়ে একটা বাক্য লিখো তো — সবচেয়ে ভালোটা পিন করব")
 - cta_line: pick ONE of these exactly, or a close variant with the same meaning:
-  "৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো" / "পোস্টটা Save করে রাখো, কালকে আবার দেখো" /
-  "বন্ধুকে ট্যাগ করো যার এই শব্দটা দরকার" / "ফ্রি প্যাক দিয়ে আজই শুরু করো"
-  Never "download" (it is a website), never "unlimited", never "প্যাকেট", never a price unless the post is about pricing.
+  {cta_options}
+  Never "download" (it is a website), never "unlimited", never a price unless the post is about pricing.
 - hashtags: 6-8 tags without '#', mixing English and Bangla, relevant to the words and exams.
 """
 

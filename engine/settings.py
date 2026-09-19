@@ -26,25 +26,52 @@ RENDER_DIR = ROOT / "render"
 TEMPLATE_DIR = RENDER_DIR / "templates"
 ASSET_DIR = RENDER_DIR / "assets"
 STRATEGY_FILE = ROOT / "strategy.json"
-PRODUCT_FACTS_FILE = DATA_DIR / "product_facts.json"
+PROJECT_DIR = ROOT / "project"
+PROJECT_FILE = PROJECT_DIR / "project.json"
+FACTS_FILE = PROJECT_DIR / "facts.json"
+VOICE_FILE = PROJECT_DIR / "voice.md"
+PILLARS_DIR = PROJECT_DIR / "pillars"
+PRODUCT_FACTS_FILE = FACTS_FILE  # legacy alias
 WORD_PACKS_FILE = DATA_DIR / "word_packs.json"
 HOLIDAYS_FILE = DATA_DIR / "holidays.json"
 
 for d in (QUEUE_DIR, EVERGREEN_DIR, STATE_DIR, ANALYTICS_DIR, OUTPUT_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
-# ── Brand / site ──────────────────────────────────────────────────────────
-PUBLIC_SITE_URL = os.getenv("PUBLIC_SITE_URL", "https://storyvocabs.com").rstrip("/")
+# ── Project (brand) config ────────────────────────────────────────────────
+import json as _json
+
+
+def _load_project() -> dict:
+    if PROJECT_FILE.exists():
+        return _json.loads(PROJECT_FILE.read_text(encoding="utf-8"))
+    return {"brand": {"name": "Brand", "wordmark": ["Brand", ""], "site_url": "https://example.com", "colors": {}}}
+
+
+PROJECT = _load_project()
+BRAND = PROJECT.get("brand", {})
+BRAND_NAME = BRAND.get("name", "Brand")
+WORDMARK = BRAND.get("wordmark") or [BRAND_NAME, ""]
+LOGO_FILE = ROOT / BRAND.get("logo", "project/logo.png")
+COLORS = {"accent": "#2563eb", "accent_deep": "#1d4ed8", "accent_2": "#4f46e5", "ink": "#0f172a",
+          "paper": "#f8fafc", "marker": "#FFE58A", **BRAND.get("colors", {})}
+STRINGS = PROJECT.get("strings", {})
+CTA_OPTIONS = PROJECT.get("cta_options", [])
+AUDIENCE = PROJECT.get("audience", "")
+LANGUAGE = PROJECT.get("language", {"primary": "en", "caption_rule": ""})
+PUBLIC_SITE_URL = os.getenv("PUBLIC_SITE_URL", BRAND.get("site_url", "https://example.com")).rstrip("/")
 SITE_DISPLAY = PUBLIC_SITE_URL.replace("https://", "").replace("http://", "")
-BRAND_NAME = "StoryVocabs"
-# Public vanity paths shown in captions (storyvocabs.com/quiz). Must match
-# VANITY_PATHS in the app's frontend/server/short-links.js.
-PILLAR_PATHS = {"news_word": "words", "quiz": "quiz", "confusables": "mixup", "in_app": "app",
-                "story60": "story", "offer": "free"}
+# Public vanity paths shown in captions (site.com/quiz). The site must 302 them to the UTM landing URL.
+PILLAR_PATHS = PROJECT.get("vanity_paths", {})
+NEWS = PROJECT.get("news", {"feeds": [], "google_news_locale": {"hl": "en", "gl": "US", "ceid": "US:en"}})
 FACEBOOK_PAGE_URL = os.getenv("FACEBOOK_PAGE_URL", "")
+BOT_NAME = BRAND.get("bot_name", "social-bot")
 
 # ── Time ──────────────────────────────────────────────────────────────────
-BST = timezone(timedelta(hours=6), name="BST")
+_TZ_HOURS = float(PROJECT.get("timezone_offset_hours", 6))
+TZ_LABEL = PROJECT.get("timezone_label", "local")
+BST = timezone(timedelta(hours=_TZ_HOURS), name=TZ_LABEL)  # name kept for compatibility: the project's local zone
+SLOT_TIMES = PROJECT.get("slots", {"morning": "08:00", "evening": "20:00"})
 
 
 def now_bst() -> datetime:

@@ -1,0 +1,88 @@
+{
+  "_comment": "Everything brand/project-specific lives in project/. The engine reads this file; nothing about the brand is hard-coded in engine/ or render/.",
+  "brand": {
+    "name": "StoryVocabs",
+    "wordmark": [
+      "Story",
+      "Vocabs"
+    ],
+    "logo": "project/logo.png",
+    "site_url": "https://storyvocabs.com",
+    "colors": {
+      "accent": "#2563eb",
+      "accent_deep": "#1d4ed8",
+      "accent_2": "#4f46e5",
+      "ink": "#0f172a",
+      "paper": "#f8fafc",
+      "marker": "#FFE58A"
+    },
+    "bot_name": "storyvocabs-bot"
+  },
+  "audience": "BCS / Bank / DU-IBA / IELTS candidates in Bangladesh, scrolling Facebook on a phone",
+  "language": {
+    "primary": "bn",
+    "caption_rule": "Bangla-first (English vocabulary words stay English)"
+  },
+  "timezone_offset_hours": 6,
+  "timezone_label": "BST",
+  "slots": {
+    "morning": "08:00",
+    "evening": "20:00"
+  },
+  "strings": {
+    "footer_cta": "৩টি প্যাক ফ্রি",
+    "story_kicker": "আজকের খবরে",
+    "recap_title": "আজকের <b>{n}টি শব্দ</b>",
+    "recap_sub": "সেভ করে রাখো — পরীক্ষার আগে এক নজরে রিভিশন",
+    "recap_cta_head": "প্রতিটি শব্দে <b>৫টি গল্প</b>, বাংলা অর্থসহ — অ্যাপে",
+    "recap_cta_sub": "৩টি প্যাক সম্পূর্ণ ফ্রি। অ্যাকাউন্ট খুলতে এক মিনিট।",
+    "recap_cta_button": "ফ্রি-তে শুরু →",
+    "swipe": "{n}টি শব্দ শেখো",
+    "story_legend": "হলুদ দাগ = আজকের শব্দ · ওপরে বাংলা অর্থ",
+    "profile_up": "পুরো পোস্টটা প্রোফাইলে ↑",
+    "story60_kicker": "৬০ সেকেন্ডের গল্প",
+    "quiz_kicker": "আজকের কুইজ",
+    "confusables_kicker": "গুলিয়ে ফেলা শব্দ",
+    "in_app_kicker": "অ্যাপের ভেতরে",
+    "quiz_body": [
+      "ছবিতে চারটা অপশন। একটা ঠিক, তিনটা খুব কাছাকাছি।",
+      "সঠিক উত্তর আর ব্যাখ্যা আসছে কমেন্টে, ৬ ঘণ্টা পর।",
+      "BCS, Bank, IELTS — যে পরীক্ষাই দাও, এই শব্দটা তালিকায় রাখো।"
+    ],
+    "quiz_comment_prompt": "তোমার উত্তর: A, B, C না D? কমেন্টে লিখো।",
+    "quiz_answer_outro": "যারা ঠিক বলেছ — 🔥। কালকের শব্দটাও মিস কোরো না।",
+    "recap_title_generic": "এক নজরে",
+    "recap_sub_generic": "সেভ করে রাখো",
+    "swipe_generic": "পরের পাতায়",
+    "quiz_tag": "BCS · BANK · ADMISSION"
+  },
+  "cta_options": [
+    "৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো",
+    "পোস্টটা Save করে রাখো, কালকে আবার দেখো",
+    "বন্ধুকে ট্যাগ করো যার এই শব্দটা দরকার",
+    "ফ্রি প্যাক দিয়ে আজই শুরু করো"
+  ],
+  "vanity_paths": {
+    "news_word": "words",
+    "quiz": "quiz",
+    "confusables": "mixup",
+    "in_app": "app",
+    "story60": "story",
+    "offer": "free"
+  },
+  "news": {
+    "feeds": [
+      "https://www.thedailystar.net/rss.xml",
+      "https://www.dhakatribune.com/rss",
+      "https://bdnews24.com/rss",
+      "https://en.prothomalo.com/rss",
+      "https://www.tbsnews.net/rss",
+      "https://www.thefinancialexpress-bd.com/rss"
+    ],
+    "google_news_locale": {
+      "hl": "en-BD",
+      "gl": "BD",
+      "ceid": "BD:en"
+    }
+  }
+}

@@ -15,6 +15,19 @@ strategy.json ──► planner ──► writer (free LLM chain, JSON contract)
               insights.py weekly ──► analytics/ ──► re-weights pillars & hook styles ──► Telegram report
 ```
 
+## Project layer (`project/`) — everything brand-specific
+
+| File | What it holds |
+|---|---|
+| `project/project.json` | brand name, wordmark, logo path, site URL, colours, audience, language rule, timezone, slots, UI strings, CTA options, vanity paths, news feeds |
+| `project/voice.md` | the writing voice (system prompt) |
+| `project/facts.json` | the only product claims allowed (+ `never_say`) |
+| `project/pillars/<name>.json` | a content pillar as a prompt spec: layout (carousel / card / quiz), data source (dataset / news / none), prompt, slide/item counts, hook styles |
+| `project/data/*.json` | datasets a pillar rotates through (each item needs an `id`) |
+
+Built-in vocabulary pillars (`news_word`, `quiz`, `confusables`, `story60`, `in_app`, `offer`) stay available;
+any other pillar name in `strategy.json → calendar` is looked up in `project/pillars/`. The engine code contains no brand strings.
+
 ## Pillars (weekly calendar, `strategy.json`)
 
 | Day | Pillar | Format |

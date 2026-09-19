@@ -52,7 +52,7 @@ def _git_push_files(files: list[tuple[str, Path]]) -> list[str]:
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(local, dest)
         subprocess.run(["git", "-C", str(repo), "add", "-A"], check=True, env=env, capture_output=True)
-        subprocess.run(["git", "-C", str(repo), "-c", "user.name=storyvocabs-bot", "-c", "user.email=bot@storyvocabs.local",
+        subprocess.run(["git", "-C", str(repo), "-c", f"user.name={settings.BOT_NAME}", "-c", f"user.email={settings.BOT_NAME}@local",
                         "commit", "-q", "-m", f"media: {files[0][0].rsplit('/', 1)[0] if files else 'upload'}"],
                        check=True, env=env, capture_output=True, text=True)
         subprocess.run(["git", "-C", str(repo), "push", "-q", "origin", settings.MEDIA_REPO_BRANCH],

@@ -12,7 +12,7 @@ from typing import Literal, Optional
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
-Pillar = Literal["news_word", "quiz", "confusables", "in_app", "story60", "offer"]
+Pillar = str  # built-in: news_word, quiz, confusables, in_app, story60, offer — or any project/pillars/<name>.json
 Slot = Literal["morning", "evening"]
 Status = Literal["pending", "approved", "skipped", "published", "failed"]
 
@@ -230,6 +230,66 @@ class OfferPost(BaseModel):
     @classmethod
     def _b(cls, v):
         return _cap_words(v, 48)
+
+
+class ListItem(BaseModel):
+    title: str
+    sub: str = ""
+    note: str = ""
+
+    @field_validator("title")
+    @classmethod
+    def _t(cls, v):
+        return _clean(v)[:60]
+
+    @field_validator("sub", "note")
+    @classmethod
+    def _s(cls, v):
+        return _clean(v)[:120]
+
+
+class QuizBlock(BaseModel):
+    question: str
+    options: list[str] = Field(..., min_length=4, max_length=4)
+    answer_index: int = Field(..., ge=0, le=3)
+    explanation: str = ""
+
+    @field_validator("options")
+    @classmethod
+    def _o(cls, v):
+        v = [_clean(x)[:40] for x in v]
+        if len({x.lower() for x in v}) != 4:
+            raise ValueError("options must be distinct")
+        return v
+
+
+class GenericPost(BaseModel):
+    """Any project-defined pillar (project/pillars/<name>.json). Layout decides which fields render:
+    carousel → headline/subtitle + slides + items recap · card → headline/body/detail · quiz → quiz block."""
+
+    pillar: str
+    layout: Literal["carousel", "card", "quiz"] = "carousel"
+    kicker: str = ""
+    headline: str = Field("", description="<= 11 words; may mark one phrase as [[phrase]]")
+    subtitle: str = Field("", description="<= 14 words, second language or supporting line")
+    slides: list[StorySlide] = Field(default_factory=list, max_length=4)
+    items: list[ListItem] = Field(default_factory=list, max_length=6)
+    body: str = Field("", description="card layout: <= 50 words")
+    detail: str = Field("", description="card layout: one short line with the number/date")
+    quiz: Optional[QuizBlock] = None
+    source_title: str = ""
+    source_url: str = ""
+    item_id: str = ""
+
+    @field_validator("headline", "subtitle", "kicker", "detail")
+    @classmethod
+    def _h(cls, v):
+        return _clean(v)[:140]
+
+    @field_validator("body")
+    @classmethod
+    def _b(cls, v):
+        return _cap_words(v, 55)
 
 
 # ── Caption ────────────────────────────────────────────────────────────────
