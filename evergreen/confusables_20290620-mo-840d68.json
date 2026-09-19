@@ -1,65 +1,65 @@
 {
-  "id": "20290620-mo-840d68",
-  "date": "2029-06-20",
-  "slot": "morning",
+ "id": "20290620-mo-840d68",
+ "date": "2029-06-20",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "question",
+ "content": {
   "pillar": "confusables",
-  "status": "pending",
-  "hook_style": "question",
-  "content": {
-    "pillar": "confusables",
-    "title_bn": "ইনসেন্স আর ইনসেন্ট, কিভাবে পার্থক্য?",
-    "pair": [
-      {
-        "word": "Incense",
-        "pos": "verb/noun",
-        "difficulty": "Beginner",
-        "phonetic": "/ɪnˈsɛns/",
-        "gloss_bn": "ধূপদ্রব্য",
-        "meaning_bn": "সুগন্ধি বস্তু, যা জ্বালিয়ে ধোঁয়া ছাড়ে",
-        "meaning_en": "A fragrant substance, typically sticks or cones, burned to release smoke",
-        "example": "",
-        "synonym": "anger, provoke, irritate",
-        "antonym": "please, pacify, calm"
-      },
-      {
-        "word": "Incent",
-        "pos": "",
-        "difficulty": "Intermediate",
-        "phonetic": "/ɪnˈsɛnt/",
-        "gloss_bn": "উদ্দীপনা দেওয়া",
-        "meaning_bn": "কিছু করতে উৎসাহিত করা বা পুরস্কার দেওয়া",
-        "meaning_en": "To encourage or provide an incentive",
-        "example": "",
-        "synonym": "",
-        "antonym": ""
-      }
-    ],
-    "difference_bn": "ইনসেন্স ধূপ, ইনসেন্ট উত্সাহ – ‘স’ বনাম ‘ট’",
-    "memory_tip_bn": "ইনসেন্সে ‘স’ আছে, ইনসেন্টে ‘ট’ আছে।"
-  },
-  "caption_fb": "ইনসেন্স নাকি ইনসেন্ট, কোনটা সঠিক?\n\nইনসেন্সে ‘স’ আছে, ইনসেন্টে ‘ট’ আছে।\nBCS বা ব্যাংক পরীক্ষায় ভুল বানান করলে পয়েন্ট হারাতে পারো।\nমনে রাখো, ‘স’ = ধূপ, ‘ট’ = উদ্দীপনা।\n\nতুমি কি ‘ইনসেন্ট’ শব্দটা আগে ভুল বানান করেছ?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\n👉 https://storyvocabs.com/go/confusables/20290620-mo-840d68\n\n#StoryVocabs #EnglishVocabulary #BCS",
-  "caption_ig": "ইনসেন্স নাকি ইনসেন্ট, কোনটা সঠিক?\n\nইনসেন্সে ‘স’ আছে, ইনসেন্টে ‘ট’ আছে।\nBCS বা ব্যাংক পরীক্ষায় ভুল বানান করলে পয়েন্ট হারাতে পারো।\nমনে রাখো, ‘স’ = ধূপ, ‘ট’ = উদ্দীপনা।\n\nতুমি কি ‘ইনসেন্ট’ শব্দটা আগে ভুল বানান করেছ?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUIBA #IELTS #vocab #Admission",
-  "first_comment": "",
-  "comment_delay_minutes": 0,
-  "media": [
-    "F:/.antigravity/StoryVocabs-social/output/2029-06-20/morning/slide_01_cover.png",
-    "F:/.antigravity/StoryVocabs-social/output/2029-06-20/morning/slide_02_pair.png",
-    "F:/.antigravity/StoryVocabs-social/output/2029-06-20/morning/slide_03_rule.png"
+  "title_bn": "ইনসেন্স আর ইনসেন্ট, কিভাবে পার্থক্য?",
+  "pair": [
+   {
+    "word": "Incense",
+    "pos": "verb/noun",
+    "difficulty": "Beginner",
+    "phonetic": "/ɪnˈsɛns/",
+    "gloss_bn": "ধূপদ্রব্য",
+    "meaning_bn": "সুগন্ধি বস্তু, যা জ্বালিয়ে ধোঁয়া ছাড়ে",
+    "meaning_en": "A fragrant substance, typically sticks or cones, burned to release smoke",
+    "example": "",
+    "synonym": "anger, provoke, irritate",
+    "antonym": "please, pacify, calm"
+   },
+   {
+    "word": "Incent",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ɪnˈsɛnt/",
+    "gloss_bn": "উদ্দীপনা দেওয়া",
+    "meaning_bn": "কিছু করতে উৎসাহিত করা বা পুরস্কার দেওয়া",
+    "meaning_en": "To encourage or provide an incentive",
+    "example": "",
+    "synonym": "",
+    "antonym": ""
+   }
   ],
-  "media_urls": [],
-  "story_media": "F:/.antigravity/StoryVocabs-social/output/2029-06-20/morning/story_1080x1920.png",
-  "story_media_url": "",
-  "quality_score": 7,
-  "attempts": 1,
-  "evergreen": true,
-  "telegram_message_id": null,
-  "fb_post_id": "",
-  "ig_media_id": "",
-  "fb_story_id": "",
-  "ig_story_id": "",
-  "review_note": "",
-  "error": "",
-  "created_at": "2026-09-18T19:38:54+00:00",
-  "published_at": "",
-  "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=20290620-mo-840d68"
+  "difference_bn": "ইনসেন্স ধূপ, ইনসেন্ট উত্সাহ – ‘স’ বনাম ‘ট’",
+  "memory_tip_bn": "ইনসেন্সে ‘স’ আছে, ইনসেন্টে ‘ট’ আছে।"
+ },
+ "caption_fb": "ইনসেন্স নাকি ইনসেন্ট, কোনটা সঠিক?\n\nইনসেন্সে ‘স’ আছে, ইনসেন্টে ‘ট’ আছে।\nBCS বা ব্যাংক পরীক্ষায় ভুল বানান করলে পয়েন্ট হারাতে পারো।\nমনে রাখো, ‘স’ = ধূপ, ‘ট’ = উদ্দীপনা।\n\nতুমি কি ‘ইনসেন্ট’ শব্দটা আগে ভুল বানান করেছ?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\nstoryvocabs.com/mixup/0620\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "ইনসেন্স নাকি ইনসেন্ট, কোনটা সঠিক?\n\nইনসেন্সে ‘স’ আছে, ইনসেন্টে ‘ট’ আছে।\nBCS বা ব্যাংক পরীক্ষায় ভুল বানান করলে পয়েন্ট হারাতে পারো।\nমনে রাখো, ‘স’ = ধূপ, ‘ট’ = উদ্দীপনা।\n\nতুমি কি ‘ইনসেন্ট’ শব্দটা আগে ভুল বানান করেছ?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUIBA #IELTS #vocab #Admission",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "F:/.antigravity/StoryVocabs-social/output/2029-06-20/morning/slide_01_cover.png",
+  "F:/.antigravity/StoryVocabs-social/output/2029-06-20/morning/slide_02_pair.png",
+  "F:/.antigravity/StoryVocabs-social/output/2029-06-20/morning/slide_03_rule.png"
+ ],
+ "media_urls": [],
+ "story_media": "F:/.antigravity/StoryVocabs-social/output/2029-06-20/morning/story_1080x1920.png",
+ "story_media_url": "",
+ "quality_score": 7.0,
+ "attempts": 1,
+ "evergreen": true,
+ "telegram_message_id": null,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-09-18T19:38:54+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=20290620-mo-840d68"
 }
