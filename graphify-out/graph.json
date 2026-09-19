@@ -918,7 +918,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L1",
       "id": "engine_caption_py",
-      "community": 1,
+      "community": 5,
       "norm_label": "caption.py"
     },
     {
@@ -927,7 +927,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L43",
       "id": "engine_caption_build_utm",
-      "community": 1,
+      "community": 5,
       "norm_label": "build_utm()"
     },
     {
@@ -936,7 +936,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L43",
       "id": "engine_caption_py_str",
-      "community": 1,
+      "community": 5,
       "norm_label": "str"
     },
     {
@@ -945,7 +945,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L48",
       "id": "engine_caption_build_display_url",
-      "community": 1,
+      "community": 5,
       "norm_label": "build_display_url()"
     },
     {
@@ -954,7 +954,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L57",
       "id": "engine_caption_write_caption",
-      "community": 1,
+      "community": 5,
       "norm_label": "write_caption()"
     },
     {
@@ -963,7 +963,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L57",
       "id": "caption",
-      "community": 1,
+      "community": 5,
       "norm_label": "caption"
     },
     {
@@ -972,7 +972,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L62",
       "id": "engine_caption_tags",
-      "community": 1,
+      "community": 5,
       "norm_label": "_tags()"
     },
     {
@@ -981,7 +981,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L62",
       "id": "engine_caption_py_int",
-      "community": 1,
+      "community": 5,
       "norm_label": "int"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L62",
       "id": "engine_caption_py_random",
-      "community": 1,
+      "community": 5,
       "norm_label": "random"
     },
     {
@@ -999,7 +999,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L74",
       "id": "engine_caption_assemble",
-      "community": 1,
+      "community": 5,
       "norm_label": "assemble()"
     },
     {
@@ -1008,7 +1008,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L1",
       "id": "engine_caption_rationale_1",
-      "community": 1,
+      "community": 5,
       "norm_label": "caption engine: brief \u2192 llm caption \u2192 fb / ig variants with one utm link.  the"
     },
     {
@@ -1017,7 +1017,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L49",
       "id": "engine_caption_rationale_49",
-      "community": 1,
+      "community": 5,
       "norm_label": "return the clean first-party url shown in public captions.      the app expands"
     },
     {
@@ -1026,7 +1026,7 @@
       "source_file": "engine/caption.py",
       "source_location": "L75",
       "id": "engine_caption_rationale_75",
-      "community": 1,
+      "community": 5,
       "norm_label": "return (facebook_caption, instagram_caption, utm_url)."
     },
     {
@@ -1341,7 +1341,7 @@
       "source_file": "engine/contracts.py",
       "source_location": "L236",
       "id": "engine_contracts_caption",
-      "community": 1,
+      "community": 5,
       "norm_label": "caption"
     },
     {
@@ -1359,7 +1359,7 @@
       "source_file": "engine/contracts.py",
       "source_location": "L253",
       "id": "engine_contracts_caption_tags",
-      "community": 1,
+      "community": 5,
       "norm_label": "._tags()"
     },
     {
@@ -1368,7 +1368,7 @@
       "source_file": "engine/contracts.py",
       "source_location": "L262",
       "id": "engine_contracts_criticverdict",
-      "community": 5,
+      "community": 16,
       "norm_label": "criticverdict"
     },
     {
@@ -1413,7 +1413,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L1",
       "id": "engine_gates_py",
-      "community": 5,
+      "community": 16,
       "norm_label": "gates.py"
     },
     {
@@ -1422,7 +1422,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L28",
       "id": "engine_gates_gateerror",
-      "community": 5,
+      "community": 16,
       "norm_label": "gateerror"
     },
     {
@@ -1440,7 +1440,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L43",
       "id": "engine_gates_banned_claims",
-      "community": 5,
+      "community": 16,
       "norm_label": "banned_claims()"
     },
     {
@@ -1449,7 +1449,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L43",
       "id": "engine_gates_py_str",
-      "community": 5,
+      "community": 16,
       "norm_label": "str"
     },
     {
@@ -1458,7 +1458,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L43",
       "id": "engine_gates_py_bool",
-      "community": 5,
+      "community": 16,
       "norm_label": "bool"
     },
     {
@@ -1467,7 +1467,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L60",
       "id": "engine_gates_caption_shape",
-      "community": 5,
+      "community": 16,
       "norm_label": "caption_shape()"
     },
     {
@@ -1476,7 +1476,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L81",
       "id": "engine_gates_story_words",
-      "community": 5,
+      "community": 16,
       "norm_label": "story_words()"
     },
     {
@@ -1485,7 +1485,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L81",
       "id": "engine_gates_py_storypost",
-      "community": 5,
+      "community": 16,
       "norm_label": "storypost"
     },
     {
@@ -1494,7 +1494,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L97",
       "id": "engine_gates_render_check",
-      "community": 5,
+      "community": 16,
       "norm_label": "render_check()"
     },
     {
@@ -1503,7 +1503,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L110",
       "id": "engine_gates_html_tokens",
-      "community": 5,
+      "community": 16,
       "norm_label": "html_tokens()"
     },
     {
@@ -1512,7 +1512,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L137",
       "id": "engine_gates_critic",
-      "community": 5,
+      "community": 16,
       "norm_label": "critic()"
     },
     {
@@ -1521,7 +1521,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L137",
       "id": "criticverdict",
-      "community": 5,
+      "community": 16,
       "norm_label": "criticverdict"
     },
     {
@@ -1530,7 +1530,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L1",
       "id": "engine_gates_rationale_1",
-      "community": 5,
+      "community": 16,
       "norm_label": "quality gates. every function raises gateerror with a human-readable reason, or"
     },
     {
@@ -1539,7 +1539,7 @@
       "source_file": "engine/gates.py",
       "source_location": "L44",
       "id": "engine_gates_rationale_44",
-      "community": 5,
+      "community": 16,
       "norm_label": "raise on any never_say phrase, any research/statistic pattern and \u2014 unless allow"
     },
     {
@@ -2295,7 +2295,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L1",
       "id": "engine_planner_py",
-      "community": 1,
+      "community": 5,
       "norm_label": "planner.py"
     },
     {
@@ -2304,7 +2304,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L19",
       "id": "engine_planner_load_strategy",
-      "community": 1,
+      "community": 5,
       "norm_label": "load_strategy()"
     },
     {
@@ -2322,7 +2322,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L27",
       "id": "engine_planner_load_holidays",
-      "community": 1,
+      "community": 5,
       "norm_label": "load_holidays()"
     },
     {
@@ -2340,7 +2340,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L46",
       "id": "engine_planner_in_ramadan",
-      "community": 1,
+      "community": 5,
       "norm_label": "_in_ramadan()"
     },
     {
@@ -2349,7 +2349,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L46",
       "id": "date",
-      "community": 1,
+      "community": 5,
       "norm_label": "date"
     },
     {
@@ -2358,7 +2358,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L46",
       "id": "engine_planner_py_bool",
-      "community": 1,
+      "community": 5,
       "norm_label": "bool"
     },
     {
@@ -2367,7 +2367,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L68",
       "id": "engine_planner_pick_hook_style",
-      "community": 1,
+      "community": 5,
       "norm_label": "pick_hook_style()"
     },
     {
@@ -2376,7 +2376,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L68",
       "id": "engine_planner_py_random",
-      "community": 1,
+      "community": 5,
       "norm_label": "random"
     },
     {
@@ -2385,7 +2385,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L68",
       "id": "engine_planner_py_str",
-      "community": 1,
+      "community": 5,
       "norm_label": "str"
     },
     {
@@ -2394,7 +2394,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L79",
       "id": "engine_planner_plan_for_date",
-      "community": 1,
+      "community": 5,
       "norm_label": "plan_for_date()"
     },
     {
@@ -2403,7 +2403,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L79",
       "id": "engine_planner_py_int",
-      "community": 1,
+      "community": 5,
       "norm_label": "int"
     },
     {
@@ -2412,7 +2412,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L117",
       "id": "engine_planner_slot_datetime_bst",
-      "community": 1,
+      "community": 5,
       "norm_label": "slot_datetime_bst()"
     },
     {
@@ -2421,7 +2421,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L117",
       "id": "engine_planner_py_datetime",
-      "community": 1,
+      "community": 5,
       "norm_label": "datetime"
     },
     {
@@ -2430,7 +2430,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L1",
       "id": "engine_planner_rationale_1",
-      "community": 1,
+      "community": 5,
       "norm_label": "decides what to make for a given date: slot, pillar, topic group, hook style \u2014"
     },
     {
@@ -2439,7 +2439,7 @@
       "source_file": "engine/planner.py",
       "source_location": "L81",
       "id": "engine_planner_rationale_81",
-      "community": 1,
+      "community": 5,
       "norm_label": "return the posts to make on date_str (may be empty on skip days)."
     },
     {
@@ -2646,7 +2646,7 @@
       "source_file": "engine/voice.py",
       "source_location": "L1",
       "id": "engine_voice_py",
-      "community": 5,
+      "community": 16,
       "norm_label": "voice.py"
     },
     {
@@ -2655,7 +2655,7 @@
       "source_file": "engine/voice.py",
       "source_location": "L12",
       "id": "engine_voice_product_facts",
-      "community": 5,
+      "community": 16,
       "norm_label": "product_facts()"
     },
     {
@@ -2664,7 +2664,7 @@
       "source_file": "engine/voice.py",
       "source_location": "L16",
       "id": "engine_voice_facts_block",
-      "community": 5,
+      "community": 16,
       "norm_label": "facts_block()"
     },
     {
@@ -2673,7 +2673,7 @@
       "source_file": "engine/voice.py",
       "source_location": "L16",
       "id": "engine_voice_py_str",
-      "community": 5,
+      "community": 16,
       "norm_label": "str"
     },
     {
@@ -2682,7 +2682,7 @@
       "source_file": "engine/voice.py",
       "source_location": "L1",
       "id": "engine_voice_rationale_1",
-      "community": 5,
+      "community": 16,
       "norm_label": "brand voice: the system prompt shared by every writer and the caption engine. pr"
     },
     {
@@ -3235,19 +3235,37 @@
       "norm_label": "int"
     },
     {
-      "label": "send_preview()",
+      "label": "_preview_text()",
       "file_type": "code",
       "source_file": "engine/publishers/telegram.py",
       "source_location": "L51",
+      "id": "publishers_telegram_preview_text",
+      "community": 22,
+      "norm_label": "_preview_text()"
+    },
+    {
+      "label": "send_preview()",
+      "file_type": "code",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L60",
       "id": "publishers_telegram_send_preview",
       "community": 22,
       "norm_label": "send_preview()"
     },
     {
+      "label": "edit_preview()",
+      "file_type": "code",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L79",
+      "id": "publishers_telegram_edit_preview",
+      "community": 22,
+      "norm_label": "edit_preview()"
+    },
+    {
       "label": "decisions()",
       "file_type": "code",
       "source_file": "engine/publishers/telegram.py",
-      "source_location": "L75",
+      "source_location": "L103",
       "id": "publishers_telegram_decisions",
       "community": 22,
       "norm_label": "decisions()"
@@ -3262,20 +3280,38 @@
       "norm_label": "telegram review channel (stateless: works from cron via getupdates).  send_previ"
     },
     {
-      "label": "Send slides as an album, then the caption + instructions. Returns the caption me",
+      "label": "Build the review message body consistently for new and edited previews.",
       "file_type": "rationale",
       "source_file": "engine/publishers/telegram.py",
       "source_location": "L52",
       "id": "publishers_telegram_rationale_52",
       "community": 22,
+      "norm_label": "build the review message body consistently for new and edited previews."
+    },
+    {
+      "label": "Send slides as an album, then the caption + instructions. Returns the caption me",
+      "file_type": "rationale",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L61",
+      "id": "publishers_telegram_rationale_61",
+      "community": 22,
       "norm_label": "send slides as an album, then the caption + instructions. returns the caption me"
+    },
+    {
+      "label": "Refresh an existing preview without sending a duplicate message.      Telegram r",
+      "file_type": "rationale",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L80",
+      "id": "publishers_telegram_rationale_80",
+      "community": 22,
+      "norm_label": "refresh an existing preview without sending a duplicate message.      telegram r"
     },
     {
       "label": "Read new updates; map replied-to message_id \u2192 decision. Advances the stored offs",
       "file_type": "rationale",
       "source_file": "engine/publishers/telegram.py",
-      "source_location": "L76",
-      "id": "publishers_telegram_rationale_76",
+      "source_location": "L104",
+      "id": "publishers_telegram_rationale_104",
       "community": 22,
       "norm_label": "read new updates; map replied-to message_id \u2192 decision. advances the stored offs"
     },
@@ -6930,7 +6966,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L1",
       "id": "render_image_renderer_py",
-      "community": 16,
+      "community": 0,
       "norm_label": "image_renderer.py"
     },
     {
@@ -6939,7 +6975,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L32",
       "id": "render_image_renderer_esc",
-      "community": 16,
+      "community": 0,
       "norm_label": "esc()"
     },
     {
@@ -6948,7 +6984,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L32",
       "id": "render_image_renderer_py_str",
-      "community": 16,
+      "community": 0,
       "norm_label": "str"
     },
     {
@@ -6957,7 +6993,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L37",
       "id": "render_image_renderer_b64",
-      "community": 16,
+      "community": 0,
       "norm_label": "_b64()"
     },
     {
@@ -6966,7 +7002,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L37",
       "id": "render_image_renderer_py_path",
-      "community": 16,
+      "community": 0,
       "norm_label": "path"
     },
     {
@@ -6975,7 +7011,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L44",
       "id": "render_image_renderer_font_css",
-      "community": 16,
+      "community": 0,
       "norm_label": "font_css()"
     },
     {
@@ -6984,7 +7020,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L61",
       "id": "render_image_renderer_logo_src",
-      "community": 16,
+      "community": 0,
       "norm_label": "logo_src()"
     },
     {
@@ -6993,7 +7029,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L68",
       "id": "render_image_renderer_fmt_date",
-      "community": 16,
+      "community": 0,
       "norm_label": "fmt_date()"
     },
     {
@@ -7002,7 +7038,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L155",
       "id": "render_image_renderer_header_html",
-      "community": 16,
+      "community": 0,
       "norm_label": "header_html()"
     },
     {
@@ -7011,7 +7047,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L160",
       "id": "render_image_renderer_footer_html",
-      "community": 16,
+      "community": 0,
       "norm_label": "footer_html()"
     },
     {
@@ -7020,7 +7056,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L165",
       "id": "render_image_renderer_page",
-      "community": 16,
+      "community": 0,
       "norm_label": "_page()"
     },
     {
@@ -7038,7 +7074,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L178",
       "id": "render_image_renderer_ruby",
-      "community": 16,
+      "community": 0,
       "norm_label": "ruby()"
     },
     {
@@ -7047,7 +7083,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L192",
       "id": "render_image_renderer_mark_hero",
-      "community": 16,
+      "community": 0,
       "norm_label": "mark_hero()"
     },
     {
@@ -7056,7 +7092,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L197",
       "id": "render_image_renderer_bold_html",
-      "community": 16,
+      "community": 0,
       "norm_label": "bold_html()"
     },
     {
@@ -7065,7 +7101,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L202",
       "id": "render_image_renderer_render_pages",
-      "community": 16,
+      "community": 0,
       "norm_label": "render_pages()"
     },
     {
@@ -7074,7 +7110,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L231",
       "id": "render_image_renderer_word_card_ctx",
-      "community": 16,
+      "community": 0,
       "norm_label": "_word_card_ctx()"
     },
     {
@@ -7092,7 +7128,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L248",
       "id": "render_image_renderer_story_sentence",
-      "community": 16,
+      "community": 0,
       "norm_label": "_story_sentence()"
     },
     {
@@ -7110,7 +7146,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L258",
       "id": "render_image_renderer_render_story_post",
-      "community": 16,
+      "community": 0,
       "norm_label": "render_story_post()"
     },
     {
@@ -7119,7 +7155,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L304",
       "id": "render_image_renderer_render_quiz",
-      "community": 16,
+      "community": 0,
       "norm_label": "render_quiz()"
     },
     {
@@ -7137,7 +7173,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L318",
       "id": "render_image_renderer_render_confusables",
-      "community": 16,
+      "community": 0,
       "norm_label": "render_confusables()"
     },
     {
@@ -7155,7 +7191,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L346",
       "id": "render_image_renderer_render_in_app",
-      "community": 16,
+      "community": 0,
       "norm_label": "render_in_app()"
     },
     {
@@ -7173,7 +7209,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L358",
       "id": "render_image_renderer_render_offer",
-      "community": 16,
+      "community": 0,
       "norm_label": "render_offer()"
     },
     {
@@ -7191,7 +7227,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L369",
       "id": "render_image_renderer_render_story_card",
-      "community": 16,
+      "community": 0,
       "norm_label": "render_story_card()"
     },
     {
@@ -7200,7 +7236,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L1",
       "id": "render_image_renderer_rationale_1",
-      "community": 16,
+      "community": 0,
       "norm_label": "html \u2192 png renderer for every pillar (playwright/chromium).  design system liv"
     },
     {
@@ -7209,7 +7245,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L179",
       "id": "render_image_renderer_rationale_179",
-      "community": 16,
+      "community": 0,
       "norm_label": "[[word|gloss]] \u2192 highlighted word with a small bangla gloss above it."
     },
     {
@@ -7218,7 +7254,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L203",
       "id": "render_image_renderer_rationale_203",
-      "community": 16,
+      "community": 0,
       "norm_label": "pages: [(filename, html, (w,h))] \u2192 png paths."
     },
     {
@@ -7227,7 +7263,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L232",
       "id": "render_image_renderer_rationale_232",
-      "community": 16,
+      "community": 0,
       "norm_label": "context for vocab.html; story_line is filled by the caller when a story exists."
     },
     {
@@ -7236,7 +7272,7 @@
       "source_file": "render/image_renderer.py",
       "source_location": "L249",
       "id": "render_image_renderer_rationale_249",
-      "community": 16,
+      "community": 0,
       "norm_label": "the sentence from the story that contains `word` (markup stripped, word bolded)."
     },
     {
@@ -7337,6 +7373,42 @@
       "id": "scripts_fetch_fonts_rationale_1",
       "community": 34,
       "norm_label": "download the brand fonts once into render/assets/fonts/ (committed).  google fon"
+    },
+    {
+      "label": "refresh_telegram_previews.py",
+      "file_type": "code",
+      "source_file": "scripts/refresh_telegram_previews.py",
+      "source_location": "L1",
+      "id": "scripts_refresh_telegram_previews_py",
+      "community": 1,
+      "norm_label": "refresh_telegram_previews.py"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "scripts/refresh_telegram_previews.py",
+      "source_location": "L20",
+      "id": "scripts_refresh_telegram_previews_main",
+      "community": 1,
+      "norm_label": "main()"
+    },
+    {
+      "label": "int",
+      "file_type": "code",
+      "source_file": "scripts/refresh_telegram_previews.py",
+      "source_location": "L20",
+      "id": "scripts_refresh_telegram_previews_py_int",
+      "community": 1,
+      "norm_label": "int"
+    },
+    {
+      "label": "Refresh queued Telegram previews after a caption-format change.  Run locally wit",
+      "file_type": "rationale",
+      "source_file": "scripts/refresh_telegram_previews.py",
+      "source_location": "L1",
+      "id": "scripts_refresh_telegram_previews_rationale_1",
+      "community": 1,
+      "norm_label": "refresh queued telegram previews after a caption-format change.  run locally wit"
     },
     {
       "label": "sync_word_packs.py",
@@ -12411,7 +12483,7 @@
       "source_file": "tests/test_gates_and_contracts.py",
       "source_location": "L1",
       "id": "tests_test_gates_and_contracts_py",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_gates_and_contracts.py"
     },
     {
@@ -12420,7 +12492,7 @@
       "source_file": "tests/test_gates_and_contracts.py",
       "source_location": "L10",
       "id": "tests_test_gates_and_contracts_caption",
-      "community": 1,
+      "community": 5,
       "norm_label": "_caption()"
     },
     {
@@ -12429,7 +12501,7 @@
       "source_file": "tests/test_gates_and_contracts.py",
       "source_location": "L16",
       "id": "tests_test_gates_and_contracts_test_assemble_has_one_fb_url_and_no_ig_url",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_assemble_has_one_fb_url_and_no_ig_url()"
     },
     {
@@ -12438,7 +12510,7 @@
       "source_file": "tests/test_gates_and_contracts.py",
       "source_location": "L24",
       "id": "tests_test_gates_and_contracts_test_banned_claims_blocks_harvard_and_stats",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_banned_claims_blocks_harvard_and_stats()"
     },
     {
@@ -12447,7 +12519,7 @@
       "source_file": "tests/test_gates_and_contracts.py",
       "source_location": "L36",
       "id": "tests_test_gates_and_contracts_test_caption_shape_rejects_second_link_and_long_hook",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_caption_shape_rejects_second_link_and_long_hook()"
     },
     {
@@ -12456,7 +12528,7 @@
       "source_file": "tests/test_gates_and_contracts.py",
       "source_location": "L44",
       "id": "tests_test_gates_and_contracts_test_story_words_gate_passes_fixture_and_fails_when_unmarked",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_story_words_gate_passes_fixture_and_fails_when_unmarked()"
     },
     {
@@ -12465,7 +12537,7 @@
       "source_file": "tests/test_gates_and_contracts.py",
       "source_location": "L52",
       "id": "tests_test_gates_and_contracts_test_headline_bn_strips_markup_and_example_must_be_english",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_headline_bn_strips_markup_and_example_must_be_english()"
     },
     {
@@ -12474,7 +12546,7 @@
       "source_file": "tests/test_gates_and_contracts.py",
       "source_location": "L59",
       "id": "tests_test_gates_and_contracts_test_hero_must_be_in_words",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_hero_must_be_in_words()"
     },
     {
@@ -12492,7 +12564,7 @@
       "source_file": "tests/test_gates_and_contracts.py",
       "source_location": "L70",
       "id": "tests_test_gates_and_contracts_test_planner_calendar_and_holidays",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_planner_calendar_and_holidays()"
     },
     {
@@ -12501,7 +12573,7 @@
       "source_file": "tests/test_gates_and_contracts.py",
       "source_location": "L84",
       "id": "tests_test_gates_and_contracts_test_llm_extract_json_handles_fences",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_llm_extract_json_handles_fences()"
     },
     {
@@ -12708,7 +12780,7 @@
       "source_file": "HANDOVER.md",
       "source_location": "L1",
       "id": "handover_md",
-      "community": 168,
+      "community": 73,
       "norm_label": "handover.md"
     },
     {
@@ -13329,7 +13401,7 @@
       "source_file": "POSTING_SCHEDULE.md",
       "source_location": "L1",
       "id": "posting_schedule_md",
-      "community": 26,
+      "community": 216,
       "norm_label": "posting_schedule.md"
     },
     {
@@ -14119,7 +14191,7 @@
       "label": "Guard rails",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L82",
+      "source_location": "L87",
       "id": "storyvocabs_social_readme_guard_rails",
       "community": 27,
       "norm_label": "guard rails"
@@ -14782,6 +14854,15 @@
       "norm_label": "done = all green"
     },
     {
+      "label": "Read new updates; map replied-to message_id \u2192 decision. Advances the stored offs",
+      "file_type": "rationale",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L76",
+      "community": 22,
+      "norm_label": "read new updates; map replied-to message_id \u2192 decision. advances the stored offs",
+      "id": "publishers_telegram_rationale_76"
+    },
+    {
       "label": "_comment",
       "file_type": "code",
       "source_file": "strategy.json",
@@ -15308,7 +15389,7 @@
       "file_type": "rationale",
       "source_file": "engine/caption.py",
       "source_location": "L66",
-      "community": 1,
+      "community": 5,
       "norm_label": "return (facebook_caption, instagram_caption, utm_url).",
       "id": "engine_caption_rationale_66"
     },
@@ -19866,9 +19947,9 @@
       "source_file": ".claude/settings.local.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_settings_local_json",
-      "target": "claude_settings_local_permissions",
-      "confidence_score": 1.0
+      "target": "claude_settings_local_permissions"
     },
     {
       "relation": "contains",
@@ -19876,9 +19957,9 @@
       "source_file": ".claude/settings.local.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_settings_local_permissions",
-      "target": "claude_settings_local_permissions_allow",
-      "confidence_score": 1.0
+      "target": "claude_settings_local_permissions_allow"
     },
     {
       "relation": "contains",
@@ -20266,9 +20347,9 @@
       "source_file": "engine/caption.py",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engine_caption_py",
-      "target": "engine_caption_build_display_url",
-      "confidence_score": 1.0
+      "target": "engine_caption_build_display_url"
     },
     {
       "relation": "contains",
@@ -20383,9 +20464,9 @@
       "source_file": "engine/caption.py",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engine_caption_build_display_url",
-      "target": "engine_caption_py_str",
-      "confidence_score": 1.0
+      "target": "engine_caption_py_str"
     },
     {
       "relation": "uses",
@@ -20426,9 +20507,9 @@
       "source_file": "engine/caption.py",
       "source_location": "L78",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engine_caption_assemble",
-      "target": "engine_caption_build_display_url",
-      "confidence_score": 1.0
+      "target": "engine_caption_build_display_url"
     },
     {
       "relation": "rationale_for",
@@ -20436,9 +20517,9 @@
       "source_file": "engine/caption.py",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engine_caption_rationale_49",
-      "target": "engine_caption_build_display_url",
-      "confidence_score": 1.0
+      "target": "engine_caption_build_display_url"
     },
     {
       "relation": "references",
@@ -20607,9 +20688,9 @@
       "source_file": "engine/caption.py",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engine_caption_rationale_75",
-      "target": "engine_caption_assemble",
-      "confidence_score": 1.0
+      "target": "engine_caption_assemble"
     },
     {
       "relation": "calls",
@@ -24126,6 +24207,27 @@
       "confidence_score": 0.5,
       "source": "planitem",
       "target": "engine_contracts_queueitem"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/refresh_telegram_previews.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "scripts_refresh_telegram_previews_py",
+      "target": "engine_contracts_queueitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "scripts/refresh_telegram_previews.py",
+      "source_location": "L16",
+      "weight": 0.8,
+      "source": "scripts_refresh_telegram_previews_py_int",
+      "target": "engine_contracts_queueitem",
+      "confidence_score": 0.5
     },
     {
       "relation": "contains",
@@ -29150,11 +29252,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "engine/publishers/telegram.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "engine_publishers_telegram_py",
+      "target": "publishers_telegram_edit_preview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "engine/publishers/telegram.py",
       "source_location": "L42",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "engine_publishers_telegram_py",
       "target": "publishers_telegram_notify"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "engine_publishers_telegram_py",
+      "target": "publishers_telegram_preview_text",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -29217,6 +29339,17 @@
       "confidence_score": 1.0,
       "source": "publishers_telegram_decisions",
       "target": "publishers_telegram_configured"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "publishers_telegram_edit_preview",
+      "target": "publishers_telegram_configured",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -29286,6 +29419,17 @@
     },
     {
       "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "publishers_telegram_preview_text",
+      "target": "engine_publishers_telegram_py_str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "engine/publishers/telegram.py",
@@ -29300,11 +29444,54 @@
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "engine/publishers/telegram.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "publishers_telegram_edit_preview",
+      "target": "engine_publishers_telegram_py_int",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "engine/publishers/telegram.py",
       "source_location": "L51",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "publishers_telegram_send_preview",
       "target": "engine_publishers_telegram_py_int"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "publishers_telegram_edit_preview",
+      "target": "publishers_telegram_preview_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "publishers_telegram_rationale_52",
+      "target": "publishers_telegram_preview_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "publishers_telegram_send_preview",
+      "target": "publishers_telegram_preview_text",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -29315,6 +29502,36 @@
       "confidence_score": 1.0,
       "source": "publishers_telegram_rationale_52",
       "target": "publishers_telegram_send_preview"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "publishers_telegram_rationale_61",
+      "target": "publishers_telegram_send_preview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "publishers_telegram_rationale_80",
+      "target": "publishers_telegram_edit_preview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "engine/publishers/telegram.py",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "publishers_telegram_rationale_104",
+      "target": "publishers_telegram_decisions",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -33220,9 +33437,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_attempts",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_attempts"
     },
     {
       "relation": "contains",
@@ -33230,9 +33447,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_caption_fb",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_caption_fb"
     },
     {
       "relation": "contains",
@@ -33240,9 +33457,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_caption_ig",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_caption_ig"
     },
     {
       "relation": "contains",
@@ -33250,9 +33467,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_comment_delay_minutes",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_comment_delay_minutes"
     },
     {
       "relation": "contains",
@@ -33260,9 +33477,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_content",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_content"
     },
     {
       "relation": "contains",
@@ -33270,9 +33487,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_created_at",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_created_at"
     },
     {
       "relation": "contains",
@@ -33280,9 +33497,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_date",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_date"
     },
     {
       "relation": "contains",
@@ -33290,9 +33507,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_error",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_error"
     },
     {
       "relation": "contains",
@@ -33300,9 +33517,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_evergreen",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_evergreen"
     },
     {
       "relation": "contains",
@@ -33310,9 +33527,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_fb_post_id",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_fb_post_id"
     },
     {
       "relation": "contains",
@@ -33320,9 +33537,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_fb_story_id",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_fb_story_id"
     },
     {
       "relation": "contains",
@@ -33330,9 +33547,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_first_comment",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_first_comment"
     },
     {
       "relation": "contains",
@@ -33340,9 +33557,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_hook_style",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_hook_style"
     },
     {
       "relation": "contains",
@@ -33350,9 +33567,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_id",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_id"
     },
     {
       "relation": "contains",
@@ -33360,9 +33577,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_ig_media_id",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_ig_media_id"
     },
     {
       "relation": "contains",
@@ -33370,9 +33587,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_ig_story_id",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_ig_story_id"
     },
     {
       "relation": "contains",
@@ -33380,9 +33597,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_media",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_media"
     },
     {
       "relation": "contains",
@@ -33390,9 +33607,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_media_urls",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_media_urls"
     },
     {
       "relation": "contains",
@@ -33400,9 +33617,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_pillar",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_pillar"
     },
     {
       "relation": "contains",
@@ -33410,9 +33627,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_published_at",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_published_at"
     },
     {
       "relation": "contains",
@@ -33420,9 +33637,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L56",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_quality_score",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_quality_score"
     },
     {
       "relation": "contains",
@@ -33430,9 +33647,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_review_note",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_review_note"
     },
     {
       "relation": "contains",
@@ -33440,9 +33657,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_slot",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_slot"
     },
     {
       "relation": "contains",
@@ -33450,9 +33667,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_status",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_status"
     },
     {
       "relation": "contains",
@@ -33460,9 +33677,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_story_media",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_story_media"
     },
     {
       "relation": "contains",
@@ -33470,9 +33687,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_story_media_url",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_story_media_url"
     },
     {
       "relation": "contains",
@@ -33480,9 +33697,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_telegram_message_id",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_telegram_message_id"
     },
     {
       "relation": "contains",
@@ -33490,9 +33707,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "queue_2026_09_21_morning_json",
-      "target": "2026_09_21_morning_utm_url",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_utm_url"
     },
     {
       "relation": "contains",
@@ -33500,9 +33717,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "2026_09_21_morning_content",
-      "target": "2026_09_21_morning_content_difference_bn",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_content_difference_bn"
     },
     {
       "relation": "contains",
@@ -33510,9 +33727,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "2026_09_21_morning_content",
-      "target": "2026_09_21_morning_content_memory_tip_bn",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_content_memory_tip_bn"
     },
     {
       "relation": "contains",
@@ -33520,9 +33737,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "2026_09_21_morning_content",
-      "target": "2026_09_21_morning_content_pair",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_content_pair"
     },
     {
       "relation": "contains",
@@ -33530,9 +33747,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "2026_09_21_morning_content",
-      "target": "2026_09_21_morning_content_pillar",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_content_pillar"
     },
     {
       "relation": "contains",
@@ -33540,9 +33757,9 @@
       "source_file": "queue/2026-09-21/morning.json",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "2026_09_21_morning_content",
-      "target": "2026_09_21_morning_content_title_bn",
-      "confidence_score": 1.0
+      "target": "2026_09_21_morning_content_title_bn"
     },
     {
       "relation": "contains",
@@ -34827,6 +35044,37 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/refresh_telegram_previews.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "scripts_refresh_telegram_previews_py",
+      "target": "scripts_refresh_telegram_previews_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/refresh_telegram_previews.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_refresh_telegram_previews_rationale_1",
+      "target": "scripts_refresh_telegram_previews_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/refresh_telegram_previews.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "scripts_refresh_telegram_previews_main",
+      "target": "scripts_refresh_telegram_previews_py_int",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "scripts/sync_word_packs.py",
       "source_location": "L19",
       "weight": 1.0,
@@ -35122,9 +35370,9 @@
       "source_file": "state/story_usage_tracker.json",
       "source_location": "L428",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "state_story_usage_tracker_json",
-      "target": "state_story_usage_tracker_cwabhostsreceptionforbangladeshteamafterhistoricaustraliates",
-      "confidence_score": 1.0
+      "target": "state_story_usage_tracker_cwabhostsreceptionforbangladeshteamafterhistoricaustraliates"
     },
     {
       "relation": "contains",
@@ -47290,5 +47538,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "280768dce5319973c78d36cbada0753c56d69729"
+  "built_at_commit": "f0c6c1cb3768f3301694ee8dee0c490a24564c0c"
 }

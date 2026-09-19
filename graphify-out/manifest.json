@@ -100,8 +100,8 @@
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\publishers\\telegram.py": {
-    "mtime": 1789758390.013605,
-    "ast_hash": "f6c9c8ed20d806aa33a6f0ea7fd864c6",
+    "mtime": 1789776736.8422377,
+    "ast_hash": "0659992fbe66a6903d1fc08c0c16030a",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\engine\\publishers\\__init__.py": {
@@ -225,8 +225,8 @@
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\README.md": {
-    "mtime": 1789774596.9791598,
-    "ast_hash": "10ed2e1d249f3b11619fef17173681bc",
+    "mtime": 1789776736.8452513,
+    "ast_hash": "92f361874a0c85673f8d830aa8d1f09b",
     "semantic_hash": ""
   },
   "F:\\.antigravity\\StoryVocabs-social\\requirements.txt": {
@@ -1104,69 +1104,14 @@
     "ast_hash": "59f908eb1d881f352e5f28668cca4011",
     "semantic_hash": ""
   },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35406495278\\2026-09-19\\morning\\slide_01_cover.png": {
-    "mtime": 1789775559.7700303,
-    "ast_hash": "fd5b5a0c3da849fb6daf050a7f03b946",
+  "F:\\.antigravity\\StoryVocabs-social\\scripts\\refresh_telegram_previews.py": {
+    "mtime": 1789776824.2019317,
+    "ast_hash": "8916ad395db6a9fcdbc5e4f3bb43bd61",
     "semantic_hash": ""
   },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35406495278\\2026-09-19\\morning\\slide_02_story.png": {
-    "mtime": 1789775559.7756119,
-    "ast_hash": "f2d0cc9c4e1001d2965604945b7066cd",
-    "semantic_hash": ""
-  },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35406495278\\2026-09-19\\morning\\slide_03_word_1.png": {
-    "mtime": 1789775559.7832968,
-    "ast_hash": "d1771eddaa436f4f44481eeaac446918",
-    "semantic_hash": ""
-  },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35406495278\\2026-09-19\\morning\\slide_04_word_2.png": {
-    "mtime": 1789775559.7891114,
-    "ast_hash": "f11a18f35cacb4251ed8f081fef22adc",
-    "semantic_hash": ""
-  },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35406495278\\2026-09-19\\morning\\slide_05_word_3.png": {
-    "mtime": 1789775559.7959363,
-    "ast_hash": "e8a901e11dfd7d4c638bec9982e56b56",
-    "semantic_hash": ""
-  },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35406495278\\2026-09-19\\morning\\slide_06_recap.png": {
-    "mtime": 1789775559.8040228,
-    "ast_hash": "dda971da11601586dafe2adf0ac4a744",
-    "semantic_hash": ""
-  },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35406495278\\2026-09-19\\morning\\story_1080x1920.png": {
-    "mtime": 1789775559.8134046,
-    "ast_hash": "8a6a69b8183e62be4a56ceab83fa25e8",
-    "semantic_hash": ""
-  },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35406495278\\2026-09-20\\morning\\slide_01_quiz.png": {
-    "mtime": 1789775559.818427,
-    "ast_hash": "44857262d74d3e437761c9c30dab43e9",
-    "semantic_hash": ""
-  },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35406495278\\2026-09-20\\morning\\story_1080x1920.png": {
-    "mtime": 1789775559.8267677,
-    "ast_hash": "bdc39235c0b66ad971c99888751db22c",
-    "semantic_hash": ""
-  },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35407077585\\2026-09-21\\morning\\slide_01_cover.png": {
-    "mtime": 1789775564.0204916,
-    "ast_hash": "44dc8950ec6b129fb05fc494447eb76f",
-    "semantic_hash": ""
-  },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35407077585\\2026-09-21\\morning\\slide_02_pair.png": {
-    "mtime": 1789775564.0375817,
-    "ast_hash": "7a7b555276f838d842ec56d99a2d793c",
-    "semantic_hash": ""
-  },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35407077585\\2026-09-21\\morning\\slide_03_rule.png": {
-    "mtime": 1789775564.0509348,
-    "ast_hash": "c14a65a9baa94aae46be54d222328528",
-    "semantic_hash": ""
-  },
-  "F:\\.antigravity\\StoryVocabs-social\\review-samples\\run-35407077585\\2026-09-21\\morning\\story_1080x1920.png": {
-    "mtime": 1789775564.0701132,
-    "ast_hash": "67f05f3a34dfe1a674f7a09b88cffee3",
+  "F:\\.antigravity\\StoryVocabs-social\\.github\\workflows\\check-meta.yml": {
+    "mtime": 1789776429.1775763,
+    "ast_hash": "ee628199dc27f48db4b0e51bfd7ae734",
     "semantic_hash": ""
   }
 }
