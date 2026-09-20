@@ -1,0 +1,40 @@
+[
+ {
+  "id": "20260919-mo-a15c53",
+  "date": "2026-09-19",
+  "pillar": "news_word",
+  "hook_style": "number",
+  "fb_post_id": "1030385866825671_122128149584846512",
+  "ig_media_id": "18113907608010581",
+  "fb_error": "100 OAuthException: (#100) The value must be a valid insights metric",
+  "ig_reach": 0,
+  "saves": 0,
+  "ig_shares": 0,
+  "ig_likes": 0,
+  "ig_comments": 1,
+  "reach": 0,
+  "shares": 0,
+  "comments": 1,
+  "score": 4.0,
+  "collected_at": "2026-09-20T18:26:27+00:00"
+ },
+ {
+  "id": "20290618-mo-9fde79",
+  "date": "2026-09-20",
+  "pillar": "confusables",
+  "hook_style": "question",
+  "fb_post_id": "1030385866825671_122128289264846512",
+  "ig_media_id": "18108730967592008",
+  "fb_error": "100 OAuthException: (#100) The value must be a valid insights metric",
+  "ig_reach": 0,
+  "saves": 0,
+  "ig_shares": 0,
+  "ig_likes": 0,
+  "ig_comments": 0,
+  "reach": 0,
+  "shares": 0,
+  "comments": 0,
+  "score": 0.0,
+  "collected_at": "2026-09-20T18:26:28+00:00"
+ }
+]

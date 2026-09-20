@@ -4,36 +4,133 @@
   "slots": {
     "morning": "08:00",
     "evening": "20:00",
-    "ramadan": {"morning": "16:00", "evening": "20:30"}
+    "ramadan": {
+      "morning": "16:00",
+      "evening": "20:30"
+    }
   },
   "calendar": {
-    "sat": [{"slot": "morning", "pillar": "news_word", "topic_group": "politics"}],
-    "sun": [{"slot": "morning", "pillar": "quiz"}],
-    "mon": [{"slot": "morning", "pillar": "confusables"}],
-    "tue": [{"slot": "morning", "pillar": "news_word", "topic_group": "business"}],
-    "wed": [{"slot": "morning", "pillar": "in_app"}],
-    "thu": [{"slot": "morning", "pillar": "story60"}],
-    "fri": [{"slot": "evening", "pillar": "offer"}]
+    "sat": [
+      {
+        "slot": "morning",
+        "pillar": "news_word",
+        "topic_group": "politics"
+      }
+    ],
+    "sun": [
+      {
+        "slot": "morning",
+        "pillar": "quiz"
+      }
+    ],
+    "mon": [
+      {
+        "slot": "morning",
+        "pillar": "confusables"
+      }
+    ],
+    "tue": [
+      {
+        "slot": "morning",
+        "pillar": "news_word",
+        "topic_group": "business"
+      }
+    ],
+    "wed": [
+      {
+        "slot": "morning",
+        "pillar": "in_app"
+      }
+    ],
+    "thu": [
+      {
+        "slot": "morning",
+        "pillar": "story60"
+      }
+    ],
+    "fri": [
+      {
+        "slot": "evening",
+        "pillar": "offer"
+      }
+    ]
   },
   "pillar_weights": {
-    "news_word": 1.0, "quiz": 1.0, "confusables": 1.0, "in_app": 1.0, "story60": 1.0, "offer": 1.0
+    "news_word": 1.0,
+    "quiz": 1.0,
+    "confusables": 1.0,
+    "in_app": 1.0,
+    "story60": 1.0,
+    "offer": 1.0
   },
   "topic_groups": {
-    "politics": {"weekdays": [3, 4, 5, 6], "label_bn": "রাজনীতি ও ভূ-রাজনীতি"},
-    "business": {"weekdays": [0, 1, 2], "label_bn": "ব্যবসা ও প্রযুক্তি"}
+    "politics": {
+      "weekdays": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "label_bn": "রাজনীতি ও ভূ-রাজনীতি"
+    },
+    "business": {
+      "weekdays": [
+        0,
+        1,
+        2
+      ],
+      "label_bn": "ব্যবসা ও প্রযুক্তি"
+    }
   },
   "hook_styles": {
-    "question": {"weight": 1.0, "instruction": "Open with a sharp one-line question the reader cannot answer without reading on."},
-    "mistake": {"weight": 1.0, "instruction": "Open by naming a common mistake students make with this word/idea — without statistics."},
-    "bold_true": {"weight": 1.0, "instruction": "Open with a bold but verifiable one-line claim about the news or the word."},
-    "story_open": {"weight": 1.0, "instruction": "Open mid-scene, like the first line of a short story."},
-    "number": {"weight": 1.0, "instruction": "Open with a concrete number that appears in the source (never invent one)."},
-    "exam_angle": {"weight": 1.0, "instruction": "Open by connecting the word to an exam moment (BCS/Bank/Admission/IELTS) in one line."}
+    "question": {
+      "weight": 1.0,
+      "instruction": "Open with a sharp one-line question the reader cannot answer without reading on."
+    },
+    "mistake": {
+      "weight": 1.0,
+      "instruction": "Open by naming a common mistake students make with this word/idea — without statistics."
+    },
+    "bold_true": {
+      "weight": 1.0,
+      "instruction": "Open with a bold but verifiable one-line claim about the news or the word."
+    },
+    "story_open": {
+      "weight": 1.0,
+      "instruction": "Open mid-scene, like the first line of a short story."
+    },
+    "number": {
+      "weight": 1.0,
+      "instruction": "Open with a concrete number that appears in the source (never invent one)."
+    },
+    "exam_angle": {
+      "weight": 1.0,
+      "instruction": "Open by connecting the word to an exam moment (BCS/Bank/Admission/IELTS) in one line."
+    }
   },
   "hashtags": {
-    "core": ["StoryVocabs", "EnglishVocabulary", "BCS", "BankJob"],
-    "pool": ["IELTS", "Admission", "DUAdmission", "IBA", "LearnEnglish", "DailyVocab", "VocabularyBuilder",
-             "শব্দভান্ডার", "বিসিএস", "ব্যাংকজব", "ইংরেজিশেখা", "EnglishForBCS", "WordOfTheDay", "Bangladesh"]
+    "core": [
+      "StoryVocabs",
+      "EnglishVocabulary",
+      "BCS",
+      "BankJob"
+    ],
+    "pool": [
+      "IELTS",
+      "Admission",
+      "DUAdmission",
+      "IBA",
+      "LearnEnglish",
+      "DailyVocab",
+      "VocabularyBuilder",
+      "শব্দভান্ডার",
+      "বিসিএস",
+      "ব্যাংকজব",
+      "ইংরেজিশেখা",
+      "EnglishForBCS",
+      "WordOfTheDay",
+      "Bangladesh"
+    ]
   },
   "story60_topics": [
     "A Dhaka university student's first day at a bank job interview",
@@ -52,7 +149,13 @@
     "A migrant worker calling home from Dubai",
     "A book fair (Boi Mela) afternoon in February"
   ],
-  "offer_rotation": ["free_path", "referral", "student", "community", "founder"],
+  "offer_rotation": [
+    "free_path",
+    "referral",
+    "student",
+    "community",
+    "founder"
+  ],
   "in_app_screens": [],
   "quiz_distractor_mode": "near_miss",
   "min_days_between_same_word": 120,
