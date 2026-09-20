@@ -1,0 +1,73 @@
+{
+ "id": "20290618-mo-9fde79",
+ "date": "2026-09-20",
+ "slot": "evening",
+ "pillar": "confusables",
+ "status": "published",
+ "hook_style": "question",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "একই শব্দ, একই অর্থ",
+  "pair": [
+   {
+    "word": "Enmity",
+    "pos": "noun",
+    "difficulty": "Beginner",
+    "phonetic": "/ɛnˈmɪti/",
+    "gloss_bn": "বিদ্বেষ",
+    "meaning_bn": "শত্রুত্ববোধ, বিদ্বেষপূর্ণ মনোভাব",
+    "meaning_en": "deep hostility or ill will",
+    "example": "The <b>enmity</b> between the two clubs grew during the semester.",
+    "synonym": "hostility, animosity, hatred",
+    "antonym": "friendship, affection"
+   },
+   {
+    "word": "Enmity",
+    "pos": "noun",
+    "difficulty": "Beginner",
+    "phonetic": "/ɛnˈmɪti/",
+    "gloss_bn": "বিদ্বেষ",
+    "meaning_bn": "শত্রুত্ববোধ, বিদ্বেষপূর্ণ মনোভাব",
+    "meaning_en": "deep hostility or ill will",
+    "example": "After the exam, the <b>enmity</b> faded.",
+    "synonym": "hostility, animosity, hatred",
+    "antonym": "friendship, affection"
+   }
+  ],
+  "difference_bn": "দুইটা বানান একই, অর্থও একই।",
+  "memory_tip_bn": "শব্দের শেষে -ity, শত্রুত্বের মতোই শেষ।"
+ },
+ "caption_fb": "একই বানান, একই অর্থ—তুমি কীভাবে ধরবে?\n\nশব্দের শেষে -ity, শত্রুত্বের মতোই শেষ।\nএটা BCS, Bank, DU‑IBA, IELTS‑এ বারবার আসে।\nভুল করলে পয়েন্ট কমে, সঠিক লিখলে পয়েন্ট বাড়ে।\n\nএনিমিটি দিয়ে একটি বাক্য লিখে দেখাও!\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\nstoryvocabs.com/mixup/0618\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "একই বানান, একই অর্থ—তুমি কীভাবে ধরবে?\n\nশব্দের শেষে -ity, শত্রুত্বের মতোই শেষ।\nএটা BCS, Bank, DU‑IBA, IELTS‑এ বারবার আসে।\nভুল করলে পয়েন্ট কমে, সঠিক লিখলে পয়েন্ট বাড়ে।\n\nএনিমিটি দিয়ে একটি বাক্য লিখে দেখাও!\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #Enmity #DUIBA #IELTS #Admission",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-20/evening/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-20/evening/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-20/evening/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-20/evening/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-20/evening/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-20/evening/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-20/evening/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "",
+ "critic_model": "",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-20/evening/story_1080x1920.png",
+ "quality_score": 7.0,
+ "attempts": 3,
+ "evergreen": true,
+ "telegram_message_id": null,
+ "fb_post_id": "1030385866825671_122128289264846512",
+ "ig_media_id": "18108730967592008",
+ "fb_story_id": "2054763462069127",
+ "ig_story_id": "18109885082036444",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-09-18T19:38:15+00:00",
+ "published_at": "2026-09-20T12:58:06+00:00",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=20290618-mo-9fde79"
+}
