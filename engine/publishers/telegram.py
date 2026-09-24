@@ -170,12 +170,26 @@ def send_preview(item, number: int | None = None) -> int:
     elif item.media_urls:
         # rendered in an earlier run (output/ is not in git): let Telegram fetch the public copies
         media = [{"type": "photo", "media": u} for u in item.media_urls[:10]]
+    note = ""
     if media:
-        r = requests.post(f"{API}/sendMediaGroup", data={"chat_id": settings.TELEGRAM_CHAT_ID, "media": json.dumps(media)},
-                          files=files, timeout=180)
-        r.raise_for_status()
+        # sendMediaGroup only takes 2-10 items: single-image posts (quiz, offer) were rejected, so the
+        # owner saw captions with no image. One image goes through sendPhoto instead.
+        if len(media) == 1:
+            photo = media[0]["media"]
+            data = {"chat_id": settings.TELEGRAM_CHAT_ID}
+            if photo.startswith("attach://"):
+                r = requests.post(f"{API}/sendPhoto", data=data, files={"photo": files[photo[9:]]}, timeout=180)
+            else:
+                r = requests.post(f"{API}/sendPhoto", data={**data, "photo": photo}, timeout=180)
+        else:
+            r = requests.post(f"{API}/sendMediaGroup", data={"chat_id": settings.TELEGRAM_CHAT_ID,
+                                                            "media": json.dumps(media)}, files=files, timeout=180)
+        if not r.ok:
+            note = f"\n\n⚠ Images could not be attached ({r.status_code}: {r.text[:120]})"
+    else:
+        note = "\n\n⚠ No rendered images found for this post."
     r = requests.post(f"{API}/sendMessage", data={"chat_id": settings.TELEGRAM_CHAT_ID,
-                                                  "text": _preview_text(item, number),
+                                                  "text": (_preview_text(item, number) + note)[:4000],
                                                   "disable_web_page_preview": True}, timeout=60)
     r.raise_for_status()
     return r.json()["result"]["message_id"]
