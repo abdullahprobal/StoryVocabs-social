@@ -11,6 +11,7 @@ from urllib.parse import urlencode
 
 from engine import settings
 from engine.contracts import Caption
+from engine.gates import bookish_words
 from engine.llm import call_json
 from engine.voice import SYSTEM
 
@@ -28,6 +29,8 @@ REGISTER ({caption_rule})
 - If a Bangladeshi student would say it in English, keep it in English: exam, option, load shedding, plot twist,
   viva, deadline, screenshot. Never translate a loanword into a bookish noun (শক্তি ঘাটতি, প্রভাব ফেলে, অপ্রাকৃতিক).
 - Bangla the way people type: short, spoken, no Sanskrit-flavoured words. "বানানো" not "কৃত্রিম"; "মানে" not "অর্থ হলো".
+- English words are always typed in English letters, never spelled out in Bangla script ("incense", not "ইনসেন্স").
+  Never talk about how a word is spelled in Bangla letters.
 - One idea per line. Blank line between ideas. No labels ("Exam-এ:", "ট্রিক:", "Meaning:").
 
 RULES
@@ -95,8 +98,14 @@ def build_display_url(pillar: str, post_id: str) -> str:
     return f"{settings.SITE_DISPLAY}/{path}" + (f"/{tag}" if tag else "")
 
 
+def _never_write_block() -> str:
+    """The owner's '## Never write' list, so the writer avoids it up front instead of burning retries on the gate."""
+    words = bookish_words()
+    return ("\nNEVER WRITE any of these (the post is rejected if one appears): " + ", ".join(words)) if words else ""
+
+
 def write_caption(pillar: str, summary: str, hook_instruction: str, when: str = "8 am", layout: str = "",
-                  hook_style: str = "") -> Caption:
+                  hook_style: str = "", previous_error: str = "") -> Caption:
     rules = PILLAR_RULES.get(pillar, PILLAR_RULES.get(layout, ""))
     shape = SHAPES.get(hook_style, "") or hook_instruction
     prompt = CAPTION_PROMPT.format(
@@ -104,7 +113,9 @@ def write_caption(pillar: str, summary: str, hook_instruction: str, when: str = 
         audience=settings.AUDIENCE or "the brand's followers",
         caption_rule=settings.LANGUAGE.get("caption_rule") or "in the brand voice",
         cta_options=" / ".join(f'"{o}"' for o in settings.CTA_OPTIONS) or "a one-line invitation to visit the site",
-    )
+    ) + _never_write_block()
+    if previous_error:
+        prompt += f"\nYOUR PREVIOUS DRAFT WAS REJECTED: {previous_error[:300]}\nFix exactly that this time."
     return call_json(SYSTEM, prompt, Caption, temperature=0.8, max_tokens=1200)
 
 

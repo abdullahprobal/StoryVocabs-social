@@ -2,9 +2,10 @@ name: publish
 
 on:
   schedule:
-    - cron: "0 2 * * *"      # 08:00 BST morning slot
-    - cron: "0 14 * * *"     # 20:00 BST evening slot
-    - cron: "0 8 * * *"      # 14:00 BST — due first-comments (quiz answers)
+    # Hourly heartbeat 08:23–22:23 BST. GitHub runs schedules hours late, so each run publishes
+    # whatever is due today (engine/due.py) instead of guessing the slot from the clock.
+    # Off the hour on purpose: top-of-hour schedules are the ones GitHub delays most.
+    - cron: "23 2-16 * * *"
   workflow_dispatch:
     inputs:
       date:
@@ -45,6 +46,8 @@ jobs:
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+      GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
       GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
       GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
       GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
@@ -65,16 +68,26 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+      - name: Anything due?
+        id: due
+        run: |
+          if [ "$EVENT_NAME" != "schedule" ]; then echo "run=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          DUE=$(python -m engine.due)
+          echo "$DUE"
+          echo "run=$([ -n "$DUE" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
       - name: Install
+        if: steps.due.outputs.run == 'true'
         run: |
           pip install -r requirements.txt
           python -m playwright install --with-deps chromium
           sudo apt-get install -y -q fonts-noto-color-emoji >/dev/null
       - name: Publish
+        if: steps.due.outputs.run == 'true'
         run: |
-          HOUR=$(TZ=Asia/Dhaka date +%H)
-          if [ "$IN_COMMENTS" = "true" ] || { [ "$EVENT_NAME" = "schedule" ] && [ "$HOUR" -ge 12 ] && [ "$HOUR" -lt 18 ]; }; then
+          if [ "$IN_COMMENTS" = "true" ]; then
             python -m engine.publish --comments
+          elif [ "$EVENT_NAME" = "schedule" ]; then
+            python -m engine.publish --due
           else
             ARGS=""
             [ -n "$IN_DATE" ] && ARGS="$ARGS --date $IN_DATE"
@@ -82,7 +95,7 @@ jobs:
             python -m engine.publish $ARGS
           fi
       - name: Commit state
-        if: always() && env.DRY_RUN != 'true'
+        if: always() && env.DRY_RUN != 'true' && steps.due.outputs.run == 'true'
         run: |
           git config user.name "storyvocabs-bot"
           git config user.email "bot@storyvocabs.local"

@@ -57,3 +57,30 @@ def test_voice_command_parses():
     b = parse_batch("voice: never say কৃত্রিম, say বানানো")
     assert b == [{"kind": "voice", "numbers": None, "note": "never say কৃত্রিম, say বানানো"}]
     assert parse_batch("approve all")[0]["kind"] == "approve"
+
+
+INCENSE = """ইনসেন্স নাকি ইনসেন্ট, কোনটা সঠিক?
+
+মনে রাখো, ‘স’ = ধূপ, ‘ট’ = উদ্দীপনা।
+
+৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো
+storyvocabs.com/mixup/0620"""
+
+
+def test_bangla_script_equation_is_rejected():
+    with pytest.raises(gates.GateError, match="X = Y"):
+        gates.register(INCENSE)
+
+
+def test_confusables_caption_must_name_words_in_english():
+    with pytest.raises(gates.GateError, match="English letters"):
+        gates.headwords_in_english(INCENSE, ["Incense", "Intense"])
+    gates.headwords_in_english("Stationary না stationery?\nstoryvocabs.com/mixup/1001", ["Stationary", "Stationery"])
+
+
+def test_curated_pairs_are_distinct_and_picked_from_the_list():
+    from engine.writers.pillars import confusable_pairs, pick_pair
+    pairs = confusable_pairs()
+    assert len(pairs) >= 50
+    assert all(p["a"].lower() != p["b"].lower() for p in pairs)
+    assert pick_pair("2026-09-27") in pairs

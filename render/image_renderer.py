@@ -87,6 +87,9 @@ BASE_CSS = """
   --en-display:'Instrument Serif',Georgia,serif;
   --emoji:'Segoe UI Emoji','Noto Color Emoji','Apple Color Emoji',sans-serif;
 }
+/* Facebook's multi-photo grid trims ~5-8% off each side of a 4:5 photo: keep everything that
+   matters inside a 10% gutter so the logo, badge and cards survive the crop. Backgrounds still bleed. */
+:root{--gutter:112px}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:{{H}}px;overflow:hidden;background:var(--paper);color:var(--ink);font-family:var(--bn);-webkit-font-smoothing:antialiased}
 .canvas{position:relative;width:1080px;height:{{H}}px;overflow:hidden;background:
@@ -96,7 +99,7 @@ html,body{width:1080px;height:{{H}}px;overflow:hidden;background:var(--paper);co
 .canvas:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(15,23,42,.055) 1.4px, transparent 1.4px);background-size:28px 28px;opacity:.9;pointer-events:none}
 .emoji{font-family:var(--emoji)}
 /* header */
-.hdr{position:absolute;left:56px;right:56px;top:52px;height:76px;display:flex;align-items:center;justify-content:space-between}
+.hdr{position:absolute;left:var(--gutter);right:var(--gutter);top:52px;height:76px;display:flex;align-items:center;justify-content:space-between}
 .lockup{display:flex;align-items:center;gap:16px}
 .lockup img{width:64px;height:64px;border-radius:14px;box-shadow:0 6px 18px rgba(37,99,235,.28)}
 .lockup .wm{font-family:var(--en);font-weight:700;font-size:38px;letter-spacing:-.02em;line-height:1}
@@ -104,12 +107,12 @@ html,body{width:1080px;height:{{H}}px;overflow:hidden;background:var(--paper);co
 .pill{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 22px;border-radius:999px;background:var(--surface);border:2px solid var(--line);font-family:var(--en);font-weight:700;font-size:24px;color:var(--ink-2);letter-spacing:.02em}
 .pill.blue{background:var(--tint);border-color:var(--tint-2);color:var(--accent-deep)}
 /* footer */
-.ftr{position:absolute;left:0;right:0;bottom:0;height:112px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 100%);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 56px}
+.ftr{position:absolute;left:0;right:0;bottom:0;height:112px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 100%);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gutter)}
 .ftr .url{font-family:var(--en);font-weight:700;font-size:31px;letter-spacing:-.01em}
 .ftr .cta{font-family:var(--bn);font-weight:600;font-size:29px;display:flex;align-items:center;gap:12px;opacity:.96}
 .ftr .cta .chip{background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 18px;font-size:26px}
 /* body area */
-.body{position:absolute;left:56px;right:56px;top:160px;bottom:140px}
+.body{position:absolute;left:var(--gutter);right:var(--gutter);top:160px;bottom:140px}
 .card{background:var(--surface);border:2px solid var(--line);border-radius:28px;box-shadow:0 2px 4px rgba(15,23,42,.04),0 24px 48px rgba(15,23,42,.08)}
 .label{font-family:var(--en);font-weight:700;font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .mark{background:linear-gradient(180deg, transparent 58%, var(--marker) 58%);padding:0 6px;border-radius:4px;color:var(--ink)}

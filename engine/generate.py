@@ -182,7 +182,8 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             hook_instr = strategy["hook_styles"].get(plan.hook_style, {}).get("instruction", "")
             when = "8 am" if plan.slot == "morning" else "8 pm"
             cap = write_caption(plan.pillar, summary, hook_instr, when,
-                                layout=getattr(content, "layout", ""), hook_style=plan.hook_style)
+                                layout=getattr(content, "layout", ""), hook_style=plan.hook_style,
+                                previous_error=last_err)
             writer_model = llm.last_provider
             if isinstance(content, QuizPost) or (isinstance(content, GenericPost) and content.layout == "quiz"):
                 # The body is fixed copy: the LLM may only write the hook, so the answer cannot leak.
@@ -195,6 +196,8 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             gates.banned_claims(fb, ig, summary, allow_percent=(plan.pillar == "offer"))
             gates.caption_shape(fb, ig)
             gates.register(fb)
+            if isinstance(content, ConfusablesPost):
+                gates.headwords_in_english(fb, words_used(content))
             if isinstance(content, QuizPost):
                 gates.quiz_caption_keeps_answer(fb, content.options[content.answer_index], content.word.gloss_bn)
             if isinstance(content, GenericPost) and content.quiz:

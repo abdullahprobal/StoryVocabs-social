@@ -90,6 +90,15 @@ def test_planner_calendar_and_holidays():
     assert quiz[0].pillar == "quiz" and quiz[0].hook_style in ("question", "mistake", "exam_angle")
 
 
+def test_date_override_replaces_weekday_calendar():
+    strat = {**load_strategy(), "date_overrides": {"2026-10-03": [
+        {"slot": "morning", "pillar": "quiz"}, {"slot": "evening", "pillar": "story60"}]}}
+    hol = {"skip_dates": {}, "single_evening_post_dates": {}, "ramadan_windows": []}
+    day = plan_for_date("2026-10-03", strat, hol)
+    assert [(p.slot, p.pillar) for p in day] == [("morning", "quiz"), ("evening", "story60")]
+    assert plan_for_date("2026-10-10", strat, hol)[0].pillar == "news_word"  # next Saturday: back to calendar
+
+
 def test_llm_extract_json_handles_fences():
     from engine.llm import extract_json
     assert extract_json('```json\n{"a": 1}\n```') == '{"a": 1}'
