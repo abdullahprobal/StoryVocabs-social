@@ -214,7 +214,9 @@ def available_chain(avoid: str | None = None, strong: bool = False) -> list[tupl
     now = time.time()
     chain = [(p, m) for p, m in settings.llm_chain() if _has_key(p) and _COOLDOWN.get((p, m), 0) < now]
     if strong:
-        chain = [c for c in chain if c[1] not in settings.WEAK_MODELS] or chain
+        # No fallback to the weak models: on 2026-09-23 gpt-oss-20b passed a post at 8/10 because the
+        # strong ones were cooling down. No strong critic means no approval.
+        chain = [c for c in chain if c[1] not in settings.WEAK_MODELS]
     if avoid and len(chain) > 1:
         chain = [c for c in chain if f"{c[0]}:{c[1]}" != avoid] + [c for c in chain if f"{c[0]}:{c[1]}" == avoid]
     return chain
