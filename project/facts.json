@@ -1,9 +1,14 @@
 {
-  "_comment": "The ONLY product facts the writer may state. Source: docs/launch-audit/03-landing-and-pricing.md:78 and frontend/src/lib/plans.js. Edit here, never in prompts.",
+  "_comment": "The ONLY product facts the writer may state. Must match storyvocabs.com live catalog (/api/native/catalog). Edit here, never in prompts.",
   "brand": "StoryVocabs",
   "tagline_bn": "গল্পে গল্পে পরীক্ষার ভোকাবুলারি",
   "tagline_en": "Build exam vocabulary through stories.",
-  "audience": ["BCS", "Bank Job", "DU / IBA Admission", "IELTS"],
+  "audience": [
+    "BCS",
+    "Bank Job",
+    "DU / IBA Admission",
+    "IELTS"
+  ],
   "numbers": {
     "word_packs": 81,
     "words": 1608,
@@ -19,26 +24,64 @@
     "3 starter packs free"
   ],
   "plans_bdt": [
-    {"code": "pro_1m", "title": "1 Month", "months": 1, "price": 299},
-    {"code": "pro_3m", "title": "3 Months", "months": 3, "price": 799},
-    {"code": "pro_6m", "title": "6 Months", "months": 6, "price": 1499},
-    {"code": "pro_lifetime", "title": "Lifetime", "months": 0, "price": 2499}
+    {
+      "code": "pro_1m",
+      "title": "1 Month",
+      "months": 1,
+      "price": 300
+    },
+    {
+      "code": "pro_3m",
+      "title": "3 Months",
+      "months": 3,
+      "price": 800
+    },
+    {
+      "code": "pro_6m",
+      "title": "6 Months",
+      "months": 6,
+      "price": 1500
+    },
+    {
+      "code": "lifetime",
+      "title": "Lifetime",
+      "months": 0,
+      "price": 4000
+    }
   ],
-  "student_discount_percent": 20,
-  "student_discount_note": "Student price applies to 3-month and longer plans with a student email.",
-  "referral_reward_bdt": {"pro_3m": 150, "pro_6m": 300, "pro_lifetime": 500},
-  "referral_note": "Referrer earns wallet credit when the friend buys 3-month, 6-month or Lifetime.",
-  "refund": "7-day refund if access never unlocks after payment.",
-  "payment": "ZiniPay (bKash, Nagad, Rocket, cards).",
+  "refund": "Full refund if Pro does not activate after a verified payment.",
+  "payment": "ZiniPay checkout: bKash, Nagad or Rocket. Pro unlocks automatically after payment.",
   "never_say": [
-    "most popular", "সবচেয়ে জনপ্রিয়",
-    "60%", "৬০%",
-    "24/7 tutor", "২৪/৭",
-    "Harvard", "হার্ভার্ড",
-    "গবেষণায় দেখা গেছে", "গবেষণায় প্রমাণিত", "research shows", "studies show", "scientifically proven",
-    "৫ গুণ", "5x", "5 গুণ",
-    "guaranteed", "গ্যারান্টি",
-    "Books ৳", "Apps ৳", "other apps", "অন্য অ্যাপ",
-    "storyvocabs.vercel.app"
+    "most popular",
+    "সবচেয়ে জনপ্রিয়",
+    "60%",
+    "৬০%",
+    "24/7 tutor",
+    "২৪/৭",
+    "Harvard",
+    "হার্ভার্ড",
+    "গবেষণায় দেখা গেছে",
+    "গবেষণায় প্রমাণিত",
+    "research shows",
+    "studies show",
+    "scientifically proven",
+    "৫ গুণ",
+    "5x",
+    "5 গুণ",
+    "guaranteed",
+    "গ্যারান্টি",
+    "Books ৳",
+    "Apps ৳",
+    "other apps",
+    "অন্য অ্যাপ",
+    "storyvocabs.vercel.app",
+    "referral",
+    "রেফারেল",
+    "wallet",
+    "ওয়ালেট",
+    "student discount",
+    "স্টুডেন্ট ডিসকাউন্ট",
+    "20%",
+    "২০%"
   ]
 }

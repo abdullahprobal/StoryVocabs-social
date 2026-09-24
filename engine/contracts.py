@@ -227,7 +227,7 @@ class InAppPost(BaseModel):
 
 class OfferPost(BaseModel):
     pillar: Literal["offer"] = "offer"
-    kind: Literal["referral", "student", "founder", "community", "free_path"]
+    kind: Literal["free_path", "pay_easy", "community", "founder", "puja_offer", "uni_trial"]
     headline_bn: str = Field(..., description="<= 10 words")
     body_bn: str = Field(..., description="<= 45 words")
     detail_line: str = Field("", description="One line with the number, e.g. '৳150 – ৳500 per friend'")

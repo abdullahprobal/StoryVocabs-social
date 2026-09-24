@@ -195,25 +195,30 @@ Rules
 - body_bn: <= 45 words, plain spoken Bangla, mention only the facts given above. No urgency lies ("শেষ সুযোগ").
 """
 
+# Every brief must be true on the day it posts. Offers that are not live on storyvocabs.com stay out of
+# strategy.json offer_rotation (the old referral / 20% student briefs described features that never existed).
 OFFER_BRIEFS = {
     "free_path": "Fact: 3 word packs are completely free, no card needed, works on any phone browser. Goal: get a first try.",
-    "referral": "Fact: a student shares their referral link; when a friend buys 3-month/6-month/Lifetime the referrer earns ৳150/৳300/৳500 wallet credit. Goal: explain it in one breath.",
-    "student": "Fact: student email gets 20% off 3-month and longer plans (3 months ৳799 → ৳639, 6 months ৳1,499 → ৳1,199). Goal: tell students they pay less.",
+    "pay_easy": "Fact: Pro is ৳300 for 1 month, ৳800 for 3 months, ৳1,500 for 6 months, ৳4,000 Lifetime. Pay with bKash, Nagad or Rocket through ZiniPay; Pro unlocks automatically. Goal: show paying is simple and safe.",
     "community": "Goal: ask the community a real question about how they revise vocabulary the week before an exam; promise to compile the best answers into next week's post.",
     "founder": "Goal: a two-line honest note from the founder about why StoryVocabs teaches words through stories (no claims, no research). Sign off as 'StoryVocabs team'.",
+    # Switch on (add to offer_rotation) only after the offer is live on the site:
+    "puja_offer": "Fact: until 21 October 2026 11:59 PM, Lifetime Pro is 50% off (৳4,000 → ৳2,000) and 1/3/6-month plans are 25% off. Price returns to normal after that. Goal: festive, warm, no pressure lies.",
+    "uni_trial": "Fact: sign up with a verified Bangladeshi university email and get 7 days of full Pro free; in the 24 hours after the trial, Lifetime is 50% off and other plans 25% off. Goal: tell university students to try everything free.",
 }
 
 OFFER_DETAIL = {
     "free_path": "3 packs · ৳0",
-    "referral": "৳150 · ৳300 · ৳500",
-    "student": "-20% for students",
+    "pay_easy": "bKash · Nagad · Rocket",
     "community": "",
     "founder": "",
+    "puja_offer": "Lifetime ৳2,000 · until 21 Oct",
+    "uni_trial": "7 days free · uni email",
 }
 
 
 def write_offer(date_str: str, strategy: dict) -> OfferPost:
-    rotation = strategy.get("offer_rotation") or ["free_path", "referral", "student", "community", "founder"]
+    rotation = [k for k in (strategy.get("offer_rotation") or []) if k in OFFER_BRIEFS] or ["free_path", "pay_easy", "community", "founder"]
     from datetime import datetime
     week = datetime.strptime(date_str, "%Y-%m-%d").isocalendar()[1]
     kind = rotation[week % len(rotation)]
