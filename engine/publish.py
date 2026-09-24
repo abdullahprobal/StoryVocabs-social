@@ -221,11 +221,22 @@ def run_comments() -> int:
     return 0
 
 
+def run_due() -> int:
+    """Scheduled entry point: publish whatever is due today, whenever GitHub gets round to running us."""
+    from engine.due import due_slots
+    rc = 0
+    for date_str, slot in due_slots(settings.now_bst()):
+        rc |= run_slot(date_str, slot)
+    run_comments()
+    return rc
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--date")
     ap.add_argument("--slot", choices=["morning", "evening"])
     ap.add_argument("--comments", action="store_true")
+    ap.add_argument("--due", action="store_true", help="publish every slot due today + due comments (scheduled runs)")
     ap.add_argument("--backfill", action="store_true", help="publish approved queue/backfill items")
     ap.add_argument("--batch", type=int, default=10)
     ap.add_argument("--dry-run", action="store_true")
@@ -234,6 +245,8 @@ def main(argv=None) -> int:
         settings.DRY_RUN = True
     if a.comments:
         return run_comments()
+    if a.due:
+        return run_due()
     if a.backfill:
         return run_backfill(a.batch)
     date_str = a.date or settings.today_bst()

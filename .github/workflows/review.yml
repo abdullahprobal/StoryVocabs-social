@@ -24,6 +24,9 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+      GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+      GEMINI_API_KEY_4: ${{ secrets.GEMINI_API_KEY_4 }}
       GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
       GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
       GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
@@ -32,7 +35,7 @@ jobs:
       MEDIA_REPO: ${{ vars.MEDIA_REPO }}
       MEDIA_DEPLOY_KEY: ${{ secrets.MEDIA_DEPLOY_KEY }}
       PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://storyvocabs.com' }}
-      REVIEW_MODE: ${{ vars.REVIEW_MODE || 'manual' }}
+      REVIEW_MODE: ${{ vars.REVIEW_MODE || 'review' }}
     steps:
       - uses: actions/checkout@v4
         with:

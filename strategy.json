@@ -55,6 +55,25 @@
       }
     ]
   },
+  "date_overrides": {
+    "_comment": "Launch burst 26-29 Sep 2026: two posts a day (with a 12-post backfill = 20 in 4 days). Delete after 29 Sep to return to the weekly calendar.",
+    "2026-09-26": [
+      {"slot": "morning", "pillar": "news_word", "topic_group": "politics"},
+      {"slot": "evening", "pillar": "quiz"}
+    ],
+    "2026-09-27": [
+      {"slot": "morning", "pillar": "confusables"},
+      {"slot": "evening", "pillar": "story60"}
+    ],
+    "2026-09-28": [
+      {"slot": "morning", "pillar": "quiz"},
+      {"slot": "evening", "pillar": "news_word", "topic_group": "business"}
+    ],
+    "2026-09-29": [
+      {"slot": "morning", "pillar": "story60"},
+      {"slot": "evening", "pillar": "offer"}
+    ]
+  },
   "pillar_weights": {
     "news_word": 1.0,
     "quiz": 1.0,

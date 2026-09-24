@@ -4,7 +4,7 @@
                                          # re-weight pillars/hook styles, write analytics/, notify Telegram
 
 Metrics per post (Meta Insights):
-  FB : post_impressions_unique (reach), post_engaged_users, post_clicks, reactions, shares, comments
+  FB : reach (post_total_media_view_unique, falling back to post_impressions_unique), clicks, reactions, shares, comments
   IG : reach, saved, shares, likes, comments
 
 Engagement score per post = (saves*3 + shares*3 + comments*2 + clicks*2 + reactions) / max(reach, 50)
@@ -43,15 +43,7 @@ def collect(item: QueueItem) -> dict:
     if item.fb_post_id:
         try:
             fb = meta.fb_post_insights(item.fb_post_id)
-            reactions = fb.get("post_reactions_by_type_total") or {}
-            m.update({
-                "reach": fb.get("post_impressions_unique") or 0,
-                "engaged": fb.get("post_engaged_users") or 0,
-                "clicks": fb.get("post_clicks") or 0,
-                "reactions": sum(reactions.values()) if isinstance(reactions, dict) else 0,
-                "shares": fb.get("shares") or 0,
-                "comments": fb.get("comments") or 0,
-            })
+            m.update({k: fb.get(k) or 0 for k in ("reach", "clicks", "reactions", "shares", "comments")})
         except meta.MetaError as e:
             m["fb_error"] = str(e)
     if item.ig_media_id:

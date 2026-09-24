@@ -110,3 +110,22 @@ def test_lineup_numbers_resolve_to_items(monkeypatch, tmp_path):
     assert json.loads(a.read_text(encoding="utf-8"))["status"] == "approved"
     assert json.loads(b.read_text(encoding="utf-8"))["status"] == "skipped"
     assert replies and "✅" in replies[-1] and "❌" in replies[-1]
+
+
+def test_single_image_preview_uses_send_photo(monkeypatch, tmp_path):
+    """sendMediaGroup rejects 1 item; the owner got captions with no image for quiz posts."""
+    from types import SimpleNamespace
+    from engine.publishers import telegram as T
+    img = tmp_path / "slide.png"
+    img.write_bytes(b"png")
+    calls = []
+
+    def fake_post(url, data=None, files=None, timeout=None):
+        calls.append(url.rsplit("/", 1)[1])
+        return SimpleNamespace(ok=True, status_code=200, text="", raise_for_status=lambda: None,
+                               json=lambda: {"result": {"message_id": 7}})
+    monkeypatch.setattr(T.requests, "post", fake_post)
+    monkeypatch.setattr(T, "_preview_text", lambda item, number=None: "caption")
+    item = SimpleNamespace(media=[str(img)], media_urls=[])
+    assert T.send_preview(item) == 7
+    assert calls == ["sendPhoto", "sendMessage"]

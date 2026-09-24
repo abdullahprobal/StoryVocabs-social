@@ -96,17 +96,34 @@ def fb_comment(object_id: str, message: str) -> str:
     return _call("POST", f"/{object_id}/comments", message=message)["id"]
 
 
+# Meta keeps retiring post metrics (post_engaged_users; the June 2026 reach switch to media views), and one
+# retired name fails the whole request with #100 — so each figure is asked for alone, newest name first.
+_FB_METRICS = {
+    "reach": ("post_total_media_view_unique", "post_impressions_unique"),
+    "clicks": ("post_clicks",),
+}
+
+
+def _fb_metric(post_id: str, names: tuple[str, ...]):
+    for name in names:
+        try:
+            data = _call("GET", f"/{post_id}/insights", metric=name).get("data") or []
+        except MetaError:
+            continue
+        if data:
+            vals = data[0].get("values") or [{}]
+            return vals[-1].get("value")
+    return None
+
+
 def fb_post_insights(post_id: str) -> dict:
-    metrics = "post_impressions_unique,post_engaged_users,post_clicks,post_reactions_by_type_total"
-    data = _call("GET", f"/{post_id}/insights", metric=metrics)
-    out = {}
-    for m in data.get("data", []):
-        vals = m.get("values", [{}])
-        out[m["name"]] = vals[-1].get("value") if vals else None
-    # shares/comments come from the post object itself
-    obj = _call("GET", f"/{post_id}", fields="shares,comments.summary(true).limit(0)")
+    out = {key: _fb_metric(post_id, names) or 0 for key, names in _FB_METRICS.items()}
+    # reactions/shares/comments come from the post object itself, not the insights edge
+    obj = _call("GET", f"/{post_id}",
+                fields="shares,comments.summary(true).limit(0),reactions.summary(true).limit(0)")
     out["shares"] = (obj.get("shares") or {}).get("count", 0)
     out["comments"] = ((obj.get("comments") or {}).get("summary") or {}).get("total_count", 0)
+    out["reactions"] = ((obj.get("reactions") or {}).get("summary") or {}).get("total_count", 0)
     return out
 
 

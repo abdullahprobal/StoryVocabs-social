@@ -129,6 +129,17 @@ class StoryPost(BaseModel):
     source_url: str = ""
     topic: str = ""
 
+    @model_validator(mode="before")
+    @classmethod
+    def _mark_hero(cls, data):
+        """The model often writes a fine headline but forgets the [[ ]] marker (2026-09-26 morning was lost to
+        this). If the hero word (or an inflection like 'sanctions') is in the headline, mark it ourselves."""
+        if isinstance(data, dict):
+            hl, hero = str(data.get("headline_en") or ""), str(data.get("hero_word") or "").strip()
+            if hero and "[[" not in hl:
+                data = {**data, "headline_en": re.sub(rf"\b({re.escape(hero)}\w*)", r"[[\1]]", hl, count=1, flags=re.I)}
+        return data
+
     @field_validator("headline_en")
     @classmethod
     def _hl(cls, v):

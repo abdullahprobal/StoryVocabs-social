@@ -90,6 +90,15 @@ def test_planner_calendar_and_holidays():
     assert quiz[0].pillar == "quiz" and quiz[0].hook_style in ("question", "mistake", "exam_angle")
 
 
+def test_date_override_replaces_weekday_calendar():
+    strat = {**load_strategy(), "date_overrides": {"2026-10-03": [
+        {"slot": "morning", "pillar": "quiz"}, {"slot": "evening", "pillar": "story60"}]}}
+    hol = {"skip_dates": {}, "single_evening_post_dates": {}, "ramadan_windows": []}
+    day = plan_for_date("2026-10-03", strat, hol)
+    assert [(p.slot, p.pillar) for p in day] == [("morning", "quiz"), ("evening", "story60")]
+    assert plan_for_date("2026-10-10", strat, hol)[0].pillar == "news_word"  # next Saturday: back to calendar
+
+
 def test_llm_extract_json_handles_fences():
     from engine.llm import extract_json
     assert extract_json('```json\n{"a": 1}\n```') == '{"a": 1}'
@@ -103,3 +112,10 @@ def test_quiz_caption_may_not_leak_the_answer():
         gates.quiz_caption_keeps_answer(fb.replace("কী মনে হয়?", "মানে হলো বিদ্বেষপূর্ণ"), "তীব্র বিদ্বেষপূর্ণ", "বিদ্বেষপূর্ণ")
     with pytest.raises(gates.GateError):
         gates.quiz_caption_keeps_answer("Vitriolic means bitter\n\nx", "bitter", "তিক্ত")
+
+
+def test_headline_hero_marker_is_added_when_missing():
+    data = NEWS_POST.model_dump()
+    data["headline_en"] = data["headline_en"].replace("[[", "").replace("]]", "")
+    fixed = StoryPost.model_validate(data)
+    assert "[[" in fixed.headline_en

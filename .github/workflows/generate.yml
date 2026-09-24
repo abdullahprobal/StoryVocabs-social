@@ -23,6 +23,9 @@ on:
         description: "regenerate existing queue items"
         type: boolean
         default: false
+      evergreen:
+        description: "refill the backup pool with N posts instead (e.g. 8); used when a slot's post fails"
+        required: false
 
 concurrency:
   group: social-state
@@ -39,6 +42,9 @@ jobs:
       PYTHONUTF8: "1"
       TZ: "Asia/Dhaka"
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+      GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+      GEMINI_API_KEY_4: ${{ secrets.GEMINI_API_KEY_4 }}
       GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
       GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
       GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
@@ -61,6 +67,7 @@ jobs:
       IN_DAYS: ${{ inputs.days }}
       IN_PILLAR: ${{ inputs.pillar }}
       IN_FORCE: ${{ inputs.force }}
+      IN_EVERGREEN: ${{ inputs.evergreen }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -76,6 +83,7 @@ jobs:
           sudo apt-get install -y -q fonts-noto-color-emoji >/dev/null
       - name: Generate
         run: |
+          if [ -n "$IN_EVERGREEN" ]; then python -m engine.generate --evergreen "$IN_EVERGREEN"; exit $?; fi
           ARGS=""
           [ -n "$IN_DATE" ] && ARGS="$ARGS --date $IN_DATE"
           [ -n "$IN_DAYS" ] && ARGS="$ARGS --days $IN_DAYS"

@@ -98,7 +98,8 @@ def plan_for_date(date_str: str, strategy: dict | None = None, holidays: dict | 
     slot_times = dict(strategy["slots"].get("ramadan", {})) if ramadan else {
         k: v for k, v in strategy["slots"].items() if isinstance(v, str)}
 
-    entries = strategy["calendar"].get(weekday, [])
+    # date_overrides: one-off days (e.g. a launch burst) that replace the weekday calendar
+    entries = strategy.get("date_overrides", {}).get(date_str) or strategy["calendar"].get(weekday, [])
     if date_str in holidays.get("single_evening_post_dates", {}):
         entries = [{"slot": "evening", "pillar": "quiz"}]
 

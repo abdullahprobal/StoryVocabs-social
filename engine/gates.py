@@ -59,7 +59,8 @@ def banned_claims(*texts: str, allow_percent: bool = False) -> None:
             raise GateError(f"unsupported claim: '{m.group(0)}'")
 
 
-_EQUATION = re.compile(r"[\'‘’\"“”]?\b[A-Za-z][A-Za-z-]+\b[\'‘’\"“”]?\s*=\s*[\'‘’\"“”]?[A-Za-z][A-Za-z-]+")
+# Any script: "Contrived = Created" and "‘স’ = ধূপ" are the same invented-mnemonic smell.
+_EQUATION = re.compile(r"[\wঀ-৿\'‘’\"“”][\'‘’\"“”]?\s*=\s*[\'‘’\"“”]?[\wঀ-৿]")
 _TRICK_LABEL = re.compile(r"(মনে রাখার ট্রিক|ট্রিক\s*:|memory trick|mnemonic)", re.I)
 
 
@@ -87,6 +88,14 @@ def register(fb: str) -> None:
         raise GateError("labelled memory trick — say it plainly or drop it")
     if _EQUATION.search(body):
         raise GateError("'X = Y' style mnemonic/equation — banned unless a real contrast on the image")
+
+
+def headwords_in_english(fb: str, words: list[str]) -> None:
+    """A confusables caption must name both words in English letters — 'ইনসেন্স নাকি ইনসেন্ট' reads as noise."""
+    body = fb.lower()
+    missing = [w for w in words if not re.search(rf"\b{re.escape(w.lower())}\b", body)]
+    if missing:
+        raise GateError(f"caption must write {missing} in English letters")
 
 
 def caption_shape(fb: str, ig: str) -> None:
@@ -183,6 +192,10 @@ Score criteria (be strict; 8+ only if you would genuinely stop scrolling and bel
 - forced_words: vocabulary words jammed onto abstract nouns ("Contrived সমাধান") or used in the wrong sense.
 - factual_error: true if ANY statement about the news, the exam, or the word is untrue or misleading — a wrong
   or flattened meaning counts, and so does an INVENTED memory trick, analogy or etymology ("Contrived = Created").
+- Read it as a sharp student who is deciding whether this page is worth following. Any line that makes no
+  literal sense ("শব্দের শেষে -ity, শত্রুত্বের মতোই শেষ"), a pair of identical or non-existent words, a claim
+  about Bangla spelling of an English word, or an English word written in Bangla script = score <= 4 and
+  factual_error true. Generic filler ("ভুল করলে পয়েন্ট হারাতে পারো") caps the score at 6.
 - issues: anything cringe, generic, label-like ("Exam-এ:", "ট্রিক:"), or that reads as a template.
 - improved_hook: rewrite line 1 to be better (<= 90 chars, about the word, spoken), or "" if already strong.
 Return score (overall), hook_score, bangla_ok, forced_words, factual_error, issues, improved_hook."""

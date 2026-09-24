@@ -62,10 +62,28 @@ def quiz_answer_comment(post: QuizPost) -> str:
 
 
 # ── confusables ────────────────────────────────────────────────────────────
-class _PairPick(BaseModel):
-    word_a: str
-    word_b: str
-    why_confused: str
+CONFUSABLES_FILE = settings.PROJECT_DIR / "data" / "confusables.json"
+
+
+def confusable_pairs() -> list[dict]:
+    """Owner-curated pairs. The LLM used to pick pairs and produced 'Enmity vs Enmity' and 'Incense vs Incent'."""
+    try:
+        pairs = json.loads(CONFUSABLES_FILE.read_text(encoding="utf-8")).get("pairs", [])
+    except (OSError, ValueError):
+        return []
+    return [p for p in pairs if p.get("a") and p.get("b") and p["a"].strip().lower() != p["b"].strip().lower()]
+
+
+def pick_pair(date_str: str, seed: int | None = None) -> dict:
+    """Least-used curated pair (by the word tracker), ties broken by a date seed."""
+    pairs = confusable_pairs()
+    if not pairs:
+        raise ValueError(f"no confusable pairs in {CONFUSABLES_FILE}")
+    tracker = W.load_tracker()
+    used = lambda w: sum(v for k, v in tracker.get(w.lower(), {}).items() if k != "dates")  # noqa: E731
+    rng = random.Random(seed if seed is not None else int(date_str.replace("-", "")))
+    rng.shuffle(pairs)
+    return min(pairs, key=lambda p: used(p["a"]) + used(p["b"]))
 
 
 class _WordOut(BaseModel):
@@ -85,38 +103,43 @@ class _ConfOut(BaseModel):
     memory_tip_bn: str = ""
 
 
-PAIR_PROMPT = """From this candidate list choose ONE pair of words that Bangladeshi students genuinely confuse
-(look-alike spelling, sound-alike, or near-meaning that exams test). If no pair in the list is a classic confusable,
-pick the best candidate word and name its classic confusable partner (a real English word) as word_b.
-
-CANDIDATES:
-{words}
-"""
-
 CONF_PROMPT = """Write the "confusables" post for {a} vs {b}.
+
+THE VERIFIED DIFFERENCE (build everything on this; add no other claim): {rule}
+Why students mix them up: {kind}
 
 Known data
 A: {a} ({a_pos}) — {a_bn} — {a_en}
 B: {b} ({b_pos}) — {b_bn} — {b_en}
 
 Rules
-- title_bn: <= 10 Bangla words; a hook, not a label. No statistics, no "৯০% মানুষ".
+- English words are ALWAYS written in English letters. Never write an English word in Bangla script
+  ("ইনসেন্স", "এনিমিটি" are wrong — write "incense", "enmity").
+- title_bn: <= 10 words; a hook, not a label. It MUST contain both "{A}" and "{B}" in English letters,
+  e.g. "{A} না {B} — কোনটা কখন?". No statistics, no "৯০% মানুষ".
 - a / b: phonetic (IPA between slashes), gloss_bn (1-3 words), meaning_bn (<= 14 words), meaning_en (<= 16 words),
   example (one ENGLISH sentence each about Bangladeshi student life that makes the difference obvious; word in <b></b>).
 - difference_bn: the one rule to remember, <= 40 words, in natural spoken Bangla.
-- memory_tip_bn: an optional mnemonic <= 20 words (letter/sound-based, not cheesy).
+- memory_tip_bn: leave "" unless the verified difference itself gives a real letter/sound cue
+  (e.g. stationEry = Envelope, papEr). Never an "X = Y" equation you invented.
 """
 
 
 def write_confusables(date_str: str, strategy: dict, seed: int | None = None) -> ConfusablesPost:
-    cand = W.candidates(date_str, strategy, count=30, seed=seed)
-    pick = call_json(SYSTEM, PAIR_PROMPT.format(words=W.candidate_lines(cand)), _PairPick, temperature=0.4, max_tokens=500)
-    a = W.by_name(pick.word_a) or {"word": pick.word_a, "bangla": "", "meaning": ""}
-    b = W.by_name(pick.word_b) or {"word": pick.word_b, "bangla": "", "meaning": ""}
+    pair = pick_pair(date_str, seed)
+    a = W.by_name(pair["a"]) or {"word": pair["a"], "bangla": "", "meaning": ""}
+    b = W.by_name(pair["b"]) or {"word": pair["b"], "bangla": "", "meaning": ""}
+    A, B = a["word"].capitalize(), b["word"].capitalize()
+    a = {**a, "word": A}
+    b = {**b, "word": B}
     out = call_json(SYSTEM, CONF_PROMPT.format(
-        a=a["word"], a_pos=a.get("pos", ""), a_bn=a.get("bangla", "")[:80], a_en=a.get("meaning", "")[:120],
-        b=b["word"], b_pos=b.get("pos", ""), b_bn=b.get("bangla", "")[:80], b_en=b.get("meaning", "")[:120]),
+        A=A, B=B, rule=pair["rule"], kind=pair.get("kind", ""),
+        a=A, a_pos=a.get("pos", ""), a_bn=a.get("bangla", "")[:80], a_en=a.get("meaning", "")[:120],
+        b=B, b_pos=b.get("pos", ""), b_bn=b.get("bangla", "")[:80], b_en=b.get("meaning", "")[:120]),
         _ConfOut, temperature=0.7, max_tokens=1600)
+    for w in (A, B):
+        if w.lower() not in out.title_bn.lower():
+            raise ValueError(f"confusables title must name both words in English letters: {out.title_bn!r}")
     ca = W.to_card(a, gloss_bn=out.a.gloss_bn, meaning_bn=out.a.meaning_bn, meaning_en=out.a.meaning_en,
                    example=out.a.example, phonetic=out.a.phonetic)
     cb = W.to_card(b, gloss_bn=out.b.gloss_bn, meaning_bn=out.b.meaning_bn, meaning_en=out.b.meaning_en,

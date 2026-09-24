@@ -103,15 +103,17 @@ def _openai_compatible(base_url, api_key, model, system, user, temperature, max_
 
 
 _GEMINI_KEY_IDX = 0
-_BAD_GEMINI_KEYS: set[str] = set()
+_BAD_GEMINI_KEYS: set[str] = set()                 # invalid/forbidden key: useless for every model
+_EXHAUSTED: set[tuple[str, str]] = set()           # (model, key) out of daily quota: other models still work
 
 
 def _gemini(model, system, user, temperature, max_tokens):
-    """Round-robin over GEMINI_API_KEY* ; a 429 (daily quota) or 4xx retires that key for the run."""
+    """Round-robin over GEMINI_API_KEY*. Quotas are per model and per project, so a daily-quota 429
+    retires only (model, key); a per-minute 429 waits briefly and moves on; a bad key is retired everywhere."""
     global _GEMINI_KEY_IDX
-    keys = [k for k in settings.GEMINI_API_KEYS if k not in _BAD_GEMINI_KEYS]
+    keys = [k for k in settings.GEMINI_API_KEYS if k not in _BAD_GEMINI_KEYS and (model, k) not in _EXHAUSTED]
     if not keys:
-        raise LLMError("gemini: no usable key")
+        raise LLMError(f"gemini {model}: no usable key")
     last = None
     for _ in range(len(keys)):
         key = keys[_GEMINI_KEY_IDX % len(keys)]
@@ -120,10 +122,16 @@ def _gemini(model, system, user, temperature, max_tokens):
             return _gemini_once(model, key, system, user, temperature, max_tokens)
         except requests.HTTPError as e:
             status = getattr(e.response, "status_code", 0)
-            if status in (400, 401, 403, 429):
+            text = getattr(e.response, "text", "") or ""
+            if status in (401, 403) or (status == 400 and "API_KEY_INVALID" in text):
                 _BAD_GEMINI_KEYS.add(key)
+            elif status == 429:
+                if "PerDay" in text or "per day" in text.lower():
+                    _EXHAUSTED.add((model, key))
+                else:
+                    time.sleep(min(20, 5 * len(keys)))   # per-minute limit: breathe, then the next key
             last = e
-    raise LLMError(f"gemini: all keys failed: {last}")
+    raise LLMError(f"gemini {model}: all keys failed: {last}")
 
 
 def _gemini_once(model, key, system, user, temperature, max_tokens):
@@ -134,8 +142,11 @@ def _gemini_once(model, key, system, user, temperature, max_tokens):
         "contents": [{"role": "user", "parts": [{"text": user}]}],
         "generationConfig": {
             "temperature": temperature,
-            "maxOutputTokens": max_tokens,
+            "maxOutputTokens": max_tokens + (0 if "lite" in model else 1024),
             "responseMimeType": "application/json",
+            # 2.5 models spend output tokens on hidden thinking; without a cap a small max_tokens left an
+            # empty or truncated JSON reply and the call fell through to the backup providers.
+            "thinkingConfig": {"thinkingBudget": 0 if "lite" in model else 1024},
         },
     }
     r = requests.post(url, json=body, timeout=120)
@@ -214,7 +225,9 @@ def available_chain(avoid: str | None = None, strong: bool = False) -> list[tupl
     now = time.time()
     chain = [(p, m) for p, m in settings.llm_chain() if _has_key(p) and _COOLDOWN.get((p, m), 0) < now]
     if strong:
-        chain = [c for c in chain if c[1] not in settings.WEAK_MODELS] or chain
+        # No fallback to the weak models: on 2026-09-23 gpt-oss-20b passed a post at 8/10 because the
+        # strong ones were cooling down. No strong critic means no approval.
+        chain = [c for c in chain if c[1] not in settings.WEAK_MODELS]
     if avoid and len(chain) > 1:
         chain = [c for c in chain if f"{c[0]}:{c[1]}" != avoid] + [c for c in chain if f"{c[0]}:{c[1]}" == avoid]
     return chain

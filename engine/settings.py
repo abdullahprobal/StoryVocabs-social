@@ -100,6 +100,7 @@ PUBLISH_STORIES = os.getenv("PUBLISH_STORIES", "true").lower() in ("1", "true", 
 # Each entry: (provider, model). Override with LLM_CHAIN="gemini:gemini-2.5-flash,groq:llama-3.3-70b-versatile"
 _DEFAULT_CHAIN = [
     ("gemini", "gemini-2.5-flash"),
+    ("gemini", "gemini-2.5-flash-lite"),   # separate quota bucket: keeps Gemini writing when flash runs out
     ("groq", "qwen/qwen3.8-27b"),
     ("groq", "openai/gpt-oss-120b"),
     ("cerebras", "qwen-3-235b-a22b-instruct-2507"),
