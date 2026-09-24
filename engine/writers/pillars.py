@@ -217,10 +217,17 @@ OFFER_DETAIL = {
 }
 
 
+# Last date (inclusive, BST) a dated offer may be posted.
+OFFER_UNTIL = {"puja_offer": "2026-10-21"}
+
+
 def write_offer(date_str: str, strategy: dict) -> OfferPost:
     rotation = [k for k in (strategy.get("offer_rotation") or []) if k in OFFER_BRIEFS] or ["free_path", "pay_easy", "community", "founder"]
     from datetime import datetime
     week = datetime.strptime(date_str, "%Y-%m-%d").isocalendar()[1]
     kind = rotation[week % len(rotation)]
+    # A dated offer never posts after it ends (e.g. puja_offer after 21 Oct): fall back to a standing offer.
+    if OFFER_UNTIL.get(kind) and date_str > OFFER_UNTIL[kind]:
+        kind = "uni_trial"
     out = call_json(SYSTEM, OFFER_PROMPT.format(kind=kind, brief=OFFER_BRIEFS[kind]), _OfferOut, temperature=0.7, max_tokens=600)
     return OfferPost(kind=kind, headline_bn=out.headline_bn, body_bn=out.body_bn, detail_line=OFFER_DETAIL.get(kind, ""))
