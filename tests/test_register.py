@@ -84,3 +84,20 @@ def test_curated_pairs_are_distinct_and_picked_from_the_list():
     assert len(pairs) >= 50
     assert all(p["a"].lower() != p["b"].lower() for p in pairs)
     assert pick_pair("2026-09-27") in pairs
+
+
+@pytest.mark.parametrize("text", ["do not post", "Don't approve", "dont post this", "stop", "পোস্ট করো না", "না", "বাদ দাও"])
+def test_negative_replies_skip(text):
+    from engine.publishers.telegram import classify
+    assert classify(text)[0] == "skip"
+    assert parse_batch(text)[0]["kind"] == "skip"
+
+
+@pytest.mark.parametrize("text", ["post", "approve all", "ok", "বানানো দারুণ হয়েছে, post"])
+def test_positive_replies_still_approve(text):
+    assert parse_batch(text)[0]["kind"] == "approve"
+
+
+def test_edit_note_with_bangla_na_is_not_a_skip():
+    from engine.publishers.telegram import classify
+    assert classify("edit: 'কৃত্রিম' লিখো না, 'বানানো' লিখো")[0] == "note"

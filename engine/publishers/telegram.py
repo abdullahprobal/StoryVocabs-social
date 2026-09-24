@@ -12,6 +12,7 @@ Owner replies to the preview message with:
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 import requests
@@ -19,6 +20,12 @@ import requests
 from engine import settings
 
 API = f"https://api.telegram.org/bot{settings.TELEGRAM_BOT_TOKEN}"
+
+# "do not post" / "don't approve" / "পোস্ট করো না" mean SKIP. Checked before the approve words: "do not post"
+# contains "post", which used to be read as an approval.
+_BN = "ঀ-৿"
+_NEGATIVE = re.compile(r"\b(do\s*not|don'?t|dont|never|stop|hold|pause|wait)\b"
+                       rf"|(?<![{_BN}])(না|নাহ|বাদ|বন্ধ|থামাও)(?![{_BN}])", re.I)
 STATE = settings.STATE_DIR / "telegram.json"
 
 
@@ -83,7 +90,7 @@ def _preview_text(item, number: int | None = None) -> str:
     if settings.REVIEW_MODE == "manual":
         rule = "Nothing is posted until you approve."
     elif settings.REVIEW_MODE == "review":
-        rule = f"Posts automatically at {when} unless you skip it."
+        rule = f"Posts automatically at {when}. To stop it, reply: do not post (or skip)."
     else:
         rule = "Autopilot is on; this is a copy of what will post."
     tail = "\n\n————————————\n" + rule
@@ -140,7 +147,7 @@ def parse_batch(text: str) -> list[dict]:
         if not seg:
             continue
         kind = None
-        if re.search(r"\b(skip|no|reject|drop|cancel)\b|❌", seg):
+        if _NEGATIVE.search(seg) or re.search(r"\b(skip|no|reject|drop|cancel)\b|❌", seg):
             kind = "skip"
         elif re.search(r"\b(approve|approved|ok|okay|yes|go|post|publish|confirm|good|fine)\b|✅|👍", seg):
             kind = "approve"
@@ -225,12 +232,13 @@ def classify(text: str) -> tuple[str, str] | None:
     low = t.lower().lstrip("✅❌✏️ ").strip()
     if not t:
         return None
-    if low.startswith(("skip", "no", "reject", "cancel")) or t.startswith("❌") or low in ("x", "n"):
-        return ("skip", t)
     if low.startswith(("edit", "note", "change", "fix", "redo", "regenerate")) or t.startswith("✏"):
         note = t.split(" ", 1)[1].strip() if " " in t else ""
         note = note.lstrip(":").strip()
         return ("note", note)
+    if (_NEGATIVE.search(t) or low.startswith(("skip", "no", "reject", "cancel"))
+            or t.startswith("❌") or low in ("x", "n")):
+        return ("skip", t)
     if low.startswith(("ok", "okay", "yes", "approve", "approved", "go", "publish", "post", "confirm")) or t.startswith("✅") or low in ("y", "k"):
         return ("approve", t)
     return None

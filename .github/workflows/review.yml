@@ -35,7 +35,7 @@ jobs:
       MEDIA_REPO: ${{ vars.MEDIA_REPO }}
       MEDIA_DEPLOY_KEY: ${{ secrets.MEDIA_DEPLOY_KEY }}
       PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://storyvocabs.com' }}
-      REVIEW_MODE: ${{ vars.REVIEW_MODE || 'manual' }}
+      REVIEW_MODE: ${{ vars.REVIEW_MODE || 'review' }}
     steps:
       - uses: actions/checkout@v4
         with:
