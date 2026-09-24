@@ -112,3 +112,10 @@ def test_quiz_caption_may_not_leak_the_answer():
         gates.quiz_caption_keeps_answer(fb.replace("কী মনে হয়?", "মানে হলো বিদ্বেষপূর্ণ"), "তীব্র বিদ্বেষপূর্ণ", "বিদ্বেষপূর্ণ")
     with pytest.raises(gates.GateError):
         gates.quiz_caption_keeps_answer("Vitriolic means bitter\n\nx", "bitter", "তিক্ত")
+
+
+def test_headline_hero_marker_is_added_when_missing():
+    data = NEWS_POST.model_dump()
+    data["headline_en"] = data["headline_en"].replace("[[", "").replace("]]", "")
+    fixed = StoryPost.model_validate(data)
+    assert "[[" in fixed.headline_en
