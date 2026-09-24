@@ -119,3 +119,16 @@ def test_headline_hero_marker_is_added_when_missing():
     data["headline_en"] = data["headline_en"].replace("[[", "").replace("]]", "")
     fixed = StoryPost.model_validate(data)
     assert "[[" in fixed.headline_en
+
+
+def test_dated_offer_never_posts_after_it_ends(monkeypatch):
+    from engine.writers import pillars
+    seen = {}
+
+    def fake_call(system, prompt, model, **kw):
+        seen["prompt"] = prompt
+        return model(headline_bn="শিরোনাম", body_bn="বডি")
+    monkeypatch.setattr(pillars, "call_json", fake_call)
+    strat = {"offer_rotation": ["puja_offer"]}
+    assert pillars.write_offer("2026-10-16", strat).kind == "puja_offer"
+    assert pillars.write_offer("2026-10-23", strat).kind == "uni_trial"

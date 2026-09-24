@@ -195,10 +195,10 @@
     "A book fair (Boi Mela) afternoon in February"
   ],
   "offer_rotation": [
-    "free_path",
-    "pay_easy",
-    "community",
-    "founder"
+    "puja_offer",
+    "uni_trial",
+    "puja_offer",
+    "pay_easy"
   ],
   "in_app_screens": [],
   "quiz_distractor_mode": "near_miss",
