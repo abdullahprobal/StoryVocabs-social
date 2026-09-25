@@ -203,8 +203,8 @@ OFFER_BRIEFS = {
     "community": "Goal: ask the community a real question about how they revise vocabulary the week before an exam; promise to compile the best answers into next week's post.",
     "founder": "Goal: a two-line honest note from the founder about why StoryVocabs teaches words through stories (no claims, no research). Sign off as 'StoryVocabs team'.",
     # Switch on (add to offer_rotation) only after the offer is live on the site:
-    "puja_offer": "Fact: until 21 October 2026 11:59 PM, Lifetime Pro is 50% off (৳4,000 → ৳2,000) and 1/3/6-month plans are 25% off. Price returns to normal after that. Goal: festive, warm, no pressure lies.",
-    "uni_trial": "Fact: sign up with a verified Bangladeshi university email and get 7 days of full Pro free; in the 24 hours after the trial, Lifetime is 50% off and other plans 25% off. Goal: tell university students to try everything free.",
+    "puja_offer": "Fact: Durga Puja offer, applied automatically (no code), until 21 October 2026 11:59 PM: Lifetime ৳2,000 (regular ৳4,000), 1 month ৳225 (৳300), 3 months ৳600 (৳800), 6 months ৳1,125 (৳1,500). Prices return to normal after that. Goal: festive, warm, no pressure lies.",
+    "uni_trial": "Fact: sign up with a verified Bangladeshi university email and get 7 days of full Pro free. During the trial and for 24 hours after it, Lifetime is 50% off and the other plans 25% off, applied automatically. Goal: tell university students to try everything free.",
 }
 
 OFFER_DETAIL = {
@@ -226,6 +226,9 @@ def write_offer(date_str: str, strategy: dict) -> OfferPost:
     from datetime import datetime
     week = datetime.strptime(date_str, "%Y-%m-%d").isocalendar()[1]
     kind = rotation[week % len(rotation)]
+    # While the Puja offer is live, a "pay easy" post quoting regular prices would contradict the site.
+    if kind == "pay_easy" and date_str <= OFFER_UNTIL["puja_offer"]:
+        kind = "puja_offer"
     # A dated offer never posts after it ends (e.g. puja_offer after 21 Oct): fall back to a standing offer.
     if OFFER_UNTIL.get(kind) and date_str > OFFER_UNTIL[kind]:
         kind = "uni_trial"

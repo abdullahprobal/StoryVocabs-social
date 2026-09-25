@@ -51,9 +51,9 @@ def ensure_urls(item: QueueItem) -> None:
     if not item.media or len(present) != len(item.media) or (item.story_media and not Path(item.story_media).exists()):
         log("    slides not on disk — re-rendering from stored content")
         rerender(item)
-    item.media_urls = media_host.upload_many(item.media, f"{item.date}/{item.slot}")
+    item.media_urls = media_host.upload_many(item.media, f"{item.date}/{item.slot}/{item.id}")
     if item.story_media and Path(item.story_media).exists():
-        item.story_media_url = media_host.upload_many([item.story_media], f"{item.date}/{item.slot}")[0]
+        item.story_media_url = media_host.upload_many([item.story_media], f"{item.date}/{item.slot}/{item.id}")[0]
 
 
 def regenerate_with_note(item: QueueItem, note: str) -> QueueItem:
@@ -62,7 +62,9 @@ def regenerate_with_note(item: QueueItem, note: str) -> QueueItem:
     hooks = dict(strategy["hook_styles"])
     hooks[item.hook_style] = {"instruction": f"{hooks.get(item.hook_style, {}).get('instruction', '')}\nOWNER NOTE: {note}"}
     strategy["hook_styles"] = hooks
-    plan = PlanItem(date=item.date, slot=item.slot, pillar=item.pillar, time_bst="", hook_style=item.hook_style)
+    topic_group = (item.content or {}).get("topic_group", "") if isinstance(item.content, dict) else ""
+    plan = PlanItem(date=item.date, slot=item.slot, pillar=item.pillar, time_bst="", hook_style=item.hook_style,
+                    topic_group=topic_group)
     new = build_item(plan, strategy, dry_run=settings.DRY_RUN)
     new.review_note = note
     return new
@@ -134,14 +136,20 @@ def run_slot(date_str: str, slot: str) -> int:
         log(f"{date_str} {slot}: skipped by owner")
         item = None
 
+    original = item
     if item is None or item.status == "failed":
         if item is not None:
             log(f"  queue item failed earlier: {item.error}")
         item = pick_evergreen(date_str, slot)
         if item is None:
             log(f"{date_str} {slot}: nothing to publish and no evergreen left")
-            telegram.notify(f"⚠ {date_str} {slot}: nothing to publish (no queue item, evergreen empty).")
-            return 1
+            reason = f"the post failed its checks ({(original.error or '')[:120]})" if original is not None else "no post was generated"
+            telegram.notify(f"⚠ {date_str} {slot}: nothing posted: {reason}, and the backup pool is empty. "
+                            "Refill it: GitHub → Actions → generate → Run workflow, evergreen = 8.")
+            if original is not None:
+                original.status = "missed"  # alert once, not every hour until 22:23
+                save_item(original, path)
+            return 0
         log(f"  using evergreen item {item.id} ({item.pillar})")
         save_item(item, path)
 

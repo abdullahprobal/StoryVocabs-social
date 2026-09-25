@@ -330,7 +330,7 @@ def render_quiz(post: QuizPost, out_dir: Path) -> list[str]:
         "WORD": esc(post.word.word), "PHONETIC": esc(post.word.phonetic), "POS": esc(post.word.pos), "PH_DISPLAY": "block",
         "QUESTION": esc(post.question_bn), "OPTIONS": opts, "EXAM": esc(post.exam_tag),
         "HINT": bold_html(post.word.example), "HINT_DISPLAY": "block" if post.word.example else "none",
-        "QUIZ_KICKER": S("quiz_kicker_line", "Do you know this one?"), "QUIZ_NOTE": S("quiz_note", "Answer in the comments — the correct one is posted 6 hours later"),
+        "QUIZ_KICKER": S("quiz_kicker_line", "Do you know this one?"), "QUIZ_NOTE": S("quiz_note", "Answer in the comments — the correct one is posted later today"),
     })
     return render_pages([("slide_01_quiz.png", page, settings.CANVAS)], out_dir)
 
@@ -379,7 +379,8 @@ def render_offer(post: OfferPost, out_dir: Path) -> list[str]:
     page = _page("offer.html", {
         "HEADER": header_html(''), "FOOTER": footer_html("৩টি প্যাক ফ্রি"),
         "KIND": {"referral": "রেফারাল", "student": "স্টুডেন্ট অফার", "founder": "ফাউন্ডারের কথা",
-                 "community": "কমিউনিটি", "free_path": "ফ্রি-তে শুরু"}.get(post.kind, ""),
+                 "community": "কমিউনিটি", "free_path": "ফ্রি-তে শুরু", "puja_offer": "পূজার অফার",
+                 "uni_trial": "বিশ্ববিদ্যালয় ট্রায়াল", "pay_easy": "সহজ পেমেন্ট"}.get(post.kind, ""),
         "HEADLINE_BN": esc(post.headline_bn), "BODY_BN": esc(post.body_bn), "DETAIL": esc(post.detail_line),
         "DETAIL_BLOCK": "flex" if post.detail_line else "none",
     })

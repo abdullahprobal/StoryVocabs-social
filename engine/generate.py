@@ -216,8 +216,9 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
                     raise gates.GateError(f"critic flagged forced words {verdict.forced_words}")
                 if not verdict.bangla_ok:
                     raise gates.GateError(f"critic: not spoken Banglish — {verdict.issues[:1]}")
-                if verdict.score < settings.QUALITY_PASS:  # a weak post is never queued; evergreen covers the slot
-                    raise gates.GateError(f"critic score {verdict.score} < {settings.QUALITY_PASS}")
+                pass_mark = settings.OFFER_QUALITY_PASS if plan.pillar == "offer" else settings.QUALITY_PASS
+                if verdict.score < pass_mark:  # a weak post is never queued; evergreen covers the slot
+                    raise gates.GateError(f"critic score {verdict.score} < {pass_mark}")
                 if verdict.hook_score < settings.HOOK_PASS and not verdict.improved_hook:
                     raise gates.GateError(f"critic hook score {verdict.hook_score} < {settings.HOOK_PASS}")
                 if verdict.improved_hook and verdict.hook_score < settings.HOOK_PASS:
@@ -236,7 +237,8 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             if isinstance(content, GenericPost):
                 first_comment, delay = G.first_comment(G.spec_for(content.pillar) or {}, content)
             elif isinstance(content, QuizPost):
-                first_comment, delay = P.quiz_answer_comment(content), 360
+                # Morning quiz: answer at ~14:00. Evening quiz: ~22:00, before the last publish heartbeat.
+                first_comment, delay = P.quiz_answer_comment(content), (120 if plan.slot == "evening" else 360)
             elif isinstance(content, StoryPost) and content.source_url and content.pillar == "news_word":
                 first_comment = f"📰 Source: {content.source_title}\n{content.source_url}"
 
@@ -273,9 +275,9 @@ def after_build(item: QueueItem, dry_run: bool, preview: bool = True) -> None:
     from engine.publishers import media_host, telegram
     if media_host.configured():
         try:
-            item.media_urls = media_host.upload_many(item.media, f"{item.date}/{item.slot}")
+            item.media_urls = media_host.upload_many(item.media, f"{item.date}/{item.slot}/{item.id}")
             if item.story_media:
-                item.story_media_url = media_host.upload_many([item.story_media], f"{item.date}/{item.slot}")[0]
+                item.story_media_url = media_host.upload_many([item.story_media], f"{item.date}/{item.slot}/{item.id}")[0]
             log(f"    uploaded {len(item.media_urls)} slides")
         except Exception as e:  # noqa: BLE001
             log(f"    ⚠ media upload failed: {e}")
@@ -357,7 +359,10 @@ def main(argv=None) -> int:
 
     start = datetime.strptime(a.date, "%Y-%m-%d") if a.date else datetime.now(settings.BST).replace(tzinfo=None)
     if a.tomorrow:
-        start = datetime.now(settings.BST).replace(tzinfo=None) + timedelta(days=1)
+        now = datetime.now(settings.BST).replace(tzinfo=None)
+        # GitHub runs the 21:00 schedule late, sometimes after midnight. A run before 06:00 BST is still
+        # "tonight's" run: target today, or a whole day of posts would be skipped.
+        start = now if now.hour < 6 else now + timedelta(days=1)
         a.days = 1
     days = a.days if a.days is not None else settings.QUEUE_DAYS_AHEAD
     dates = [(start + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(max(1, days))]

@@ -3,10 +3,6 @@ name: backfill
 # Launch backfill: build 30 back-dated posts (mode=build) → owner approves in Telegram →
 # publish them in batches (mode=publish). Manual only; never scheduled.
 on:
-  schedule:
-    # Launch week only (guarded by vars.BACKFILL_ACTIVE == 'true'; delete these lines afterwards).
-    - cron: "40 7 20,21 9 *"          # 13:40 BST Sun 20 / Mon 21 Sep: build 15 posts each (Gemini quota resets 13:00 BST)
-    - cron: "0 3,9 21,22,23 9 *"      # 09:00 + 15:00 BST 21-23 Sep: publish up to 10 approved posts per run
   workflow_dispatch:
     inputs:
       mode:
@@ -112,5 +108,5 @@ jobs:
           git config user.email "bot@storyvocabs.local"
           git add queue state analytics evergreen
           git diff --cached --quiet || git commit -m "chore(publish): $(date -u +%FT%H:%M) [skip ci]"
-          git pull --rebase origin ${{ github.ref_name }} || true
-          git push
+          # Another job may have pushed meanwhile: rebase and retry instead of losing tonight's state.
+          for i in 1 2 3; do git pull --rebase origin ${{ github.ref_name }} && git push && break; sleep $((i * 10)); done

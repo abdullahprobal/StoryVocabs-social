@@ -4,7 +4,9 @@ name: review
 # queue item and answers immediately. Notes trigger a regeneration in the same run.
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    # 07:00-23:30 BST. The repo is private: every run costs Actions minutes, so the night is skipped
+    # (publish runs apply any late replies at 08:23 anyway) and idle runs exit before installing anything.
+    - cron: "*/30 1-17 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -28,24 +30,43 @@ jobs:
       GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
       GEMINI_API_KEY_4: ${{ secrets.GEMINI_API_KEY_4 }}
       GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+      GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
       GROQ_API_KEY_3: ${{ secrets.GROQ_API_KEY_3 }}
       GROQ_API_KEY_4: ${{ secrets.GROQ_API_KEY_4 }}
       GROQ_API_KEY_5: ${{ secrets.GROQ_API_KEY_5 }}
+      CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       MEDIA_HOST: ${{ vars.MEDIA_HOST || 'github' }}
       MEDIA_REPO: ${{ vars.MEDIA_REPO }}
       MEDIA_DEPLOY_KEY: ${{ secrets.MEDIA_DEPLOY_KEY }}
+      MEDIA_REPO_TOKEN: ${{ secrets.MEDIA_REPO_TOKEN }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE }}
+      EVENT_NAME: ${{ github.event_name }}
       PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://storyvocabs.com' }}
       REVIEW_MODE: ${{ vars.REVIEW_MODE || 'review' }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Any new Telegram replies?
+        id: inbox
+        run: |
+          if [ "$EVENT_NAME" != "schedule" ]; then echo "run=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          OFFSET=$(python3 -c "import json;print(json.load(open('state/telegram.json')).get('offset',0))" 2>/dev/null || echo 0)
+          N=$(curl -s -m 20 "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?offset=${OFFSET}&timeout=0&limit=1" \
+              | python3 -c "import json,sys;print(len(json.load(sys.stdin).get('result',[])))" 2>/dev/null || echo 1)
+          echo "new updates: $N"
+          echo "run=$([ "$N" != "0" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-python@v5
+        if: steps.inbox.outputs.run == 'true'
         with:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+        if: steps.inbox.outputs.run == 'true'
       - name: Apply decisions (fast path)
+        if: steps.inbox.outputs.run == 'true'
         id: decide
         run: |
           set +e
@@ -65,11 +86,11 @@ jobs:
           regenerate(items)
           PY
       - name: Commit state
-        if: always()
+        if: always() && steps.inbox.outputs.run == 'true'
         run: |
           git config user.name "storyvocabs-bot"
           git config user.email "bot@storyvocabs.local"
-          git add queue state evergreen
+          git add queue state evergreen project
           git diff --cached --quiet || git commit -m "chore(review): decisions $(date -u +%FT%H:%M) [skip ci]"
-          git pull --rebase origin ${{ github.ref_name }} || true
-          git push
+          # Another job may have pushed meanwhile: rebase and retry instead of losing tonight's state.
+          for i in 1 2 3; do git pull --rebase origin ${{ github.ref_name }} && git push && break; sleep $((i * 10)); done

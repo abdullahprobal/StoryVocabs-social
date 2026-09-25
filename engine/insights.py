@@ -125,6 +125,11 @@ def main() -> int:
             lines.append(f"Page token: {days} days left" + (" ⚠ RENEW SOON" if days < 14 else ""))
         else:
             lines.append("Page token: never expires ✅")
+        # A "never expiring" page token still loses data access after ~90 days without a login; posting stops then.
+        data_exp = info.get("data_access_expires_at") or 0
+        if data_exp:
+            data_days = (datetime.fromtimestamp(data_exp, tz=timezone.utc) - datetime.now(timezone.utc)).days
+            lines.append(f"Meta data access: {data_days} days left" + (" ⚠ open the Facebook app/Business Suite to renew" if data_days < 14 else ""))
     except meta.MetaError as e:
         lines.append(f"Page token check failed: {e}")
     report = "\n".join(lines)

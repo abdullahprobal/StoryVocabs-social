@@ -19,7 +19,7 @@ QUEUE_DIR = ROOT / "queue"
 BST = timezone(timedelta(hours=6))
 DEFAULT_SLOTS = {"morning": "08:00", "evening": "20:00"}
 LAST_HOUR = 23          # nothing goes out from 23:00 to the next slot — a midnight post reaches nobody
-DONE = {"published", "skipped"}
+DONE = {"published", "skipped", "missed"}
 
 
 def slot_times() -> dict[str, str]:

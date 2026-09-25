@@ -38,12 +38,18 @@ def _save(s: dict) -> None:
     STATE.write_text(json.dumps(s, indent=1), encoding="utf-8")
 
 
+_FAILED: list[QueueItem] = []  # failed items seen by the last items_for() call (shown in the lineup)
+
+
 def items_for(date_str: str) -> list[tuple[Path, QueueItem]]:
+    _FAILED.clear()
     out = []
     for f in sorted((settings.QUEUE_DIR / date_str).glob("*.json")):
         it = load_item(f)
         if it and it.status in ("pending", "approved"):
             out.append((f, it))
+        elif it and it.status == "failed":
+            _FAILED.append(it)
     out.sort(key=lambda p: SLOT_ORDER.get(p[1].slot, 9))
     return out
 
@@ -85,6 +91,9 @@ def send_lineup(date_str: str) -> int:
         rule = "Nothing posts until you reply. Reply once, e.g.  approve all   ·   approve 1, skip 2   ·   edit 2: shorter hook"
     else:
         rule = "Autopilot: these will post as shown."
+    if _FAILED:
+        lines += [f"✖ {_when(it)} · {PILLAR_LABELS.get(it.pillar, it.pillar)} — not made: {(it.error or 'unknown error')[:90]}"
+                  f" (a backup post covers it if one is left)" for it in _FAILED]
     telegram.notify("📋 " + day + "\n" + "\n".join(lines) + "\n\n" + rule)
     st = _state()
     st[date_str] = mapping
