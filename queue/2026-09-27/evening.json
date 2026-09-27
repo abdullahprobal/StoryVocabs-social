@@ -3,7 +3,7 @@
  "date": "2026-09-27",
  "slot": "evening",
  "pillar": "story60",
- "status": "approved",
+ "status": "published",
  "hook_style": "bold_true",
  "content": {
   "pillar": "story60",
@@ -128,13 +128,13 @@
  "attempts": 4,
  "evergreen": false,
  "telegram_message_id": 115,
- "fb_post_id": "",
- "ig_media_id": "",
- "fb_story_id": "",
- "ig_story_id": "",
+ "fb_post_id": "1030385866825671_122129308094846512",
+ "ig_media_id": "17919021045242839",
+ "fb_story_id": "1094957210009073",
+ "ig_story_id": "18127718360504775",
  "review_note": "",
  "error": "",
  "created_at": "2026-09-25T19:14:12+00:00",
- "published_at": "",
+ "published_at": "2026-09-27T14:09:00+00:00",
  "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=story60&utm_content=0927"
 }
