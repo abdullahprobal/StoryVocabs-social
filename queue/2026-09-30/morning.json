@@ -1,0 +1,73 @@
+{
+ "id": "20260930-mo-503b5a",
+ "date": "2026-09-30",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "mistake",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Stimulant না Stimulus — কোনটা কখন?",
+  "pair": [
+   {
+    "word": "Stimulant",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈstɪmjələnt/",
+    "gloss_bn": "উত্তেজক পদার্থ",
+    "meaning_bn": "যে পদার্থ শরীর বা মনের কার্যকারিতা বাড়ায়।",
+    "meaning_en": "A substance that increases physiological or nervous activity.",
+    "example": "After taking a <b>stimulant</b>, I could study for another three hours before the exam.",
+    "synonym": "",
+    "antonym": ""
+   },
+   {
+    "word": "Stimulus",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈstɪmjʊləs/",
+    "gloss_bn": "উদ্দীপক, কারণ",
+    "meaning_bn": "যা কোনো প্রতিক্রিয়া বা পরিবর্তন ঘটায়।",
+    "meaning_en": "Something that causes a reaction, change, or activity.",
+    "example": "The news of the viva created a strong <b>stimulus</b> for me to practice speaking English more.",
+    "synonym": "",
+    "antonym": ""
+   }
+  ],
+  "difference_bn": "Stimulant মানে হলো কোনো পদার্থ যা শরীর বা মনকে active করে। আর Stimulus মানে হলো যেকোনো কিছু যা কোনো reaction বা পরিবর্তনের কারণ হয়।",
+  "memory_tip_bn": ""
+ },
+ "caption_fb": "Stimulant না Stimulus, কোনটা হবে — exam-এ কতবার যে গুলিয়ে ফেলেছি!\n\nআমার মনে থাকত না কোনটা material আর কোনটা cause।\n\nযখন drug বা coffee-র কথা আসবে, তখন stimulant।\n\nআর কোনো ঘটনা বা signal-এর কথা বললে stimulus।\n\nতোমার কি এমন কোনো শব্দ আছে যেটা প্রায়ই গুলিয়ে যায়?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\nstoryvocabs.com/mixup/0930\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "Stimulant না Stimulus, কোনটা হবে — exam-এ কতবার যে গুলিয়ে ফেলেছি!\n\nআমার মনে থাকত না কোনটা material আর কোনটা cause।\n\nযখন drug বা coffee-র কথা আসবে, তখন stimulant।\n\nআর কোনো ঘটনা বা signal-এর কথা বললে stimulus।\n\nতোমার কি এমন কোনো শব্দ আছে যেটা প্রায়ই গুলিয়ে যায়?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #examvocab #duiba #ielts #vocabulary",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-30/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-30/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-30/morning/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-30/morning/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-30/morning/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-30/morning/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-30/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-30/morning/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 1,
+ "evergreen": false,
+ "telegram_message_id": 131,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-09-28T21:11:10+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=0930"
+}
