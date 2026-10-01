@@ -1,0 +1,73 @@
+{
+ "id": "20260927-mo-438e1d",
+ "date": "2026-09-27",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "published",
+ "hook_style": "exam_angle",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Discreet না Discrete — কোনটা কখন?",
+  "pair": [
+   {
+    "word": "Discreet",
+    "pos": "adjective",
+    "difficulty": "Advanced",
+    "phonetic": "",
+    "gloss_bn": "গোপনীয়",
+    "meaning_bn": "যখন সাবধানে কিছু করি যেন কেউ কিছু না জানে বা খেয়াল না করে।",
+    "meaning_en": "Doing something carefully to avoid attracting attention or causing embarrassment.",
+    "example": "The student was <b>discreet</b> about her part-time job so her parents wouldn't worry.",
+    "synonym": "secretive, subtle, unobtrusive",
+    "antonym": "obvious"
+   },
+   {
+    "word": "Discrete",
+    "pos": "adjective",
+    "difficulty": "Advanced",
+    "phonetic": "",
+    "gloss_bn": "পৃথক",
+    "meaning_bn": "আলাদা আলাদা, একটার সাথে আরেকটার কোনো সম্পর্ক নেই।",
+    "meaning_en": "Separate and distinct, not continuous or connected.",
+    "example": "The professor broke the complex topic into several <b>discrete</b> modules for easier understanding.",
+    "synonym": "distinct, separate, individual",
+    "antonym": "continuous, connected"
+   }
+  ],
+  "difference_bn": "Discreet মানে গোপনীয় বা সাবধানে কিছু করা, যেন কেউ খেয়াল না করে। Discrete মানে আলাদা আলাদা বা পৃথক। বানান দেখে গুলিয়ে ফেলো না।",
+  "memory_tip_bn": ""
+ },
+ "caption_fb": "Discreet আর Discrete... exam-এ option-এ পাশাপাশি দেখলে কেমন লাগে?\n\nBank job exam-এ 'hidden' আর 'individual' দুটোই option-এ থাকলে, কোনটা দিবা?\n\nযদি কোনো information share করতে careful থাকা বোঝায়, সেটা discreet।\n\nআর যদি component-গুলো আলাদা আলাদা করে দেখা বোঝায়, সেটা discrete।\n\nএইবার কোনো sentence-এ দুইটাকেই use করে দেখাও তো।\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/mixup/0927\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "Discreet আর Discrete... exam-এ option-এ পাশাপাশি দেখলে কেমন লাগে?\n\nBank job exam-এ 'hidden' আর 'individual' দুটোই option-এ থাকলে, কোনটা দিবা?\n\nযদি কোনো information share করতে careful থাকা বোঝায়, সেটা discreet।\n\nআর যদি component-গুলো আলাদা আলাদা করে দেখা বোঝায়, সেটা discrete।\n\nএইবার কোনো sentence-এ দুইটাকেই use করে দেখাও তো।\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUAdmission #IELTS #Vocabulary #ExamPrep",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/morning/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/morning/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/morning/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/morning/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/morning/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 1,
+ "evergreen": false,
+ "telegram_message_id": 105,
+ "fb_post_id": "1030385866825671_122129265854846512",
+ "ig_media_id": "18130691537495017",
+ "fb_story_id": "2685353275268198",
+ "ig_story_id": "18059416388564787",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-09-25T19:12:49+00:00",
+ "published_at": "2026-09-27T08:22:03+00:00",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=0927"
+}

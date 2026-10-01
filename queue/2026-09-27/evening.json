@@ -1,0 +1,140 @@
+{
+ "id": "20260927-ev-2133a0",
+ "date": "2026-09-27",
+ "slot": "evening",
+ "pillar": "story60",
+ "status": "published",
+ "hook_style": "bold_true",
+ "content": {
+  "pillar": "story60",
+  "headline_en": "The [[Morose]] Night Before BCS Prelims",
+  "headline_bn": "BCS Prelims-এর আগের Morose রাত",
+  "hero_word": "Morose",
+  "hero_gloss_bn": "বিষণ্ন ও মনমরা স্বভাবের",
+  "story_slides": [
+   {
+    "section_label": "PART 1",
+    "paragraph": "রাত তখন ১টা। রিনা দেখল তার ভাই ফোন নিয়ে [[gauche|অশিষ্ট]] ভাবে বসে আছে। কাল সকালে BCS Prelims exam, অথচ ওর পড়া এখনো শেষ হয়নি। Syllabus এত বড়, আর হাতে সময় নেই। কোন টপিক পড়বে, কোনটা বাদ দেবে— এই নিয়ে একটা [[impasse|একমত হওয়া কঠিন অবস্থা]] তৈরি হয়েছে। মা এসে চা দিয়ে গেল, কিন্তু রিনা এক চুমুকও দিল না। শুধু মনে মনে ভাবছে, কেন আরো আগে সিরিয়াস হলো না?"
+   },
+   {
+    "section_label": "PART 2",
+    "paragraph": "গত দুই বছরে কোচিং-এ ফাঁকি দেওয়ার জন্য রিনা আজ খুব [[penitent|অনুতপ্ত]] বোধ করছে। ওর রুমমেট তিশার দিকে দেখল — সে একদম গভীর ঘুমে। তিশা সবসময় রুটিন মেনে পড়ত, ওর প্রস্তুতির [[fidelity|বিশ্বাসযোগ্যতা]] নিয়ে কোনো প্রশ্ন নেই। নিজের উপরই ওর রাগ লাগছে, আর এই রাতটা কেমন যেন [[morose|বিষণ্ন ও মনমরা স্বভাবের]] লাগছে। বইগুলো খুলে বসে আছে, কিন্তু মাথায় কিছু ঢুকছে না, শুধু টেনশন।"
+   }
+  ],
+  "words": [
+   {
+    "word": "Penitent",
+    "pos": "adjective",
+    "difficulty": "Advanced",
+    "phonetic": "/ˈpɛnɪtənt/",
+    "gloss_bn": "অনুতপ্ত",
+    "meaning_bn": "কোনো ভুল বা খারাপ কাজের জন্য দুঃখিত বা অনুশোচনাকারী।",
+    "meaning_en": "Feeling or expressing regret or remorse for a wrongdoing.",
+    "example": "After neglecting her studies, Rina felt deeply <b>penitent</b> the night before her exam.",
+    "synonym": "remorseful, regretful, penitent",
+    "antonym": "guilty, unrepentant"
+   },
+   {
+    "word": "Impasse",
+    "pos": "noun",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈɪmpæs/",
+    "gloss_bn": "একমত হওয়া কঠিন",
+    "meaning_bn": "এমন একটা পরিস্থিতি যেখানে আর কোনো অগ্রগতি বা সিদ্ধান্তে পৌঁছানো যায় না।",
+    "meaning_en": "A situation where no progress or agreement can be reached.",
+    "example": "The discussion reached an <b>impasse</b> when neither side would compromise.",
+    "synonym": "stalemate, deadlock, standoff",
+    "antonym": "agreement, compromise"
+   },
+   {
+    "word": "Fidelity",
+    "pos": "noun",
+    "difficulty": "Beginner",
+    "phonetic": "/fɪˈdɛlɪti/",
+    "gloss_bn": "বিশ্বস্ততা",
+    "meaning_bn": "কোনো ব্যক্তি বা আদর্শের প্রতি অনুগত্য বা বিশ্বস্ততার গুণ।",
+    "meaning_en": "The quality of being faithful or loyal to a person or principle.",
+    "example": "His <b>fidelity</b> to his study routine ensured his success in the BCS exam.",
+    "synonym": "loyalty, devotion, commitment",
+    "antonym": "disloyalty, betrayal, infidelity"
+   },
+   {
+    "word": "Gauche",
+    "pos": "adjective",
+    "difficulty": "Intermediate",
+    "phonetic": "/ɡoʊʃ/",
+    "gloss_bn": "অশিষ্ট",
+    "meaning_bn": "সামাজিকতার অভাব; আচরণে আনাড়ি বা বেমানান।",
+    "meaning_en": "Lacking in social graces or tact; awkward in manner or behavior.",
+    "example": "He made a <b>gauche</b> remark about her dress, causing an awkward silence.",
+    "synonym": "awkward, clumsy, tactless",
+    "antonym": "polite, refined"
+   },
+   {
+    "word": "Morose",
+    "pos": "adjective",
+    "difficulty": "Beginner",
+    "phonetic": "/məˈroʊs/",
+    "gloss_bn": "বিষণ্ন ও মনমরা",
+    "meaning_bn": "গম্ভীর, বিষণ্ন এবং মনমরা মেজাজ বা স্বভাবের অধিকারী।",
+    "meaning_en": "Having or showing a sullen and gloomy disposition.",
+    "example": "After receiving the bad news, he became <b>morose</b> and didn't want to talk to anyone.",
+    "synonym": "Gloomy, Melancholy, Somber",
+    "antonym": "Cheerful, Happy, Lighthearted"
+   }
+  ],
+  "category": {
+   "en": "Story",
+   "bn": "গল্প",
+   "icon": "📖"
+  },
+  "source_title": "",
+  "source_url": "",
+  "topic": "A BCS candidate the night before the preliminary exam"
+ },
+ "caption_fb": "Exam-এর আগের রাতে সব কেমন যেন মনমরা লাগে।\n\nসেটাই morose। যখন কোনো কিছু বিষণ্ন আর মনমরা লাগে— একদম dull, কোনো energy নাই।\n\nMCQ-তে 'sad' আর 'morose' দুটোই থাকলে, যদি atmosphere বা mood বোঝায়, morose-ই বেস্ট।\n\nযেমন, 'a morose expression' বা 'a morose silence'.\n\nতোমার সবচেয়ে morose রাত কোনটা ছিল?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/story/0927\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "Exam-এর আগের রাতে সব কেমন যেন মনমরা লাগে।\n\nসেটাই morose। যখন কোনো কিছু বিষণ্ন আর মনমরা লাগে— একদম dull, কোনো energy নাই।\n\nMCQ-তে 'sad' আর 'morose' দুটোই থাকলে, যদি atmosphere বা mood বোঝায়, morose-ই বেস্ট।\n\nযেমন, 'a morose expression' বা 'a morose silence'.\n\nতোমার সবচেয়ে morose রাত কোনটা ছিল?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #BCSExam #DUAdmission #IELTS #Vocabulary",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/evening/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/evening/slide_02_story.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/evening/slide_03_story.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/evening/slide_04_word_1.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/evening/slide_05_word_2.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/evening/slide_06_word_3.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/evening/slide_07_word_4.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/evening/slide_08_word_5.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/evening/slide_09_recap.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/evening/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/evening/slide_02_story.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/evening/slide_03_story.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/evening/slide_04_word_1.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/evening/slide_05_word_2.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/evening/slide_06_word_3.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/evening/slide_07_word_4.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/evening/slide_08_word_5.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/evening/slide_09_recap.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-09-27/evening/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-09-27/evening/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 4,
+ "evergreen": false,
+ "telegram_message_id": 115,
+ "fb_post_id": "1030385866825671_122129308094846512",
+ "ig_media_id": "17919021045242839",
+ "fb_story_id": "1094957210009073",
+ "ig_story_id": "18127718360504775",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-09-25T19:14:12+00:00",
+ "published_at": "2026-09-27T14:09:00+00:00",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=story60&utm_content=0927"
+}
