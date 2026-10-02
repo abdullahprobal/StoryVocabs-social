@@ -24,7 +24,7 @@ from engine import words as W
 from engine.caption import assemble, write_caption
 from engine.contracts import ConfusablesPost, GenericPost, InAppPost, OfferPost, QueueItem, QuizPost, StoryPost
 from engine.llm import LLMError
-from engine.planner import PlanItem, load_strategy, plan_for_date
+from engine.planner import PlanItem, load_strategy, plan_for_date, slot_datetime_bst
 from engine.writers import pillars as P
 from engine.writers import story as S
 from engine.writers import generic as G
@@ -79,8 +79,14 @@ def summarize(content) -> str:
     return str(content)
 
 
-def make_content(plan: PlanItem, strategy: dict, attempt: int):
+def make_content(plan: PlanItem, strategy: dict, attempt: int, previous_error: str = ""):
     seed = int(plan.date.replace("-", "")) * 10 + attempt
+    if previous_error:
+        # Story and generic writers read the hook instruction: tell them why the last draft was rejected.
+        hooks = dict(strategy.get("hook_styles", {}))
+        base = hooks.get(plan.hook_style, {}).get("instruction", "")
+        hooks[plan.hook_style] = {"instruction": f"{base}\nYOUR PREVIOUS DRAFT WAS REJECTED: {previous_error[:300]}\nFix exactly that."}
+        strategy = {**strategy, "hook_styles": hooks}
     if G.spec_for(plan.pillar):
         return G.write_generic(plan.pillar, plan.date, strategy, plan.hook_style, seed=seed)
     if plan.pillar == "news_word":
@@ -167,20 +173,44 @@ def words_used(content) -> list[str]:
     return []
 
 
+def slot_when(plan: PlanItem) -> str:
+    """'8 am' / '1 pm' / '8 pm' for the caption writer."""
+    hhmm = plan.time_bst or settings.SLOT_TIMES.get(plan.slot, "08:00")
+    h = int(hhmm.split(":")[0])
+    return f"{(h % 12) or 12} {'am' if h < 12 else 'pm'}"
+
+
+def quiz_answer_delay(plan: PlanItem) -> int:
+    """Minutes until the quiz answer comment: 6 h, but never later than ~21:30 (before the last publish run)."""
+    h, m = (int(x) for x in (plan.time_bst or settings.SLOT_TIMES.get(plan.slot, "08:00")).split(":"))
+    return max(60, min(360, 21 * 60 + 30 - (h * 60 + m)))
+
+
+def _mark_used(plan: PlanItem, content) -> None:
+    W.mark_used(words_used(content), plan.date)
+    if isinstance(content, GenericPost) and content.item_id:
+        G.mark_item_used(G.spec_for(content.pillar) or {}, content.item_id)
+    if isinstance(content, StoryPost) and content.source_title:
+        from engine.news import mark_story_used
+        mark_story_used(content.source_title, plan.date)
+
+
 # ── one slot ───────────────────────────────────────────────────────────────
 def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool = True) -> QueueItem:
     item_id = f"{plan.date.replace('-', '')}-{plan.slot[:2]}-{uuid.uuid4().hex[:6]}"
-    out_dir = settings.OUTPUT_DIR / plan.date / plan.slot
     last_err = ""
+    best: tuple[float, QueueItem, object] | None = None  # best near-miss: (score, item, content)
     for attempt in range(1, settings.MAX_GENERATION_ATTEMPTS + 1):
         log(f"  attempt {attempt}/{settings.MAX_GENERATION_ATTEMPTS} — {plan.pillar} ({plan.hook_style})")
+        out_dir = settings.OUTPUT_DIR / plan.date / plan.slot / f"try{attempt}"  # a kept near-miss keeps its slides
+        near_miss = False
         try:
-            content = make_content(plan, strategy, attempt)
+            content = make_content(plan, strategy, attempt, previous_error=last_err)
             if isinstance(content, StoryPost):
                 gates.story_words(content)
             summary = summarize(content)
             hook_instr = strategy["hook_styles"].get(plan.hook_style, {}).get("instruction", "")
-            when = "8 am" if plan.slot == "morning" else "8 pm"
+            when = slot_when(plan)
             cap = write_caption(plan.pillar, summary, hook_instr, when,
                                 layout=getattr(content, "layout", ""), hook_style=plan.hook_style,
                                 previous_error=last_err)
@@ -189,7 +219,7 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
                 # The body is fixed copy: the LLM may only write the hook, so the answer cannot leak.
                 cap.body = "\n\n".join(settings.STRINGS.get("quiz_body") or [
                     "Four options on the image. One is right, three are close.",
-                    "The answer and explanation come as a comment in 6 hours.",
+                    "The answer and explanation come as a comment later today.",
                 ])
                 cap.comment_prompt = settings.STRINGS.get("quiz_comment_prompt") or "Your answer: A, B, C or D?"
             fb, ig, url = assemble(cap, plan.pillar, item_id, strategy, seed=attempt)
@@ -217,8 +247,13 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
                 if not verdict.bangla_ok:
                     raise gates.GateError(f"critic: not spoken Banglish — {verdict.issues[:1]}")
                 pass_mark = settings.OFFER_QUALITY_PASS if plan.pillar == "offer" else settings.QUALITY_PASS
-                if verdict.score < pass_mark:  # a weak post is never queued; evergreen covers the slot
-                    raise gates.GateError(f"critic score {verdict.score} < {pass_mark}")
+                if verdict.score < pass_mark:
+                    issues = f" — fix: {verdict.issues[:2]}" if verdict.issues else ""
+                    if verdict.score < settings.NEAR_MISS_PASS:  # a weak post is never queued
+                        raise gates.GateError(f"critic score {verdict.score} < {pass_mark}{issues}")
+                    # Safe but not great: keep it as a fallback and try once more for a better one.
+                    near_miss = True
+                    last_err = f"GateError: critic score {verdict.score} < {pass_mark}{issues}"
                 if verdict.hook_score < settings.HOOK_PASS and not verdict.improved_hook:
                     raise gates.GateError(f"critic hook score {verdict.hook_score} < {settings.HOOK_PASS}")
                 if verdict.improved_hook and verdict.hook_score < settings.HOOK_PASS:
@@ -238,7 +273,7 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
                 first_comment, delay = G.first_comment(G.spec_for(content.pillar) or {}, content)
             elif isinstance(content, QuizPost):
                 # Morning quiz: answer at ~14:00. Evening quiz: ~22:00, before the last publish heartbeat.
-                first_comment, delay = P.quiz_answer_comment(content), (120 if plan.slot == "evening" else 360)
+                first_comment, delay = P.quiz_answer_comment(content), quiz_answer_delay(plan)
             elif isinstance(content, StoryPost) and content.source_url and content.pillar == "news_word":
                 first_comment = f"📰 Source: {content.source_title}\n{content.source_url}"
 
@@ -249,13 +284,13 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
                 story_media=str(Path(story_card).as_posix()), quality_score=score, attempts=attempt, utm_url=url,
                 writer_model=writer_model, critic_model=critic_model,
             )
+            if near_miss:
+                if best is None or score > best[0]:
+                    best = (score, item, content)
+                log(f"    ~ kept as fallback ({score}); trying for {pass_mark}")
+                continue
             if not dry_run:
-                W.mark_used(words_used(content), plan.date)
-                if isinstance(content, GenericPost) and content.item_id:
-                    G.mark_item_used(G.spec_for(content.pillar) or {}, content.item_id)
-                if isinstance(content, StoryPost) and content.source_title:
-                    from engine.news import mark_story_used
-                    mark_story_used(content.source_title, plan.date)
+                _mark_used(plan, content)
             return item
         except (gates.GateError, ValueError, LLMError) as e:
             last_err = f"{type(e).__name__}: {e}"
@@ -264,6 +299,12 @@ def build_item(plan: PlanItem, strategy: dict, dry_run: bool, use_critic: bool =
             last_err = f"{type(e).__name__}: {e}"
             log(f"    ✗ unexpected: {last_err}")
             traceback.print_exc()
+    if best is not None:
+        score, item, content = best
+        log(f"    using the best near-miss ({score})")
+        if not dry_run:
+            _mark_used(plan, content)
+        return item
     return QueueItem(id=item_id, date=plan.date, slot=plan.slot, pillar=plan.pillar, hook_style=plan.hook_style,
                      status="failed", content={}, attempts=settings.MAX_GENERATION_ATTEMPTS, error=last_err)
 
@@ -291,7 +332,8 @@ def after_build(item: QueueItem, dry_run: bool, preview: bool = True) -> None:
 
 # ── CLI ────────────────────────────────────────────────────────────────────
 def run_dates(dates: list[str], pillar: str | None, dry_run: bool, force: bool, critic: bool,
-              lineup: bool = False) -> int:
+              lineup: bool = False, not_before: datetime | None = None) -> int:
+    """not_before: skip slots whose time is earlier than this (a morning slot is not made at night)."""
     strategy = load_strategy()
     failures = 0
     for date_str in dates:
@@ -304,6 +346,8 @@ def run_dates(dates: list[str], pillar: str | None, dry_run: bool, force: bool, 
             log(f"{date_str}: no posts planned (holiday/skip)")
             continue
         for plan in plans:
+            if not_before is not None and slot_datetime_bst(date_str, plan.time_bst) < not_before:
+                continue
             path = queue_path(date_str, plan.slot)
             existing = load_item(path)
             if existing and existing.status not in ("failed",) and not force:
@@ -321,12 +365,18 @@ def run_dates(dates: list[str], pillar: str | None, dry_run: bool, force: bool, 
     return failures
 
 
+def evergreen_left() -> int:
+    """Backup posts still unused (used ones are renamed *.used / *.retired by publish)."""
+    return sum(1 for f in settings.EVERGREEN_DIR.glob("*.json") if (it := load_item(f)) and it.status == "pending")
+
+
 def run_evergreen(n: int, dry_run: bool, critic: bool) -> int:
     strategy = load_strategy()
     failures = 0
     base = datetime.now(settings.BST)
+    pillars = [p for p in settings.EVERGREEN_PILLARS if p in CONTENT_TYPES or G.spec_for(p)] or ["quiz"]
     for i in range(n):
-        pillar = "quiz" if i % 2 == 0 else "confusables"
+        pillar = pillars[i % len(pillars)]
         pseudo_date = (base + timedelta(days=1000 + i)).strftime("%Y-%m-%d")  # far future: no tracker collisions
         plan = PlanItem(date=pseudo_date, slot="morning", pillar=pillar, time_bst="08:00", hook_style="question")
         item = build_item(plan, strategy, dry_run=True, use_critic=critic)
@@ -340,6 +390,19 @@ def run_evergreen(n: int, dry_run: bool, critic: bool) -> int:
     return failures
 
 
+def review_date(now: datetime) -> str:
+    """The posting day tonight's lineup is for. GitHub runs the 21:00 schedule late, sometimes after
+    midnight: a run before 06:00 is still "tonight's" run and reviews today."""
+    now = now.astimezone(settings.BST).replace(tzinfo=None)
+    return (now if now.hour < 6 else now + timedelta(days=1)).strftime("%Y-%m-%d")
+
+
+def fill_dates(now: datetime, days: int = 3) -> list[str]:
+    """Today plus the following days: every run keeps a buffer, and a failed night is retried in time."""
+    today = now.astimezone(settings.BST).replace(tzinfo=None)
+    return [(today + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(days)]
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--date", help="YYYY-MM-DD (default: today BST)")
@@ -350,12 +413,32 @@ def main(argv=None) -> int:
     ap.add_argument("--no-critic", action="store_true")
     ap.add_argument("--evergreen", type=int, default=0)
     ap.add_argument("--tomorrow", action="store_true", help="generate tomorrow (BST) only")
+    ap.add_argument("--fill", action="store_true",
+                    help="nightly: fill missing/failed slots from now through 2 days ahead, top up backups, "
+                         "send the lineup for the next posting day")
+    ap.add_argument("--repair", action="store_true", help="like --fill for today + tomorrow, no lineup, no backups")
     ap.add_argument("--lineup", action="store_true", help="send one numbered Telegram lineup per date instead of per-post cards")
     a = ap.parse_args(argv)
     dry = a.dry_run or settings.DRY_RUN
 
     if a.evergreen:
         return 1 if run_evergreen(a.evergreen, dry, not a.no_critic) else 0
+
+    if a.fill or a.repair:
+        now = datetime.now(settings.BST)
+        dates = fill_dates(now, days=2 if a.repair else 3)
+        # A slot up to 3 h past can still go out today (publish runs until 23:00); older ones are left alone.
+        failures = run_dates(dates, None, dry, a.force, not a.no_critic, lineup=True,
+                             not_before=now - timedelta(hours=3))
+        if a.fill:
+            short = settings.EVERGREEN_MIN - evergreen_left()
+            if short > 0:
+                log(f"backup pool: topping up {short}")
+                run_evergreen(short, dry, not a.no_critic)
+            if not dry:
+                from engine.lineup import send_lineup
+                send_lineup(review_date(now))
+        return 1 if failures else 0
 
     start = datetime.strptime(a.date, "%Y-%m-%d") if a.date else datetime.now(settings.BST).replace(tzinfo=None)
     if a.tomorrow:

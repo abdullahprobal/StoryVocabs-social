@@ -6,6 +6,7 @@ the 20:00 cron after midnight), so the slot is never guessed from the clock. Eve
 publishes whatever is due today and not yet out; the hourly cron is only a heartbeat.
 
     python -m engine.due        # prints "YYYY-MM-DD slot" lines + "comments" if any are due
+    python -m engine.due --repair   # prints planned slots (today + tomorrow) with no usable post yet
 """
 from __future__ import annotations
 
@@ -69,8 +70,51 @@ def comments_due(now: datetime, queue_dir: Path = QUEUE_DIR) -> bool:
     return False
 
 
+WEEKDAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+
+
+def _planned_slots(date: str) -> list[str]:
+    """Slots strategy.json plans for a date (stdlib mirror of engine.planner, enough to spot gaps)."""
+    try:
+        strategy = json.loads((ROOT / "strategy.json").read_text(encoding="utf-8"))
+        holidays = json.loads((ROOT / "data" / "holidays.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+    if date in holidays.get("skip_dates", {}):
+        return []
+    if date in holidays.get("single_evening_post_dates", {}):
+        return ["evening"]
+    weekday = WEEKDAYS[datetime.strptime(date, "%Y-%m-%d").weekday()]
+    entries = strategy.get("date_overrides", {}).get(date) or strategy.get("calendar", {}).get(weekday, [])
+    return [e.get("slot", "morning") for e in entries if isinstance(e, dict)]
+
+
+def missing_slots(now: datetime, queue_dir: Path = QUEUE_DIR, slots: dict[str, str] | None = None,
+                  grace_hours: int = 3) -> list[tuple[str, str]]:
+    """Planned slots (today + tomorrow) with no queue file or a failed one. Today's slots more than
+    `grace_hours` past are ignored: they can no longer go out on time."""
+    now = now.astimezone(BST)
+    times = slots or slot_times()
+    out = []
+    for offset in (0, 1):
+        day = now + timedelta(days=offset)
+        date = day.strftime("%Y-%m-%d")
+        for slot in _planned_slots(date):
+            h, m = (int(x) for x in times.get(slot, "08:00").split(":"))
+            if day.replace(hour=h, minute=m, second=0, microsecond=0) < now - timedelta(hours=grace_hours):
+                continue
+            path = queue_dir / date / f"{slot}.json"
+            if not path.exists() or _status(path) == "failed":
+                out.append((date, slot))
+    return out
+
+
 def main() -> int:
     now = datetime.now(tz=BST)
+    if "--repair" in sys.argv[1:]:
+        for date, slot in missing_slots(now):
+            print(date, slot)
+        return 0
     for date, slot in due_slots(now):
         print(date, slot)
     if comments_due(now):

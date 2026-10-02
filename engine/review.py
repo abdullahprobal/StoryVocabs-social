@@ -47,7 +47,7 @@ def _when(item: QueueItem) -> str:
         day = datetime.strptime(item.date, "%Y-%m-%d").strftime("%A %d %b")
     except ValueError:
         day = item.date
-    return f"{day}, {'8:00 AM' if item.slot == 'morning' else '8:00 PM'} BST"
+    return f"{day}, {settings.slot_label(item.slot)} BST"
 
 
 def _label(item: QueueItem) -> str:

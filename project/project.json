@@ -27,6 +27,7 @@
   "timezone_label": "BST",
   "slots": {
     "morning": "08:00",
+    "noon": "13:00",
     "evening": "20:00"
   },
   "strings": {
