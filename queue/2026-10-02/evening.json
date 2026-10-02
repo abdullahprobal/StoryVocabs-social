@@ -1,0 +1,44 @@
+{
+ "id": "20261002-ev-2fc998",
+ "date": "2026-10-02",
+ "slot": "evening",
+ "pillar": "offer",
+ "status": "pending",
+ "hook_style": "question",
+ "content": {
+  "pillar": "offer",
+  "kind": "puja_offer",
+  "headline_bn": "পূজা অফার: StoryVocabs-এর সব প্ল্যানে বিশেষ ডিসকাউন্ট।",
+  "body_bn": "এই পূজায় StoryVocabs-এর সব প্ল্যানে ডিসকাউন্ট চলছে! Lifetime ৳2000, 1 month ৳225, 3 months ৳600, 6 months ৳1125। অফারটা automatic, 21 October 2026 রাত 11:59 পর্যন্ত থাকবে। এরপর prices আবার normal হয়ে যাবে।",
+  "detail_line": "Lifetime ৳2,000 · until 21 Oct"
+ },
+ "caption_fb": "পূজা অফার শেষ হতে বাকি আর কদিন? 21 Oct-এর পর দাম বাড়বে।\n\nImage-এ দেওয়া ডেটটা দেখো, 21 Oct 2026 রাত 11:59 পর্যন্ত।\n\nএর পর normal prices চলে আসবে। তাই প্ল্যান করার জন্য হাতে কিন্তু খুব বেশি সময় নেই।\n\nকোন প্ল্যানটা তোমার জন্য বেস্ট হবে মনে হচ্ছে?\n\nপূজা অফার দেখতে লিংকে গিয়ে শুরু করো\nstoryvocabs.com/free/1002\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "পূজা অফার শেষ হতে বাকি আর কদিন? 21 Oct-এর পর দাম বাড়বে।\n\nImage-এ দেওয়া ডেটটা দেখো, 21 Oct 2026 রাত 11:59 পর্যন্ত।\n\nএর পর normal prices চলে আসবে। তাই প্ল্যান করার জন্য হাতে কিন্তু খুব বেশি সময় নেই।\n\nকোন প্ল্যানটা তোমার জন্য বেস্ট হবে মনে হচ্ছে?\n\nপূজা অফার দেখতে লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUAdmission #IELTS #Vocabulary #Offer",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-10-02/evening/slide_01_offer.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-10-02/evening/20261002-ev-2fc998/slide_01_offer.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-10-02/evening/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-10-02/evening/20261002-ev-2fc998/story_1080x1920.png",
+ "quality_score": 7.0,
+ "attempts": 1,
+ "evergreen": false,
+ "telegram_message_id": 160,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-10-02T04:54:13+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=offer&utm_content=1002"
+}

@@ -45,5 +45,11 @@
    "id": "20261003-mo-9ad87a",
    "path": "queue/2026-10-03/morning.json"
   }
+ },
+ "2026-10-02": {
+  "1": {
+   "id": "20261002-ev-2fc998",
+   "path": "queue/2026-10-02/evening.json"
+  }
  }
 }
