@@ -3,7 +3,7 @@
  "date": "2026-10-02",
  "slot": "evening",
  "pillar": "offer",
- "status": "pending",
+ "status": "published",
  "hook_style": "question",
  "content": {
   "pillar": "offer",
@@ -32,13 +32,13 @@
  "attempts": 1,
  "evergreen": false,
  "telegram_message_id": 160,
- "fb_post_id": "",
- "ig_media_id": "",
- "fb_story_id": "",
- "ig_story_id": "",
+ "fb_post_id": "122130102464846512",
+ "ig_media_id": "17927037963184077",
+ "fb_story_id": "2627235821042622",
+ "ig_story_id": "17985281544097612",
  "review_note": "",
  "error": "",
  "created_at": "2026-10-02T04:54:13+00:00",
- "published_at": "",
+ "published_at": "2026-10-02T15:53:53+00:00",
  "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=offer&utm_content=1002"
 }
