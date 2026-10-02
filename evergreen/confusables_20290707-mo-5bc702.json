@@ -1,0 +1,69 @@
+{
+ "id": "20290707-mo-5bc702",
+ "date": "2029-07-07",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "question",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Censor না Censure — কোনটা কখন লিখবে?",
+  "pair": [
+   {
+    "word": "Censor",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈsen.sər/",
+    "gloss_bn": "বাদ দেওয়া",
+    "meaning_bn": "নিষিদ্ধ বা আপত্তিকর অংশ বাদ দেওয়া বা ব্লক করা",
+    "meaning_en": "To remove or block objectionable parts of content.",
+    "example": "The university admin decided to <b>censor</b> the political slogan from the event banner.",
+    "synonym": "",
+    "antonym": ""
+   },
+   {
+    "word": "Censure",
+    "pos": "verb",
+    "difficulty": "Advanced",
+    "phonetic": "/ˈsen.ʃər/",
+    "gloss_bn": "কঠোর সমালোচনা",
+    "meaning_bn": "সরকারি বা অফিশিয়ালভাবে তীব্র সমালোচনা বা নিন্দা করা",
+    "meaning_en": "To formally criticize or condemn someone for wrongdoing.",
+    "example": "The committee passed a motion to <b>censure</b> the minister for misusing public funds.",
+    "synonym": "criticize, condemn, rebuke",
+    "antonym": "praise, commend"
+   }
+  ],
+  "difference_bn": "Censor মানে কনটেন্টের অংশ বাদ দেওয়া বা ব্লক করা। Censure মানে অফিশিয়ালভাবে কঠোর সমালোচনা করা। একটা চোখ বন্ধ করে, অন্যটা মুখে আঘাত।",
+  "memory_tip_bn": ""
+ },
+ "caption_fb": "সরকার সিনেমাটা Censor করেছে না Censure করেছে? Exam-এ এই ভুলটা করা যাবে না।\n\nকোনো content-এর অংশ বাদ দেওয়া হলে বা আটকে দিলে সেটা Censor.\n\nআর যদি কাউকে অফিশিয়ালভাবে ধমক দেওয়া হয় বা সমালোচনা করা হয়, সেটা Censure.\n\nMCQ-তে 'cut' আর 'criticize' option-এ থাকলে কোনটা কার জন্য, খেয়াল রেখো.\n\nতোমার দেখা কোন movie সবচেয়ে বেশি Censor করা হয়েছে?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\nstoryvocabs.com/mixup/0707\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "সরকার সিনেমাটা Censor করেছে না Censure করেছে? Exam-এ এই ভুলটা করা যাবে না।\n\nকোনো content-এর অংশ বাদ দেওয়া হলে বা আটকে দিলে সেটা Censor.\n\nআর যদি কাউকে অফিশিয়ালভাবে ধমক দেওয়া হয় বা সমালোচনা করা হয়, সেটা Censure.\n\nMCQ-তে 'cut' আর 'criticize' option-এ থাকলে কোনটা কার জন্য, খেয়াল রেখো.\n\nতোমার দেখা কোন movie সবচেয়ে বেশি Censor করা হয়েছে?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #ExamVocab #BCSPreparation #DUAdmission #IELTSVocab",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2029-07-07/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2029-07-07/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2029-07-07/morning/slide_03_rule.png"
+ ],
+ "media_urls": [],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2029-07-07/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "",
+ "quality_score": 9.0,
+ "attempts": 3,
+ "evergreen": true,
+ "telegram_message_id": null,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-10-02T05:10:32+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=0707"
+}
