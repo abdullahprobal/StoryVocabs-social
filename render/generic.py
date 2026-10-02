@@ -26,7 +26,7 @@ def render_generic(post, out_dir: Path, date_str: str, label: str = "") -> list[
             "QUESTION": esc(post.quiz.question), "OPTIONS": opts, "EXAM": esc(S("quiz_tag", "")),
             "HINT": "", "HINT_DISPLAY": "none",
             "QUIZ_KICKER": S("quiz_kicker_line", "Do you know this one?"),
-            "QUIZ_NOTE": S("quiz_note", "Answer in the comments — the correct one is posted 6 hours later"),
+            "QUIZ_NOTE": S("quiz_note", "Answer in the comments — the correct one is posted later today"),
         })
         return render_pages([("slide_01_quiz.png", page, settings.CANVAS)], out_dir)
 

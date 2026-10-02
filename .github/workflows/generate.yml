@@ -2,7 +2,7 @@ name: generate
 
 on:
   schedule:
-    - cron: "0 15 * * *"      # 21:00 BST nightly — tomorrow's posts, one Telegram lineup
+    - cron: "17 14 * * *"     # 20:17 BST nightly — tomorrow's posts, one Telegram lineup (off the hour: GitHub delays :00 most)
   workflow_dispatch:
     inputs:
       date:
@@ -27,8 +27,10 @@ on:
         description: "refill the backup pool with N posts instead (e.g. 8); used when a slot's post fails"
         required: false
 
+# Own group: a queued review/publish run must never cancel tonight's generation (GitHub keeps only one
+# pending run per group). Commits are reconciled by the rebase-and-retry push below.
 concurrency:
-  group: social-state
+  group: social-generate
   cancel-in-progress: false
 
 permissions:
@@ -106,5 +108,5 @@ jobs:
           git config user.email "bot@storyvocabs.local"
           git add queue state analytics strategy.json evergreen
           git diff --cached --quiet || git commit -m "chore(generate): queue $(date -u +%F) [skip ci]"
-          git pull --rebase origin ${{ github.ref_name }} || true
-          git push
+          # Another job may have pushed meanwhile: rebase and retry instead of losing tonight's state.
+          for i in 1 2 3; do git pull --rebase origin ${{ github.ref_name }} && git push && break; sleep $((i * 10)); done

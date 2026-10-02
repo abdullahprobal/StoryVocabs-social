@@ -14,7 +14,7 @@ from pydantic import BaseModel, Field, field_validator, model_validator
 
 Pillar = str  # built-in: news_word, quiz, confusables, in_app, story60, offer — or any project/pillars/<name>.json
 Slot = Literal["morning", "evening"]
-Status = Literal["pending", "approved", "skipped", "published", "failed"]
+Status = Literal["pending", "approved", "skipped", "published", "failed", "missed"]
 
 _WS = re.compile(r"\s+")
 

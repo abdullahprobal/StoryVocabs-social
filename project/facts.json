@@ -83,5 +83,27 @@
     "স্টুডেন্ট ডিসকাউন্ট",
     "20%",
     "২০%"
+  ],
+  "current_offers": [
+    {
+      "code": "PUJA2026",
+      "who": "everyone",
+      "automatic": true,
+      "until": "2026-10-21 23:59 BST",
+      "prices_bdt": {
+        "pro_1m": 225,
+        "pro_3m": 600,
+        "pro_6m": 1125,
+        "lifetime": 2000
+      },
+      "note": "Durga Puja offer; after 21 Oct prices return to 300/800/1500/4000"
+    },
+    {
+      "code": "UNIWELCOME",
+      "who": "verified Bangladeshi university email",
+      "automatic": true,
+      "trial_days": 7,
+      "note": "7-day full Pro trial; Lifetime 50% and other plans 25% off during the trial and 24 hours after"
+    }
   ]
 }

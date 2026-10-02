@@ -158,6 +158,8 @@ MAX_EMOJI = 4
 HASHTAGS_FB = (2, 3)
 HASHTAGS_IG = (5, 8)
 QUALITY_PASS = 8.0
+# Offer posts are short announcements, not word lessons; the critic still blocks false or cringe copy.
+OFFER_QUALITY_PASS = 7.0
 HOOK_PASS = 7.0
 MAX_GENERATION_ATTEMPTS = 4
 QUEUE_DAYS_AHEAD = int(os.getenv("QUEUE_DAYS_AHEAD", "2"))

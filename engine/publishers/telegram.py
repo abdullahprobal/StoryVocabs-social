@@ -24,7 +24,7 @@ API = f"https://api.telegram.org/bot{settings.TELEGRAM_BOT_TOKEN}"
 # "do not post" / "don't approve" / "পোস্ট করো না" mean SKIP. Checked before the approve words: "do not post"
 # contains "post", which used to be read as an approval.
 _BN = "ঀ-৿"
-_NEGATIVE = re.compile(r"\b(do\s*not|don'?t|dont|never|stop|hold|pause|wait)\b"
+_NEGATIVE = re.compile(r"\b(do\s*not|don['’]?t|dont|not|never|stop|hold|pause|wait)\b"
                        rf"|(?<![{_BN}])(না|নাহ|বাদ|বন্ধ|থামাও)(?![{_BN}])", re.I)
 STATE = settings.STATE_DIR / "telegram.json"
 
