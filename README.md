@@ -28,17 +28,20 @@ strategy.json ──► planner ──► writer (free LLM chain, JSON contract)
 Built-in vocabulary pillars (`news_word`, `quiz`, `confusables`, `story60`, `in_app`, `offer`) stay available;
 any other pillar name in `strategy.json → calendar` is looked up in `project/pillars/`. The engine code contains no brand strings.
 
-## Pillars (weekly calendar, `strategy.json`)
+## Pillars (weekly calendar, `strategy.json`): 3 posts a day
 
-| Day | Pillar | Format |
-|---|---|---|
-| Sat | `news_word` — 3 exam words in today's Bangladesh news | 6-slide carousel |
-| Sun | `quiz` — one word, 4 options; answer posted as a comment 6 h later | 1 image |
-| Mon | `confusables` — two words students mix | 3-slide carousel |
-| Tue | `news_word` (business/tech) | 6-slide carousel |
-| Wed | `in_app` — real app screenshot + one honest number | 1 image (needs `render/assets/screens/`) |
-| Thu | `story60` — 5 words in a 60-second Bangladeshi story | 8–9-slide carousel |
-| Fri 20:00 | `offer` — free path / referral / student / community / founder | 1 image |
+| Day | 08:00 | 13:00 | 20:00 |
+|---|---|---|---|
+| Sat | `news_word` (politics) | `quiz` | `offer` |
+| Sun | `confusables` | `exam_tip` | `story60` |
+| Mon | `quiz` | `confusables` | `proof` |
+| Tue | `news_word` (business) | `quiz` | `offer` |
+| Wed | `in_app` (→ `confusables` until screenshots exist) | `exam_tip` | `story60` |
+| Thu | `confusables` | `quiz` | `offer` |
+| Fri | `story60` | `quiz` | `proof` |
+
+`exam_tip` and `proof` ("Inside StoryVocabs", only numbers from `project/facts.json`) are project pillars in
+`project/pillars/`. Quiz answers are posted as a comment by about 21:30.
 
 Every post also gets a 1080×1920 card for FB/IG Stories.
 
@@ -90,9 +93,11 @@ time and tells you if a slot was held because nothing was approved (`REVIEW_MODE
 
 ## Workflows
 
-* `generate.yml` — 21:00 BST nightly, tomorrow's posts + one Telegram lineup
+* `generate.yml` — 20:17 BST nightly: fills every missing/failed slot from now through 2 days ahead, tops the
+  backup pool up to 6, sends one Telegram lineup; 10:17 BST repair run remakes anything still missing for today/tomorrow
 * `review.yml` — every 30 min: applies your Telegram decisions and replies
-* `publish.yml` — 08:00 and 20:00 BST (slots), 14:00 BST (due quiz-answer comments)
+* `publish.yml` — hourly heartbeat 08:23–22:23 BST: publishes whatever slot is due, plus due quiz-answer comments.
+  If a slot's post failed and no backup is left, it writes a fresh quiz on the spot
 * `weekly.yml` — Sunday 22:00 BST, Insights → weights → report
 * `ci.yml` — tests on push
 

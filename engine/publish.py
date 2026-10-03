@@ -42,6 +42,22 @@ def pick_evergreen(date_str: str, slot: str) -> QueueItem | None:
     return None
 
 
+def make_on_the_spot(date_str: str, slot: str) -> QueueItem | None:
+    """Last resort when the slot's post failed and the backup pool is empty: write a quiz now
+    (quiz is the most reliable pillar). Same gates and critic as the nightly run."""
+    if settings.DRY_RUN:
+        return None
+    log(f"  backup pool empty — writing a quiz for {date_str} {slot} now")
+    plan = PlanItem(date=date_str, slot=slot, pillar="quiz",
+                    time_bst=settings.SLOT_TIMES.get(slot, "08:00"), hook_style="question")
+    try:
+        item = build_item(plan, load_strategy(), dry_run=False)
+    except Exception as e:  # noqa: BLE001
+        log(f"    ✗ on-the-spot quiz failed: {e}")
+        return None
+    return None if item.status == "failed" else item
+
+
 def ensure_urls(item: QueueItem) -> None:
     if item.media_urls and (item.story_media_url or not item.story_media):
         return
@@ -140,17 +156,17 @@ def run_slot(date_str: str, slot: str) -> int:
     if item is None or item.status == "failed":
         if item is not None:
             log(f"  queue item failed earlier: {item.error}")
-        item = pick_evergreen(date_str, slot)
+        item = pick_evergreen(date_str, slot) or make_on_the_spot(date_str, slot)
         if item is None:
             log(f"{date_str} {slot}: nothing to publish and no evergreen left")
             reason = f"the post failed its checks ({(original.error or '')[:120]})" if original is not None else "no post was generated"
             telegram.notify(f"⚠ {date_str} {slot}: nothing posted: {reason}, and the backup pool is empty. "
-                            "Refill it: GitHub → Actions → generate → Run workflow, evergreen = 8.")
+                            "Writing a fresh quiz also failed. Refill backups: GitHub → Actions → generate → Run workflow, evergreen = 8.")
             if original is not None:
                 original.status = "missed"  # alert once, not every hour until 22:23
                 save_item(original, path)
             return 0
-        log(f"  using evergreen item {item.id} ({item.pillar})")
+        log(f"  using {'backup' if item.evergreen else 'fresh'} item {item.id} ({item.pillar})")
         save_item(item, path)
 
     if settings.REVIEW_MODE == "manual" and item.status != "approved":
@@ -242,7 +258,7 @@ def run_due() -> int:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--date")
-    ap.add_argument("--slot", choices=["morning", "evening"])
+    ap.add_argument("--slot", choices=sorted(settings.SLOT_TIMES, key=settings.slot_order))
     ap.add_argument("--comments", action="store_true")
     ap.add_argument("--due", action="store_true", help="publish every slot due today + due comments (scheduled runs)")
     ap.add_argument("--backfill", action="store_true", help="publish approved queue/backfill items")
@@ -260,7 +276,10 @@ def main(argv=None) -> int:
     date_str = a.date or settings.today_bst()
     slot = a.slot
     if not slot:
-        slot = "morning" if settings.now_bst().hour < 14 else "evening"
+        # the latest slot whose time has passed today (the first slot before it)
+        now = settings.now_bst().strftime("%H:%M")
+        ordered = sorted(settings.SLOT_TIMES, key=settings.slot_order)
+        slot = ([s for s in ordered if settings.SLOT_TIMES[s] <= now] or ordered)[-1]
     return run_slot(date_str, slot)
 
 
