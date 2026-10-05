@@ -8,12 +8,12 @@ from __future__ import annotations
 
 import re
 from datetime import datetime, timezone
-from typing import Literal, Optional
+from typing import Annotated, Literal, Optional
 
-from pydantic import BaseModel, Field, field_validator, model_validator
+from pydantic import BaseModel, Field, StringConstraints, field_validator, model_validator
 
 Pillar = str  # built-in: news_word, quiz, confusables, in_app, story60, offer — or any project/pillars/<name>.json
-Slot = Literal["morning", "evening"]
+Slot = Annotated[str, StringConstraints(pattern=r"^[a-z]+$")]  # a key of project.json → slots (morning, noon, evening…)
 Status = Literal["pending", "approved", "skipped", "published", "failed", "missed"]
 
 _WS = re.compile(r"\s+")
