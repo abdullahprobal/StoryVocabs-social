@@ -1,0 +1,73 @@
+{
+ "id": "20261007-mo-86cbad",
+ "date": "2026-10-07",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "question",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Loath আর Loathe — কোনটা adjective, কোনটা verb?",
+  "pair": [
+   {
+    "word": "Loath",
+    "pos": "adjective",
+    "difficulty": "Advanced",
+    "phonetic": "/loʊθ/",
+    "gloss_bn": "অনিচ্ছুক",
+    "meaning_bn": "কিছু করতে রাজি না / ইচ্ছা নাই",
+    "meaning_en": "Unwilling or reluctant to do something; disinclined.",
+    "example": "After a long day of classes, I was <b>loath</b> to start another assignment.",
+    "synonym": "Averse, Dislike, Abhor",
+    "antonym": "Like, Enjoy"
+   },
+   {
+    "word": "Loathe",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/loʊð/",
+    "gloss_bn": "ঘৃণা করা",
+    "meaning_bn": "কাউকে/কিছুকে খুব অপছন্দ করা",
+    "meaning_en": "To feel intense dislike or disgust for someone or something.",
+    "example": "Many students <b>loathe</b> the idea of waking up early for a 7 AM class.",
+    "synonym": "",
+    "antonym": ""
+   }
+  ],
+  "difference_bn": "Loath হলো adjective, মানে 'অনিচ্ছুক'। আর Loathe হলো verb, মানে 'ঘৃণা করা'। শব্দ দুটো শুনতে একরকম লাগলেও, এদের part of speech আর মানে একদম আলাদা।",
+  "memory_tip_bn": ""
+ },
+ "caption_fb": "MCQ-তে Loath আর Loathe থাকলে কোনটা দাগাবো?\n\nLoath মানে অনিচ্ছুক। এটা adjective, তাই 'to be' verb-এর পর বসে।\n\nLoathe মানে ঘৃণা করা। এটা verb, তাই subject-এর পর action বোঝায়।\n\nMCQ-তে 'I was ______ to tell him' থাকলে Loath হবে।\nআর 'I ______ his lies' থাকলে Loathe হবে।\n\nকোন শব্দজোড় তোমার কাছে সবচেয়ে confusing লাগে?\n\nপোস্টটা Save করে রাখো, কালকে আবার দেখো\nstoryvocabs.com/mixup/1007\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "MCQ-তে Loath আর Loathe থাকলে কোনটা দাগাবো?\n\nLoath মানে অনিচ্ছুক। এটা adjective, তাই 'to be' verb-এর পর বসে।\n\nLoathe মানে ঘৃণা করা। এটা verb, তাই subject-এর পর action বোঝায়।\n\nMCQ-তে 'I was ______ to tell him' থাকলে Loath হবে।\nআর 'I ______ his lies' থাকলে Loathe হবে।\n\nকোন শব্দজোড় তোমার কাছে সবচেয়ে confusing লাগে?\n\nপোস্টটা Save করে রাখো, কালকে আবার দেখো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #Confusables #Vocab #ExamPrep #DUAdmission",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-10-07/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-10-07/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-10-07/morning/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-10-07/morning/20261007-mo-86cbad/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-10-07/morning/20261007-mo-86cbad/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-10-07/morning/20261007-mo-86cbad/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-10-07/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-10-07/morning/20261007-mo-86cbad/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 1,
+ "evergreen": false,
+ "telegram_message_id": 206,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-10-06T19:34:46+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=1007"
+}
