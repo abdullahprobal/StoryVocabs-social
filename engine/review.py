@@ -141,7 +141,7 @@ def apply_decisions(decisions: list[dict] | None = None) -> list[tuple[Path, Que
                 elif kind == "skip":
                     it.status, it.review_note = "skipped", d["text"]
                     save_item(it, path)
-                    replies.append(f"❌ skipped {_label(it)} — a backup post takes that slot")
+                    replies.append(f"❌ skipped {_label(it)} — nothing will publish in that slot")
                     log(f"skipped {it.id}")
                 elif kind == "note":
                     if not note:

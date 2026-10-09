@@ -23,7 +23,7 @@ from pathlib import Path
 from engine import settings
 from engine.contracts import QueueItem
 from engine.generate import build_item, load_item, queue_path, rerender, save_item
-from engine.planner import PlanItem, load_strategy
+from engine.planner import PlanItem, load_strategy, load_holidays
 from engine.publishers import media_host, meta, telegram
 
 
@@ -116,6 +116,10 @@ def post_first_comment(item: QueueItem) -> None:
 
 
 def run_slot(date_str: str, slot: str) -> int:
+    pause = load_holidays().get("skip_dates", {}).get(date_str)
+    if pause:
+        log(f"{date_str} {slot}: automatic publishing paused — {pause}")
+        return 0
     path = queue_path(date_str, slot)
     item = load_item(path)
     if item and item.status == "published":
@@ -134,7 +138,7 @@ def run_slot(date_str: str, slot: str) -> int:
         item = load_item(path)
     if item and item.status == "skipped":
         log(f"{date_str} {slot}: skipped by owner")
-        item = None
+        return 0
 
     original = item
     if item is None or item.status == "failed":
@@ -153,8 +157,9 @@ def run_slot(date_str: str, slot: str) -> int:
         log(f"  using evergreen item {item.id} ({item.pillar})")
         save_item(item, path)
 
-    if settings.REVIEW_MODE == "manual" and item.status != "approved":
-        log(f"{date_str} {slot}: REVIEW_MODE=manual and not approved — waiting")
+    needs_editorial_review = item.pillar in {"offer", "in_app"}
+    if (settings.REVIEW_MODE == "manual" or needs_editorial_review) and item.status != "approved":
+        log(f"{date_str} {slot}: explicit editorial approval required — waiting")
         from engine.review import _label
         telegram.notify(f"⏸ Not posted — {_label(item)} is still waiting for your ✅. "
                         f"Reply “approve” to the card and it goes out at the next run.")
