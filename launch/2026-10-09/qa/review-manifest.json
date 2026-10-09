@@ -1,0 +1,19 @@
+{
+  "review_date_dhaka": "2026-10-09",
+  "layout_audit": "revised/layout-audit.json",
+  "source": "source/render_launch_v3.py",
+  "visual_review": "Full exports and 390px reading previews inspected; Facebook crop verification separate.",
+  "superseded_source": "source/render_launch.py (rollback only; do not render for publication)",
+  "assets": {
+    "plans-feed.png": "a8b3d384ef10732a9c813dac846413044a3f109fe99357edeeaf6c8cf702f920",
+    "offer-feed.png": "68f54714b162d3e679367a8d0dec8e99776147307941c2f4d5848a6f1c80127d",
+    "offer-square.png": "8b779dc01c51d50ac20557aee33efade8e691fdd3c75435ff362a21fde100baa",
+    "offer-story.png": "89986d8ac5f267150eb6927dc31cf628a6d20fe8adf6eb5067e874073eac1e88",
+    "faq-feed.png": "1b378a1ca6cb74f265a39c0ca041d2ebfed4bf5cd90c9bbce2dce0ca79d6394f",
+    "lesson-recant.png": "e3338e00945188ea6df9db2994781ba03e5e346b87a7f8d5274bd2e213485c16",
+    "lesson-pluralism.png": "80dba34d70b43af9e6ba47eac6367c1a27df253dfcb1c2059a508bb112d88881",
+    "founder-feed.png": "bb2e04f3798972d7e4f4c0dd11cf3dee451ac978f0d1c92738696a13db20a5c9",
+    "flashcard-feed.png": "b3ac93a3b7d1d864eb6678a5c52ccec9597e403cad662c13d37e3f9f23526fc7",
+    "cover-v3.png": "3668cc0cdcf7d770cdd4c7b970f0f723dd2a8dfd84bd8626f98df4850d1f0f77"
+  }
+}

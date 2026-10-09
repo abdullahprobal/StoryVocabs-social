@@ -1,0 +1,548 @@
+{
+  "plans-feed": {
+    "issues": [],
+    "blocks": [
+      {
+        "name": "brand",
+        "x": 64,
+        "y": 52,
+        "right": 1016,
+        "bottom": 124,
+        "width": 952,
+        "height": 72
+      },
+      {
+        "name": "headline",
+        "x": 64,
+        "y": 162,
+        "right": 1016,
+        "bottom": 379.796875,
+        "width": 952,
+        "height": 217.796875
+      },
+      {
+        "name": "plan table",
+        "x": 64,
+        "y": 407.796875,
+        "right": 1016,
+        "bottom": 1015.796875,
+        "width": 952,
+        "height": 608
+      },
+      {
+        "name": "terms",
+        "x": 64,
+        "y": 1041.796875,
+        "right": 1016,
+        "bottom": 1124.140625,
+        "width": 952,
+        "height": 82.34375
+      },
+      {
+        "name": "footer",
+        "x": 64,
+        "y": 1178.3125,
+        "right": 1016,
+        "bottom": 1302,
+        "width": 952,
+        "height": 123.6875
+      }
+    ],
+    "fontStatus": "loaded"
+  },
+  "offer-feed": {
+    "issues": [],
+    "blocks": [
+      {
+        "name": "brand",
+        "x": 64,
+        "y": 52,
+        "right": 1016,
+        "bottom": 124,
+        "width": 952,
+        "height": 72
+      },
+      {
+        "name": "promotion",
+        "x": 64,
+        "y": 159,
+        "right": 1016,
+        "bottom": 221,
+        "width": 952,
+        "height": 62
+      },
+      {
+        "name": "headline",
+        "x": 64,
+        "y": 245,
+        "right": 1016,
+        "bottom": 397.5,
+        "width": 952,
+        "height": 152.5
+      },
+      {
+        "name": "lifetime offer",
+        "x": 64,
+        "y": 422.5,
+        "right": 1016,
+        "bottom": 674.625,
+        "width": 952,
+        "height": 252.125
+      },
+      {
+        "name": "product proof",
+        "x": 64,
+        "y": 704.625,
+        "right": 1016,
+        "bottom": 1150.8125,
+        "width": 952,
+        "height": 446.1875
+      },
+      {
+        "name": "footer",
+        "x": 64,
+        "y": 1176.8125,
+        "right": 1016,
+        "bottom": 1302,
+        "width": 952,
+        "height": 125.1875
+      }
+    ],
+    "fontStatus": "loaded"
+  },
+  "offer-square": {
+    "issues": [],
+    "blocks": [
+      {
+        "name": "brand",
+        "x": 64,
+        "y": 42,
+        "right": 1016,
+        "bottom": 106,
+        "width": 952,
+        "height": 64
+      },
+      {
+        "name": "promotion",
+        "x": 64,
+        "y": 128,
+        "right": 1016,
+        "bottom": 179,
+        "width": 952,
+        "height": 51
+      },
+      {
+        "name": "headline",
+        "x": 64,
+        "y": 196,
+        "right": 1016,
+        "bottom": 321.8125,
+        "width": 952,
+        "height": 125.8125
+      },
+      {
+        "name": "lifetime offer",
+        "x": 64,
+        "y": 338.8125,
+        "right": 1016,
+        "bottom": 545.109375,
+        "width": 952,
+        "height": 206.296875
+      },
+      {
+        "name": "product proof",
+        "x": 64,
+        "y": 565.109375,
+        "right": 1016,
+        "bottom": 913.703125,
+        "width": 952,
+        "height": 348.59375
+      },
+      {
+        "name": "footer",
+        "x": 64,
+        "y": 931.703125,
+        "right": 1016,
+        "bottom": 1042,
+        "width": 952,
+        "height": 110.296875
+      }
+    ],
+    "fontStatus": "loaded"
+  },
+  "offer-story": {
+    "issues": [],
+    "blocks": [
+      {
+        "name": "brand",
+        "x": 100,
+        "y": 200,
+        "right": 940,
+        "bottom": 272,
+        "width": 840,
+        "height": 72
+      },
+      {
+        "name": "promotion",
+        "x": 100,
+        "y": 302,
+        "right": 940,
+        "bottom": 364,
+        "width": 840,
+        "height": 62
+      },
+      {
+        "name": "headline",
+        "x": 100,
+        "y": 388,
+        "right": 940,
+        "bottom": 543,
+        "width": 840,
+        "height": 155
+      },
+      {
+        "name": "lifetime offer",
+        "x": 100,
+        "y": 567,
+        "right": 940,
+        "bottom": 821.375,
+        "width": 840,
+        "height": 254.375
+      },
+      {
+        "name": "product proof",
+        "x": 100,
+        "y": 849.375,
+        "right": 940,
+        "bottom": 1371.3125,
+        "width": 840,
+        "height": 521.9375
+      },
+      {
+        "name": "footer",
+        "x": 100,
+        "y": 1396.3125,
+        "right": 940,
+        "bottom": 1520,
+        "width": 840,
+        "height": 123.6875
+      }
+    ],
+    "fontStatus": "loaded"
+  },
+  "faq-feed": {
+    "issues": [],
+    "blocks": [
+      {
+        "name": "brand",
+        "x": 64,
+        "y": 52,
+        "right": 1016,
+        "bottom": 124,
+        "width": 952,
+        "height": 72
+      },
+      {
+        "name": "headline",
+        "x": 64,
+        "y": 158,
+        "right": 1016,
+        "bottom": 383.296875,
+        "width": 952,
+        "height": 225.296875
+      },
+      {
+        "name": "answers",
+        "x": 64,
+        "y": 418.296875,
+        "right": 1016,
+        "bottom": 927.078125,
+        "width": 952,
+        "height": 508.78125
+      },
+      {
+        "name": "support",
+        "x": 64,
+        "y": 952.078125,
+        "right": 1016,
+        "bottom": 1048.078125,
+        "width": 952,
+        "height": 96
+      },
+      {
+        "name": "footer",
+        "x": 64,
+        "y": 1176.8125,
+        "right": 1016,
+        "bottom": 1302,
+        "width": 952,
+        "height": 125.1875
+      }
+    ],
+    "fontStatus": "loaded"
+  },
+  "lesson-recant": {
+    "issues": [],
+    "blocks": [
+      {
+        "name": "brand",
+        "x": 64,
+        "y": 52,
+        "right": 1016,
+        "bottom": 124,
+        "width": 952,
+        "height": 72
+      },
+      {
+        "name": "word",
+        "x": 64,
+        "y": 182,
+        "right": 1016,
+        "bottom": 357.1875,
+        "width": 952,
+        "height": 175.1875
+      },
+      {
+        "name": "meaning",
+        "x": 64,
+        "y": 403.1875,
+        "right": 1016,
+        "bottom": 541.1875,
+        "width": 952,
+        "height": 138
+      },
+      {
+        "name": "example",
+        "x": 64,
+        "y": 587.1875,
+        "right": 1016,
+        "bottom": 768.1875,
+        "width": 952,
+        "height": 181
+      },
+      {
+        "name": "source",
+        "x": 64,
+        "y": 797.1875,
+        "right": 1016,
+        "bottom": 889.96875,
+        "width": 952,
+        "height": 92.78125
+      },
+      {
+        "name": "footer",
+        "x": 64,
+        "y": 1176.8125,
+        "right": 1016,
+        "bottom": 1302,
+        "width": 952,
+        "height": 125.1875
+      }
+    ],
+    "fontStatus": "loaded"
+  },
+  "lesson-pluralism": {
+    "issues": [],
+    "blocks": [
+      {
+        "name": "brand",
+        "x": 64,
+        "y": 52,
+        "right": 1016,
+        "bottom": 124,
+        "width": 952,
+        "height": 72
+      },
+      {
+        "name": "word",
+        "x": 64,
+        "y": 182,
+        "right": 1016,
+        "bottom": 357.1875,
+        "width": 952,
+        "height": 175.1875
+      },
+      {
+        "name": "meaning",
+        "x": 64,
+        "y": 403.1875,
+        "right": 1016,
+        "bottom": 541.1875,
+        "width": 952,
+        "height": 138
+      },
+      {
+        "name": "example",
+        "x": 64,
+        "y": 587.1875,
+        "right": 1016,
+        "bottom": 768.1875,
+        "width": 952,
+        "height": 181
+      },
+      {
+        "name": "source",
+        "x": 64,
+        "y": 797.1875,
+        "right": 1016,
+        "bottom": 889.96875,
+        "width": 952,
+        "height": 92.78125
+      },
+      {
+        "name": "footer",
+        "x": 64,
+        "y": 1176.8125,
+        "right": 1016,
+        "bottom": 1302,
+        "width": 952,
+        "height": 125.1875
+      }
+    ],
+    "fontStatus": "loaded"
+  },
+  "founder-feed": {
+    "issues": [],
+    "blocks": [
+      {
+        "name": "brand",
+        "x": 64,
+        "y": 52,
+        "right": 1016,
+        "bottom": 124,
+        "width": 952,
+        "height": 72
+      },
+      {
+        "name": "headline",
+        "x": 64,
+        "y": 166,
+        "right": 1016,
+        "bottom": 318.5,
+        "width": 952,
+        "height": 152.5
+      },
+      {
+        "name": "workflow",
+        "x": 64,
+        "y": 365.5,
+        "right": 1016,
+        "bottom": 843.5,
+        "width": 952,
+        "height": 478
+      },
+      {
+        "name": "founder fact",
+        "x": 64,
+        "y": 883.5,
+        "right": 1016,
+        "bottom": 992.5,
+        "width": 952,
+        "height": 109
+      },
+      {
+        "name": "footer",
+        "x": 64,
+        "y": 1176.8125,
+        "right": 1016,
+        "bottom": 1302,
+        "width": 952,
+        "height": 125.1875
+      }
+    ],
+    "fontStatus": "loaded"
+  },
+  "flashcard-feed": {
+    "issues": [],
+    "blocks": [
+      {
+        "name": "brand",
+        "x": 64,
+        "y": 52,
+        "right": 1016,
+        "bottom": 124,
+        "width": 952,
+        "height": 72
+      },
+      {
+        "name": "headline",
+        "x": 64,
+        "y": 166,
+        "right": 1016,
+        "bottom": 318.5,
+        "width": 952,
+        "height": 152.5
+      },
+      {
+        "name": "flashcard demo",
+        "x": 64,
+        "y": 358.5,
+        "right": 1016,
+        "bottom": 1141.8125,
+        "width": 952,
+        "height": 783.3125
+      },
+      {
+        "name": "footer",
+        "x": 64,
+        "y": 1176.8125,
+        "right": 1016,
+        "bottom": 1302,
+        "width": 952,
+        "height": 125.1875
+      }
+    ],
+    "fontStatus": "loaded"
+  },
+  "cover-v3": {
+    "issues": [],
+    "blocks": [
+      {
+        "name": "brand",
+        "x": 689.890625,
+        "y": 64,
+        "right": 950.09375,
+        "bottom": 124,
+        "width": 260.203125,
+        "height": 60
+      },
+      {
+        "name": "cover headline",
+        "x": 566.625,
+        "y": 149,
+        "right": 1073.375,
+        "bottom": 312.65625,
+        "width": 506.75,
+        "height": 163.65625
+      },
+      {
+        "name": "exam audiences",
+        "x": 659.28125,
+        "y": 335.65625,
+        "right": 980.71875,
+        "bottom": 373.453125,
+        "width": 321.4375,
+        "height": 37.796875
+      },
+      {
+        "name": "free and domain",
+        "x": 598.296875,
+        "y": 397.453125,
+        "right": 1041.703125,
+        "bottom": 492.84375,
+        "width": 443.40625,
+        "height": 95.390625
+      },
+      {
+        "name": "cover workflow",
+        "x": 549.03125,
+        "y": 593.8125,
+        "right": 1090.953125,
+        "bottom": 661,
+        "width": 541.921875,
+        "height": 67.1875
+      }
+    ],
+    "fontStatus": "loaded"
+  }
+}
