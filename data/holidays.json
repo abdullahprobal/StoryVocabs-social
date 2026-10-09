@@ -1,6 +1,14 @@
 {
   "_comment": "Posting exceptions. Dates are Asia/Dhaka. skip = no posts; rules apply from POSTING_SCHEDULE.md research. Ramadan window switches slots to 16:00/20:30 BST.",
   "skip_dates": {
+    "2026-10-09": "Reviewed Facebook launch introduction published manually; hold generic queue",
+    "2026-10-10": "Launch week managed with reviewed Business Suite content",
+    "2026-10-11": "Launch week managed with reviewed Business Suite content",
+    "2026-10-12": "Launch week managed with reviewed Business Suite content",
+    "2026-10-13": "Launch week managed with reviewed Business Suite content",
+    "2026-10-14": "Launch week managed with reviewed Business Suite content",
+    "2026-10-15": "Launch week managed with reviewed Business Suite content",
+    "2026-10-16": "Launch week managed with reviewed Business Suite content",
     "2026-03-20": "Eid-ul-Fitr day 1",
     "2026-05-27": "Eid-ul-Adha day 1",
     "2027-03-10": "Eid-ul-Fitr day 1 (approx, verify)",

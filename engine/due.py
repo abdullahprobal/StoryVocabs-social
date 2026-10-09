@@ -22,6 +22,13 @@ LAST_HOUR = 23          # nothing goes out from 23:00 to the next slot — a mid
 DONE = {"published", "skipped", "missed"}
 
 
+def paused_dates() -> dict[str, str]:
+    try:
+        return json.loads((ROOT / "data" / "holidays.json").read_text(encoding="utf-8")).get("skip_dates", {})
+    except (OSError, ValueError):
+        return {}
+
+
 def slot_times() -> dict[str, str]:
     try:
         return json.loads((ROOT / "project" / "project.json").read_text(encoding="utf-8")).get("slots") or DEFAULT_SLOTS
@@ -43,6 +50,8 @@ def due_slots(now: datetime, queue_dir: Path = QUEUE_DIR, slots: dict[str, str] 
     if now.hour >= LAST_HOUR:
         return []
     date = now.strftime("%Y-%m-%d")
+    if date in paused_dates():
+        return []
     out = []
     for slot, hhmm in sorted((slots or slot_times()).items(), key=lambda kv: kv[1]):
         h, m = (int(x) for x in hhmm.split(":"))
