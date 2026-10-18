@@ -1,0 +1,73 @@
+{
+ "id": "20261019-mo-3a377a",
+ "date": "2026-10-19",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "bold_true",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Economic নাকি Economical — কখন কোনটা?",
+  "pair": [
+   {
+    "word": "Economic",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˌiːkəˈnɒmɪk/",
+    "gloss_bn": "অর্থনীতির",
+    "meaning_bn": "দেশের অর্থনীতি বা অর্থ সংক্রান্ত কোনো কিছু।",
+    "meaning_en": "related to the economy, finance, or the production and distribution of goods.",
+    "example": "",
+    "synonym": "",
+    "antonym": ""
+   },
+   {
+    "word": "Economical",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˌiːkəˈnɒmɪkəl/",
+    "gloss_bn": "সাশ্রয়ী, কম খরুচে",
+    "meaning_bn": "কম খরচ করে বা অপচয় না করে এমন।",
+    "meaning_en": "avoiding waste, especially of money or resources; good value for money.",
+    "example": "",
+    "synonym": "",
+    "antonym": ""
+   }
+  ],
+  "difference_bn": "Economic মানে অর্থনীতির সাথে জড়িত কোনো কিছু। আর Economical মানে হলো কম খরচ করে বা অপচয় না করে চলা।",
+  "memory_tip_bn": ""
+ },
+ "caption_fb": "আমার তো আগে Economic আর Economical গুলিয়ে যেত!\n\nআমি আগে লিখতাম, \"Bangladesh's economical situation is getting better.\"\n\nভুল। হবে \"economic situation\"। Economical মানে তো সাশ্রয়ী।\n\nIELTS writing-এ যখন খরচ কম বা বাজেট-ফ্রেন্ডলি কিছু বোঝাবে, তখন economical।\n\nBCS-এ দেশের অর্থ বিষয়ক কিছু হলে economic।\n\nকোন শব্দজোড় তোমার বেশি কনফিউশন তৈরি করে?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/mixup/1019\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "আমার তো আগে Economic আর Economical গুলিয়ে যেত!\n\nআমি আগে লিখতাম, \"Bangladesh's economical situation is getting better.\"\n\nভুল। হবে \"economic situation\"। Economical মানে তো সাশ্রয়ী।\n\nIELTS writing-এ যখন খরচ কম বা বাজেট-ফ্রেন্ডলি কিছু বোঝাবে, তখন economical।\n\nBCS-এ দেশের অর্থ বিষয়ক কিছু হলে economic।\n\nকোন শব্দজোড় তোমার বেশি কনফিউশন তৈরি করে?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUAdmission #IBAAdmission #IELTS #Vocabulary",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-10-19/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-10-19/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-10-19/morning/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-10-19/morning/20261019-mo-3a377a/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-10-19/morning/20261019-mo-3a377a/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-10-19/morning/20261019-mo-3a377a/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-10-19/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-10-19/morning/20261019-mo-3a377a/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 2,
+ "evergreen": false,
+ "telegram_message_id": 237,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-10-18T17:25:28+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=1019"
+}
