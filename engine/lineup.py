@@ -22,7 +22,6 @@ from engine.publishers import telegram
 from engine.publishers.telegram import PILLAR_LABELS, _preview_text
 
 STATE = settings.STATE_DIR / "lineup.json"
-SLOT_ORDER = {"morning": 0, "evening": 1}
 
 
 def _state() -> dict:
@@ -50,12 +49,12 @@ def items_for(date_str: str) -> list[tuple[Path, QueueItem]]:
             out.append((f, it))
         elif it and it.status == "failed":
             _FAILED.append(it)
-    out.sort(key=lambda p: SLOT_ORDER.get(p[1].slot, 9))
+    out.sort(key=lambda p: settings.slot_order(p[1].slot))
     return out
 
 
 def _when(it: QueueItem) -> str:
-    return {"morning": "8:00 AM", "evening": "8:00 PM"}.get(it.slot, it.slot)
+    return settings.slot_label(it.slot)
 
 
 def send_lineup(date_str: str) -> int:

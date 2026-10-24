@@ -224,8 +224,8 @@ OFFER_UNTIL = {"puja_offer": "2026-10-21"}
 def write_offer(date_str: str, strategy: dict) -> OfferPost:
     rotation = [k for k in (strategy.get("offer_rotation") or []) if k in OFFER_BRIEFS] or ["free_path", "pay_easy", "community", "founder"]
     from datetime import datetime
-    week = datetime.strptime(date_str, "%Y-%m-%d").isocalendar()[1]
-    kind = rotation[week % len(rotation)]
+    # By day, not week: three offer evenings a week must not all repeat the same offer.
+    kind = rotation[datetime.strptime(date_str, "%Y-%m-%d").toordinal() % len(rotation)]
     # While the Puja offer is live, a "pay easy" post quoting regular prices would contradict the site.
     if kind == "pay_easy" and date_str <= OFFER_UNTIL["puja_offer"]:
         kind = "puja_offer"

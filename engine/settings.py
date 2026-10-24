@@ -74,6 +74,21 @@ BST = timezone(timedelta(hours=_TZ_HOURS), name=TZ_LABEL)  # name kept for compa
 SLOT_TIMES = PROJECT.get("slots", {"morning": "08:00", "evening": "20:00"})
 
 
+def slot_order(slot: str) -> int:
+    """Position of a slot in the day (by its time); unknown slots sort last."""
+    ordered = sorted(SLOT_TIMES, key=lambda s: SLOT_TIMES[s])
+    return ordered.index(slot) if slot in ordered else len(ordered)
+
+
+def slot_label(slot: str) -> str:
+    """'13:00' → '1:00 PM'. Unknown slots are shown by name."""
+    hhmm = SLOT_TIMES.get(slot)
+    if not hhmm:
+        return slot
+    h, m = (int(x) for x in hhmm.split(":"))
+    return f"{(h % 12) or 12}:{m:02d} {'AM' if h < 12 else 'PM'}"
+
+
 def now_bst() -> datetime:
     return datetime.now(tz=BST)
 
@@ -158,8 +173,13 @@ MAX_EMOJI = 4
 HASHTAGS_FB = (2, 3)
 HASHTAGS_IG = (5, 8)
 QUALITY_PASS = 8.0
+# If no attempt reaches QUALITY_PASS, the best one at or above this is posted rather than leaving the slot
+# empty. Factual errors, banned claims and Banglish/register failures are never kept, whatever the score.
+NEAR_MISS_PASS = 7.0
 # Offer posts are short announcements, not word lessons; the critic still blocks false or cringe copy.
 OFFER_QUALITY_PASS = 7.0
 HOOK_PASS = 7.0
 MAX_GENERATION_ATTEMPTS = 4
 QUEUE_DAYS_AHEAD = int(os.getenv("QUEUE_DAYS_AHEAD", "2"))
+EVERGREEN_MIN = int(os.getenv("EVERGREEN_MIN", "6"))   # the nightly run tops the backup pool up to this
+EVERGREEN_PILLARS = ["quiz", "confusables", "exam_tip"]

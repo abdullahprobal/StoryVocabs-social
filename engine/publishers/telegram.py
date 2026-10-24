@@ -83,7 +83,7 @@ def _preview_text(item, number: int | None = None) -> str:
         day = datetime.strptime(item.date, "%Y-%m-%d").strftime("%a %d %b")
     except ValueError:
         day = item.date
-    when = {"morning": "8:00 AM", "evening": "8:00 PM"}.get(item.slot, item.slot)
+    when = settings.slot_label(item.slot)
     slides = f"{len(item.media)} slide{'s' if len(item.media) != 1 else ''}"
     tag = f"#{number} · " if number else ""
     head = f"📋 {tag}{day} · {when} · {PILLAR_LABELS.get(item.pillar, item.pillar)} · {slides}\n\n"
