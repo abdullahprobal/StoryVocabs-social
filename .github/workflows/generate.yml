@@ -2,11 +2,12 @@ name: generate
 
 on:
   schedule:
-    - cron: "17 14 * * *"     # 20:17 BST nightly — tomorrow's posts, one Telegram lineup (off the hour: GitHub delays :00 most)
+    - cron: "17 14 * * *"     # 20:17 BST nightly — fill today..+2 days, top up backups, one Telegram lineup (off the hour: GitHub delays :00 most)
+    - cron: "17 4 * * *"      # 10:17 BST repair — remake any of today's/tomorrow's posts that failed or were never made
   workflow_dispatch:
     inputs:
       date:
-        description: "YYYY-MM-DD (default: today BST)"
+        description: "YYYY-MM-DD (empty = fill every missing slot from now through 2 days ahead)"
         required: false
       days:
         description: "days to fill (default 1 = tomorrow)"
@@ -70,22 +71,38 @@ jobs:
       IN_PILLAR: ${{ inputs.pillar }}
       IN_FORCE: ${{ inputs.force }}
       IN_EVERGREEN: ${{ inputs.evergreen }}
+      EVENT_NAME: ${{ github.event_name }}
+      REPAIR: ${{ github.event.schedule == '17 4 * * *' && 'true' || 'false' }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Anything to repair?
+        id: gap
+        run: |
+          if [ "$REPAIR" != "true" ]; then echo "run=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          GAPS=$(python3 -m engine.due --repair)
+          echo "$GAPS"
+          echo "run=$([ -n "$GAPS" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-python@v5
+        if: steps.gap.outputs.run == 'true'
         with:
           python-version: "3.12"
           cache: pip
       - name: Install
+        if: steps.gap.outputs.run == 'true'
         run: |
           pip install -r requirements.txt
           python -m playwright install --with-deps chromium
           sudo apt-get install -y -q fonts-noto-color-emoji >/dev/null
       - name: Generate
+        if: steps.gap.outputs.run == 'true'
         run: |
           if [ -n "$IN_EVERGREEN" ]; then python -m engine.generate --evergreen "$IN_EVERGREEN"; exit $?; fi
+          if [ "$REPAIR" = "true" ]; then python -m engine.generate --repair; exit $?; fi
+          # Nightly (and a manual run with no date): fill every missing/failed slot from now through
+          # 2 days ahead, top the backup pool up, and send the lineup for the next posting day.
+          if [ -z "$IN_DATE" ] && [ -z "$IN_PILLAR" ]; then python -m engine.generate --fill $([ "$IN_FORCE" = "true" ] && echo --force); exit $?; fi
           ARGS=""
           [ -n "$IN_DATE" ] && ARGS="$ARGS --date $IN_DATE"
           [ -n "$IN_DAYS" ] && ARGS="$ARGS --days $IN_DAYS"
@@ -94,7 +111,7 @@ jobs:
           [ -z "$IN_DATE" ] && ARGS="$ARGS --tomorrow"
           python -m engine.generate $ARGS --lineup
       - name: Upload rendered slides (debug)
-        if: always()
+        if: always() && steps.gap.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: slides-${{ github.run_id }}
@@ -102,7 +119,7 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
       - name: Commit state
-        if: always() && env.DRY_RUN != 'true'
+        if: always() && env.DRY_RUN != 'true' && steps.gap.outputs.run == 'true'
         run: |
           git config user.name "storyvocabs-bot"
           git config user.email "bot@storyvocabs.local"

@@ -1,0 +1,9 @@
+{
+  "label": "Inside StoryVocabs",
+  "layout": "card",
+  "source": "none",
+  "hook_styles": ["question", "bold_true", "exam_angle"],
+  "prompt": "Write a short, confident showcase card that makes a first-time visitor see StoryVocabs as a serious, premium exam-vocabulary course worth trying today.\n\nPRODUCT FACTS (the ONLY numbers and claims you may use):\n{facts}\n\nPick ONE angle per post and build it around ONE real number from the facts (for example the number of words, stories or packs, or a learner count if the facts list one). Show what the learner actually gets, not adjectives. Never invent ratings, reviews, user counts, results or comparisons; if a number is not in the facts, do not mention it.\n\nHOOK STYLE: {hook_instruction}\n\nEnd the body by inviting them to start with the free packs.",
+  "temperature": 0.7,
+  "vanity_path": "app"
+}

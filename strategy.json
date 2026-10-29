@@ -1,11 +1,13 @@
 {
-  "_comment": "Editable content strategy. Weights are re-tuned weekly by engine/insights.py; everything else is yours. Days are Asia/Dhaka weekdays (mon..sun). Slots: morning=08:00 BST, evening=20:00 BST.",
+  "_comment": "Editable content strategy. Weights are re-tuned weekly by engine/insights.py; everything else is yours. Days are Asia/Dhaka weekdays (mon..sun). Slots: morning=08:00, noon=13:00, evening=20:00 BST — 3 posts a day.",
   "version": 2,
   "slots": {
     "morning": "08:00",
+    "noon": "13:00",
     "evening": "20:00",
     "ramadan": {
       "morning": "16:00",
+      "noon": "13:00",
       "evening": "20:30"
     }
   },
@@ -15,18 +17,42 @@
         "slot": "morning",
         "pillar": "news_word",
         "topic_group": "politics"
+      },
+      {
+        "slot": "noon",
+        "pillar": "quiz"
+      },
+      {
+        "slot": "evening",
+        "pillar": "offer"
       }
     ],
     "sun": [
       {
         "slot": "morning",
-        "pillar": "quiz"
+        "pillar": "confusables"
+      },
+      {
+        "slot": "noon",
+        "pillar": "exam_tip"
+      },
+      {
+        "slot": "evening",
+        "pillar": "story60"
       }
     ],
     "mon": [
       {
         "slot": "morning",
+        "pillar": "quiz"
+      },
+      {
+        "slot": "noon",
         "pillar": "confusables"
+      },
+      {
+        "slot": "evening",
+        "pillar": "proof"
       }
     ],
     "tue": [
@@ -34,71 +60,61 @@
         "slot": "morning",
         "pillar": "news_word",
         "topic_group": "business"
+      },
+      {
+        "slot": "noon",
+        "pillar": "quiz"
+      },
+      {
+        "slot": "evening",
+        "pillar": "offer"
       }
     ],
     "wed": [
       {
         "slot": "morning",
         "pillar": "in_app"
+      },
+      {
+        "slot": "noon",
+        "pillar": "exam_tip"
+      },
+      {
+        "slot": "evening",
+        "pillar": "story60"
       }
     ],
     "thu": [
       {
         "slot": "morning",
-        "pillar": "story60"
+        "pillar": "confusables"
+      },
+      {
+        "slot": "noon",
+        "pillar": "quiz"
+      },
+      {
+        "slot": "evening",
+        "pillar": "offer"
       }
     ],
     "fri": [
       {
+        "slot": "morning",
+        "pillar": "story60"
+      },
+      {
+        "slot": "noon",
+        "pillar": "quiz"
+      },
+      {
         "slot": "evening",
-        "pillar": "offer"
+        "pillar": "proof"
       }
     ]
   },
   "date_overrides": {
-    "_comment": "Launch burst 26-29 Sep 2026: two posts a day (with a 12-post backfill = 20 in 4 days). Delete after 29 Sep to return to the weekly calendar.",
-    "2026-09-26": [
-      {
-        "slot": "morning",
-        "pillar": "news_word",
-        "topic_group": "politics"
-      },
-      {
-        "slot": "evening",
-        "pillar": "quiz"
-      }
-    ],
-    "2026-09-27": [
-      {
-        "slot": "morning",
-        "pillar": "confusables"
-      },
-      {
-        "slot": "evening",
-        "pillar": "story60"
-      }
-    ],
-    "2026-09-28": [
-      {
-        "slot": "morning",
-        "pillar": "quiz"
-      },
-      {
-        "slot": "evening",
-        "pillar": "news_word",
-        "topic_group": "business"
-      }
-    ],
-    "2026-09-29": [
-      {
-        "slot": "morning",
-        "pillar": "story60"
-      },
-      {
-        "slot": "evening",
-        "pillar": "offer"
-      }
-    ]
+    "_comment": "One-off days that replace the weekday calendar, e.g. \"2026-12-16\": [{\"slot\": \"morning\", \"pillar\": \"quiz\"}]."
   },
   "pillar_weights": {
     "news_word": 1.0,
@@ -106,7 +122,9 @@
     "confusables": 1.0,
     "in_app": 1.0,
     "story60": 1.0,
-    "offer": 1.0
+    "offer": 1.0,
+    "exam_tip": 1.0,
+    "proof": 1.0
   },
   "topic_groups": {
     "politics": {

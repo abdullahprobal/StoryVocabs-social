@@ -83,10 +83,10 @@ def test_planner_calendar_and_holidays():
     eid2 = plan_for_date("2026-09-27", strat, hol)
     assert len(eid2) == 1 and eid2[0].slot == "evening"
     fri = plan_for_date("2026-09-25", strat, hol)  # Friday
-    assert fri and fri[0].pillar == "offer" and fri[0].slot == "evening"
+    assert [(p.slot, p.pillar) for p in fri] == [("morning", "story60"), ("noon", "quiz"), ("evening", "proof")]
     sat = plan_for_date("2026-09-19", strat, hol)
-    assert sat[0].pillar == "news_word" and sat[0].topic_group == "politics"
-    quiz = plan_for_date("2026-09-20", strat, hol)
+    assert sat[0].pillar == "news_word" and sat[0].topic_group == "politics" and sat[2].pillar == "offer"
+    quiz = plan_for_date("2026-09-21", strat, hol)  # Monday
     assert quiz[0].pillar == "quiz" and quiz[0].hook_style in ("question", "mistake", "exam_angle")
 
 
