@@ -1,0 +1,73 @@
+{
+ "id": "20261102-mo-b456fb",
+ "date": "2026-11-02",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "bold_true",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Moral vs Morale: কোনটা নীতি, কোনটা দলের উদ্দীপনা?",
+  "pair": [
+   {
+    "word": "Moral",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈmɒrəl/",
+    "gloss_bn": "নীতি, ভালো-মন্দ",
+    "meaning_bn": "ভালো-মন্দ বা ঠিক-ভুল সংক্রান্ত কোনো কিছু।",
+    "meaning_en": "Relating to principles of right and wrong or good and bad.",
+    "example": "Our teacher often discussed the <b>moral</b> implications of cheating in exams.",
+    "synonym": "",
+    "antonym": ""
+   },
+   {
+    "word": "Morale",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/məˈrɑːl/",
+    "gloss_bn": "আত্মবিশ্বাস, উদ্দীপনা",
+    "meaning_bn": "কোনো দলের আত্মবিশ্বাস আর কাজ করার উদ্দীপনা।",
+    "meaning_en": "The confidence and enthusiasm of a group at a particular time.",
+    "example": "After the tough viva, the students' <b>morale</b> was quite low.",
+    "synonym": "",
+    "antonym": ""
+   }
+  ],
+  "difference_bn": "Moral মানে ভালো-মন্দ বা ঠিক-ভুল সংক্রান্ত। Morale মানে কোনো দলের বা টিমের আত্মবিশ্বাস আর কাজ করার উদ্দীপনা। spelling-এর জন্য অনেকে গুলিয়ে ফেলে।",
+  "memory_tip_bn": ""
+ },
+ "caption_fb": "Moral আর Morale, কোনটা কখন লিখব, গুলিয়ে যেত আমারও! 🤦‍♀️\n\nআগে আমি যেকোনো ভালো-মন্দের কথায় 'Morale' লিখে আসতাম।\n\nপরে বুঝলাম, BCS writing-এ 'ethical' sense-এর জন্য 'Moral' আর team-এর উদ্দীপনার জন্য 'Morale' লিখলে নাম্বার বেশি।\n\nTeam-এর performance নিয়ে কথা বললে 'morale' আর decision-এর right-wrong নিয়ে বললে 'moral'।\n\nকোনটা তোমার বেশি ভুল হয় — Moral না Morale?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/mixup/1102\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "Moral আর Morale, কোনটা কখন লিখব, গুলিয়ে যেত আমারও! 🤦‍♀️\n\nআগে আমি যেকোনো ভালো-মন্দের কথায় 'Morale' লিখে আসতাম।\n\nপরে বুঝলাম, BCS writing-এ 'ethical' sense-এর জন্য 'Moral' আর team-এর উদ্দীপনার জন্য 'Morale' লিখলে নাম্বার বেশি।\n\nTeam-এর performance নিয়ে কথা বললে 'morale' আর decision-এর right-wrong নিয়ে বললে 'moral'।\n\nকোনটা তোমার বেশি ভুল হয় — Moral না Morale?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #Vocabulary #Confusables #IELTS #DUAdmission",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-02/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-02/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-02/morning/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-02/morning/20261102-mo-b456fb/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-02/morning/20261102-mo-b456fb/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-02/morning/20261102-mo-b456fb/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-02/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-02/morning/20261102-mo-b456fb/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 2,
+ "evergreen": false,
+ "telegram_message_id": 300,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-01T18:58:28+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=1102"
+}
