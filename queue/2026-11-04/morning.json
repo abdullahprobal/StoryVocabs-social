@@ -1,0 +1,73 @@
+{
+ "id": "20261104-mo-ee115c",
+ "date": "2026-11-04",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "bold_true",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Censor নাকি Censure — কোনটা কখন use করবে?",
+  "pair": [
+   {
+    "word": "Censor",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈsensər/",
+    "gloss_bn": "বাদ দেওয়া",
+    "meaning_bn": "কোনো লেখা বা ভিডিও থেকে আপত্তিজনক অংশ বাদ দেওয়া বা কেটে ফেলা।",
+    "meaning_en": "To remove objectionable parts from a book, film, or other content.",
+    "example": "The university decided to <b>censor</b> some scenes from the freshers' orientation video.",
+    "synonym": "",
+    "antonym": ""
+   },
+   {
+    "word": "Censure",
+    "pos": "verb",
+    "difficulty": "Advanced",
+    "phonetic": "/ˈsenʃər/",
+    "gloss_bn": "সমালোচনা করা",
+    "meaning_bn": "আনুষ্ঠানিকভাবে কারো কাজ বা আচরণের তীব্র সমালোচনা করা বা নিন্দা জানানো।",
+    "meaning_en": "To officially criticize someone or something strongly.",
+    "example": "The dean had to <b>censure</b> the student for cheating in the final exam.",
+    "synonym": "criticize, condemn, rebuke",
+    "antonym": "praise, commend"
+   }
+  ],
+  "difference_bn": "Censor মানে কোনো কিছু থেকে খারাপ বা আপত্তিজনক অংশ বাদ দেওয়া। আর Censure মানে কাউকে বা কিছুকে আনুষ্ঠানিকভাবে সমালোচনা করা বা নিন্দা জানানো।",
+  "memory_tip_bn": ""
+ },
+ "caption_fb": "আগে ভাবতাম 'সরকার মুভিটা Censor করেছে' — এখন বুঝি, সব ক্ষেত্রে Censor না!\n\nCensor মানে কোনো কিছু থেকে খারাপ বা আপত্তিজনক অংশ বাদ দেওয়া। মুভি থেকে controversial scene বাদ দিলে সেটা Censor।\n\nকিন্তু যখন সরকার বা কোনো অথরিটি কোনো কাজ বা বক্তব্যকে officially সমালোচনা করে, সেটা Censure। যেমন, একজন politician-কে তার বক্তব্যর জন্য Censure করা হল।\n\nBCS বা Bank exam-এ sentence completion-এ এই দুইটা option পাশাপাশি দেখলে, context-টা খুঁজো: বাদ দেওয়া নাকি সমালোচনা?\n\nকোনো movie বা article-এর কোন অংশ Censor করা তোমার কাছে বাড়াবাড়ি মনে হয়েছে?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\nstoryvocabs.com/mixup/1104\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "আগে ভাবতাম 'সরকার মুভিটা Censor করেছে' — এখন বুঝি, সব ক্ষেত্রে Censor না!\n\nCensor মানে কোনো কিছু থেকে খারাপ বা আপত্তিজনক অংশ বাদ দেওয়া। মুভি থেকে controversial scene বাদ দিলে সেটা Censor।\n\nকিন্তু যখন সরকার বা কোনো অথরিটি কোনো কাজ বা বক্তব্যকে officially সমালোচনা করে, সেটা Censure। যেমন, একজন politician-কে তার বক্তব্যর জন্য Censure করা হল।\n\nBCS বা Bank exam-এ sentence completion-এ এই দুইটা option পাশাপাশি দেখলে, context-টা খুঁজো: বাদ দেওয়া নাকি সমালোচনা?\n\nকোনো movie বা article-এর কোন অংশ Censor করা তোমার কাছে বাড়াবাড়ি মনে হয়েছে?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #Confusables #CensorVsCensure #ExamVocab #BCSপ্রস্তুতি",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-04/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-04/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-04/morning/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-04/morning/20261104-mo-ee115c/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-04/morning/20261104-mo-ee115c/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-04/morning/20261104-mo-ee115c/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-04/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-04/morning/20261104-mo-ee115c/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 1,
+ "evergreen": false,
+ "telegram_message_id": 318,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-03T20:32:09+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=1104"
+}
