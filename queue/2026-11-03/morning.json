@@ -3,7 +3,7 @@
  "date": "2026-11-03",
  "slot": "morning",
  "pillar": "news_word",
- "status": "pending",
+ "status": "published",
  "hook_style": "question",
  "content": {
   "pillar": "news_word",
@@ -66,7 +66,7 @@
  },
  "caption_fb": "Bank exam-এর synonym MCQ-তে 'presage' আর 'portend' দুটোই option-এ থাকলে কী করবে?\n\nPresage মানে খারাপ কিছু হওয়ার আগাম ইঙ্গিত।\n\nFuture-এর কোনো bad event-এর sign যখন, তখন presage-ই উত্তর।\n\n'Predict' general, কিন্তু presage-এর মধ্যে একটা warning sense থাকে।\n\nকোনো খারাপ ঘটনা presage করে এমন একটা sign-এর উদাহরণ দাও তো?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/words/1103\n\n#StoryVocabs #EnglishVocabulary #BCS",
  "caption_ig": "Bank exam-এর synonym MCQ-তে 'presage' আর 'portend' দুটোই option-এ থাকলে কী করবে?\n\nPresage মানে খারাপ কিছু হওয়ার আগাম ইঙ্গিত।\n\nFuture-এর কোনো bad event-এর sign যখন, তখন presage-ই উত্তর।\n\n'Predict' general, কিন্তু presage-এর মধ্যে একটা warning sense থাকে।\n\nকোনো খারাপ ঘটনা presage করে এমন একটা sign-এর উদাহরণ দাও তো?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #IBA #IELTS #Vocabulary #ExamPrep",
- "first_comment": "📰 Source: Bangladesh Banking Sector Bad Loan Crisis | Safeguards are key to preventing irregularities in the financial sector\nhttps://news.google.com/rss/articles/CBMiwwFBVV95cUxORmV4Y0NqUTJKTFZINWUzbDU3QmVvTXlPTUpBVGd3RVlSdGNlXzZyMGZtWVl4NHVwT0thMVJERUNodFpVX19yOVc5YXI2RVMzUzVOcEJBeEM4aFBTWTJTcVJPMDBBQTE1a3FYTEFGcmpMU0hLV2tCS203dFQzZEY3Q19TQVctbXBBR3NNN2NaRGJQSzdBVnE1NUh2aEpFQmhwMTlGclRfMXc2X3pyM2FSY0xMR0FRbG4wdWZSanNDUi1LVUE?oc=5",
+ "first_comment": "",
  "comment_delay_minutes": 0,
  "media": [
   "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-03/morning/slide_01_cover.png",
@@ -94,13 +94,13 @@
  "attempts": 3,
  "evergreen": false,
  "telegram_message_id": 311,
- "fb_post_id": "",
+ "fb_post_id": "1030385866825671_122134163510846512",
  "ig_media_id": "",
- "fb_story_id": "",
+ "fb_story_id": "1027586817020150",
  "ig_story_id": "",
  "review_note": "",
- "error": "",
+ "error": "ig: 9007 OAuthException: Media ID is not available",
  "created_at": "2026-11-02T22:48:52+00:00",
- "published_at": "",
+ "published_at": "2026-11-03T09:43:59+00:00",
  "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=news_word&utm_content=1103"
 }
