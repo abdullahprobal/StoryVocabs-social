@@ -1,0 +1,140 @@
+{
+ "id": "20261105-mo-749364",
+ "date": "2026-11-05",
+ "slot": "morning",
+ "pillar": "story60",
+ "status": "pending",
+ "hook_style": "question",
+ "content": {
+  "pillar": "story60",
+  "headline_en": "Dhaka Medical's Night Shift: A [[Bedlam]] of Reality",
+  "headline_bn": "ঢাকা মেডিকেলের নাইট শিফট: A Bedlam of Reality",
+  "hero_word": "Bedlam",
+  "hero_gloss_bn": "চরম বিশৃঙ্খলা",
+  "story_slides": [
+   {
+    "section_label": "PART 1",
+    "paragraph": "প্রথম নাইট ডিউটিতে ঢুকছি ঢাকা মেডিকেলে। সিনিয়র বলেছিল, \"সবাইকে সাহায্য করতে প্রস্তুত থেকো, এটা একটা [[reciprocal|পারস্পরিক]] ব্যাপার।\" ভাবছিলাম, হয়তো কয়েকটা ছোটখাটো কেস আসবে। কিন্তু পা রাখতেই যা দেখলাম, তা কল্পনারও বাইরে। এই ওয়ার্ডের পরিবেশ আমার মেডিকেলের বইয়ে পড়া থিওরির [[antithesis|বৈপরীত্য]]।"
+   },
+   {
+    "section_label": "PART 2",
+    "paragraph": "এক সিনিয়র নার্স আমাকে ইমার্জেন্সিতে ঠেলে দিয়ে বলল, \"যা দেখছো, এটাই বাস্তবতা। এখানে এসে শুধু বইয়ের জ্ঞান [[belabor|অতিশয় ব্যবহার করা]] করার সময় নেই।\" মুহূর্তেই একটা অ্যাম্বুলেন্সের সাইরেন সবকিছু ভাসিয়ে দিল। বুঝতে পারলাম, এই কাজটা অনেক কষ্ট [[entail|অন্তর্ভুক্ত করা]] করবে। চারদিকে রোগীর ভিড়, চিৎকার, ডাক্তারদের ছোটাছুটি—পুরো একটা [[bedlam|চরম বিশৃঙ্খলা]]।"
+   }
+  ],
+  "words": [
+   {
+    "word": "Reciprocal",
+    "pos": "adjective",
+    "difficulty": "Intermediate",
+    "phonetic": "/rɪˈsɪprəkəl/",
+    "gloss_bn": "পারস্পরিক",
+    "meaning_bn": "একে অন্যের সাথে সম্পর্কিত বা সমান আদান-প্রদান বোঝায়।",
+    "meaning_en": "Characterized by mutual or equivalent exchange or relation.",
+    "example": "The two countries signed a <b>reciprocal</b> trade agreement.",
+    "synonym": "mutual, exchange, give-and-take",
+    "antonym": "one-sided, unequal"
+   },
+   {
+    "word": "Entail",
+    "pos": "verb",
+    "difficulty": "Advanced",
+    "phonetic": "/ɪnˈteɪl/",
+    "gloss_bn": "অন্তর্ভুক্ত করা",
+    "meaning_bn": "কোনো কিছুর অপরিহার্য অংশ বা ফলস্বরূপ কিছু জড়িত থাকা।",
+    "meaning_en": "To involve or imply something as a necessary part or consequence.",
+    "example": "The new job will <b>entail</b> a lot of traveling.",
+    "synonym": "imply, suggest, necessitate",
+    "antonym": "exclude"
+   },
+   {
+    "word": "Belabor",
+    "pos": "verb",
+    "difficulty": "Advanced",
+    "phonetic": "/bɪˈleɪbər/",
+    "gloss_bn": "অতিশয় ব্যবহার করা",
+    "meaning_bn": "কোনো কিছু অপ্রয়োজনে বা বিরক্তিকরভাবে বেশি ব্যাখ্যা করা বা জোর দেওয়া।",
+    "meaning_en": "To explain or emphasize something excessively or tediously.",
+    "example": "Please don't <b>belabor</b> the point; I understand.",
+    "synonym": "overemphasize, exaggerate, dwell",
+    "antonym": "underemphasize"
+   },
+   {
+    "word": "Antithesis",
+    "pos": "noun",
+    "difficulty": "Intermediate",
+    "phonetic": "/ænˈtɪθəsɪs/",
+    "gloss_bn": "বৈপরীত্য",
+    "meaning_bn": "কোনো কিছুর সরাসরি বিপরীত বা সম্পূর্ণ ভিন্ন রূপ।",
+    "meaning_en": "A direct contrast or opposite of something.",
+    "example": "Love is the <b>antithesis</b> of hatred.",
+    "synonym": "opposite, contrast, dichotomy",
+    "antonym": "similarity, analogy, harmony"
+   },
+   {
+    "word": "Bedlam",
+    "pos": "noun",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈbɛdləm/",
+    "gloss_bn": "চরম বিশৃঙ্খলা",
+    "meaning_bn": "চরম বিশৃঙ্খলা, হট্টগোল বা অস্থির অবস্থা।",
+    "meaning_en": "A state of extreme chaos, uproar, or tumult.",
+    "example": "The classroom was in complete <b>bedlam</b> after the teacher left.",
+    "synonym": "chaos, pandemonium, turmoil",
+    "antonym": "order, calm"
+   }
+  ],
+  "category": {
+   "en": "Story",
+   "bn": "গল্প",
+   "icon": "📖"
+  },
+  "source_title": "",
+  "source_url": "",
+  "topic": "A young doctor's first night shift at Dhaka Medical"
+ },
+ "caption_fb": "MCQ-তে 'chaos' আর 'bedlam' দুটোই থাকলে কোনটা দাগাবে?\n\nBedlam মানে চরম বিশৃঙ্খলা, মানে যেখানে হট্টগোল আর গোলমাল দুটোই আছে।\n\nশুধু এলোমেলো হলে 'chaos', কিন্তু loud এবং control-এর বাইরে হলে 'bedlam'।\n\nযেমন, Dhaka Med-এর emergency-তে যা হয় — ওটাই bedlam।\n\nতোমার দেখা সবচেয়ে bedlam জায়গা কোনটা?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/story/1105\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "MCQ-তে 'chaos' আর 'bedlam' দুটোই থাকলে কোনটা দাগাবে?\n\nBedlam মানে চরম বিশৃঙ্খলা, মানে যেখানে হট্টগোল আর গোলমাল দুটোই আছে।\n\nশুধু এলোমেলো হলে 'chaos', কিন্তু loud এবং control-এর বাইরে হলে 'bedlam'।\n\nযেমন, Dhaka Med-এর emergency-তে যা হয় — ওটাই bedlam।\n\nতোমার দেখা সবচেয়ে bedlam জায়গা কোনটা?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUAdmission #IBAAdmission #IELTS #Vocabulary",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-05/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-05/morning/slide_02_story.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-05/morning/slide_03_story.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-05/morning/slide_04_word_1.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-05/morning/slide_05_word_2.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-05/morning/slide_06_word_3.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-05/morning/slide_07_word_4.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-05/morning/slide_08_word_5.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-05/morning/slide_09_recap.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-05/morning/20261105-mo-749364/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-05/morning/20261105-mo-749364/slide_02_story.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-05/morning/20261105-mo-749364/slide_03_story.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-05/morning/20261105-mo-749364/slide_04_word_1.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-05/morning/20261105-mo-749364/slide_05_word_2.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-05/morning/20261105-mo-749364/slide_06_word_3.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-05/morning/20261105-mo-749364/slide_07_word_4.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-05/morning/20261105-mo-749364/slide_08_word_5.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-05/morning/20261105-mo-749364/slide_09_recap.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-05/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-05/morning/20261105-mo-749364/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 2,
+ "evergreen": false,
+ "telegram_message_id": 331,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-04T20:50:50+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=story60&utm_content=1105"
+}
