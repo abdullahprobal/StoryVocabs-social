@@ -1,0 +1,44 @@
+{
+ "id": "20261106-ev-b83b4f",
+ "date": "2026-11-06",
+ "slot": "evening",
+ "pillar": "offer",
+ "status": "pending",
+ "hook_style": "bold_true",
+ "content": {
+  "pillar": "offer",
+  "kind": "uni_trial",
+  "headline_bn": "ভার্সিটি স্টুডেন্টদের জন্য StoryVocabs-এ ৭ দিনের ফ্রি Pro",
+  "body_bn": "যেকোনো বাংলাদেশি ইউনিভার্সিটির ইমেইল দিয়ে সাইন আপ করলেই ৭ দিন একদম ফ্রি StoryVocabs Pro। ট্রায়াল চলাকালীন আর শেষ হওয়ার ২৪ ঘণ্টা পর্যন্ত Lifetime প্ল্যানে ৫০% আর অন্য সব প্ল্যানে ২৫% ছাড়। অটোমেটিকভাবে পেয়ে যাবে।",
+  "detail_line": "7 days free · uni email"
+ },
+ "caption_fb": "ভার্সিটির ইমেইল হলে ভোকাবুলারির জন্য টাকা দিতে হবে না।\n\nকিন্তু ভার্সিটির ইমেইল দিয়ে StoryVocabs Pro ৭ দিন ফ্রি পেয়ে গেলাম!\n\nট্রায়াল শেষ হওয়ার ২৪ ঘণ্টা পর্যন্ত Lifetime প্ল্যানে ৫০% অফ আছে। বাকি প্ল্যানগুলোতেও ডিসকাউন্ট।\n\nBCS, Bank, DU/IBA, IELTS — যে পরীক্ষার জন্যই পড়ো, ৭ দিন পুরো Pro access পাবে।\n\nকোন ইউনিভার্সিটিতে পড়ো?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/free/1106\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "ভার্সিটির ইমেইল হলে ভোকাবুলারির জন্য টাকা দিতে হবে না।\n\nকিন্তু ভার্সিটির ইমেইল দিয়ে StoryVocabs Pro ৭ দিন ফ্রি পেয়ে গেলাম!\n\nট্রায়াল শেষ হওয়ার ২৪ ঘণ্টা পর্যন্ত Lifetime প্ল্যানে ৫০% অফ আছে। বাকি প্ল্যানগুলোতেও ডিসকাউন্ট।\n\nBCS, Bank, DU/IBA, IELTS — যে পরীক্ষার জন্যই পড়ো, ৭ দিন পুরো Pro access পাবে।\n\nকোন ইউনিভার্সিটিতে পড়ো?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUAdmission #IBAAdmission #IELTS #Vocabulary",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-06/evening/slide_01_offer.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-06/evening/20261106-ev-b83b4f/slide_01_offer.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-06/evening/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-06/evening/20261106-ev-b83b4f/story_1080x1920.png",
+ "quality_score": 7.0,
+ "attempts": 1,
+ "evergreen": false,
+ "telegram_message_id": 336,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-05T21:06:50+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=offer&utm_content=1106"
+}
