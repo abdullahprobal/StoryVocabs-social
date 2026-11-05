@@ -3,7 +3,7 @@
  "date": "2026-11-05",
  "slot": "morning",
  "pillar": "story60",
- "status": "pending",
+ "status": "published",
  "hook_style": "question",
  "content": {
   "pillar": "story60",
@@ -128,13 +128,13 @@
  "attempts": 2,
  "evergreen": false,
  "telegram_message_id": 331,
- "fb_post_id": "",
- "ig_media_id": "",
- "fb_story_id": "",
- "ig_story_id": "",
+ "fb_post_id": "1030385866825671_122134381322846512",
+ "ig_media_id": "17973002241171565",
+ "fb_story_id": "3318531505202162",
+ "ig_story_id": "18138962800745318",
  "review_note": "",
  "error": "",
  "created_at": "2026-11-04T20:50:50+00:00",
- "published_at": "",
+ "published_at": "2026-11-05T09:40:08+00:00",
  "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=story60&utm_content=1105"
 }
