@@ -1,0 +1,106 @@
+{
+ "id": "20261110-mo-f20449",
+ "date": "2026-11-10",
+ "slot": "morning",
+ "pillar": "news_word",
+ "status": "pending",
+ "hook_style": "mistake",
+ "content": {
+  "pillar": "news_word",
+  "headline_en": "Bangladesh faces a [[myriad]] of economic challenges, despite growth.",
+  "headline_bn": "এত গ্রোথের পরও বাংলাদেশের সামনে myriad অর্থনৈতিক চ্যালেঞ্জ।",
+  "hero_word": "Myriad",
+  "hero_gloss_bn": "অসংখ্য, অনেক",
+  "story_slides": [
+   {
+    "section_label": "NEWS INSIGHT",
+    "paragraph": "Bangladesh's economic landscape is facing a [[myriad|অসংখ্য, অনেক]] of challenges, even as reports show growth in foreign debt. Foreign investors pulled a significant Tk 175cr from the DSE in October, raising concerns about the nation's financial stability. The growth story of Bangladesh, once robust, is now under scrutiny. This situation could have a [[pernicious|ক্ষতিকর]] effect on job prospects for a nation of graduates, creating an unfortunate [[legacy|উত্তরাধিকার]] of unemployment if not addressed."
+   }
+  ],
+  "words": [
+   {
+    "word": "Myriad",
+    "pos": "adjective",
+    "difficulty": "Advanced",
+    "phonetic": "/ˈmɪriəd/",
+    "gloss_bn": "অসংখ্য, অনেক",
+    "meaning_bn": "অনেক কিছু একসাথে বোঝাতে myriad বলি।",
+    "meaning_en": "A very large, indefinite number; an immeasurably great quantity.",
+    "example": "",
+    "synonym": "numerous, innumerable, countless",
+    "antonym": "few"
+   },
+   {
+    "word": "Legacy",
+    "pos": "noun",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈlɛɡəsi/",
+    "gloss_bn": "উত্তরাধিকার, পরের জন্য",
+    "meaning_bn": "কেউ মারা গেলে বা চলে গেলে পরের জন্য যা রেখে যায়, সেটাই legacy।",
+    "meaning_en": "A gift or bequest, especially one made in a will.",
+    "example": "",
+    "synonym": "inheritance, bequest, remainder",
+    "antonym": "loss, abandonment"
+   },
+   {
+    "word": "Pernicious",
+    "pos": "adjective",
+    "difficulty": "Intermediate",
+    "phonetic": "/pərˈnɪʃəs/",
+    "gloss_bn": "ক্ষতিকর, ধ্বংসাত্মক",
+    "meaning_bn": "যেটা আস্তে আস্তে অনেক ক্ষতি করে, সেটা pernicious।",
+    "meaning_en": "Having a harmful effect, especially in a gradual or subtle way; highly injurious.",
+    "example": "",
+    "synonym": "harmful, destructive, injurious",
+    "antonym": "beneficial, helpful"
+   }
+  ],
+  "category": {
+   "en": "Economy",
+   "bn": "অর্থনীতি",
+   "icon": "📈"
+  },
+  "source_title": "Fizz takes three in Mumbai rout",
+  "source_url": "https://www.thedailystar.net/sports/cricket/fizz-takes-three-mumbai-rout-1220587",
+  "topic": "Fizz takes three in Mumbai rout"
+ },
+ "caption_fb": "আমার মনে আছে, myriad মানে শুধু 'অনেক' জানতাম বলে MCQ-তে ভুল করতাম। পরে বুঝলাম 'বিভিন্ন ধরনের অনেক'।\n\nMCQ-তে 'many' আর 'various' দুটোই থাকলে, myriad মানে 'many different types of' sense-টা খুঁজো।\n\nযেমন, 'a myriad of problems' মানে শুধু 'অনেক সমস্যা' না, 'অনেক ধরনের সমস্যা'।\n\nতোমার কাছে সবচেয়ে daunting মনে হয় কোন exam-টা?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/words/1110\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "আমার মনে আছে, myriad মানে শুধু 'অনেক' জানতাম বলে MCQ-তে ভুল করতাম। পরে বুঝলাম 'বিভিন্ন ধরনের অনেক'।\n\nMCQ-তে 'many' আর 'various' দুটোই থাকলে, myriad মানে 'many different types of' sense-টা খুঁজো।\n\nযেমন, 'a myriad of problems' মানে শুধু 'অনেক সমস্যা' না, 'অনেক ধরনের সমস্যা'।\n\nতোমার কাছে সবচেয়ে daunting মনে হয় কোন exam-টা?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #BCSPreparation #BankJobPrep #DUAdmission #IBAAdmission",
+ "first_comment": "📰 Source: Fizz takes three in Mumbai rout\nhttps://www.thedailystar.net/sports/cricket/fizz-takes-three-mumbai-rout-1220587",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-10/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-10/morning/slide_02_story.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-10/morning/slide_03_word_1.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-10/morning/slide_04_word_2.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-10/morning/slide_05_word_3.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-10/morning/slide_06_recap.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-10/morning/20261110-mo-f20449/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-10/morning/20261110-mo-f20449/slide_02_story.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-10/morning/20261110-mo-f20449/slide_03_word_1.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-10/morning/20261110-mo-f20449/slide_04_word_2.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-10/morning/20261110-mo-f20449/slide_05_word_3.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-10/morning/20261110-mo-f20449/slide_06_recap.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-10/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-10/morning/20261110-mo-f20449/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 4,
+ "evergreen": false,
+ "telegram_message_id": 357,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-09T23:28:46+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=news_word&utm_content=1110"
+}
