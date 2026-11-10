@@ -1,0 +1,73 @@
+{
+ "id": "20261111-mo-123dce",
+ "date": "2026-11-11",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "mistake",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Stationary না Stationery — কোনটা কখন?",
+  "pair": [
+   {
+    "word": "Stationary",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˌsteɪʃəˈnɛri/",
+    "gloss_bn": "স্থির, অচল",
+    "meaning_bn": "যেটা এক জায়গায় থাকে, নড়াচড়া করে না বা চলতে পারে না।",
+    "meaning_en": "Something that is not moving or not intended to be moved.",
+    "example": "The rickshaw puller asked me to stay <b>stationary</b> while he fixed the wheel.",
+    "synonym": "",
+    "antonym": ""
+   },
+   {
+    "word": "Stationery",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˌsteɪʃəˈnɛri/",
+    "gloss_bn": "কাগজ, কলম, খাতা",
+    "meaning_bn": "লেখার জিনিসপত্র, যেমন কাগজ, কলম, খাতা, এনভেলপ।",
+    "meaning_en": "Materials for writing, such as paper, pens, and envelopes.",
+    "example": "I bought new <b>stationery</b> for my exam from Nilkhet.",
+    "synonym": "",
+    "antonym": ""
+   }
+  ],
+  "difference_bn": "Stationary মানে স্থির, নড়াচড়া করে না। আর Stationery মানে লেখার জিনিসপত্র, যেমন কাগজ, কলম। Spelling-এর 'e' দিয়ে মনে রাখতে পারো envelope বা paper।",
+  "memory_tip_bn": "StationEry-তে 'E' আছে, যা দিয়ে EnvElope বা papEr মনে রাখা যায়।"
+ },
+ "caption_fb": "Stationary না Stationery — কোনটা কখন, এটা নিয়ে আমি নিজেও কনফিউজড ছিলাম।\n\nMCQ-তে 'stationary bike' আর 'stationery shop' অপশনে থাকলে, 'e' দেখে বেছে নাও।\n'Stationary' মানে স্থির, নড়াচড়া করে না। 'Stationery' মানে কাগজ, কলম, খাতা।\n\nতোমার সবচেয়ে পছন্দের stationery item কোনটা?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\nstoryvocabs.com/mixup/1111\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "Stationary না Stationery — কোনটা কখন, এটা নিয়ে আমি নিজেও কনফিউজড ছিলাম।\n\nMCQ-তে 'stationary bike' আর 'stationery shop' অপশনে থাকলে, 'e' দেখে বেছে নাও।\n'Stationary' মানে স্থির, নড়াচড়া করে না। 'Stationery' মানে কাগজ, কলম, খাতা।\n\nতোমার সবচেয়ে পছন্দের stationery item কোনটা?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #Confusables #ExamVocab #DUAdmission #IELTS",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-11/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-11/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-11/morning/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-11/morning/20261111-mo-123dce/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-11/morning/20261111-mo-123dce/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-11/morning/20261111-mo-123dce/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-11/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-11/morning/20261111-mo-123dce/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 4,
+ "evergreen": false,
+ "telegram_message_id": 364,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-10T20:52:12+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=1111"
+}
