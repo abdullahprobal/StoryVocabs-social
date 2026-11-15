@@ -1,0 +1,73 @@
+{
+ "id": "20261116-mo-e4c958",
+ "date": "2026-11-16",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "question",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Childish নাকি Childlike? কোনটা ভালো, কোনটা খারাপ?",
+  "pair": [
+   {
+    "word": "Childish",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈtʃaɪl.dɪʃ/",
+    "gloss_bn": "ছেলেমানুষি, অপরিণত",
+    "meaning_bn": "বড় হয়েও ছোটদের মতো আচরণ করা, যেটা মানায় না।",
+    "meaning_en": "Behaving like a child when you are an adult, often in an annoying way.",
+    "example": "His constant complaints about the exam schedule were so <b>childish</b> that no one took him seriously.",
+    "synonym": "",
+    "antonym": ""
+   },
+   {
+    "word": "Childlike",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈtʃaɪld.laɪk/",
+    "gloss_bn": "শিশুর মতো সরল,",
+    "meaning_bn": "শিশুর মতো নিষ্পাপ, সরল আর সৎ গুণগুলো থাকা।",
+    "meaning_en": "Having positive qualities like innocence, honesty, and simplicity that are typical of a child.",
+    "example": "Even after passing BCS, her <b>childlike</b> enthusiasm for learning new things never faded.",
+    "synonym": "",
+    "antonym": ""
+   }
+  ],
+  "difference_bn": "Childish মানে যখন বড় হয়েও কেউ immature behaviour দেখায়, যেটা negative। আর Childlike মানে শিশুর মতো innocence বা simplicity, যেটা positive।",
+  "memory_tip_bn": ""
+ },
+ "caption_fb": "MCQ-তে 'childish' আর 'childlike' দেখলে কোনটা দাগাবো, confuse হয়ে যাও?\n\nযখন কেউ বয়স হওয়ার পরেও ছোটদের মতো খারাপ behaviour করে, সেটা childish.\n\nকিন্তু যখন কারো মধ্যে শিশুদের মতো সরলতা বা innocence থাকে, সেটা childlike.\n\nতোমার বন্ধু exam-এর আগে prank করলে সেটা childish, আর নতুন কিছু শিখতে চাইলে childlike enthusiasm.\n\nতোমার দেখা সবচেয়ে childish কাজ কোনটা ছিল?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/mixup/1116\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "MCQ-তে 'childish' আর 'childlike' দেখলে কোনটা দাগাবো, confuse হয়ে যাও?\n\nযখন কেউ বয়স হওয়ার পরেও ছোটদের মতো খারাপ behaviour করে, সেটা childish.\n\nকিন্তু যখন কারো মধ্যে শিশুদের মতো সরলতা বা innocence থাকে, সেটা childlike.\n\nতোমার বন্ধু exam-এর আগে prank করলে সেটা childish, আর নতুন কিছু শিখতে চাইলে childlike enthusiasm.\n\nতোমার দেখা সবচেয়ে childish কাজ কোনটা ছিল?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUAdmission #IELTS #Vocabulary #EnglishGrammar",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-16/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-16/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-16/morning/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-16/morning/20261116-mo-e4c958/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-16/morning/20261116-mo-e4c958/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-16/morning/20261116-mo-e4c958/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-16/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-16/morning/20261116-mo-e4c958/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 2,
+ "evergreen": false,
+ "telegram_message_id": 389,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-15T19:49:07+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=1116"
+}
