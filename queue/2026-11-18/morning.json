@@ -1,0 +1,73 @@
+{
+ "id": "20261118-mo-41d538",
+ "date": "2026-11-18",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "exam_angle",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Incredible না Incredulous? কোনটা অবিশ্বাস্য, কোনটা বিশ্বাস করতে চায় না?",
+  "pair": [
+   {
+    "word": "Incredible",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ɪnˈkrɛdəbəl/",
+    "gloss_bn": "অবিশ্বাস্য",
+    "meaning_bn": "এতই ভালো বা অদ্ভুত যে বিশ্বাস করা কঠিন।",
+    "meaning_en": "So good, large, or unusual that it's very difficult to believe.",
+    "example": "The news that I got 9 in IELTS was <b>incredible</b>, I had to check the result twice.",
+    "synonym": "",
+    "antonym": ""
+   },
+   {
+    "word": "Incredulous",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ɪnˈkrɛdjələs/",
+    "gloss_bn": "বিশ্বাস করতে অনিচ্ছুক",
+    "meaning_bn": "কোনো কিছু সত্যি বলে বিশ্বাস করতে নারাজ।",
+    "meaning_en": "Unwilling or unable to believe something is true or real.",
+    "example": "When my friend told me he finished his BCS syllabus in a week, I was completely <b>incredulous</b>.",
+    "synonym": "",
+    "antonym": ""
+   }
+  ],
+  "difference_bn": "Incredible মানে যেটা বিশ্বাস করা যায় না বা অবিশ্বাস্য। আর incredulous মানে যে নিজে বিশ্বাস করতে চায় না।",
+  "memory_tip_bn": ""
+ },
+ "caption_fb": "MCQ-তে incredible আর incredulous দুইটাই অপশন হিসেবে থাকলে কী করবা?\n\nQuiz-এ 'His story was so ____ that I could barely believe it.' — এখানে story-টাই অবিশ্বাস্য।\n\nসঠিক উত্তর incredible।\n\nকিন্তু যদি 'He was ____ at the unbelievable story' থাকত, তাহলে incredulous হতো।\n\nকোন newsটা তোমার কাছে incredible লেগেছিল?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো\nstoryvocabs.com/mixup/1118\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "MCQ-তে incredible আর incredulous দুইটাই অপশন হিসেবে থাকলে কী করবা?\n\nQuiz-এ 'His story was so ____ that I could barely believe it.' — এখানে story-টাই অবিশ্বাস্য।\n\nসঠিক উত্তর incredible।\n\nকিন্তু যদি 'He was ____ at the unbelievable story' থাকত, তাহলে incredulous হতো।\n\nকোন newsটা তোমার কাছে incredible লেগেছিল?\n\n৩টি প্যাক ফ্রি — লিংকে গিয়ে শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUAdmission #IBAAdmission #IELTS #Vocabulary",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-18/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-18/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-18/morning/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-18/morning/20261118-mo-41d538/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-18/morning/20261118-mo-41d538/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-18/morning/20261118-mo-41d538/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-18/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-18/morning/20261118-mo-41d538/story_1080x1920.png",
+ "quality_score": 9.0,
+ "attempts": 3,
+ "evergreen": false,
+ "telegram_message_id": null,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-17T22:27:14+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=1118"
+}
