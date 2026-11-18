@@ -3,7 +3,7 @@
  "date": "2026-11-18",
  "slot": "morning",
  "pillar": "confusables",
- "status": "pending",
+ "status": "published",
  "hook_style": "exam_angle",
  "content": {
   "pillar": "confusables",
@@ -61,13 +61,13 @@
  "attempts": 3,
  "evergreen": false,
  "telegram_message_id": null,
- "fb_post_id": "",
- "ig_media_id": "",
- "fb_story_id": "",
- "ig_story_id": "",
+ "fb_post_id": "1030385866825671_122135721974846512",
+ "ig_media_id": "18352659856269020",
+ "fb_story_id": "1144755665140249",
+ "ig_story_id": "18116843921172825",
  "review_note": "",
  "error": "",
  "created_at": "2026-11-17T22:27:14+00:00",
- "published_at": "",
+ "published_at": "2026-11-18T10:21:30+00:00",
  "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=1118"
 }
