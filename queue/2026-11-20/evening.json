@@ -1,0 +1,44 @@
+{
+ "id": "20261120-ev-e0c2bc",
+ "date": "2026-11-20",
+ "slot": "evening",
+ "pillar": "offer",
+ "status": "pending",
+ "hook_style": "bold_true",
+ "content": {
+  "pillar": "offer",
+  "kind": "pay_easy",
+  "headline_bn": "StoryVocabs Pro কেনা খুব সহজ!",
+  "body_bn": "StoryVocabs Pro কিনতে পারবেন bKash, Nagad বা Rocket দিয়ে। ZiniPay-এর মাধ্যমে পেমেন্ট করলেই Pro অটোমেটিকভাবে আনলক হয়ে যাবে। 1 মাস ৳300, 3 মাস ৳800, 6 মাস ৳1500, আর Lifetime ৳4000।",
+  "detail_line": "bKash · Nagad · Rocket"
+ },
+ "caption_fb": "Pro নিতে ভাবছিলে? এখন bKash/Nagad দিয়ে এক ক্লিকেই হয়ে যাবে।\n\nআগে অনেকে বলত 'কিভাবে কিনব, বুঝি না'।\nএখন bKash, Nagad বা Rocket দিয়ে জাস্ট কয়েক ক্লিকেই Pro হয়ে যাবে।\nপেমেন্ট করার সাথে সাথেই অটোমেটিকভাবে Pro আনলক।\nকোনো ঝামেলা নাই, screenshot-ও লাগবে না।\n\nকোন প্ল্যানটা তোমার জন্য সবচেয়ে ভালো হবে মনে হচ্ছে?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/free/1120\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "Pro নিতে ভাবছিলে? এখন bKash/Nagad দিয়ে এক ক্লিকেই হয়ে যাবে।\n\nআগে অনেকে বলত 'কিভাবে কিনব, বুঝি না'।\nএখন bKash, Nagad বা Rocket দিয়ে জাস্ট কয়েক ক্লিকেই Pro হয়ে যাবে।\nপেমেন্ট করার সাথে সাথেই অটোমেটিকভাবে Pro আনলক।\nকোনো ঝামেলা নাই, screenshot-ও লাগবে না।\n\nকোন প্ল্যানটা তোমার জন্য সবচেয়ে ভালো হবে মনে হচ্ছে?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #IELTS #DUAdmission #Vocabulary #Bangla",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-20/evening/slide_01_offer.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-20/evening/20261120-ev-e0c2bc/slide_01_offer.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-20/evening/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-20/evening/20261120-ev-e0c2bc/story_1080x1920.png",
+ "quality_score": 7.0,
+ "attempts": 1,
+ "evergreen": false,
+ "telegram_message_id": 408,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-19T22:10:58+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=offer&utm_content=1120"
+}
