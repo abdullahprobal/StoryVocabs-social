@@ -1,0 +1,73 @@
+{
+ "id": "20261123-mo-af33f6",
+ "date": "2026-11-23",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "exam_angle",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Canvas না Canvass — কোনটা কখন?",
+  "pair": [
+   {
+    "word": "Canvas",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈkænvəs/",
+    "gloss_bn": "মোটা কাপড়",
+    "meaning_bn": "মোটা, শক্ত কাপড় যা painting, tent বা bag বানাতে ব্যবহার হয়।",
+    "meaning_en": "A strong, heavy cloth used for paintings, tents, or bags.",
+    "example": "My art teacher told us to use a good quality <b>canvas</b> for the oil painting project.",
+    "synonym": "",
+    "antonym": ""
+   },
+   {
+    "word": "Canvass",
+    "pos": "verb",
+    "difficulty": "Intermediate",
+    "phonetic": "/ˈkænvəs/",
+    "gloss_bn": "ভোট/মতামত চাওয়া",
+    "meaning_bn": "ভোট বা মতামত সংগ্রহ করা, বিশেষ করে বাড়ি বাড়ি গিয়ে বা সিস্টেমেটিক উপায়ে।",
+    "meaning_en": "To systematically ask people for their votes, opinions, or support.",
+    "example": "The student union leaders will <b>canvass</b> opinions from all departments before the final decision.",
+    "synonym": "poll, survey, canvass",
+    "antonym": "ignore, neglect"
+   }
+  ],
+  "difference_bn": "Canvas হলো মোটা কাপড়, যেমন painting-এর জন্য। আর Canvass হলো মানুষের কাছে ভোট বা মতামত চাওয়া, যেমন election-এর সময় প্রার্থীরা করে।",
+  "memory_tip_bn": ""
+ },
+ "caption_fb": "MCQ-তে Canvas আর Canvass দেখলে মাথা গুলিয়ে যায় না?\n\nSentence completion-এ verb হিসেবে blank থাকলে Canvass-ই হবে।\n\nআর যদি material বোঝায়, তখন Canvas।\n\nএই দুটো word-এর মধ্যে কোনটা noun আর কোনটা verb, এটা খেয়াল রাখলেই আর ভুল হবে না।\n\nতোমার এলাকায় শেষ election-এ কোনো candidate কি door-to-door canvassing করেছিল?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/mixup/1123\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "MCQ-তে Canvas আর Canvass দেখলে মাথা গুলিয়ে যায় না?\n\nSentence completion-এ verb হিসেবে blank থাকলে Canvass-ই হবে।\n\nআর যদি material বোঝায়, তখন Canvas।\n\nএই দুটো word-এর মধ্যে কোনটা noun আর কোনটা verb, এটা খেয়াল রাখলেই আর ভুল হবে না।\n\nতোমার এলাকায় শেষ election-এ কোনো candidate কি door-to-door canvassing করেছিল?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #Confusables #Vocabulary #ExamPrep #IELTS",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-23/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-23/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-23/morning/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-23/morning/20261123-mo-af33f6/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-23/morning/20261123-mo-af33f6/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-23/morning/20261123-mo-af33f6/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-23/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-23/morning/20261123-mo-af33f6/story_1080x1920.png",
+ "quality_score": 8.0,
+ "attempts": 3,
+ "evergreen": false,
+ "telegram_message_id": 418,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-22T20:45:44+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=1123"
+}
