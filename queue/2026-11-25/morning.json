@@ -1,0 +1,73 @@
+{
+ "id": "20261125-mo-efbd26",
+ "date": "2026-11-25",
+ "slot": "morning",
+ "pillar": "confusables",
+ "status": "pending",
+ "hook_style": "exam_angle",
+ "content": {
+  "pillar": "confusables",
+  "title_bn": "Imply vs Infer: তুমি কি ঠিকমতো ব্যবহার করছো?",
+  "pair": [
+   {
+    "word": "Imply",
+    "pos": "",
+    "difficulty": "Intermediate",
+    "phonetic": "/ɪmˈplaɪ/",
+    "gloss_bn": "ইঙ্গিত করা",
+    "meaning_bn": "কিছু বলা ছাড়াই কোনো কিছু ইঙ্গিত করা বা বোঝানো।",
+    "meaning_en": "To suggest or indicate something indirectly, without stating it explicitly.",
+    "example": "My professor <b>implied</b> that if I don't submit the assignment on time, I might fail the course.",
+    "synonym": "",
+    "antonym": ""
+   },
+   {
+    "word": "Infer",
+    "pos": "verb",
+    "difficulty": "Intermediate",
+    "phonetic": "/ɪnˈfɜːr/",
+    "gloss_bn": "উপসংহার টানা",
+    "meaning_bn": "যুক্তি বা তথ্যের উপর ভিত্তি করে কোনো কিছু অনুমান বা উপসংহার করা।",
+    "meaning_en": "To deduce or conclude something by reasoning from evidence or premises.",
+    "example": "From the professor's expression, I <b>inferred</b> that he was not happy with our presentation.",
+    "synonym": "deduce, conclude, reason",
+    "antonym": "ignore, overlook, dismiss"
+   }
+  ],
+  "difference_bn": "যে কথা বলে বা লেখে, সে Imply করে (ইঙ্গিত দেয়)। আর যে শোনে বা পড়ে, সে Infer করে (উপসংহার টানে)। মনে রেখো, Imply মানে বলা, Infer মানে বোঝা।",
+  "memory_tip_bn": ""
+ },
+ "caption_fb": "Imply আর Infer — কোনটা কখন বসবে, exam-এ গুলিয়ে যায়?\n\nযখন একটা passage পড়ে তুমি একটা conclusion টানো, তখন তুমি infer করো।\n\nকিন্তু যে লেখক বা স্পিকার, সে তার কথায় কিছু imply করে।\n\nMCQ-তে 'reader' বা 'listener'-এর কথা থাকলে infer, আর 'author' বা 'speaker'-এর কথা থাকলে imply।\n\nকোন শব্দটা নিয়ে তোমার বেশি Confusables আছে?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো\nstoryvocabs.com/mixup/1125\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "Imply আর Infer — কোনটা কখন বসবে, exam-এ গুলিয়ে যায়?\n\nযখন একটা passage পড়ে তুমি একটা conclusion টানো, তখন তুমি infer করো।\n\nকিন্তু যে লেখক বা স্পিকার, সে তার কথায় কিছু imply করে।\n\nMCQ-তে 'reader' বা 'listener'-এর কথা থাকলে infer, আর 'author' বা 'speaker'-এর কথা থাকলে imply।\n\nকোন শব্দটা নিয়ে তোমার বেশি Confusables আছে?\n\nফ্রি প্যাক দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUAdmission #IELTS #Vocabulary #EnglishGrammar",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-25/morning/slide_01_cover.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-25/morning/slide_02_pair.png",
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-25/morning/slide_03_rule.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-25/morning/20261125-mo-efbd26/slide_01_cover.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-25/morning/20261125-mo-efbd26/slide_02_pair.png",
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-25/morning/20261125-mo-efbd26/slide_03_rule.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-25/morning/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-25/morning/20261125-mo-efbd26/story_1080x1920.png",
+ "quality_score": 9.0,
+ "attempts": 2,
+ "evergreen": false,
+ "telegram_message_id": 426,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-24T01:42:28+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=confusables&utm_content=1125"
+}
