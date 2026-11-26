@@ -1,0 +1,44 @@
+{
+ "id": "20261127-ev-6db322",
+ "date": "2026-11-27",
+ "slot": "evening",
+ "pillar": "offer",
+ "status": "pending",
+ "hook_style": "question",
+ "content": {
+  "pillar": "offer",
+  "kind": "uni_trial",
+  "headline_bn": "ইউনি স্টুডেন্ট? পাচ্ছো ৭ দিনের ফ্রি প্রো!",
+  "body_bn": "Verified uni email দিয়ে সাইন আপ করলেই ৭ দিনের ফুল প্রো ফ্রি। ট্রায়াল চলাকালীন আর শেষ হওয়ার ২৪ ঘণ্টার মধ্যে Lifetime 50% আর বাকি প্ল্যান 25% অফ। অটোমেটিকভাবে পাবে।",
+  "detail_line": "7 days free · uni email"
+ },
+ "caption_fb": "ইউনি স্টুডেন্ট? ভাবছো এত অফার থাকে, কোনটা যে আসল?\n\nStoryVocabs-এর এই অফারটা কিন্তু জেনুইন।\n\nশুধু তোমার uni email দিয়ে সাইন আপ করলেই ৭ দিনের ফুল প্রো প্যাক ফ্রি পাবে।\n\nএর মধ্যে ডিসকাউন্টেও প্রো নিতে পারবে। কোন কোড লাগবে না, অটোমেটিক অ্যাড হবে।\n\nকোন ইউনিভার্সিটিতে পড়ছো?\n\nতোমার uni email দিয়ে আজই শুরু করো\nstoryvocabs.com/free/1127\n\n#StoryVocabs #EnglishVocabulary #BCS",
+ "caption_ig": "ইউনি স্টুডেন্ট? ভাবছো এত অফার থাকে, কোনটা যে আসল?\n\nStoryVocabs-এর এই অফারটা কিন্তু জেনুইন।\n\nশুধু তোমার uni email দিয়ে সাইন আপ করলেই ৭ দিনের ফুল প্রো প্যাক ফ্রি পাবে।\n\nএর মধ্যে ডিসকাউন্টেও প্রো নিতে পারবে। কোন কোড লাগবে না, অটোমেটিক অ্যাড হবে।\n\nকোন ইউনিভার্সিটিতে পড়ছো?\n\nতোমার uni email দিয়ে আজই শুরু করো — link in bio\n.\n.\n#StoryVocabs #EnglishVocabulary #BCS #BankJob #DUIBA #IELTS #UniStudent #FreePro",
+ "first_comment": "",
+ "comment_delay_minutes": 0,
+ "media": [
+  "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-27/evening/slide_01_offer.png"
+ ],
+ "media_urls": [
+  "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-27/evening/20261127-ev-6db322/slide_01_offer.png"
+ ],
+ "story_media": "/home/runner/work/StoryVocabs-social/StoryVocabs-social/output/2026-11-27/evening/story_1080x1920.png",
+ "backdated": false,
+ "publish_ig": true,
+ "writer_model": "gemini:gemini-2.5-flash",
+ "critic_model": "groq:qwen/qwen3.8-27b",
+ "story_media_url": "https://raw.githubusercontent.com/abdullahprobal/storyvocabs-media/main/2026-11-27/evening/20261127-ev-6db322/story_1080x1920.png",
+ "quality_score": 9.0,
+ "attempts": 1,
+ "evergreen": false,
+ "telegram_message_id": 450,
+ "fb_post_id": "",
+ "ig_media_id": "",
+ "fb_story_id": "",
+ "ig_story_id": "",
+ "review_note": "",
+ "error": "",
+ "created_at": "2026-11-26T23:00:57+00:00",
+ "published_at": "",
+ "utm_url": "https://storyvocabs.com/?utm_source=facebook&utm_medium=social&utm_campaign=offer&utm_content=1127"
+}
